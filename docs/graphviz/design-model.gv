@@ -2,29 +2,46 @@
 
 digraph design {
   compound = true;
-  node [shape=ellipse];
-
-  subgraph cluster3 {
-    ws [label="Web Server", color=white];
-    subgraph cluster4 {
-      be [label="Backend"];
-    }
-    subgraph cluster5 {
-      fe [label="Frontend"];
-    }
-    fe -> be [label="send search strings"];
-    be -> fe [label="display search results"];
-  }
+  node [shape=box];
   
   subgraph cluster0 {
-    subgraph cluster1 {
-      db [label="Database"];
-    }
-    subgraph cluster2 {
-      dao [label="Dao"];
-    }
-    dao -> db [label="make queries"];
-    db -> dao [label="return results"];
+    color = white;
+    node [shape=plaintext];
+    backend [
+      label=<
+      <table border="0" cellborder="1" cellspacing="0">
+	<tr><td><b>Backend</b></td></tr>
+	<tr><td align="left" port="1">Administer user sessions</td></tr>
+	<tr><td align="left" port="2">Parse and combine search string and preferences</td></tr>
+	<tr><td align="left" port="3">Convert to query</td></tr>
+	<tr><td align="left" port="4">Extract desired data from query results</td></tr>
+      </table>
+      >];
   }
 
+  subgraph cluster1 {
+    color = white;
+    node [shape=plaintext];
+    frontend [
+      label=<
+      <table border="0" cellborder="1" cellspacing="0">
+        <tr><td><b>Frontend</b></td></tr>
+        <tr><td align="left" port="1">Serve webpages</td></tr>
+        <tr><td align="left" port="2">Receive user input - search strings and preferences</td></tr>
+      </table>
+      >];
+  }
+
+  subgraph cluster2 {
+    dao [label="Dao"];
+    db [label="Database"];
+  }
+
+  backend:1 -> frontend:1 [constraint=false];
+  frontend:2 -> backend:2 [constraint=false];
+  backend:3 -> dao;
+  dao -> db;
+  db -> dao;
+  dao -> backend:4;
+  backend:4 -> frontend:1 [constraint=false];
 }

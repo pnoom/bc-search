@@ -2,14 +2,15 @@
 
 digraph domain {
   compound = true;
-  node [shape=box];
+  node [shape=ellipse];
 
-  subgraph blah {
+  subgraph noarrows {
+    color = white;
     edge [dir=none];
     
     subgraph cluster1 {
       color = white;
-      node [shape=ellipse];
+      node [shape=box];
       u [label="Users"];
       r [label="Researchers"];
       g [label="General Public"];
@@ -17,7 +18,7 @@ digraph domain {
 
     subgraph cluster2 {
       color = white;
-      node [shape=ellipse];
+      node [shape=box];
       ar [label="Artifacts"];
       f [label="Films"];
       i [label="Images"];
@@ -29,7 +30,24 @@ digraph domain {
     u -> {r; g};
     ar -> {f; i; a; d; b};
   }
-  
-  u -> ar [label="Archives search", constraint=false];
-  u -> ar [label="BECC search", constraint=false];
+
+  subgraph cluster3 {
+    color = white;
+    slow [label="Slow navigation"];
+    irrel [label="Irrelevant results"];
+    site [label="On-site only"];
+    ref [label="Ref. no."];
+    as [label="Archives search"];
+    becc [label="BECC search"];
+    mm [label="Multimedia search"];
+  }
+
+  u -> as -> ref;
+  u -> becc;
+  becc -> slow -> ref;
+  becc -> irrel -> ref;
+  ref -> site;
+  site -> mm;
+  mm -> ar;
+  site -> ar;
 }

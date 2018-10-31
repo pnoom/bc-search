@@ -1,0 +1,30 @@
+// Design model, or "solution space"
+
+digraph design {
+  compound = true;
+  node [shape=ellipse];
+
+  subgraph cluster3 {
+    ws [label="Web Server", color=white];
+    subgraph cluster4 {
+      be [label="Backend"];
+    }
+    subgraph cluster5 {
+      fe [label="Frontend"];
+    }
+    fe -> be [label="send search strings"];
+    be -> fe [label="display search results"];
+  }
+  
+  subgraph cluster0 {
+    subgraph cluster1 {
+      db [label="Database"];
+    }
+    subgraph cluster2 {
+      dao [label="Dao"];
+    }
+    dao -> db [label="make queries"];
+    db -> dao [label="return results"];
+  }
+
+}

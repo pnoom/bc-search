@@ -1,0 +1,21 @@
+// Example directed graph: test.gv
+
+// To convert to PNG, run:
+// dot -T png -o test.png test.gv
+
+digraph testgraph {
+  // compound=true;
+  subgraph baz {
+    node [shape=box];
+    a -> b [label="foo"];
+    a -> c [label="bar"];
+    b -> c [constraint=false];
+  }
+  subgraph bif {
+    a -> b [label="baf"];
+    a -> c [label="bof"];
+    b -> c;
+  }
+  baz -> bif;
+  bif -> baz;
+}

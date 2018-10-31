@@ -1,0 +1,35 @@
+// Domain model, or "problem space"
+
+digraph domain {
+  compound = true;
+  node [shape=box];
+
+  subgraph blah {
+    edge [dir=none];
+    
+    subgraph cluster1 {
+      color = white;
+      node [shape=ellipse];
+      u [label="Users"];
+      r [label="Researchers"];
+      g [label="General Public"];
+    }
+
+    subgraph cluster2 {
+      color = white;
+      node [shape=ellipse];
+      ar [label="Artifacts"];
+      f [label="Films"];
+      i [label="Images"];
+      a [label="Audio"];
+      d [label="Documents"];
+      b [label="Books"];
+    }
+
+    u -> {r; g};
+    ar -> {f; i; a; d; b};
+  }
+  
+  u -> ar [label="Archives search", constraint=false];
+  u -> ar [label="BECC search", constraint=false];
+}

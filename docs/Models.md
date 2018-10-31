@@ -7,11 +7,11 @@ understanding of the problem and solution.
 
 ## Domain
 
-![](andy-docs/docs/graphviz/domain-model.png?raw=true)
+![](graphviz/domain-model.png?raw=true)
 
 ## Design
 
-![](andy-docs/docs/graphviz/design-model.png?raw=true)
+![](graphviz/design-model.png?raw=true)
 
 The graphs were made using Graphviz, which I've just started learning. Feel
 free to take a look at the .gv files from which the images are produced.

@@ -17,26 +17,31 @@
 
 The diagram below reflects the current use cases of the Archives:
 
-(TODO: add Archives staff to (a separate?) diagram).
-
 ![](graphviz/domain-model.png?raw=true)
 
 Our goal is to remove obstacles and conflicting alternatives on the users' path
 to the artifacts they need, as illustrated below:
 
-(TODO: add simplified diagram)
+![](graphviz/reqs2.png?raw=true)
 
 ## Use case goals (TODO: make table)
 
--Layperson wants to find images of Castle Street before the war, to see their
- ancestors' house that was bombed.
- Archives search -> Ref. no -> on-site -> MM
--Researcher wants to find media relating to the social impact on the local
- population of the British Empire's colonisation of Kenya.
- BECC search online -> irrelevant images of Kenya, then BECC navigation -> Slow
- -> Relevant-sounding video (ref. no) -> On-site -> MM
--Archive member wants to add a scanned photograph of SS Great Britain to the
- local maritime history collection. Flowchart?
+Scenario | Current path to goal
+---------|---------------------
+A layperson wants to find images of Castle Street before the war, to see their
+ancestors' house that was bombed. | Archives search -> Ref. no -> on-site ->
+multimedia machine
+A researcher wants to find media relating to the social impact on the local
+population of the British Empire's colonisation of Kenya. | BECC search online
+-> irrelevant images of Kenya, then BECC navigation -> Slow ->
+Relevant-sounding video (ref. no) -> On-site -> multimedia machine
+
+
+(TODO: Archives staff use cases? Eg.
+Archive member wants to add a scanned photograph of SS Great Britain to the
+local maritime history collection.)
+
+
 
 One goal of particular interest/paramount importance is... Its functional and
 non-function requirements are, respectively...

@@ -28,13 +28,8 @@ to the artifacts they need, as illustrated below:
 
 Scenario | Current path to goal
 ---------|---------------------
-A layperson wants to find images of Castle Street before the war, to see their
-ancestors' house that was bombed. | Archives search -> Ref. no -> on-site ->
-multimedia machine
-A researcher wants to find media relating to the social impact on the local
-population of the British Empire's colonisation of Kenya. | BECC search online
--> irrelevant images of Kenya, then BECC navigation -> Slow ->
-Relevant-sounding video (ref. no) -> On-site -> multimedia machine
+A layperson wants to find images of Castle Street before the war, to see their ancestors' house that was bombed. | Archives search -> Ref. no -> on-site -> multimedia machine
+A researcher wants to find media relating to the social impact on the local population of the British Empire's colonisation of Kenya. | BECC search online -> irrelevant images of Kenya, then BECC navigation -> Slow -> Relevant-sounding video (ref. no) -> On-site -> multimedia machine
 
 
 (TODO: Archives staff use cases? Eg.

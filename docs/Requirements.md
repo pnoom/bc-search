@@ -15,6 +15,8 @@
   information about local and national history, so the general public is also
   an interested party.
 
+## Use cases
+
 The diagram below reflects the current use cases of the Archives:
 
 ![](graphviz/domain-model.png?raw=true)
@@ -24,7 +26,7 @@ to the artifacts they need, as illustrated below:
 
 ![](graphviz/reqs2.png?raw=true)
 
-## Use case goals
+Below are some illustrative scenarios:
 
 Scenario | Current path to goal | Desired path to goal
 ---------|----------------------|----------------------

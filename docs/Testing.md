@@ -1,4 +1,4 @@
-## Testing
+# Testing
 
 We plan to test the components of our program using JUnit and any extensions
 thereof which are most suited to our domain. The components that will pose the

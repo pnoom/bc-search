@@ -8,7 +8,7 @@ digraph mvc {
   subgraph cluster0 {
     color = white;
     node [shape=plaintext];
-    backend [
+    view [
       label=<
       <table border="0" cellborder="1" cellspacing="0">
 	<tr><td rowspan="1"><b>View</b></td><td align="left" port="1">Web pages</td></tr>
@@ -20,7 +20,7 @@ digraph mvc {
   subgraph cluster1 {
     color = white;
     node [shape=plaintext];
-    backend [
+    controller [
       label=<
       <table border="0" cellborder="1" cellspacing="0">
 	<tr><td rowspan="1"><b>Controller</b></td><td align="left" port="1">Servlets corresponding to web pages</td></tr>
@@ -32,7 +32,7 @@ digraph mvc {
   subgraph cluster2 {
     color = white;
     node [shape=plaintext];
-    backend [
+    model [
       label=<
       <table border="0" cellborder="1" cellspacing="0">
 	<tr><td rowspan="5"><b>Model</b></td><td align="left"><b>Classes responsible for:</b></td></tr>
@@ -43,4 +43,8 @@ digraph mvc {
       </table>
       >];
   }
+  view -> controller [label="Send form "];
+  controller -> view [label="Serve response "];
+  controller -> model [label="Invoke model to determine appropriate response "];
+  model -> controller [label="Give controller what it needs to respond "];
 }

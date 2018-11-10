@@ -12,5 +12,7 @@ change in the View.
 
 # TODO
 
-Design the actual interfaces so that we can produce static and dynamic UML
-diagrams.
+* Design the actual interfaces so that we can produce static and dynamic UML
+  diagrams.
+* Create diagram of database schema, explain it (and ORM if necessary)
+

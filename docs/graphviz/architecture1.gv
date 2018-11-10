@@ -1,0 +1,20 @@
+// MVC structure
+
+digraph mvc {
+  compound = true;
+  node [shape=box];
+  
+  subgraph cluster0 {
+    color = white;
+    node [shape=plaintext];
+    backend [
+      label=<
+      <table border="0" cellborder="1" cellspacing="0">
+	<tr><td><b>Backend</b></td></tr>
+	<tr><td align="left" port="1">Administer user sessions</td></tr>
+	<tr><td align="left" port="2">Parse and combine search string and preferences</td></tr>
+	<tr><td align="left" port="3">Convert to query</td></tr>
+	<tr><td align="left" port="4">Extract desired data from query results</td></tr>
+      </table>
+      >];
+  }

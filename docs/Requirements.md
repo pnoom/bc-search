@@ -24,19 +24,14 @@ to the artifacts they need, as illustrated below:
 
 ![](graphviz/reqs2.png?raw=true)
 
-## Use case goals (TODO: make table)
+## Use case goals
 
-Scenario | Current path to goal
----------|---------------------
-A layperson wants to find images of Castle Street before the war, to see their ancestors' house that was bombed. | Archives search -> Ref. no -> on-site -> multimedia machine
-A researcher wants to find media relating to the social impact on the local population of the British Empire's colonisation of Kenya. | BECC search online -> irrelevant images of Kenya, then BECC navigation -> Slow -> Relevant-sounding video (ref. no) -> On-site -> multimedia machine
+Scenario | Current path to goal | Desired path to goal
+---------|----------------------|----------------------
+A layperson wants to find images of Castle Street before the war, to see their ancestors' house that was bombed. | Archives search -> Ref. no -> on-site -> multimedia machine | On-site -> quick search using our web app -> directly view media
+A researcher wants to find media relating to the social impact on the local population of the British Empire's colonisation of Kenya. | BECC search online -> irrelevant images of Kenya, then BECC navigation -> Slow -> Relevant-sounding video (ref. no) -> On-site -> multimedia machine | On-site -> advanced search by location and date using our web app -> directly view media
 
-
-(TODO: Archives staff use cases? Eg.
-Archive member wants to add a scanned photograph of SS Great Britain to the
-local maritime history collection.)
-
-
+# TODO
 
 One goal of particular interest/paramount importance is... Its functional and
 non-function requirements are, respectively...

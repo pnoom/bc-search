@@ -41,21 +41,21 @@ digraph mvc {
 	<tr><td align="left" port="4">Maintain any other required state</td></tr>
       </table>
       >];
-  }
 
-  // Database
-  subgraph cluster_3 {
-    color = white;
-    dao [label="Dao"];
-    db [label="Database"];
+    // Database
+    subgraph cluster_3 {
+      node [shape=box];
+      dao [label="Dao"];
+      db [label="Database"];
+    }
   }
   
   view -> controller [label="Send form "];
   controller -> view [label="Serve response "];
   controller -> model [label="Invoke model to determine appropriate response "];
   model -> controller [label="Give controller what it needs to respond "];
-  model:2 -> dao [label="Send to DAO "];
-  dao -> db;
-  db -> dao;
-  dao -> model:3 [label="Send back to model "];
+  model:2 -> dao;
+  dao -> db [constraint=false];
+  db -> dao [constraint=false];
+  dao -> model:3;
 }

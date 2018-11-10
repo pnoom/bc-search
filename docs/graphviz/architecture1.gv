@@ -3,18 +3,44 @@
 digraph mvc {
   compound = true;
   node [shape=box];
-  
+
+  // View
   subgraph cluster0 {
     color = white;
     node [shape=plaintext];
     backend [
       label=<
       <table border="0" cellborder="1" cellspacing="0">
-	<tr><td><b>Backend</b></td></tr>
-	<tr><td align="left" port="1">Administer user sessions</td></tr>
-	<tr><td align="left" port="2">Parse and combine search string and preferences</td></tr>
-	<tr><td align="left" port="3">Convert to query</td></tr>
-	<tr><td align="left" port="4">Extract desired data from query results</td></tr>
+	<tr><td rowspan="1"><b>View</b></td><td align="left" port="1">Web pages</td></tr>
       </table>
       >];
   }
+
+  // Controller
+  subgraph cluster1 {
+    color = white;
+    node [shape=plaintext];
+    backend [
+      label=<
+      <table border="0" cellborder="1" cellspacing="0">
+	<tr><td rowspan="1"><b>Controller</b></td><td align="left" port="1">Servlets corresponding to web pages</td></tr>
+      </table>
+      >];
+  }
+
+  // Model
+  subgraph cluster2 {
+    color = white;
+    node [shape=plaintext];
+    backend [
+      label=<
+      <table border="0" cellborder="1" cellspacing="0">
+	<tr><td rowspan="5"><b>Model</b></td><td align="left"><b>Classes responsible for:</b></td></tr>
+        <tr><td align="left" port="1">Parsing and combining search strings and preferences</td></tr>
+	<tr><td align="left" port="2">Constructing queries and sending them to DB</td></tr>
+	<tr><td align="left" port="3">Extracting desired data from query results</td></tr>
+	<tr><td align="left" port="4">Administering user sessions</td></tr>
+      </table>
+      >];
+  }
+}

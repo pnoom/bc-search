@@ -5,7 +5,7 @@ digraph mvc {
   node [shape=box];
 
   // View
-  subgraph cluster0 {
+  subgraph cluster_0 {
     color = white;
     node [shape=plaintext];
     view [
@@ -17,7 +17,7 @@ digraph mvc {
   }
 
   // Controller
-  subgraph cluster1 {
+  subgraph cluster_1 {
     color = white;
     node [shape=plaintext];
     controller [
@@ -29,7 +29,7 @@ digraph mvc {
   }
 
   // Model
-  subgraph cluster2 {
+  subgraph cluster_2 {
     color = white;
     node [shape=plaintext];
     model [
@@ -37,13 +37,24 @@ digraph mvc {
       <table border="0" cellborder="1" cellspacing="0">
 	<tr><td rowspan="4"><b>Model</b></td><td align="left" port="1">Administer user sessions</td></tr>
 	<tr><td align="left" port="2">Parse and combine search string and preferences</td></tr>
-	<tr><td align="left" port="3">Convert to query</td></tr>
-	<tr><td align="left" port="4">Extract desired data from query results</td></tr>
+	<tr><td align="left" port="3">Extract desired data from query results</td></tr>
+	<tr><td align="left" port="4">Maintain any other required state</td></tr>
       </table>
       >];
+  }
+
+  // Database
+  subgraph cluster_3 {
+    color = white;
+    dao [label="Dao"];
+    db [label="Database"];
   }
   view -> controller [label="Send form "];
   controller -> view [label="Serve response "];
   controller -> model [label="Invoke model to determine appropriate response "];
   model -> controller [label="Give controller what it needs to respond "];
+  model:2 -> dao;
+  dao -> db;
+  db -> dao;
+  dao -> model:3;
 }

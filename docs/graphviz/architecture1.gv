@@ -49,12 +49,13 @@ digraph mvc {
     dao [label="Dao"];
     db [label="Database"];
   }
+  
   view -> controller [label="Send form "];
   controller -> view [label="Serve response "];
   controller -> model [label="Invoke model to determine appropriate response "];
   model -> controller [label="Give controller what it needs to respond "];
-  model:2 -> dao;
+  model:2 -> dao [label="Send to DAO "];
   dao -> db;
   db -> dao;
-  dao -> model:3;
+  dao -> model:3 [label="Send back to model "];
 }

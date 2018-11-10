@@ -1,6 +1,6 @@
-## Requirements
+# Requirements
 
-# Stakeholders
+## Stakeholders
 
 * Users of the Archives: both laypeople and professionals. They want to find
   the information they are looking for as quickly and easily as possible. To
@@ -26,7 +26,7 @@ to the artifacts they need, as illustrated below:
 
 (TODO: add simplified diagram)
 
-# Use case goals (TODO: make table)
+## Use case goals (TODO: make table)
 
 -Layperson wants to find images of Castle Street before the war, to see their
  ancestors' house that was bombed.

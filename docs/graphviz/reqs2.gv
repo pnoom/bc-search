@@ -1,0 +1,43 @@
+// Ideal scenario
+
+digraph domain {
+  compound = true;
+  node [shape=ellipse];
+
+  subgraph noarrows {
+    color = white;
+    edge [dir=none];
+    
+    subgraph cluster1 {
+      color = white;
+      node [shape=box];
+      u [label="Users"];
+      r [label="Researchers"];
+      g [label="General Public"];
+    }
+
+    subgraph cluster2 {
+      color = white;
+      node [shape=box];
+      ar [label="Artifacts"];
+      f [label="Films"];
+      i [label="Images"];
+      a [label="Audio"];
+      d [label="Documents"];
+      b [label="Books"];
+    }
+
+    u -> {r; g};
+    ar -> {f; i; a; d; b};
+  }
+
+  subgraph cluster3 {
+    color = white;
+    site [label="On-site only"];
+    ours [label="Our web app"];
+  }
+
+  u -> site;
+  site -> ours;
+  ours -> ar;
+}

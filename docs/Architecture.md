@@ -3,7 +3,7 @@
 
 The below diagram illustrates the inital structure of our application:
 
-(TODO: added subgraph of user/admin accounts and connect using dotted lines)
+(TODO: add subgraph of user/admin accounts and connect using dotted lines)
 
 ![](graphviz/architecture1.png?raw=true)
 

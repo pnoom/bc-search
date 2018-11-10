@@ -44,5 +44,4 @@ allow images to be enlarged. Audio and video support should be added later.
 
 Whether or not we provide user accounts (for things like bookmarks, recently
 viewed artifacts, or (for Archive staff only) adding artifacts to the database)
-depends on what additional information feedback we receive from the client and
-users.
+depends on what additional feedback we receive from the client and users.

@@ -30,8 +30,8 @@ Below are some illustrative scenarios:
 
 Scenario | Current path to goal | Desired path to goal
 ---------|----------------------|----------------------
-A layperson wants to find images of Castle Street before the war, to see their ancestors' house that was bombed. | Archives search -> Ref. no -> on-site -> multimedia machine | On-site -> quick search using our web app &rightarrow; directly view media
-A researcher wants to find media relating to the social impact on the local population of the British Empire's colonisation of Kenya. | BECC search online -> irrelevant images of Kenya, then BECC navigation -> Slow -> Relevant-sounding video (ref. no) -> On-site -> multimedia machine | On-site -> advanced search by location and date using our web app -> directly view media
+A layperson wants to find images of Castle Street before the war, to see their ancestors' house that was bombed. | Archives search &rightarrow; Ref. no &rightarrow; on-site &rightarrow; multimedia machine | On-site &rightarrow; quick search using our web app &rightarrow; directly view media
+A researcher wants to find media relating to the social impact on the local population of the British Empire's colonisation of Kenya. | BECC search online &rightarrow; irrelevant images of Kenya, then BECC navigation &rightarrow; Slow &rightarrow; Relevant-sounding video (ref. no) &rightarrow; On-site &rightarrow; multimedia machine | On-site &rightarrow; advanced search by location and date using our web app &rightarrow; directly view media
 
 # TODO
 

@@ -13,7 +13,7 @@ current system, which are detailed below:
 * The first supports advanced searching and gives quite relevant results, but
   provides only references numbers and other metadata (no thumbnails/media
   access).
-* The second lacks an advanced search option, but does provide at least provide
+* The second lacks an advanced search option, but does provide
   images of artifacts. Instead of searching, one can navigate the hierarchy of
   collections directly, but this is very slow.
 * Artifacts that have not yet been digitized and those with copyright

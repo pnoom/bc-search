@@ -7,32 +7,42 @@ import csv
 # Uncategorized?
 
 def construct_command(row):
-    command = 'INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId) {0};\n'
-    values = []
+    command = 'INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9});\n'
 
-    # Normalize data here and splice in using format. Remember *list unpacking.
-    #"Object Number","Collection Name","Geographic Name","Full Name","Scope And Content","Date","Extent","Physical/Technical","Multimedia name","Copyright","Multimedia irn"
-    values.append(row["Object Number")
-    if row["Collection Name"] == "Trotter":
-       values.append(1)
-    elif row["Collection Name"] == "Haslam":
-       values.append(2)
-    else:
-       values.append(3)
+    # Normalize data here and splice in using format.
+
+    # "Object Number","Collection Name","Geographic Name","Full Name",
+    # "Scope And Content","Date","Extent","Physical/Technical","Multimedia name",
+    # "Copyright","Multimedia irn"
     
+    itemRef = row["Object Number"]
+    location = row["Geographic Name"]
+    name = row["Full Name"]
+    description = row["Scope And Content"]
+    dateCreated = row["Date"]
+    extent = row["Extent"]
+    copyrighted = row["Copyright"]
+    physTechDesc = row["Physical/Technical"]
+    subCollectionId = 1  #always Uncategorized, for now
+    
+    command.format(itemRef, location, name, description, dateCreated, copyrighted,
+                   extent, subCollectionId)
     return command
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
-    input_pathname = os.path.join(script_pathname,
-                                  "../resources/public/sample-data.csv")
-    output_pathname = os.path.join(script_pathname,
-                                   "../sql/sampledata.sql")
-    with open(input_pathname, 'r') as input_file, open(output_pathname, 'w+') as output_file:
-        csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
-        for row in csv_reader:
-            command = construct_command(row)
-            output_file.write(command)
+    input_files = ["trotter.csv", "haslam.csv", "elliott.csv"]
+    output_files = ["trotter.sql", "haslam.sql", "elliott.sql"]
+    input_pathnames = [os.path.join(script_pathname, ("../resources/public/" + f))
+                       for f in input_files]
+    output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))
+                        for f in output_files]
+    for inf in input_pathnames, outf in output_pathnames:
+        with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
+            csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
+            for row in csv_reader:
+                command = construct_command(row)
+                output_file.write(command)
 
 if __name__ == "__main__":
     run()

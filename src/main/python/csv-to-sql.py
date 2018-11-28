@@ -7,26 +7,22 @@ import csv
 # collection's Uncategorized subcollection for now.
 
 def construct_command(row, subCollectionId):
-    command = 'INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9});\n'
+    command = "INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
 
     # Normalize data here and splice in using format.
 
     # "Object Number","Collection Name","Geographic Name","Full Name",
     # "Scope And Content","Date","Extent","Physical/Technical","Multimedia name",
     # "Copyright","Multimedia irn"
-    
-    itemRef = row["Object Number"]
-    location = row["Geographic Name"]
-    name = row["Full Name"]
-    description = row["Scope And Content"]
-    dateCreated = row["Date"]
-    extent = row["Extent"]
-    copyrighted = row["Copyright"]
-    physTechDesc = row["Physical/Technical"]
-    
-    command.format(itemRef, location, name, description, dateCreated, copyrighted,
-                   extent, subCollectionId)
-    return command
+
+    # Need to handle single-quote escaping. Ignore "default" values for now
+
+    for key, value in row.items():
+         row[key] = value.replace(r"'", r"\'")
+        
+    return command.format(row["Object Number"], row["Geographic Name"], row["Full Name"],
+                          row["Scope And Content"], row["Date"], row["Copyright"], row["Extent"],
+                          row["Physical/Technical"], subCollectionId)
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
@@ -37,11 +33,11 @@ def run():
     output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))
                         for f in output_files]
     subCollectionId = 1
-    for inf in input_pathnames, outf in output_pathnames:
+    for inf, outf in zip(input_pathnames, output_pathnames):
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
             csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
             for row in csv_reader:
-                command = construct_command(row)
+                command = construct_command(row, subCollectionId)
                 output_file.write(command)
         subCollectionId += 1;
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collections</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>ElementNumber</th>
+            </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="collection" items="${collectionList}">
+                    <tr>
+                        <td>${collection.id}</td>
+                        <td>${collection.name}</td>
+                        <td>${collection.type}</td>
+                        <td>${collection.ElementNumber}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -3,38 +3,46 @@ TODO: use proper queries, not IDs directly
 */
 
 /* Collections */
-INSERT INTO Collection (name, description)
-VALUES ('Trotter', 'Photographic Work');
+INSERT INTO Collection (collectionRef, name, description)
+VALUES ('1', 'Trotter', 'Photographic Work');
 
-INSERT INTO Collection (name, description)
-VALUES ('Haslam', 'Photographs');
+INSERT INTO Collection (collectionRef, name, description)
+VALUES ('2', 'Haslam', 'Photographs');
 
-INSERT INTO Collection (name, description)
-VALUES ('Elliott', 'Photograph Album');
+INSERT INTO Collection (collectionRef, name, description)
+VALUES ('3', 'Elliott', 'Photograph Album');
 
-/* SubCollections */
-INSERT INTO SubCollection (description, collectionId)
-VALUES ('972 b/w photographs...', 1);
+/* SubCollections. All collections have an 'Uncategorized' SubCollection. */
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('1', 'Uncategorized', 1);
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('1', 'Uncategorized', 2);
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('1', 'Uncategorized', 3);
 
-INSERT INTO SubCollection (description, collectionId)
-VALUES ('31 b/w photographs, mostly unmarked...', 1);
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('2', '972 b/w photographs...', 1);
 
-INSERT INTO SubCollection (description, collectionId)
-VALUES ('Photos of India and East Africa...', 2);
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('3', '31 b/w photographs, mostly unmarked...', 1);
 
-INSERT INTO SubCollection (description, collectionId)
-VALUES ('Photos of Persian Gulf...', 2);
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('4', 'Photos of India and East Africa...', 2);
+
+INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+VALUES ('5', 'Photos of Persian Gulf...', 2);
 
 /* Items */
 INSERT INTO Item
-(name, description, copyrighted, objectNumber, nature, collectionId)
+(itemRef, name, description, dateCreated, copyrighted, extent, subCollectionId)
 VALUES (
+'2001/090/1/1/4689',
 'Uniformed Soldiers at a KAR camp',
 'Uniformed...',
+'June 1953',
 1,
-'2001/090/1/1/4689',
 '1 Negative',
-1);
+4);
 
 /*
 

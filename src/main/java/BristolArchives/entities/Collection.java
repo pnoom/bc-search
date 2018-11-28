@@ -3,15 +3,24 @@ package BristolArchives.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Collection")  // This indicates 'Collection' objects are from mysql table 'Collection'
+@Table(name="collection")  // This indicates entity 'Collection' is a object from MySQL table 'collection'
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Integer id;
 
+    @Column(name="name")
     private String name;
 
+    @Column(name="collectionref")
+    // MySQL is not case sensitive. @Column(name="collectionRef") will be parse as column "collection_ref"
     private String collectionRef;
+
+    @Column(name="description")
+    private String description;
+
+    public Collection(){}
 
     public Integer getId() {
         return id;
@@ -44,7 +53,4 @@ public class Collection {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    private String description;
-
 }

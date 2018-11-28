@@ -3,8 +3,21 @@
 import os.path
 import csv
 
+# How to decide which SubCollection each item belongs to? For now just do
+# Uncategorized?
+
 def construct_command(row):
-    command = 'First column: {}\n'.format(row[0])
+    command = 'INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId) {0};\n'
+    values = []
+    # Normalize data here and splice in using format. Remember *list unpacking.
+    
+    #if row["collectionName" == "Trotter":
+    #    values.append(1)
+    #elif collectionName == "Haslam":
+    #    values.append(2)
+    #else:
+    #    values.append(3)
+    
     return command
 
 def run():
@@ -14,7 +27,7 @@ def run():
     output_pathname = os.path.join(script_pathname,
                                    "../sql/sampledata.sql")
     with open(input_pathname, 'r') as input_file, open(output_pathname, 'w+') as output_file:
-        csv_reader = csv.reader(input_file, quotechar='"', delimiter=',')
+        csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
         for row in csv_reader:
             command = construct_command(row)
             output_file.write(command)

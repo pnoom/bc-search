@@ -9,14 +9,16 @@ import csv
 def construct_command(row):
     command = 'INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId) {0};\n'
     values = []
+
     # Normalize data here and splice in using format. Remember *list unpacking.
-    
-    #if row["collectionName" == "Trotter":
-    #    values.append(1)
-    #elif collectionName == "Haslam":
-    #    values.append(2)
-    #else:
-    #    values.append(3)
+    #"Object Number","Collection Name","Geographic Name","Full Name","Scope And Content","Date","Extent","Physical/Technical","Multimedia name","Copyright","Multimedia irn"
+    values.append(row["Object Number")
+    if row["Collection Name"] == "Trotter":
+       values.append(1)
+    elif row["Collection Name"] == "Haslam":
+       values.append(2)
+    else:
+       values.append(3)
     
     return command
 

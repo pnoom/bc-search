@@ -17,3 +17,12 @@ Given the sample spreadsheet of archive data, we want to produce XML of the form
 (In a big, flat container tag).
 
 See [here](https://stackoverflow.com/questions/32817081/convert-calcexcel-data-in-xml-in-openoffice/50507539?noredirect=1#comment88031412_50507539) and [here](https://stackoverflow.com/questions/50510017/conversion-to-xml-from-command-line) for details.
+
+Try this (once you've added the filter to LibreOffice as per the first link):
+
+```
+libreoffice --convert-to-xml:archive-entry \
+  --outdir src/main/resources/public \
+  --outfile sample-data.xml
+```
+

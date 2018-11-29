@@ -4,13 +4,13 @@ TODO: use proper queries, not IDs directly
 
 /* Collections */
 INSERT INTO Collection (collectionRef, name, description)
-VALUES ('1', 'Trotter', 'Photographic Work');
-
-INSERT INTO Collection (collectionRef, name, description)
 VALUES ('2', 'Haslam', 'Photographs');
 
 INSERT INTO Collection (collectionRef, name, description)
 VALUES ('3', 'Elliott', 'Photograph Album');
+
+INSERT INTO Collection (collectionRef, name, description)
+VALUES ('1', 'Trotter', 'Photographic Work');
 
 /* SubCollections. All collections have an 'Uncategorized' SubCollection. */
 INSERT INTO SubCollection (subCollectionRef, name, collectionId)

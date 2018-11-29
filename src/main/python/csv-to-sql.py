@@ -41,34 +41,31 @@ def insert_item(row, subcollection_id):
 # For the latter, check "Collection Name".
 
 def get_collection(row):
-    result = row["Collection Name"]
-    assert isinstance(result, str), "Return type should be string"
-    return result
+    return row["Collection Name"]
 
 # Implementation happens to be the same
 def get_collection_id(row):
     return get_uncategorized_sub_id(row)
 
 def get_sub_id_adding_if_needed(row, sub_name, subcollections):
-    assert isinstance(sub_name, str), "Sub name should be string"
     if sub_name == "Uncategorized":
-        result = get_uncategorized_sub_id(row)
-        assert isinstance(result, int), "Return type should be int"
-        return result
-    else:
+        return get_uncategorized_sub_id(row)
+    elif subcollections.get(sub_name, "not found") == "not found":
         #Add entry to dict, then return its id
         subcollections[sub_name] = len(subcollections.keys()) + 1
-        result = subcollections[sub_name]
-        assert isinstance(result, int), "Return type should be int"
-        return result
+        return subcollections[sub_name]
+    else:
+        return  subcollections[sub_name]
 
 def get_uncategorized_sub_id(row):
     if row["Collection Name"] == "Trotter":
         return 1
     elif row["Collection Name"] == "Haslam":
         return 2
-    else:
+    elif row["Collection Name"] == "Elliott":
         return 3
+    else:
+        assert false, "Something went wrong"
 
 """
 Extent stuff to match:
@@ -151,6 +148,7 @@ def run():
                 # in the database
                 sub_name = get_subcollection_name(row)
                 sub_id = get_sub_id_adding_if_needed(row, sub_name, subcollections)
+                #print(sub_name[:6], sub_id)
                 if sub_name != "Uncategorized":
                     sub = insert_subcollection(row, sub_name, get_collection_id(row))
                     output_file.write(sub)

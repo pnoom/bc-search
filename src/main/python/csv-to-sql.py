@@ -2,6 +2,7 @@
 
 import os.path
 import csv
+import re
 
 # Assumes collectionsdata.sql has run beforehand. Doesn't convert default values
 # to NULL yet.
@@ -64,12 +65,12 @@ def get_uncategorized_id(row):
         return 3
 
 def get_subcollection_name(row):
-    # Do fancy pattern matching here - use regexes
-    if row["Extent"] == "34 boxes":
-        return row["Object Number"]
+    regexes = ["[0-9]+ box(es)"] # Extend this a lot - see spreadsheets
+    for pattern in regexes:
+        if re.match(pattern, row["Extent"]):
+            return row["Object Number"]
     # Catch-all
     return "Uncategorized"
-
 
 # dict.get(key, default=None)
 # dict.has_key(key)

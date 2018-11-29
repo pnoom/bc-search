@@ -136,7 +136,7 @@ def run():
                         for f in output_files]
     
     subcollections = {"Uncategorized": 0}  # 0 is placeholder, do not use value
-    
+
     for inf, outf in zip(input_pathnames, output_pathnames):
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
             csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
@@ -148,7 +148,7 @@ def run():
                 # in the database
                 sub_name = get_subcollection_name(row)
                 sub_id = get_sub_id_adding_if_needed(row, sub_name, subcollections)
-                #print(sub_name[:6], sub_id)
+                #print(sub_name[:6], sub_id, len(subcollections.keys()))
                 if sub_name != "Uncategorized":
                     sub = insert_subcollection(row, sub_name, get_collection_id(row))
                     output_file.write(sub)

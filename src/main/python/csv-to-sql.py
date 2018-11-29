@@ -48,15 +48,19 @@ def insert_item(row, subcollection_id):
 def get_collection(row):
     return row["Collection Name"]
 
-def get_subcollection_id(row, subcollections):
-    #(adding it and corresp. id if necessary)
-    name = get_subcollection_name(row, subcollections)
-    if name == "Uncategorized":
-        return get_uncategorized_id(get_collection(row))
+# Implementation happens to be the same
+def get_collection_id(row):
+    return get_uncategorized_sub_id(row)
+
+def get_sub_id_adding_if_needed(sub_name, subcollections):
+    if sub_name == "Uncategorized":
+        return get_uncategorized_sub_id(get_collection(row))
     else:
+        #Add entry to dict, then return its id
+        subcollections[name] = len(subcollections.keys()) + 1
         return subcollections[name]
 
-def get_uncategorized_id(row):
+def get_uncategorized_sub_id(row):
     if row["Collection Name"] == "Trotter":
             return 1
     elif row["Collection Name"] == "Haslam":
@@ -104,7 +108,7 @@ def get_subcollection_name(row):
     # Strategy 2: object number only
     # eg. "2001/090/1/1", possibly followed by "/number/number/..."
     
-    obj_num_regex = "\d{4}/\d+/\d+/\d" # Modify to specify level
+    obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
     match = re.match(pattern, row["Object Number"])
     if match:
         return match.group(0)
@@ -117,12 +121,13 @@ def get_subcollection_name(row):
 # dict.get(key, default=None)
 # dict.has_key(key)
 
-"""
-def create_sub_if_needed(row, subcollections, max_sub_id, output_file):
-    sub = insert_subcollection(row, subcollection_id)
-    output_file.write(sub)
-    return max_sub_id + 1
-"""
+def insert_subcollection(row, sub_name, collection_id):
+    command = "INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('{}', '{}', {});\n"
+    
+    for key, value in row.items():
+         row[key] = value.replace(r"'", r"\'")
+    
+    return command.format(sub_name, row["Full Name"], get_collection_id(row)))
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
@@ -139,7 +144,13 @@ def run():
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
             csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
             for row in csv_reader:
-                #create_sub_if_needed(row, subcollections, output_file)
+                # Get subcollection name, adding it if it doesn't already exist
+                # in the database
+                sub_name = get_subcollection_name(row)
+                sub_id = get_sub_id_adding_if_needed(sub_name, subcollections)
+                if name != "Uncategorized":
+                    sub = insert_subcollection(row, sub_name, get_collection_id(name, subcollections))
+                    output_file.write(sub)
                 
                 # Should be guaranteed to have the subcollection now, so lookup
                 item = insert_item(row, subcollections[row["Object Number"]])

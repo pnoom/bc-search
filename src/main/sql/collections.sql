@@ -12,8 +12,9 @@ CREATE TABLE Collection (
 CREATE TABLE SubCollection (
   id                INTEGER        PRIMARY KEY AUTO_INCREMENT,
   subCollectionRef  VARCHAR(100)   NOT NULL,
-  -- Maybe omit this, since relatively few will have names
-  -- name              VARCHAR(100)   NULL,
+  --Mainly to allow Uncategorized. Should be VARCHAR and NOT NULL really, but unsure for now
+  name              TEXT           NULL,
+  -- Maybe omit this, since we want all interesting data in Items
   description       TEXT           NULL,
   
   collectionId      INTEGER        NOT NULL,

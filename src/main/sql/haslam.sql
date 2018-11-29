@@ -17,6 +17,7 @@ INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1', 'India', 'Photograph albums showing sights in the Gulf, India and Africa', 'These albums contain photographs taken by Haslam during his time working in the Gulf, India and East Africa. The photographs have not been individually catalogued, but there is a detailed description of the contents of each album. The images reflect places that Haslam visited through his work, and also include street scenes, countryside, and individuals or colleagues that he met.', '1940s-1950s', 'default', '3 volumes', 'default', 2);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'Photograph album with views taken in the Gulf and India', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'India', 'Photograph album with views taken in the Gulf and India', 'The first part of this volume covers scenes in the Persian Gulf, where Haslam worked from 1943 to 1946. Later photographs in the album were taken in India. Haslam was assigned to the Foreign Office of the new government of India from 1948.
 
 The volume includes photographs showing:
@@ -46,55 +47,104 @@ p.40 New Delhi, Republic Day parades from Rajpath
 p.41-43 Fatehpur Sikri, Agra Fort and Taj Mahal
 p.44 Voyage to UK, photographs from ship to various shore locations including grand harbour at Malta
 p.45 Bahrain, date palms
-p.46 Bahrain, dhow', '[c.1943-1948]', '[Copyright] Bristol Record Office', '1 volume', '1 photograph album containing 48 pages of b/w (and some colour) photographs attached to the pages with hinges. Some captions have been added in ballpoint pen.', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 2);
-INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 2);
+p.46 Bahrain, dhow', '[c.1943-1948]', '[Copyright] Bristol Record Office', '1 volume', '1 photograph album containing 48 pages of b/w (and some colour) photographs attached to the pages with hinges. Some captions have been added in ballpoint pen.', 16);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', '[Copyright] Bristol Record Office', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/1', 'default', 2);
+INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/1', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/2', 'Photograph album with views from Kenya, Uganda, and Tanzania', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/2', 'Rwanda', 'Photograph album with views from Kenya, Uganda, and Tanzania', 'This volume shows scenes in various countries in East Africa, covering trips taken by Haslam.
 
 The volume includes photographs showing:
@@ -123,7 +173,8 @@ Quotes from newspaper cuttings on p.34:
 \'Indians climb Kilimanjaro  - Serving Cause of Science The Indian mountaineering team, consisting of Mr Haslam and Mr Pradhan, members of the Indian Commission in Nairobi (East Africa) has successfully climbed the summit of Mount Kilimanjaro. One of the objectives of the expedition was to serve the cause of science and help Prof Dixit of the Institute of Science, Bombay, in conducting experiments with nuclear emulsions exposed to cosmic rays\'
 Attached to this a second cutting:
 \'Mr I C Haslam, member of the Indian Commission staff in Nairobi, is returning to India after three years on home leave.  After expiry of his leave he will join duties in the External Affairs Ministry of India. He is leaving Nairobi on the 3rd January to catch SS Amra, sailing from Mombasa on the 5th January 1954.  During his stay in these territories Mr Haslam earned for himself friendship of various people He is an enthusiastic photographer. He is a sportsman and played cricket and tennis very well. On the eve of his departure from Kenya Mr Haslam received the sad news of the death of his father, whom he was to meet after an absence of three years.\'', '[c.1950-1953]', 'default', '1 volume', '1 photograph album containing 40 pages of b/w and some colour photographs attached to the pages with hinges. There are also some loose photographs. Some captions have been added in ballpoint pen.
-Most of the pages are loose - handle with care.', 2);
+Most of the pages are loose - handle with care.', 17);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/1/3', 'Photograph album showing Indian Navy visit to East Africa, and Kenya / Tanzania Game Reserve', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/1/3', 'Rwanda', 'Photograph album showing Indian Navy visit to East Africa, and Kenya / Tanzania Game Reserve', 'This volume is the most personal of the three, with many photographs of companions and colleagues. It covers an Indian Navy visit to East Africa and the Kenya/Tanzania game reserve. It is interesting for details of uniforms, clothing and domestic interiors. [See also films of safari and picnics.]
 
 The volume includes photographs showing:
@@ -145,8 +196,9 @@ p.27-28 Foundation stone is laid, Indian flag raised and formally dressed Indian
 p.29 Family groups, women in saris
 p.30-31 Formal groups including cricket team and one with caption \'Kenya African leaders pre-indep.\'
 p.32 Semi-formal groups
-p.33-34 Informal family groups and children', '1952', 'default', '1 volume', '1 photograph album containing 48 pages of b/w photographs (also 2 in colour) attached to the pages with hinges. Some captions have been added in ballpoint pen.', 2);
+p.33-34 Informal family groups and children', '1952', 'default', '1 volume', '1 photograph album containing 48 pages of b/w photographs (also 2 in colour) attached to the pages with hinges. Some captions have been added in ballpoint pen.', 18);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2', 'Tanzania', 'Films showing scenes in Africa, India, UK and Switzerland', 'The films in this series show that Haslam had a keen interest in film-making. Some of the films have been spliced and re-edited by him, and some footage marked as \'rejects\'. Haslam filmed places he visited on his travels, especially a few trips he made whilst based in Africa. There is much footage of wildlife taken during safaris, and also a film recording an ascent up Mount Kilimanjaro by Haslam and a group of fellow Indians. Later films show sights in London and at Expo \'67 in Montreal, Canada.', '1950s-1960s', 'default', '12 films', 'Several of these films have major vinegar syndrome and have been isolated from the main series of films.', 2);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/1', 'Film taken on an African Safari', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/1', 'Kenya', 'Film taken on an African Safari', 'General description
 This film shows scenes taken during a safari and includes many shots of wildlife. It is interesting in the context of westernised Indians on safari, including women. Haslam\'s notes refer to an outing on the Serengeti Plains and being forced to spend the night in the car which might refer to this trip, though there are several films showing footage taken on safaris in the collection. 
 
@@ -163,7 +215,8 @@ Further shots of lioness and elephants, a herd of antelope and large crane or st
 Running time: 15:35
 Length: 400ft
 b/w and colour
-silent', 2);
+silent', 19);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/1', 'Film showing views in London', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/10', 'UK', 'Film showing views in London', 'General description
 The theme of this film is London sightseeing, but has been taken over several months, from springtime blossom to late summer flowers. There are iconic images of trooping the colour together with Piccadilly Circus by day and night when neon advertising was seen as a spectacle.
 
@@ -179,7 +232,8 @@ Scenes in London - Trooping the Colour, Trafalgar Square and Nelson\'s Column. F
 Running time: 14:56
 Length: 400ft
 colour
-silent', 2);
+silent', 20);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/1', 'Film taken at the Murchison Falls and the Equator', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/11', 'Uganda', 'Film taken at the Murchison Falls and the Equator', 'General description
 This film shows another expedition to see waterfalls and game at Murchison Falls and Lake Albert. There are some interesting images of Africans, and also of long horned cattle on the Jampala-Masaka road which the Equator intersects.
 
@@ -193,7 +247,8 @@ Film opens with close-up of spectacular waterfall, and moves to view of 3 men on
 Running time: 10:26mins
 Length: 300ft 
 colour and b/w 
-silent', 2);
+silent', 20);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/2', 'Film taken on an African Safari', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/2', 'Tanzania', 'Film taken on an African Safari', 'General description
 This film shows scenes taken at a safari, but probably a separate occasion from the safari in 2009/008/2/1 as this is in a semi-tropical setting. 
 
@@ -207,7 +262,8 @@ Looking down at broad street on causeway to small island on the Lake, where ther
 Running time: 16:00mins
 Length: 400ft
 colour and b/w
-silent', 2);
+silent', 20);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/3', 'Views of Victoria Falls and Royal Visit to Kenya in 1952', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/3', 'Zimbabwe', 'Views of Victoria Falls and Royal Visit to Kenya in 1952', 'General description
 Over half of the film is taken up with views of Victoria Falls, followed by the Great Zimbabwe Ruins. The last third shows the motorcade of the State Visit of Princess Elizabeth to Kenya prior to her father\'s death, dating this to February 1952.
 
@@ -223,7 +279,8 @@ Close up of lioness followed by extended shot of waterfalls [Victoria Falls].
 Running time: 16:00mins
 Length: 400ft
 colour
-silent', 2);
+silent', 21);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/4', 'Film of Sea Voyage from Europe to Africa', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/4', 'Netherlands', 'Film of Sea Voyage from Europe to Africa', 'General description
 This film was taken during a sea voyage, travelling from Europe to Africa via the Suez Canal.
 
@@ -235,7 +292,8 @@ Northern European city [Rotterdam] from the water, a boat trip past working whar
 Running time: 15.36mins
 Length: 400ft
 colour
-silent', 2);
+silent', 22);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/5', 'Film showing Mount Kilimanjaro and the Maasai', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/5', 'Tanzania', 'Film showing Mount Kilimanjaro and the Maasai', 'General description
 This film was taken to record an ascent of Mount Kilimanjaro by a small group of Indians, followed by an expedition in the surrounding National Park by larger group, including women and children. A final section shows scenes on a visit to a Maasai village.
 
@@ -252,7 +310,8 @@ View of snow-capped Mount Kilimanjaro, young man walks into forefront. Panning s
 Running time: 15:29mins
 Length: 400ft
 colour
-silent', 2);
+silent', 23);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/6', 'Film taken at Lake Geneva showing alpine views and waterfalls', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/6', 'Switzerland', 'Film taken at Lake Geneva showing alpine views and waterfalls', 'General description
 This film was probably taken on a trip to Lake Geneva in early spring, when waterfalls are at their most spectacular due to recent snowmelt. Good views of mountains and valleys from cable cars/chairlifts.
 
@@ -265,7 +324,8 @@ The last section is from the lake, looking at views framed with spring blossom.'
 Running time: 16:01mins
 Length: 400ft
 colour
-silent', 2);
+silent', 24);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/7', 'Scenes at Niagara Falls and Expo 67 in Canada, and Kew Gardens in the UK', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/7', 'Canada', 'Scenes at Niagara Falls and Expo 67 in Canada, and Kew Gardens in the UK', 'General description
 The first part of this film was shot in Canada and shows Niagara Falls and a visit to Expo 67 in Montreal. Later there are scenes possibly taken in Scotland and an extended stroll in Kew Gardens, London.
 
@@ -280,7 +340,8 @@ A magnificent waterfall opens this film, with silhouetted high-rise buildings on
 Running time: 16:16mins 
 Length: 400ft 
 colour
-silent', 2);
+silent', 25);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/8', 'Film taken during visit to India', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/8', 'India', 'Film taken during visit to India', 'General description
 This film begins with an elaborate procession, perhaps to mark a significant national day in India.  This may be an all-India event as Cochin and Pondicherry are named on floats but also North India.  There is a sequence filmed in New Delhi and Agra, and the film finishes in Bombay.
 
@@ -299,7 +360,8 @@ Film starts with close up of young woman, and pans down over mountainside to a l
 Running time: 14:00mins
 Length: 300ft
 colour
-silent', 2);
+silent', 26);
+INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('2009/008/2/9', 'Safari to Lake Amboseli', 2);
 INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('2009/008/2/9', 'Kenya', 'Safari to Lake Amboseli', 'General description
 This film reflects the life of Indians in Africa with detailed close-ups of a large group travelling together on an expedition, which includes game drives, a sequence of a cricket match, picnics, and a flag-raising ceremony, as a prelude to the laying of a foundation stone. Family life and relationships between the generations are frequently glimpsed, and there are details of clothing and transport.
 
@@ -317,4 +379,4 @@ Film begins with boxes and packages assembled in front of truck painted with sig
 Running time: 19:22mins
 Length: 400ft
 b/w 
-silent', 2);
+silent', 27);

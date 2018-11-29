@@ -15,12 +15,7 @@ def insert_item(row, subcollection_id):
     # "Object Number","Collection Name","Geographic Name","Full Name",
     # "Scope And Content","Date","Extent","Physical/Technical","Multimedia name",
     # "Copyright","Multimedia irn"
-
-    # Need to handle single-quote escaping. Ignore "default" values for now
-
-    for key, value in row.items():
-         row[key] = value.replace(r"'", r"\'")
-        
+    
     return command.format(row["Object Number"], row["Geographic Name"],
                           row["Full Name"], row["Scope And Content"],
                           row["Date"], row["Copyright"], row["Extent"],
@@ -132,10 +127,6 @@ def get_subcollection_name(row):
 
 def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('{}', '{}', {});\n"
-    
-    for key, value in row.items():
-         row[key] = value.replace(r"'", r"\'")
-    
     return command.format(sub_name, row["Full Name"], get_collection_id(row))
 
 def run():
@@ -153,6 +144,9 @@ def run():
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
             csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
             for row in csv_reader:
+                # Escape single quotes in fields
+                for key, value in row.items():
+                    row[key] = value.replace(r"'", r"\'")
                 # Get subcollection name, adding it if it doesn't already exist
                 # in the database
                 sub_name = get_subcollection_name(row)

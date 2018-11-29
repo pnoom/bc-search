@@ -59,11 +59,11 @@ def get_sub_id_adding_if_needed(row, sub_name, subcollections):
 
 def get_uncategorized_sub_id(row):
     if row["Collection Name"] == "Trotter":
-        return 1
-    elif row["Collection Name"] == "Haslam":
-        return 2
-    elif row["Collection Name"] == "Elliott":
         return 3
+    elif row["Collection Name"] == "Haslam":
+        return 1
+    elif row["Collection Name"] == "Elliott":
+        return 2
     else:
         assert false, "Something went wrong"
 
@@ -110,9 +110,7 @@ def get_subcollection_name(row):
     obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
     match = re.match(obj_num_regex, row["Object Number"])
     if match:
-        result = match.group(0)
-        assert isinstance(result, str), "Return type should be string"
-        return result
+        return match.group(0)
 
     # Strategy 3: check both
     
@@ -128,8 +126,8 @@ def insert_subcollection(row, sub_name, collection_id):
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
-    input_files = ["trotter.csv", "haslam.csv", "elliott.csv"]
-    output_files = ["trotter.sql", "haslam.sql", "elliott.sql"]
+    input_files = ["haslam.csv", "elliott.csv", "trotter.csv"]
+    output_files = ["haslam.sql", "elliott.sql", "trotter.sql"]
     input_pathnames = [os.path.join(script_pathname, ("../resources/public/" + f))
                        for f in input_files]
     output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))

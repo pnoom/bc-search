@@ -46,23 +46,30 @@ def insert_item(row, subcollection_id):
 # For the latter, check "Collection Name".
 
 def get_collection(row):
-    return row["Collection Name"]
+    result = row["Collection Name"]
+    assert isinstance(result, str), "Return type should be string"
+    return result
 
 # Implementation happens to be the same
 def get_collection_id(row):
     return get_uncategorized_sub_id(row)
 
-def get_sub_id_adding_if_needed(sub_name, subcollections):
+def get_sub_id_adding_if_needed(row, sub_name, subcollections):
+    assert isinstance(sub_name, str), "Sub name should be string"
     if sub_name == "Uncategorized":
-        return get_uncategorized_sub_id(get_collection(row))
+        result = get_uncategorized_sub_id(row)
+        assert isinstance(result, int), "Return type should be int"
+        return result
     else:
         #Add entry to dict, then return its id
-        subcollections[name] = len(subcollections.keys()) + 1
-        return subcollections[name]
+        subcollections[sub_name] = len(subcollections.keys()) + 1
+        result = subcollections[sub_name]
+        assert isinstance(result, int), "Return type should be int"
+        return result
 
 def get_uncategorized_sub_id(row):
     if row["Collection Name"] == "Trotter":
-            return 1
+        return 1
     elif row["Collection Name"] == "Haslam":
         return 2
     else:
@@ -109,9 +116,11 @@ def get_subcollection_name(row):
     # eg. "2001/090/1/1", possibly followed by "/number/number/..."
     
     obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
-    match = re.match(pattern, row["Object Number"])
+    match = re.match(obj_num_regex, row["Object Number"])
     if match:
-        return match.group(0)
+        result = match.group(0)
+        assert isinstance(result, str), "Return type should be string"
+        return result
 
     # Strategy 3: check both
     
@@ -127,7 +136,7 @@ def insert_subcollection(row, sub_name, collection_id):
     for key, value in row.items():
          row[key] = value.replace(r"'", r"\'")
     
-    return command.format(sub_name, row["Full Name"], get_collection_id(row)))
+    return command.format(sub_name, row["Full Name"], get_collection_id(row))
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
@@ -147,13 +156,13 @@ def run():
                 # Get subcollection name, adding it if it doesn't already exist
                 # in the database
                 sub_name = get_subcollection_name(row)
-                sub_id = get_sub_id_adding_if_needed(sub_name, subcollections)
-                if name != "Uncategorized":
-                    sub = insert_subcollection(row, sub_name, get_collection_id(name, subcollections))
+                sub_id = get_sub_id_adding_if_needed(row, sub_name, subcollections)
+                if sub_name != "Uncategorized":
+                    sub = insert_subcollection(row, sub_name, get_collection_id(row))
                     output_file.write(sub)
                 
                 # Should be guaranteed to have the subcollection now, so lookup
-                item = insert_item(row, subcollections[row["Object Number"]])
+                item = insert_item(row, sub_id)
                 output_file.write(item)
 
 if __name__ == "__main__":

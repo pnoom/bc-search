@@ -35,32 +35,50 @@ def insert_item(row, subcollection_id):
 # of subcollections. Actually, could use object numbers as keys to in subcollection
 # dictionary! That is better than description. YES.
 
-def get_id_from_pattern(row, current):
-    # Best representation for patterns?
-    if row["Extent"] == "34 boxes":
-        return current + 1           #must do lookup here though
-    # Etc
+# When does an item belong in Uncategorized? When its Extent matches "1 negative"
+# or sth, but not "x box(es)"
+
+# In order to insert an item, need to know its subcollection.
+# In order to insert a subcollection, need to know its collection.
+# For the former, check "Extext" and "Object Number" against patterns and existing
+# subcollections, respectively.
+# For the latter, check "Collection Name".
+
+def get_collection(row):
+    return row["Collection Name"]
+
+def get_subcollection_id(row, subcollections):
+    #(adding it and corresp. id if necessary)
+    name = get_subcollection_name(row, subcollections)
+    if name == "Uncategorized":
+        return get_uncategorized_id(get_collection(row))
     else:
-        # Uncategorized - should check this first really, before doing expensive
-        # pattern matching, but need a catch-all
-        if row["Collection Name"] == "Trotter":
+        return subcollections[name]
+
+def get_uncategorized_id(row):
+    if row["Collection Name"] == "Trotter":
             return 1
-        elif row["Collection Name"] == "Haslam":
-            return 2
-        else:
-            return 3
+    elif row["Collection Name"] == "Haslam":
+        return 2
+    else:
+        return 3
+
+def get_subcollection_name(row):
+    # Do fancy pattern matching here - use regexes
+    if row["Extent"] == "34 boxes":
+        return row["Object Number"]
+    # Catch-all
+    return "Uncategorized"
+
+
+# dict.get(key, default=None)
+# dict.has_key(key)
 
 """
-def get_sub_id(row, subcollections):
-    if uncategorized(row):
-        if row["Collection Name"] == "Trotter":
-            return 1
-        elif row["Collection Name"] == "Haslam":
-            return 2
-        else:
-            return 3
-    else:
-         return subcollections[row["Object Number"]]
+def create_sub_if_needed(row, subcollections, max_sub_id, output_file):
+    sub = insert_subcollection(row, subcollection_id)
+    output_file.write(sub)
+    return max_sub_id + 1
 """
 
 def run():
@@ -72,21 +90,17 @@ def run():
     output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))
                         for f in output_files]
     
-    max_sub_id = 4       # 3 uncategorized ones first, so start at 4
-    subcollections = {}  # (object_number, id)
+    subcollections = {"Uncategorized": 0}  # 0 is placeholder, do not use value
     
     for inf, outf in zip(input_pathnames, output_pathnames):
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
             csv_reader = csv.DictReader(input_file, quotechar='"', delimiter=',')
             for row in csv_reader:
-                # if no such subcollection exists, create it
-                if (not uncategorized(row) and
-                    not subcollection_exists(row["Object Number"], subcollections)):
-                    output_file.write(insert_subcollection(subcollections,
-                                                           max_sub_id))
-                    max_sub_id += 1
+                #create_sub_if_needed(row, subcollections, output_file)
+                
                 # Should be guaranteed to have the subcollection now, so lookup
-                output_file.write(insert_item(row, subcollections[row["Object Number"]])))
+                item = insert_item(row, subcollections[row["Object Number"]])
+                output_file.write(item)
 
 if __name__ == "__main__":
     run()

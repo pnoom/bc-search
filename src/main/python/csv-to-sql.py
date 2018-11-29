@@ -98,19 +98,22 @@ Extent stuff NOT to match:
 
 def get_subcollection_name(row):
     # Strategy 1: extent only
-    
-    #extent_regexes = ["^[0-9]+ box[es]"] # Extend this a lot - see spreadsheets
-    #for pattern in extent_regexes:
-    #    if re.match(pattern, row["Extent"]):
-    #        return row["Object Number"]
+
+    # Extend this
+    extent_regexes = ["^\d+ box[es]", "^\d+ file[s]", "^\d+ envelope[s]",
+                      "^\d+ folder[es]", "^\d+ negatives", "^\d+ documents",
+                      "^\d+ volumes", "^\d+ films", "^\d+ pamphlets"]
+    for pattern in extent_regexes:
+        if re.match(pattern, row["Extent"]):
+            return row["Object Number"]
 
     # Strategy 2: object number only
     # eg. "2001/090/1/1", possibly followed by "/number/number/..."
     
-    obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
-    match = re.match(obj_num_regex, row["Object Number"])
-    if match:
-        return match.group(0)
+    #obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
+    #match = re.match(obj_num_regex, row["Object Number"])
+    #if match:
+    #    return match.group(0)
 
     # Strategy 3: check both
     

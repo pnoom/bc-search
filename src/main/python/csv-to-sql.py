@@ -64,11 +64,53 @@ def get_uncategorized_id(row):
     else:
         return 3
 
+"""
+Extent stuff to match:
+
+1 box
+x boxes
+1 file
+x files
+1 envelope
+x envelopes (?)
+1 folder
+x folders
+Anything like "10 folders, 3 envelopes"
+x negatives
+x documents
+x volumes
+x films
+x pamphlets
+
+Extent stuff NOT to match:
+
+1 negative
+1 document
+1 volume
+1 film [Xmm]
+1 pamphlet
+
+"""
+# BE PRECISE with regexes
+
 def get_subcollection_name(row):
-    regexes = ["[0-9]+ box(es)"] # Extend this a lot - see spreadsheets
-    for pattern in regexes:
-        if re.match(pattern, row["Extent"]):
-            return row["Object Number"]
+    # Strategy 1: extent only
+    
+    #extent_regexes = ["^[0-9]+ box[es]"] # Extend this a lot - see spreadsheets
+    #for pattern in extent_regexes:
+    #    if re.match(pattern, row["Extent"]):
+    #        return row["Object Number"]
+
+    # Strategy 2: object number only
+    # eg. "2001/090/1/1", possibly followed by "/number/number/..."
+    
+    obj_num_regex = "\d{4}/\d+/\d+/\d" # Modify to specify level
+    match = re.match(pattern, row["Object Number"])
+    if match:
+        return match.group(0)
+
+    # Strategy 3: check both
+    
     # Catch-all
     return "Uncategorized"
 

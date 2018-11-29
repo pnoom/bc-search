@@ -13,11 +13,11 @@ INSERT INTO Collection (collectionRef, name, description)
 VALUES ('3', 'Elliott', 'Photograph Album');
 
 /* SubCollections. All collections have an 'Uncategorized' SubCollection. */
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 1);
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 2);
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 3);
 
 /*

@@ -4,22 +4,23 @@ TODO: use proper queries, not IDs directly
 
 /* Collections */
 INSERT INTO Collection (collectionRef, name, description)
-VALUES ('1', 'Trotter', 'Photographic Work');
-
-INSERT INTO Collection (collectionRef, name, description)
 VALUES ('2', 'Haslam', 'Photographs');
 
 INSERT INTO Collection (collectionRef, name, description)
 VALUES ('3', 'Elliott', 'Photograph Album');
 
+INSERT INTO Collection (collectionRef, name, description)
+VALUES ('1', 'Trotter', 'Photographic Work');
+
 /* SubCollections. All collections have an 'Uncategorized' SubCollection. */
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 1);
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 2);
-INSERT INTO SubCollection (subCollectionRef, description, collectionId)
+INSERT INTO SubCollection (subCollectionRef, name, collectionId)
 VALUES ('1', 'Uncategorized', 3);
 
+/*
 INSERT INTO SubCollection (subCollectionRef, description, collectionId)
 VALUES ('2', '972 b/w photographs...', 1);
 
@@ -31,23 +32,28 @@ VALUES ('4', 'Photos of India and East Africa...', 2);
 
 INSERT INTO SubCollection (subCollectionRef, description, collectionId)
 VALUES ('5', 'Photos of Persian Gulf...', 2);
+*/
 
 /* Items */
+
+/*
 INSERT INTO Item
-(itemRef, name, description, dateCreated, copyrighted, extent, subCollectionId)
+(itemRef, location, name, description, dateCreated, copyrighted, extent, subCollectionId)
 VALUES (
 '2001/090/1/1/4689',
+'Kenya',
 'Uniformed Soldiers at a KAR camp',
 'Uniformed...',
 'June 1953',
 1,
 '1 Negative',
 4);
+*/
 
 /*
+--For reference
 
-select Item.name from Item join Collection using (id);
-
+select Item.name from Item join SubCollection using (id);
 
 --ID #1 is Gerald, since he was added first.
 INSERT INTO CommitteeRole (name, incumbent) VALUES ('Treasurer', 1);

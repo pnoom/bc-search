@@ -2,7 +2,7 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity(name="Collection")
+@Entity(name="collection")
 @Table(name="collection")  // This indicates entity 'Collection' is a object from MySQL table 'collection'
 public class Collection {
     @Id
@@ -13,7 +13,7 @@ public class Collection {
     @Column(name="name")
     private String name;
 
-    @Column(name="collectionref")
+    @Column(name="collection_ref")
     // MySQL is not case sensitive. @Column(name="collectionRef") will be parse as column "collection_ref"
     private String collectionRef;
 

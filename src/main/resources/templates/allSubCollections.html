@@ -58,25 +58,25 @@
 <div class="block">
     <table class="table">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>CollectionRef</th>
-                <th>Description</th>
-            </tr>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>SubCollectionRef</th>
+            <th>Description</th>
+            <th>CollectionId</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:if="${collectionList.empty}">
-                <td colspan="2"> No Collections Available </td>
-            </tr>
-            <tr th:each="collection : ${collectionList}">
-
-                <td><span th:text=${collection.id}> </span> </td>
-                <td><span th:text=${collection.name}> </span></td>
-                <td><span th:text=${collection.collectionRef}> </span></td>
-                <td><span th:text=${collection.description}> </span></td>
-
-            </tr>
+        <tr th:if="${subCollectionList.empty}">
+            <td colspan="2"> No Collections Available </td>
+        </tr>
+        <tr th:each="subCollection : ${subCollectionList}">
+            <td><span th:text=${subCollection.id}> ID </span> </td>
+            <td><span th:text=${subCollection.name}> Name </span></td>
+            <td><span th:text=${subCollection.subCollectionRef}> SubCollectionRef </span></td>
+            <td><span th:text=${subCollection.description}> Description </span></td>
+            <td><span th:text=${subCollection.collection}> CollectionId </span></td>
+        </tr>
         </tbody>
     </table>
 </div>

@@ -1,42 +1,42 @@
-DROP TABLE IF EXISTS Item;
-DROP TABLE IF EXISTS SubCollection;
-DROP TABLE IF EXISTS Collection;
+DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS subcollection;
+DROP TABLE IF EXISTS collection;
 
-CREATE TABLE Collection (
+CREATE TABLE collection (
   id             INTEGER       PRIMARY KEY AUTO_INCREMENT,
-  collectionRef  VARCHAR(100)  NOT NULL,
+  collection_ref VARCHAR(100)  NOT NULL,
   name           VARCHAR(100)  NOT NULL,
   description    TEXT          NOT NULL
 );
 
-CREATE TABLE SubCollection (
+CREATE TABLE subcollection (
   id                INTEGER        PRIMARY KEY AUTO_INCREMENT,
-  subCollectionRef  VARCHAR(100)   NOT NULL,
+  subcollection_ref VARCHAR(100)   NOT NULL,
   -- Mainly to allow Uncategorized. Should be VARCHAR and NOT NULL really, but unsure for now
   name              TEXT           NULL,
   -- Maybe omit this, since we want all interesting data in Items
   description       TEXT           NULL,
   
-  collectionId      INTEGER        NOT NULL,
-  FOREIGN KEY    (collectionId) REFERENCES Collection(id)
+  collection_id     INTEGER        NOT NULL,
+  FOREIGN KEY    (collection_id)   REFERENCES collection(id)
 );
 
-CREATE TABLE Item (
+CREATE TABLE item (
   id             		INTEGER        PRIMARY KEY AUTO_INCREMENT,
-  itemRef                       VARCHAR(100)   NOT NULL,
+  item_ref                      VARCHAR(100)   NOT NULL,
   location                      VARCHAR(100)   NOT NULL,
   name           		VARCHAR(100)   NULL,
   description           	TEXT           NULL,
   -- For MVP, date will be a single string, due to inconsistent data entry
-  -- dateAdded		 	DATE	       NULL,
-  -- earliestDateCreated        DATE	       NULL,
-  -- latestDateCreated		DATE	       NULL,
-  dateCreated                   VARCHAR(100)   NOT NULL,
+  -- date_added		 	DATE	       NULL,
+  -- earliest_date_created      DATE	       NULL,
+  -- latest_date_created	DATE	       NULL,
+  date_created                  VARCHAR(100)   NOT NULL,
   
   copyrighted                   VARCHAR(100)   NOT NULL,
   extent			VARCHAR(100)   NOT NULL,
-  physTechDesc			TEXT           NULL,
+  phys_tech_desc		TEXT           NULL,
   
-  subcollectionId               INTEGER        NULL,
-  FOREIGN KEY (subcollectionId) REFERENCES SubCollection(id)
+  subcollection_id              INTEGER        NULL,
+  FOREIGN KEY (subcollection_id) REFERENCES subcollection(id)
 );

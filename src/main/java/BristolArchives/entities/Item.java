@@ -2,7 +2,7 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity(name="Item")
+@Entity(name="item")
 @Table(name="item")  // This indicates 'Collection' objects are from mysql table 'Collection'
 public class Item {
 
@@ -11,7 +11,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="itemref")
+    @Column(name="item_ref")
     private String itemRef;
 
     @Column(name="name")
@@ -23,7 +23,7 @@ public class Item {
     @Column(name="description")
     private String description;
 
-    @Column(name="datecreated")
+    @Column(name="date_created")
     private String dateCreated;
 
     @Column(name="copyrighted")
@@ -32,11 +32,11 @@ public class Item {
     @Column(name="extent")
     private String extent;
 
-    @Column(name="phystechdesc")
+    @Column(name="phys_tech_desc")
     private String physTechDesc;
 
     @OneToOne
-    @JoinColumn(name="subcollectionid")
+    @JoinColumn(name="subcollection_id")
     private SubCollection subCollection;
 
     public Integer getId() {

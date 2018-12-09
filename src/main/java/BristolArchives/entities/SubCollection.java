@@ -2,7 +2,7 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity(name="SubCollection")
+@Entity(name="subcollection")
 @Table(name="subcollection")
 public class SubCollection {
     @Id
@@ -11,10 +11,10 @@ public class SubCollection {
     private Integer id;
 
     @OneToOne
-    @JoinColumn(name = "collectionid")
+    @JoinColumn(name = "collection_id")
     private Collection collection;
 
-    @Column(name="subcollectionref")
+    @Column(name="subcollection_ref")
     private String subCollectionRef;
 
     @Column(name="name")

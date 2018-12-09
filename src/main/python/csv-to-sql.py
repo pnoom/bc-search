@@ -8,7 +8,7 @@ import re
 # to NULL yet.
 
 def insert_item(row, subcollection_id):
-    command = "INSERT INTO Item (itemRef, location, name, description, dateCreated, copyrighted, extent, physTechDesc, subCollectionId) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
+    command = "INSERT INTO item (item_ref, location, name, description, date_created, copyrighted, extent, phys_tech_desc, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
 
     # Normalize data here and splice in using format.
 
@@ -124,7 +124,7 @@ def get_subcollection_name(row):
 # dict.has_key(key)
 
 def insert_subcollection(row, sub_name, collection_id):
-    command = "INSERT INTO SubCollection (subCollectionRef, name, collectionId) VALUES ('{}', '{}', {});\n"
+    command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
     return command.format(sub_name, row["Full Name"], get_collection_id(row))
 
 def run():

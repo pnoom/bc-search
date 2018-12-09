@@ -35,7 +35,7 @@ public class Item {
     @Column(name="phystechdesc")
     private String physTechDesc;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="subcollectionid")
     private Integer subCollectionId;
 

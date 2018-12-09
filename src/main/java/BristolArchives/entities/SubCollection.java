@@ -10,8 +10,11 @@ public class SubCollection {
     @Column(name="id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name="collectionid")
+    @OneToOne
+    @JoinColumn(
+            name = "Collection",
+            referencedColumnName = "id"
+    )
     private Integer collectionId;
 
     @Column(name="subcollectionref")

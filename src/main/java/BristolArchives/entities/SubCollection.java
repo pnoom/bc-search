@@ -10,6 +10,9 @@ public class SubCollection {
     @Column(name="id")
     private Integer id;
 
+    @Column(name="collectionid")
+    private Integer collectionId;
+
     @Column(name="subcollectionref")
     private String subCollectionRef;
 
@@ -19,17 +22,20 @@ public class SubCollection {
     @Column(name="description")
     private String description;
 
-
-    @ManyToOne //Specify column?
-    @JoinColumn(name = "collectionid")
-    private Collection collectionId;
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Integer collectionId) {
+        this.collectionId = collectionId;
     }
 
     public String getSubCollectionRef() {
@@ -40,20 +46,20 @@ public class SubCollection {
         this.subCollectionRef = subCollectionRef;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Collection getCollectionId() {
-        return collectionId;
-    }
-
-    public void setCollectionId(Collection collectionId) {
-        this.collectionId = collectionId;
     }
 
     @Override

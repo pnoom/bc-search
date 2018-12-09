@@ -15,4 +15,5 @@ public class CollectionService {
     public List<Collection> getAllCollections(){
         return collectionRepo.findAll();
     }
+    public List<Collection> getByNameContaining(String searchTerm) { return collectionRepo.findByNameContaining(searchTerm);}
 }

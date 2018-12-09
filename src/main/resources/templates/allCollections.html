@@ -59,7 +59,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>CollectionRef</th>
                 <th>Description</th>
@@ -70,10 +70,10 @@
                 <td colspan="2"> No Collections Available </td>
             </tr>
             <tr th:each="collection : ${collectionList}">
-                <td><span th:text=${collection.id}> ID </span> </td>
-                <td><span th:text=${collection.name}> Name </span></td>
-                <td><span th:text=${collection.collectionRef}> CollectionRef </span></td>
-                <td><span th:text=${collection.description}> Description </span></td>
+                <td><span th:text=${collection.id}></span> </td>
+                <td><span th:text=${collection.name}></span></td>
+                <td><span th:text=${collection.collectionRef}></span></td>
+                <td><span th:text=${collection.description}></span></td>
             </tr>
         </tbody>
     </table>

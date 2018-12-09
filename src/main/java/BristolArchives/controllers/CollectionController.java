@@ -1,15 +1,18 @@
 package BristolArchives.controllers;
 
 import BristolArchives.entities.Collection;
+import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.services.CollectionService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -31,4 +34,20 @@ public class CollectionController {
     public List<Collection> getCollList() {
         return collectionService.getAllCollections();
     }
+
+
+
+
+    @RequestMapping(value="/results", method=RequestMethod.POST)
+    public String displayResult(@RequestParam(value = "main_search", required = false) String search,Model model){
+        if(search == null) {
+            model.addAttribute("collectionsResults", collectionService.getAllCollections());
+        }
+        else{
+            model.addAttribute("collectionsResults", collectionService.getByNameContaining(search));
+            }
+
+        return "search";
+    }
+
 }

@@ -39,7 +39,7 @@ public class CollectionController {
 
 
     @RequestMapping(value="/results", method=RequestMethod.POST)
-    public String displayResult(@RequestParam(value = "main_search", required = false) String search,Model model){
+    public String displayResult(@RequestParam(value = "main_search", required = false) String search ,Model model){
         if(search == null) {
             model.addAttribute("collectionsResults", collectionService.getAllCollections());
         }
@@ -47,7 +47,7 @@ public class CollectionController {
             model.addAttribute("collectionsResults", collectionService.getByNameContaining(search));
             }
 
-        return "search";
+        return "result";
     }
 
 }

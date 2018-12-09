@@ -57,19 +57,19 @@
     </div>
 
 <div class="block">
-    <form th:action="@{/results}" method="post" >
+    <form action = "#" th:action="@{/results}" method="post" >
     <div class="columns">
         <div class="column is-quarter has-text-right" >
             <a class="button ">Advanced search</a>
         </div>
         <div class="column is-half">
             <div class="control">
-                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." >
+                <input type="text" id="main_search" class="input" placeholder="Search The Bristol Archives Database..." >
 
             </div>
         </div>
         <div class="column is-quarter">
-            <a class="button" href="/results">Search</a>
+            <button type="submit" class="button" >Search</button>
 
         </div>
 

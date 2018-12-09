@@ -86,10 +86,10 @@
             <td colspan="2"> No Collections Available </td>
         </tr>
         <tr th:each="collection : ${collectionsResults}">
-            <td><span th:text=${collectionsResults.id}></span> </td>
-            <td><span th:text=${collectionsResults.name}></span></td>
-            <td><span th:text=${collectionsResults.collectionRef}></span></td>
-            <td><span th:text=${collectionsResults.description}></span></td>
+            <td><span th:text=${collection.id}></span> </td>
+            <td><span th:text=${collection.name}></span></td>
+            <td><span th:text=${collection.collectionRef}></span></td>
+            <td><span th:text=${collection.description}></span></td>
         </tr>
         </tbody>
     </table>

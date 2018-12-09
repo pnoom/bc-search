@@ -56,12 +56,10 @@
     </canvas>
 </div>
 <div class="block">
-    <table class="table">
+    <table class="table" width="400">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Name</th>
-                <th>CollectionRef</th>
                 <th>Description</th>
             </tr>
         </thead>
@@ -70,9 +68,7 @@
                 <td colspan="2"> No Collections Available </td>
             </tr>
             <tr th:each="collection : ${collectionList}">
-                <td><span th:text=${collection.id}> ID </span> </td>
                 <td><span th:text=${collection.name}> Name </span></td>
-                <td><span th:text=${collection.collectionRef}> CollectionRef </span></td>
                 <td><span th:text=${collection.description}> Description </span></td>
             </tr>
         </tbody>

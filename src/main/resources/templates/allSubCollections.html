@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -60,21 +59,23 @@
     <table class="table">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Name</th>
-            <th>CollectionRef</th>
+            <th>SubCollectionRef</th>
             <th>Description</th>
+            <th>CollectionId</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${collectionList.empty}">
+        <tr th:if="${subCollectionList.empty}">
             <td colspan="2"> No Collections Available </td>
         </tr>
-        <tr th:each="collection : ${collectionList}">
-            <td><span th:text=${collection.id}> </span> </td>
-            <td><span th:text=${collection.name}> </span></td>
-            <td><span th:text=${collection.collectionRef}> </span></td>
-            <td><span th:text=${collection.description}> </span></td>
+        <tr th:each="subCollection : ${subCollectionList}">
+            <td><span th:text=${subCollection.id}> ID </span> </td>
+            <td><span th:text=${subCollection.name}> Name </span></td>
+            <td><span th:text=${subCollection.subCollectionRef}> SubCollectionRef </span></td>
+            <td><span th:text=${subCollection.description}> Description </span></td>
+            <td><span th:text=${subCollection.collection}> CollectionId </span></td>
         </tr>
         </tbody>
     </table>

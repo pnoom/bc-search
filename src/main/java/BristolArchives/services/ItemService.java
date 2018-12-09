@@ -5,9 +5,7 @@ import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 @Service
 public class ItemService {
@@ -18,14 +16,36 @@ public class ItemService {
         return itemRepo.findAll();
     }
 
-    public Set<Item> getItem(String searchterm){
+    public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
-        Set<Item> results = new HashSet<Item>();
+        List<Item> results = new ArrayList<>();
         for (String s: terms){
-            List<Item> currResults = itemRepo.findByNameOrDescriptionOrLocationOrDateCreated(s);
+            List<Item> currResults = itemRepo.findExact(s);
             for(Item i: currResults){
-                results.add(i);
+                if (!results.contains(i))
+                    results.add(i);
             }
+            currResults = itemRepo.findName(s);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+            currResults = itemRepo.findLocation(s);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+            currResults = itemRepo.findDate(s);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+            currResults = itemRepo.findDescription(s);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+
         }
         return results;
     }

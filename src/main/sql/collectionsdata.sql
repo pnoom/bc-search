@@ -13,24 +13,24 @@ INSERT INTO collection (collection_ref, name, description)
 VALUES ('1', 'Trotter', 'Photographic Work');
 
 /* subcollections. All collections have an 'Uncategorized' subcollection. */
-INSERT INTO subcollection (subcollection_ref, name, collectionId)
+INSERT INTO subcollection (subcollection_ref, name, collection_id)
 VALUES ('1', 'Uncategorized', 1);
-INSERT INTO subcollection (subcollection_ref, name, collectionId)
+INSERT INTO subcollection (subcollection_ref, name, collection_id)
 VALUES ('1', 'Uncategorized', 2);
-INSERT INTO subcollection (subcollection_ref, name, collectionId)
+INSERT INTO subcollection (subcollection_ref, name, collection_id)
 VALUES ('1', 'Uncategorized', 3);
 
 /*
-INSERT INTO subcollection (subcollection_ref, description, collectionId)
+INSERT INTO subcollection (subcollection_ref, description, collection_id)
 VALUES ('2', '972 b/w photographs...', 1);
 
-INSERT INTO subcollection (subcollection_ref, description, collectionId)
+INSERT INTO subcollection (subcollection_ref, description, collection_id)
 VALUES ('3', '31 b/w photographs, mostly unmarked...', 1);
 
-INSERT INTO subcollection (subcollection_ref, description, collectionId)
+INSERT INTO subcollection (subcollection_ref, description, collection_id)
 VALUES ('4', 'Photos of India and East Africa...', 2);
 
-INSERT INTO subcollection (subcollection_ref, description, collectionId)
+INSERT INTO subcollection (subcollection_ref, description, collection_id)
 VALUES ('5', 'Photos of Persian Gulf...', 2);
 */
 
@@ -38,7 +38,7 @@ VALUES ('5', 'Photos of Persian Gulf...', 2);
 
 /*
 INSERT INTO Item
-(itemRef, location, name, description, dateCreated, copyrighted, extent, subcollectionId)
+(itemRef, location, name, description, dateCreated, copyrighted, extent, subcollection_id)
 VALUES (
 '2001/090/1/1/4689',
 'Kenya',

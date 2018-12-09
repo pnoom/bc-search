@@ -76,6 +76,25 @@
             <td><span th:text=${collection.collectionRef}> </span></td>
             <td><span th:text=${collection.description}> </span></td>
         </tr>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CollectionRef</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${collectionList.empty}">
+                <td colspan="2"> No Collections Available </td>
+            </tr>
+            <tr th:each="collection : ${collectionList}">
+                <td><span th:text=${collection.id}> </span> </td>
+                <td><span th:text=${collection.name}> </span></td>
+                <td><span th:text=${collection.collectionRef}> </span></td>
+                <td><span th:text=${collection.description}> </span></td>
+            </tr>
+
         </tbody>
     </table>
 </div>

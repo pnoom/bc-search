@@ -13,10 +13,14 @@ public class SubCollection {
     @Column(name="subcollectionref")
     private String subCollectionRef;
 
+    @Column(name="name")
+    private String name;
+
     @Column(name="description")
     private String description;
 
-    @ManyToOne
+
+    @ManyToOne //Specify column?
     @JoinColumn(name = "collectionid")
     private Collection collectionId;
 

@@ -15,7 +15,7 @@ public class SubCollection {
             name = "Collection",
             referencedColumnName = "id"
     )
-    private Integer collectionId;
+    private Collection collection;
 
     @Column(name="subcollectionref")
     private String subCollectionRef;
@@ -34,12 +34,12 @@ public class SubCollection {
         this.id = id;
     }
 
-    public Integer getCollectionId() {
-        return collectionId;
+    public Collection getCollection() {
+        return collection;
     }
 
-    public void setCollectionId(Integer collectionId) {
-        this.collectionId = collectionId;
+    public void setCollection(Collection collection) {
+        this.collection = collection;
     }
 
     public String getSubCollectionRef() {

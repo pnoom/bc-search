@@ -37,7 +37,7 @@ public class Item {
 
     @OneToOne
     @JoinColumn(name="subcollectionid")
-    private Integer subCollectionId;
+    private SubCollection subCollection;
 
     public Integer getId() {
         return id;
@@ -111,11 +111,11 @@ public class Item {
         this.physTechDesc = physTechDesc;
     }
 
-    public Integer getSubCollectionId() {
-        return subCollectionId;
+    public SubCollection getSubCollection() {
+        return subCollection;
     }
 
-    public void setSubCollectionId(Integer subCollectionId) {
-        this.subCollectionId = subCollectionId;
+    public void setSubCollection(SubCollection subCollection) {
+        this.subCollection = subCollection;
     }
 }

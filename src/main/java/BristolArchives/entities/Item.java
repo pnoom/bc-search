@@ -2,8 +2,8 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="Item")  // This indicates 'Collection' objects are from mysql table 'Collection'
+@Entity(name="Item")
+@Table(name="item")  // This indicates 'Collection' objects are from mysql table 'Collection'
 public class Item {
 
     @Id
@@ -35,7 +35,7 @@ public class Item {
     @Column(name="phystechdesc")
     private String physTechDesc;
 
-    //@ManyToOne
+    @ManyToOne
     @JoinColumn(name="subcollectionid")
     private Integer subCollectionId;
 

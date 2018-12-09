@@ -2,7 +2,7 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="Collection")
 @Table(name="collection")  // This indicates entity 'Collection' is a object from MySQL table 'collection'
 public class Collection {
     @Id

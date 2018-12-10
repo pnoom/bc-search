@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Bristol Archives</title>
+    <title>Bristol Archives Collections</title>
 </head>
+
 <body>
 <!-- This creates the logos at the top of the page -->
 <div class="block">
@@ -53,28 +54,28 @@
 
 <div class="block">
     <canvas id="fillerCanvas" height="100" style="border:1px transparent">
-        </canvas>
-    </div>
-
-<div class="block">
-    <form action = "#" th:action="@{/item-results}" method="post" >
-    <div class="columns">
-        <div class="column is-quarter has-text-right" >
-            <a class="button ">Advanced search</a>
-        </div>
-        <div class="column is-half">
-            <div class="control">
-                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." >
-
-            </div>
-        </div>
-        <div class="column is-quarter">
-            <button type="submit" class="button" >Search</button>
-
-        </div>
-
-    </div>
-    </form>
+    </canvas>
 </div>
+<div class="block">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Ref</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${itemList.empty}">
+            <td colspan="2"> No Items Available </td>
+        </tr>
+        <tr th:each="item : ${itemList}">
+            <td><span th:text=${item.name}> </span></td>
+            <td><span th:text=${item.itemRef}> </span></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

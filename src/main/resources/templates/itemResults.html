@@ -80,10 +80,7 @@
 </body>
 <script>
     function rowClicked(itemRef) {
-        window.open(
-            '/items/' + itemRef.split('/').join('-'),
-            '_blank' // <- This is what makes it open in a new window.
-        );
+        location.href = '/items/' + itemRef.split('/').join('-');
     }
 </script>
 

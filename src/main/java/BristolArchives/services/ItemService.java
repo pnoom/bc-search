@@ -49,4 +49,8 @@ public class ItemService {
         }
         return results;
     }
+
+    public Item getExactItem(String ref){
+        return itemRepo.findWithRef(ref).get(0);
+    }
 }

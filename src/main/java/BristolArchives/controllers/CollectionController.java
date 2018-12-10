@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.PostRemove;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
@@ -35,8 +36,19 @@ public class CollectionController {
         return collectionService.getAllCollections();
     }
 
-    @RequestMapping(value="/results", method=RequestMethod.POST)
-    public String displayResult(@RequestParam(value = "main_search", required = false) String search ,Model model){
+    @PostMapping("/results")
+    public String sendResult(@RequestParam(value = "main_search", required = false) String search){
+        return "redirect:/results/" + search;
+    }
+
+    @GetMapping("/results/")
+    public String emptySearch(Model model){
+        model.addAttribute("collectionsResults", collectionService.getAllCollections());
+        return "redirect:/";
+    }
+
+    @GetMapping(value="/results/{search}")
+    public String displayResult(@PathVariable String search ,Model model){
         if(search == null) {
             model.addAttribute("collectionsResults", collectionService.getAllCollections());
         }

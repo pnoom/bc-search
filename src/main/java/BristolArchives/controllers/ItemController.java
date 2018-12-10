@@ -17,24 +17,24 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @PostMapping("/item-results")
+    @PostMapping("/search")
     public String sendResult(@RequestParam(value = "main_search", required = false) String search){
-        return "redirect:/item-results/" + search;
+        return "redirect:/search" + search;
     }
 
-    @GetMapping("/item-results/")
-    public String emptySearch(){
-        return "redirect:/";
-    }
+//    @GetMapping("/item-results/")
+//    public String emptySearch(){
+//        return "redirect:/";
+//    }
 
-    @GetMapping(value="/item-results/{search}")
-    public String displayResult(@PathVariable String search , Model model){
-        if(search == null) {
+    @GetMapping("/search")
+    public String displayResult(@RequestParam String q , Model model){
+        if(q == null) {
             //model.addAttribute("collectionsResults", itemService.getItem(search));
             return "redirect:/";
         }
         else{
-            model.addAttribute("itemList", itemService.getItem(search));
+            model.addAttribute("itemList", itemService.getItem(q));
         }
 
         return "itemResults";

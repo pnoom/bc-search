@@ -36,14 +36,13 @@ public class CollectionController {
         return collectionService.getAllCollections();
     }
 
-    @PostMapping("/results")
+    /*@PostMapping("/results")
     public String sendResult(@RequestParam(value = "main_search", required = false) String search){
         return "redirect:/results/" + search;
     }
 
     @GetMapping("/results/")
-    public String emptySearch(Model model){
-        model.addAttribute("collectionsResults", collectionService.getAllCollections());
+    public String emptySearch(){
         return "redirect:/";
     }
 
@@ -58,5 +57,5 @@ public class CollectionController {
 
         return "result";
     }
-
+*/
 }

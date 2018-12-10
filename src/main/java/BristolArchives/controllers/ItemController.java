@@ -11,28 +11,33 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class ItemController {
-    @PostMapping("/results")
+
+    @Autowired
+    private ItemService itemService;
+
+    @PostMapping("/item-results")
     public String sendResult(@RequestParam(value = "main_search", required = false) String search){
-        return "redirect:/results/" + search;
+        return "redirect:/item-results/" + search;
     }
 
-    @GetMapping("/results/")
-    public String emptySearch(Model model){
-        model.addAttribute("collectionsResults", itemService.getAllCollections());
+    @GetMapping("/item-results/")
+    public String emptySearch(){
         return "redirect:/";
     }
 
-    @GetMapping(value="/results/{search}")
+    @GetMapping(value="/item-results/{search}")
     public String displayResult(@PathVariable String search , Model model){
         if(search == null) {
-            model.addAttribute("collectionsResults", itemService.getAllCollections());
+            //model.addAttribute("collectionsResults", itemService.getItem(search));
+            return "redirect:/";
         }
         else{
-            model.addAttribute("collectionsResults", collectionService.getByNameContaining(search));
+            model.addAttribute("itemList", itemService.getItem(search));
         }
 
-        return "result";
+        return "itemResults";
     }
 
 }

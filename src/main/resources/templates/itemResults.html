@@ -68,7 +68,7 @@
         <tr th:if="${itemList.empty}">
             <td colspan="2"> No Items Available </td>
         </tr>
-        <tr th:each="item : ${itemList}">
+        <tr th:each="item : ${itemList}" th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'">
             <td><span th:text=${item.name}> </span></td>
             <td><span th:text=${item.itemRef}> </span></td>
 
@@ -78,4 +78,13 @@
 </div>
 
 </body>
+<script>
+    function rowClicked(itemRef) {
+        window.open(
+            '/items/' + itemRef.split('/').join('-'),
+            '_blank' // <- This is what makes it open in a new window.
+        );
+    }
+</script>
+
 </html>

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ItemRepo extends JpaRepository<Item,Integer>{
 
-    @Query("select i from item i where i.name = 'search'")
+    @Query("select i from item i where i.name = CONCAT(:search,'')")
     List<Item> findByName(@Param("search")String search);
 
     @Query("select i from item i where i.name like CONCAT('%',:search,'%')")
@@ -24,7 +24,7 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query("select i from item i where i.description like CONCAT('%',:search,'%')")
     List<Item> findDescription(@Param("search")String search);
 
-    @Query("select i from item i where i.itemRef like CONCAT('%',:search,'%')")
+    @Query("select i from item i where i.itemRef = CONCAT(:search,'')")
     List<Item> findWithRef(@Param("search")String search);
 
 }

@@ -49,7 +49,6 @@ public class ItemController {
             return "redirect:/";
         }
         else{
-            System.out.println(itemRef);
             model.addAttribute("item", itemService.getExactItem(itemRef));
         }
         return "itemPage";

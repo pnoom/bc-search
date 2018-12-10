@@ -40,8 +40,8 @@ public class ItemController {
         return "itemResults";
     }
 
-    GetMapping("/items/{itemRef})
-    public String displaySingleItem(@PathVariable String itemRef , Model model) {
+    @GetMapping("/items/{itemRef}")
+    public String displaySingleItem(@PathVariable String itemRef, Model model) {
         if(itemRef == null) {
             //model.addAttribute("collectionsResults", itemService.getItem(search));
             return "redirect:/";
@@ -49,7 +49,7 @@ public class ItemController {
         else{
             model.addAttribute("item", itemService.getExactItem(itemRef));
         }
-        return itemPage;
+        return "index";
     }
 
 }

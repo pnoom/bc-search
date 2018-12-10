@@ -35,9 +35,6 @@ public class CollectionController {
         return collectionService.getAllCollections();
     }
 
-
-
-
     @RequestMapping(value="/results", method=RequestMethod.POST)
     public String displayResult(@RequestParam(value = "main_search", required = false) String search ,Model model){
         if(search == null) {

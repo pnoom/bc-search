@@ -52,22 +52,33 @@
     </nav>
 </div>
 
-<div class="block">
+<div style="margin-left=100px;" class="block">
     <table class="table">
         <tbody>
         <tr th:if="${itemList.empty}">
             <td colspan="2"> No Items Available </td>
         </tr>
         <tr th:each="item : ${itemList}">
-            <td><font size="4" color="#0000cd" th:text=${item.name} th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'"></font></span>
-            <br><span th:text=${item.itemRef}> </span>
+            <td>
+                <span class="itemName"><font size="4" color="#0000cd" th:text=${item.name} th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'"></font></span>
+                <br>
+                <span th:text=${item.itemRef}> </span>
                 <br><span th:text=${item.shortDesc}></span></td>
+
         </tr>
         </tbody>
-    </table>
+    </paddingtable>
 </div>
 
 </body>
+<style>
+    .itemName {
+        cursor: pointer;
+    }
+    .itemName:hover{
+        text-decoration: underline;
+    }
+</style>
 <script>
     function rowClicked(itemRef) {
         location.href = '/items/' + itemRef.split('/').join('-');

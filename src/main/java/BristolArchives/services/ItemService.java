@@ -20,7 +20,7 @@ public class ItemService {
         String[] terms = searchterm.split(" ");
         List<Item> results = new ArrayList<>();
         for (String s: terms){
-            List<Item> currResults = itemRepo.findExact(s);
+            List<Item> currResults = itemRepo.findByName(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -45,12 +45,13 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-
         }
         return results;
     }
 
     public Item getExactItem(String ref){
+        if(itemRepo.findWithRef(ref).size() <= 0)
+            return null;
         return itemRepo.findWithRef(ref).get(0);
     }
 }

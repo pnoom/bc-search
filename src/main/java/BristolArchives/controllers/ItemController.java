@@ -42,14 +42,17 @@ public class ItemController {
 
     @GetMapping("/items/{itemRef}")
     public String displaySingleItem(@PathVariable String itemRef, Model model) {
+        itemRef = itemRef.replace('-','/');
+
         if(itemRef == null) {
             //model.addAttribute("collectionsResults", itemService.getItem(search));
             return "redirect:/";
         }
         else{
+            System.out.println(itemRef);
             model.addAttribute("item", itemService.getExactItem(itemRef));
         }
-        return "index";
+        return "itemPage";
     }
 
 }

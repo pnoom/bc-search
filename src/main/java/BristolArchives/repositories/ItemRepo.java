@@ -24,6 +24,7 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query("select i from item i where i.description like CONCAT('%',:search,'%')")
     List<Item> findDescription(@Param("search")String search);
 
-
+    @Query("select i from item i where i.itemRef ='search'")
+    List<Item> findWithRef(@Param("search")String search);
 
 }

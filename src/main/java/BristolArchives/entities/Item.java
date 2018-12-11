@@ -1,5 +1,7 @@
 package BristolArchives.entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity(name="item")
@@ -7,37 +9,38 @@ import javax.persistence.*;
 public class Item {
 
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="item_ref")
+    @Column(name = "item_ref")
     private String itemRef;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="location")
+    @Column(name = "location")
     private String location;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name="date_created")
+    @Column(name = "date_created")
     private String dateCreated;
 
-    @Column(name="copyrighted")
+    @Column(name = "copyrighted")
     private String copyrighted;
 
-    @Column(name="extent")
+    @Column(name = "extent")
     private String extent;
 
-    @Column(name="phys_tech_desc")
+    @Column(name = "phys_tech_desc")
     private String physTechDesc;
 
     @OneToOne
-    @JoinColumn(name="subcollection_id")
+    @JoinColumn(name = "subcollection_id")
     private SubCollection subCollection;
+
 
     public Integer getId() {
         return id;
@@ -117,5 +120,9 @@ public class Item {
 
     public void setSubCollection(SubCollection subCollection) {
         this.subCollection = subCollection;
+    }
+
+    public String getShortDesc(){
+        return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
 }

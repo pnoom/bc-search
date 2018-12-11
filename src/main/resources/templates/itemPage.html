@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -51,29 +52,38 @@
     </nav>
 </div>
 <div class="block">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>SubCollectionRef</th>
-            <th>Description</th>
-            <th>CollectionId</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${subCollectionList.empty}">
-            <td colspan="2"> No Collections Available </td>
-        </tr>
-        <tr th:each="subCollection : ${subCollectionList}">
-            <td><span th:text=${subCollection.id}> ID </span> </td>
-            <td><span th:text=${subCollection.name}> Name </span></td>
-            <td><span th:text=${subCollection.subCollectionRef}> SubCollectionRef </span></td>
-            <td><span th:text=${subCollection.description}> Description </span></td>
-            <td><span th:text=${subCollection.collection}> CollectionId </span></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column">
+            <div>
+            <span class="content is-size-2" th:text=${item.name}> </span>
+            </div>
+            <img th:src="@{/placeholder.jpg}" alt="Placeholder" width="128" height="128"/>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>ID:</th>
+                    <td><span th:text=${item.itemRef}> </span></td>
+                </tr>
+                <tr>
+                    <th>Location:</th>
+                    <td><span th:text=${item.location}> </span></td>
+                </tr>
+                <tr>
+                    <th>Date:</th>
+                    <td><span th:text=${item.dateCreated}> </span></td>
+                </tr>
+                <tr>
+                    <th>Description:</th>
+                    <td><span th:text=${item.description}> </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="column is-one-fifth"></div>
+
+    </div>
+
 </div>
 
 </body>

@@ -24,8 +24,8 @@ public class ItemController {
     }
 
     @GetMapping("/search")
-    public String displayResult(@RequestParam String q , Model model){
-        if(q == null) {
+    public String displayResult(@RequestParam(required = false) String q , Model model){
+        if(q == null || q == "") {
             //model.addAttribute("collectionsResults", itemService.getItem(search));
             return "redirect:/";
         }

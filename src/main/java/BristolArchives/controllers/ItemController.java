@@ -19,14 +19,10 @@ public class ItemController {
 
     @PostMapping("/search")
     public String sendResult(@RequestParam(value = "main_search", required = false) String search){
+        search = search.replaceAll("/","%2F");
         return "redirect:/search?q=" + search;
     }
-
-//    @GetMapping("/item-results/")
-//    public String emptySearch(){
-//        return "redirect:/";
-//    }
-
+    
     @GetMapping("/search")
     public String displayResult(@RequestParam String q , Model model){
         if(q == null) {

@@ -51,30 +51,19 @@
         </div>
     </nav>
 </div>
-
 <div class="block">
-    <canvas id="fillerCanvas" height="10" style="border:1px transparent">
-    </canvas>
-</div>
-<div class="block">
-    <div class="columns">
-        <div class="column is-two-thirds"></div>
-        <div class="column">
-            <span th:text=${item.name}> </span>
-        </div>
-    </div>
     <div class="columns">
         <div class="column is-one-fifth"></div>
         <div class="column">
-            <figure class="image is-128x128"><img src="../public/placeholder.jpg" height="128" width="128"/></figure>
             <div>
-                <div class="content"> Info:</div>
+            <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
+            <img th:src="@{/placeholder.jpg}" alt="Placeholder" width="128" height="128"/>
             <table class="table">
                 <tbody>
                 <tr>
                     <th>ID:</th>
-                    <td><span th:text=${item.id}> </span></td>
+                    <td><span th:text=${item.itemRef}> </span></td>
                 </tr>
                 <tr>
                     <th>Location:</th>

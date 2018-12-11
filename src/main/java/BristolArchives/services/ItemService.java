@@ -54,4 +54,12 @@ public class ItemService {
             return null;
         return itemRepo.findWithRef(ref).get(0);
     }
+
+    public ItemRepo getItemRepo() {
+        return itemRepo;
+    }
+
+    public void setItemRepo(ItemRepo itemRepo) {
+        this.itemRepo = itemRepo;
+    }
 }

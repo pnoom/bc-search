@@ -22,7 +22,7 @@ public class ItemController {
         search = search.replaceAll("/","%2F");
         return "redirect:/search?q=" + search;
     }
-    
+
     @GetMapping("/search")
     public String displayResult(@RequestParam String q , Model model){
         if(q == null) {

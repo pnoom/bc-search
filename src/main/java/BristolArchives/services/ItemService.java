@@ -25,6 +25,11 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
+            currResults = itemRepo.findWithRef(s);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
             currResults = itemRepo.findName(s);
             for(Item i: currResults){
                 if (!results.contains(i))

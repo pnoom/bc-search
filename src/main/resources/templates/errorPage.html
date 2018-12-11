@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,18 +32,13 @@
 <!-- This is what creates the navbar -->
 <div class="block">
     <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
-        <div class="navbar-burger burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="navbar-menu" id="navMenu">
+        <div class="navbar-menu">
 
             <div class="navbar-start">
                 <a href="/" class="navbar-item">Home</a>
-                <!--<a class="navbar-item">Image Gallery</a>
+                <a class="navbar-item">Image Gallery</a>
                 <a class="navbar-item">Showcase</a>
-                <a class="navbar-item">Donate</a>-->
+                <a class="navbar-item">Donate</a>
 
                 <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
 
@@ -53,39 +49,13 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript">
-        (function() {
-            var burger = document.querySelector('.burger');
-            var nav = document.querySelector('#'+burger.dataset.target);
-            burger.addEventListener('click', function(){
-                burger.classList.toggle('is-active');
-                nav.classList.toggle('is-active');
-            });
-        })();
-    </script>
 </div>
+
+
 <div class="block">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>CollectionRef</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${collectionsResults.empty}">
-            <td colspan="2"> No Collections Available </td>
-        </tr>
-        <tr th:each="collection : ${collectionsResults}">
-            <td><span th:text=${collection.id}></span> </td>
-            <td><span th:text=${collection.name}></span></td>
-            <td><span th:text=${collection.collectionRef}></span></td>
-            <td><span th:text=${collection.description}></span></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="columns">
+        <div class="text"><span><font size = "10" th:text=${errorMessage}></font></span></div>
+    </div>
 </div>
 </body>
 </html>

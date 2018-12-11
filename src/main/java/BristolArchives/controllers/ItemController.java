@@ -19,7 +19,7 @@ public class ItemController {
 
     @PostMapping("/search")
     public String sendResult(@RequestParam(value = "main_search", required = false) String search){
-        return "redirect:/search" + search;
+        return "redirect:/search?q=" + search;
     }
 
 //    @GetMapping("/item-results/")
@@ -36,7 +36,6 @@ public class ItemController {
         else{
             model.addAttribute("itemList", itemService.getItem(q));
         }
-
         return "itemResults";
     }
 

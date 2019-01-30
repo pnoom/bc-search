@@ -38,6 +38,6 @@ CREATE TABLE item (
   phys_tech_desc		TEXT           NULL,
   
   subcollection_id              INTEGER        NULL,
-  multimedia_irn    INTEGER,
+  multimedia_irn    VARCHAR(100),
   FOREIGN KEY (subcollection_id) REFERENCES subcollection(id)
 );

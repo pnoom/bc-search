@@ -29,15 +29,21 @@ public class AdvancedSearchController {
     @PostMapping("/advSearch")
     public String sendResult(
             @RequestParam(value = "adv_search_coll", required = false) String adv_coll,
-            @RequestParam(value = "adv_search_date", required = false) String adv_date,
+            @RequestParam(value = "date_search", required = false) String adv_date,
+            @RequestParam(value = "date_start", required = false) String adv_date_start,
+            @RequestParam(value = "date_end", required = false) String adv_date_end,
             @RequestParam(value = "adv_search_name", required = false) String adv_name,
             @RequestParam(value = "adv_search_lctn", required = false) String adv_lctn
         )
     {
-        String search = "redirect:/advSearch";
+        String search = "";
 
         if(hasSth(adv_coll))
             search += "?coll=" + adv_coll;
+        if(hasSth(adv_date_start))
+            search += "?dateStart=" + adv_date_start;
+        if(hasSth(adv_date_end))
+            search += "?dateEnd=" + adv_date_end;
         if(hasSth(adv_date))
             search += "?date=" + adv_date ;
         if(hasSth(adv_name))
@@ -54,20 +60,25 @@ public class AdvancedSearchController {
     public String displayResult(
             @RequestParam(value = "coll", required = false) String adv_coll,
             @RequestParam(value = "date", required = false) String adv_date,
+            @RequestParam(value = "dateStart", required = false) String adv_date_start,
+            @RequestParam(value = "dateEnd", required = false) String adv_date_end,
             @RequestParam(value = "name", required = false) String adv_name,
             @RequestParam(value = "lctn", required = false) String adv_lctn,
+
             Model model
             )
     {
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn)) {
-            return "redirect:/advanceSearch";
+           // return "redirect:/advanceSearch";
         }
         else{
             List<Item> resultList = new ArrayList();
             if(adv_name != null)
-                resultList.addAll(itemService.getItemByName(adv_name));
-            if(adv_date != null)
+                resultList.addAll(itemService.getItemByNameContaining(adv_name));
+            if(adv_date != null) {
+                System.out.println("Date searching" + adv_date);
                 resultList.addAll(itemService.getItemByDate(adv_date));
+            }
 //            if(!adv_coll != null)
 //                resultList.addAll(itemService.getItemByCollectionID(adv_coll));
             if(adv_lctn != null)

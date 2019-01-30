@@ -16,9 +16,17 @@ public class ItemService {
         return itemRepo.findAll();
     }
 
-    public List<Item> getItemByName(String name) {
-        return itemRepo.findName(name);
+    public List<Item> getItemByNameContaining(String name) {
+        return itemRepo.findByNameContaining(name);
     }
+
+    public List<Item> getItemByName(String name) {
+        return itemRepo.findByName(name);
+    }
+
+//    public List<Item> getItemByName(String name) {
+//        return itemRepo.findName(name);
+//    }
 
     public List<Item> getItemByLocation(String location) {
         return itemRepo.findLocation(location);

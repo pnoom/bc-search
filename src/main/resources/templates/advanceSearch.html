@@ -73,7 +73,7 @@
 
 
 <div class="block">
-    <form action="#" th:action="@{/search}" method="post">
+    <form action="#" th:action="@{/advSearch}" method="post">
 
         <div class="columns">
             <div class="column is-one-fifth"></div>
@@ -82,25 +82,32 @@
             <div class="columns">
                 <div class="column is-one-fifth"><p>Search date here</p></div>
                 <div class="column is-one-fifth is-3">
-                <input type="text" name="Date search" class="text" placeholder="Example: 1967">
+                    <div id="start Range" style="display: none"> <input type="text" name="date_start" class="text" placeholder="date start Example: 1967"></div>
+                    <div id="no Range" style="display: block"> <input type="text" name="date_search" class="text" placeholder="date search Example: 1967"></div>
                 </div>
                 <div class="column is-one-fifth is-3"><div class="block is-centre" id="simpleText" style="margin-left: 20px; display: none; " >To</div>
                 </div>
-                <div class="column is-one-fifth is-3"><div id="endRange" style="display: none"><input class="block" type="text" name="End range" placeholder="End date..."></div>
+                <div class="column is-one-fifth is-3"><div id="endRange" style="display: none"><input class="block" type="text" name="date_end" placeholder="End date..."></div>
                 </div>
-                <div class="column is-3"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>
+                <!--<div class="column is-3"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>-->
 
                     <script>
                 function range() {
                     var x = document.getElementById("endRange");
                     var y = document.getElementById("simpleText");
+                    var z = document.getElementById("start Range");
+                    var p = document.getElementById("no Range");
                     if (x.style.display === "none") {
                         x.style.display = "block";
                         y.style.display = "block";
+                        z.style.display = "block";
+                        p.style.display = "none";
                     }
                     else {
                         x.style.display = "none";
                         y.style.display = "none";
+                        z.style.display = "none";
+                        p.style.display = "block";
                     }
                 }
                     </script>
@@ -112,7 +119,13 @@
             <div class="column is-one-fifth"></div>
         </div>
 
-
+<div class="block">
+    <div class="columns">
+        <div class="column is-one-third"></div>
+        <div class="column"><button class="button" type="submit">Search</button></div>
+        <div class="column is-one-third"></div>
+    </div>
+</div>
 
     </form>
 

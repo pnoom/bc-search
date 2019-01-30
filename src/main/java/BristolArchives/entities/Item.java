@@ -37,6 +37,9 @@ public class Item {
     @Column(name = "phys_tech_desc")
     private String physTechDesc;
 
+    @Column(name = "multimedia_irn")
+    private Integer multimediaIrn;
+
     @OneToOne
     @JoinColumn(name = "subcollection_id")
     private SubCollection subCollection;
@@ -104,6 +107,12 @@ public class Item {
 
     public void setExtent(String extent) {
         this.extent = extent;
+    }
+
+    public Integer getMultimediaIrn(){return multimediaIrn;}
+
+    public void setMultimediaIrn(Integer multimediaIrn) {
+        this.multimediaIrn = multimediaIrn;
     }
 
     public String getPhysTechDesc() {

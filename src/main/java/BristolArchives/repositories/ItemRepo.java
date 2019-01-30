@@ -27,4 +27,7 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query("select i from item i where i.itemRef = CONCAT(:search,'')")
     List<Item> findWithRef(@Param("search")String search);
 
+    @Query("select i from item i where i.subCollection = CONCAT(:search,'')")
+    List<Item> findSubCollection(@Param("search")String search);
+
 }

@@ -16,6 +16,22 @@ public class ItemService {
         return itemRepo.findAll();
     }
 
+    public List<Item> getItemByName(String name) {
+        return itemRepo.findName(name);
+    }
+
+    public List<Item> getItemByLocation(String location) {
+        return itemRepo.findLocation(location);
+    }
+
+    public List<Item> getItemByDate(String date) {
+        return itemRepo.findDate(date);
+    }
+
+//    public List<Item> getItemByCollectionID(int coll) {
+//        return itemRepo.findSubCollection(coll);
+//    }
+
     public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
         List<Item> results = new ArrayList<>();

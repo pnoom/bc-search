@@ -10,9 +10,4 @@ public class BristolArchivesRunController {
     public String index() {
         return "index";
     }
-
-    @GetMapping("/advanceSearch")
-    public String advanceSearch() {
-        return "advanceSearch";
-    }
 }

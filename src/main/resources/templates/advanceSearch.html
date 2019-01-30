@@ -71,10 +71,54 @@
 <h1>Advance search form here</h1>
 
 
+
 <div class="block">
-    <canvas height="100" style="border:1px transparent">
-    </canvas>
+    <form action="#" th:action="@{/search}" method="post">
+
+        <div class="columns">
+            <div class="column is-one-fifth"></div>
+            <div class="block">
+            <div class="column">
+            <div class="columns">
+                <div class="column is-one-fifth"><p>Search date here</p></div>
+                <div class="column is-one-fifth is-3">
+                <input type="text" name="Date search" class="text" placeholder="Example: 1967">
+                </div>
+                <div class="column is-one-fifth is-3"><div class="block is-centre" id="simpleText" style="margin-left: 20px; display: none; " >To</div>
+                </div>
+                <div class="column is-one-fifth is-3"><div id="endRange" style="display: none"><input class="block" type="text" name="End range" placeholder="End date..."></div>
+                </div>
+                <div class="column is-3"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>
+
+                    <script>
+                function range() {
+                    var x = document.getElementById("endRange");
+                    var y = document.getElementById("simpleText");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                        y.style.display = "block";
+                    }
+                    else {
+                        x.style.display = "none";
+                        y.style.display = "none";
+                    }
+                }
+                    </script>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            <div class="column is-one-fifth"></div>
+        </div>
+
+
+
+    </form>
+
+
 </div>
+
 
 </body>
 </html>

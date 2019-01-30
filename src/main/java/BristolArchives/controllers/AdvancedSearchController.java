@@ -17,6 +17,10 @@ public class AdvancedSearchController {
     @Autowired
     private ItemService itemService;
 
+    private boolean hasSth(String s) {
+        return (s != null) && (!s.isEmpty());
+    }
+
     @GetMapping("/advanceSearch")
     public String advanceSearch() {
         return "advanceSearch";
@@ -32,13 +36,13 @@ public class AdvancedSearchController {
     {
         String search = "redirect:/advSearch";
 
-        if(!adv_coll.isEmpty() && adv_coll != null)
+        if(hasSth(adv_coll))
             search += "?coll=" + adv_coll;
-        if(!adv_coll.isEmpty() && adv_date != null)
+        if(hasSth(adv_date))
             search += "?date=" + adv_date ;
-        if(!adv_coll.isEmpty() && adv_name != null)
+        if(hasSth(adv_name))
             search += "?name=" + adv_name;
-        if(!adv_coll.isEmpty() && adv_lctn != null)
+        if(hasSth(adv_lctn))
             search += "?lctn=" + adv_lctn;
 
         search = search.replaceAll("/","%2F");
@@ -55,7 +59,7 @@ public class AdvancedSearchController {
             Model model
             )
     {
-        if(adv_coll == null && adv_date == null && adv_name == null && adv_lctn == null) {
+        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn)) {
             return "redirect:/advanceSearch";
         }
         else{

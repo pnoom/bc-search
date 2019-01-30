@@ -7,8 +7,10 @@ import re
 # Assumes collectionsdata.sql has run beforehand. Doesn't convert default values
 # to NULL yet.
 
+# For now, assume everything is a string, incl. the multimedia irn
+
 def insert_item(row, subcollection_id):
-    command = "INSERT INTO item (item_ref, location, name, description, date_created, copyrighted, extent, phys_tech_desc, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
+    command = "INSERT INTO item (item_ref, location, name, description, date_created, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}' {});\n"
 
     # Normalize data here and splice in using format.
 
@@ -19,7 +21,7 @@ def insert_item(row, subcollection_id):
     return command.format(row["Object Number"], row["Geographic Name"],
                           row["Full Name"], row["Scope And Content"],
                           row["Date"], row["Copyright"], row["Extent"],
-                          row["Physical/Technical"], subcollection_id)
+                          row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
 
 # The "Extent" field is useful for determining subcollections ("Level" rarely
 # helps, so that is omitted) but

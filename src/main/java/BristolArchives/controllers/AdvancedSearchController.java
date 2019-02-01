@@ -77,9 +77,9 @@ public class AdvancedSearchController {
             Model model
             )
     {
-        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn)) {
+        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
             return "redirect:/advanceSearch";
-        }
+
         else{
             List<Item> resultList = new ArrayList();
             if(adv_name != null)
@@ -88,10 +88,9 @@ public class AdvancedSearchController {
                 getIntersection(resultList,itemService.getItemByDate(adv_date));
 //            if(!adv_coll != null)
 //                getIntersection(resultList,itemService.getItemByCollection(adv_coll));
-            if(adv_lctn != null) {
+            if(adv_lctn != null)
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn));
             model.addAttribute("itemList", resultList);
-
         }
         return "itemResults";
     }

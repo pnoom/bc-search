@@ -21,6 +21,15 @@ public class AdvancedSearchController {
         return (s != null) && (!s.isEmpty());
     }
 
+    private void getIntersection(List<Item> result, List<Item> newItems) {
+        System.out.println(result);
+        System.out.println(newItems);
+        if(result.isEmpty())
+            result.addAll(newItems);
+        else
+            result.retainAll(newItems);
+    }
+
     @GetMapping("/advanceSearch")
     public String advanceSearch() {
         return "advanceSearch";
@@ -36,20 +45,20 @@ public class AdvancedSearchController {
             @RequestParam(value = "adv_search_lctn", required = false) String adv_lctn
         )
     {
-        String search = "";
+        String search = "?";
 
         if(hasSth(adv_coll))
-            search += "?coll=" + adv_coll;
+            search += "&coll=" + adv_coll;
         if(hasSth(adv_date_start))
-            search += "?dateStart=" + adv_date_start;
+            search += "&dateStart=" + adv_date_start;
         if(hasSth(adv_date_end))
-            search += "?dateEnd=" + adv_date_end;
+            search += "&dateEnd=" + adv_date_end;
         if(hasSth(adv_date))
-            search += "?date=" + adv_date ;
+            search += "&date=" + adv_date ;
         if(hasSth(adv_name))
-            search += "?name=" + adv_name;
+            search += "&name=" + adv_name;
         if(hasSth(adv_lctn))
-            search += "?lctn=" + adv_lctn;
+            search += "&lctn=" + adv_lctn;
 
         search = search.replaceAll("/","%2F");
 
@@ -69,20 +78,18 @@ public class AdvancedSearchController {
             )
     {
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn)) {
-           // return "redirect:/advanceSearch";
+            return "redirect:/advanceSearch";
         }
         else{
             List<Item> resultList = new ArrayList();
             if(adv_name != null)
-                resultList.addAll(itemService.getItemByNameContaining(adv_name));
-            if(adv_date != null) {
-                System.out.println("Date searching" + adv_date);
-                resultList.addAll(itemService.getItemByDate(adv_date));
-            }
+                getIntersection(resultList,itemService.getItemByName(adv_name));
+            if(adv_date != null)
+                getIntersection(resultList,itemService.getItemByDate(adv_date));
 //            if(!adv_coll != null)
-//                resultList.addAll(itemService.getItemByCollectionID(adv_coll));
-            if(adv_lctn != null)
-                resultList.addAll(itemService.getItemByLocation(adv_lctn));
+//                getIntersection(resultList,itemService.getItemByCollection(adv_coll));
+            if(adv_lctn != null) {
+                getIntersection(resultList, itemService.getItemByLocation(adv_lctn));
             model.addAttribute("itemList", resultList);
 
         }

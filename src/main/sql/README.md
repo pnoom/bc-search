@@ -19,7 +19,6 @@ Enter password: .......
 
 ```
 create database archivesearch;
-create user 'archiveuser'@'%' identified by 'historicbanana';
 grant all on archivesearch.* to 'archiveuser'@'%';
 use archivesearch;
 ```
@@ -27,17 +26,13 @@ use archivesearch;
 1. Then do these IN THIS ORDER:
 
 ```
-source collections.sql;
-source collectionsdata.sql;
-source haslam.sql;
-source elliott.sql;
-source trotter.sql;
+source master-script.sql
 ```
 
 1. Now you can run some SQL queries directly, eg:
 
 ```
-select Item.name from Item join SubCollection on Item.subCollectionId = SubCollection.id where SubCollection.name like '%African%';
+select item.name from item join subcollection on item.subcollection_id = subcollection.id where subcollection.name like '%African%';
 ```
 
 1. Now start the Java program!

@@ -134,4 +134,8 @@ public class Item {
     public String getShortDesc(){
         return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
+
+    public String getURLOfImage(){
+        return "http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + getMultimediaIrn() + "&format=jpeg.jpeg";
+    }
 }

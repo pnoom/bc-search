@@ -74,7 +74,11 @@
         </tr>
         <tr th:each="item : ${itemList}">
             <td>
-                <figure class="image is-128x128"><img th:src="http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=item.multimedia_irn&width=128&height=128&format=jpeg" "width=128" "height=128"/></figure>
+                <figure class="image is-128x128">
+                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" style="width: 128px;height: 128px" />
+
+                </figure>
+
             </td>
             <td>
                 <span class="itemName"><font size="4" color="#0000cd" th:text=${item.name} th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'"></font></span>

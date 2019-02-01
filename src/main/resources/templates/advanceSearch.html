@@ -67,23 +67,18 @@
     </script>
 </div>
 
-
-<h1>Advance search form here</h1>
-
-
-
 <div class="block">
     <form action="#" th:action="@{/advSearch}" method="post">
 
         <div class="columns">
             <div class="column is-one-fifth"></div>
-            <div class="block">
             <div class="column">
-            <div class="columns">
-                <div class="column is-one-fifth"><p>Search date here</p></div>
+                <div class="block">
+                    <div class="columns">
+                <div class="column is-one-fifth">Search date here:</div>
                 <div class="column is-one-fifth is-3">
                     <div id="start Range" style="display: none"> <input type="text" name="date_start" class="text" placeholder="date start Example: 1967"></div>
-                    <div id="no Range" style="display: block"> <input type="text" name="date_search" class="text" placeholder="date search Example: 1967"></div>
+                    <div id="no Range" style="display: block"> <input type="text" name="date_search" class="text" placeholder="Example: 1967"></div>
                 </div>
                 <div class="column is-one-fifth is-3"><div class="block is-centre" id="simpleText" style="margin-left: 20px; display: none; " >To</div>
                 </div>
@@ -114,9 +109,30 @@
                 </div>
 
             </div>
+            <div class="block">
+                <div class="columns">
+                    <div class="column is-one-fifth">Search by collections:</div>
+                </div>
             </div>
+
+            <div class="block">
+                <div class="columns">
+                    <div class="column is-one-fifth">Search by locations:</div>
+                </div>
             </div>
+
+            <div class="block">
+                <div class="columns">
+                    <div class="column is-one-fifth">Search with exact text:</div>
+                </div>
+            </div>
+
+
+
+
+
             <div class="column is-one-fifth"></div>
+            </div>
         </div>
 
 <div class="block">

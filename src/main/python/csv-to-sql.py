@@ -129,6 +129,14 @@ def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
     return command.format(sub_name, row["Full Name"], get_collection_id(row))
 
+def normalize_date(row):
+    date_regexes = ["(?P<date1>\d{4})\s*", "(?P<date1>\d{4})\Ds\s*-\s*(?P<date2>\d{4})\Ds\s*"]
+    if row["Date"] != "default":
+        for pattern in date_regexes:
+            match = re.match(pattern, row["Date"])
+            if match:
+                print(match.groups())
+                
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
     input_files = ["haslam.csv", "elliott.csv", "trotter.csv"]
@@ -156,6 +164,7 @@ def run():
                     sub = insert_subcollection(row, sub_name, get_collection_id(row))
                     output_file.write(sub)
                 
+                normalize_date(row)
                 # Should be guaranteed to have the subcollection now, so lookup
                 item = insert_item(row, sub_id)
                 output_file.write(item)

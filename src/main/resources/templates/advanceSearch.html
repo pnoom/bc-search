@@ -75,18 +75,26 @@
             <div class="column">
                 <div class="block">
                     <div class="columns">
+                        <div class="column is-one-fifth">Search by Date:</div>
+                        <div class="column">
+                            <input type="text" name="date_search" class="input" placeholder="Example: 1950...">
+                        </div>
+                    </div>
+                </div>
+               <!-- <div class="block">
+                    <div class="columns">
                 <div class="column is-one-fifth">Search date here:</div>
-                <div class="column is-one-fifth is-3">
-                    <div id="start Range" style="display: none"> <input type="text" name="date_start" class="text" placeholder="date start Example: 1967"></div>
-                    <div id="no Range" style="display: block"> <input type="text" name="date_search" class="text" placeholder="Example: 1967"></div>
+                <div class="column">
+                    <div id="start Range" style="display: none"> <input type="date" name="date_start" class="text" placeholder="date start Example: 1967"></div>
+                    <input type="text" name="date_search" class="text" placeholder="Example: 1967...">
                 </div>
-                <div class="column is-one-fifth is-3"><div class="block is-centre" id="simpleText" style="margin-left: 20px; display: none; " >To</div>
+               <div class="column is-one-fifth is-3"><div class="block is-centre" id="simpleText" style="margin-left: 20px; display: none; " >To</div>
                 </div>
-                <div class="column is-one-fifth is-3"><div id="endRange" style="display: none"><input class="block" type="text" name="date_end" placeholder="End date..."></div>
+                <div class="column is-one-fifth is-3"><div id="endRange" style="display: none"><input class="block" type="date" name="date_end" placeholder="End date..."></div>
                 </div>
-                <!--<div class="column is-3"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>-->
+                <div class="column is-3"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>
 
-                    <script>
+                <script>
                 function range() {
                     var x = document.getElementById("endRange");
                     var y = document.getElementById("simpleText");
@@ -105,35 +113,40 @@
                         p.style.display = "block";
                     }
                 }
+
                     </script>
                 </div>
+            </div>-->
 
-            </div>
             <div class="block">
                 <div class="columns">
                     <div class="column is-one-fifth">Search by collections:</div>
+                    <div class="column">
+                        <input type="text" name="collection_search" class="input" placeholder="Example: Trotter...">
+                    </div>
                 </div>
             </div>
 
             <div class="block">
                 <div class="columns">
                     <div class="column is-one-fifth">Search by locations:</div>
+                    <div class="column">
+                        <input type="text" name="location_search" class="input" placeholder="Example: Uganda...">
+                    </div>
                 </div>
             </div>
 
             <div class="block">
                 <div class="columns">
                     <div class="column is-one-fifth">Search with exact text:</div>
+                    <div class="column">
+                        <input type="text" name="precision_search" class="input" placeholder="Precise search...">
+                    </div>
                 </div>
             </div>
-
-
-
-
-
+            </div>
             <div class="column is-one-fifth"></div>
             </div>
-        </div>
 
 <div class="block">
     <div class="columns">

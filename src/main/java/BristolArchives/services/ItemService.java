@@ -1,6 +1,7 @@
 package BristolArchives.services;
 
 import BristolArchives.entities.Item;
+import BristolArchives.entities.SubCollection;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class ItemService {
     @Autowired
     private ItemRepo itemRepo;
 
+    @Autowired
+    private SubCollectionService subCollectionService;
+
     public List<Item> getAllItems(){
         return itemRepo.findAll();
     }
@@ -20,13 +24,21 @@ public class ItemService {
         return itemRepo.findByNameContaining(name);
     }
 
+    public List<Item> getItemByCollectionName(String collName) {
+        List<SubCollection> subCollList = subCollectionService.getByCollectionName(collName);
+        List<Item> result = new ArrayList<>();
+        for (SubCollection subColl : subCollList)
+            result.addAll(itemRepo.findBySubCollection(subColl));
+        return result;
+    }
+
+//    public List<Item> getItemBySubCollectionName(String subCollName) {
+//        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
+//    }
+
     public List<Item> getItemByName(String name) {
         return itemRepo.findByName(name);
     }
-
-//    public List<Item> getItemByName(String name) {
-//        return itemRepo.findName(name);
-//    }
 
     public List<Item> getItemByLocation(String location) {
         return itemRepo.findLocation(location);
@@ -35,10 +47,6 @@ public class ItemService {
     public List<Item> getItemByDate(String date) {
         return itemRepo.findDate(date);
     }
-
-//    public List<Item> getItemByCollectionID(int coll) {
-//        return itemRepo.findSubCollection(coll);
-//    }
 
     public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
@@ -84,11 +92,4 @@ public class ItemService {
         return itemRepo.findWithRef(ref).get(0);
     }
 
-    public ItemRepo getItemRepo() {
-        return itemRepo;
-    }
-
-    public void setItemRepo(ItemRepo itemRepo) {
-        this.itemRepo = itemRepo;
-    }
 }

@@ -1,6 +1,7 @@
 package BristolArchives.controllers;
 
 import BristolArchives.entities.Item;
+import BristolArchives.services.CollectionService;
 import BristolArchives.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,14 +17,13 @@ import java.util.List;
 public class AdvancedSearchController {
     @Autowired
     private ItemService itemService;
+    private CollectionService collectionService;
 
     private boolean hasSth(String s) {
         return (s != null) && (!s.isEmpty());
     }
 
     private void getIntersection(List<Item> result, List<Item> newItems) {
-        System.out.println(result);
-        System.out.println(newItems);
         if(result.isEmpty())
             result.addAll(newItems);
         else
@@ -31,20 +31,20 @@ public class AdvancedSearchController {
     }
 
     @GetMapping("/advanceSearch")
-    public String advanceSearch() {
+    public String advanceSearch(Model model) {
+        //model.addAttribute("collectionList",collectionService.getAllCollections());
         return "advanceSearch";
     }
 
     @PostMapping("/advSearch")
     public String sendResult(
-            @RequestParam(value = "adv_search_coll", required = false) String adv_coll,
+            @RequestParam(value = "collection_search", required = false) String adv_coll,
             @RequestParam(value = "date_search", required = false) String adv_date,
             @RequestParam(value = "date_start", required = false) String adv_date_start,
             @RequestParam(value = "date_end", required = false) String adv_date_end,
-            @RequestParam(value = "adv_search_name", required = false) String adv_name,
-            @RequestParam(value = "adv_search_lctn", required = false) String adv_lctn
-        )
-    {
+            @RequestParam(value = "precision_search", required = false) String adv_name,
+            @RequestParam(value = "location_search", required = false) String adv_lctn
+        ){
         String search = "?";
 
         if(hasSth(adv_coll))
@@ -73,25 +73,24 @@ public class AdvancedSearchController {
             @RequestParam(value = "dateEnd", required = false) String adv_date_end,
             @RequestParam(value = "name", required = false) String adv_name,
             @RequestParam(value = "lctn", required = false) String adv_lctn,
-
             Model model
-            )
-    {
+            ){
+
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
             return "redirect:/advanceSearch";
-
         else{
             List<Item> resultList = new ArrayList();
             if(adv_name != null)
                 getIntersection(resultList,itemService.getItemByName(adv_name));
             if(adv_date != null)
                 getIntersection(resultList,itemService.getItemByDate(adv_date));
-//            if(!adv_coll != null)
-//                getIntersection(resultList,itemService.getItemByCollection(adv_coll));
+            if(adv_coll != null)
+                getIntersection(resultList, itemService.getItemByCollectionName(adv_coll));
             if(adv_lctn != null)
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn));
             model.addAttribute("itemList", resultList);
         }
+
         return "itemResults";
     }
 }

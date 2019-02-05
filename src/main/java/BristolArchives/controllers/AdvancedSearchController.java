@@ -23,8 +23,8 @@ public class AdvancedSearchController {
         return (s != null) && (!s.isEmpty());
     }
 
-    private void getIntersection(List<Item> result, List<Item> newItems) {
-        if(result.isEmpty())
+    private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
+        if(result.isEmpty() && !someConstraintsExist)
             result.addAll(newItems);
         else
             result.retainAll(newItems);
@@ -79,15 +79,22 @@ public class AdvancedSearchController {
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
             return "redirect:/advanceSearch";
         else{
+            boolean someConstraintsExist = false;
             List<Item> resultList = new ArrayList();
-            if(adv_name != null)
-                getIntersection(resultList,itemService.getItemByName(adv_name));
-            if(adv_date != null)
-                getIntersection(resultList,itemService.getItemByDate(adv_date));
-            if(adv_coll != null)
-                getIntersection(resultList, itemService.getItemByCollectionName(adv_coll));
+            if(adv_name != null) {
+                getIntersection(resultList, itemService.getItemByName(adv_name), false);
+                someConstraintsExist = true;
+            }
+            if(adv_date != null) {
+                getIntersection(resultList,itemService.getItemByDate(adv_date), someConstraintsExist);
+                someConstraintsExist = true;
+            }
+            if(adv_coll != null) {
+                getIntersection(resultList, itemService.getItemByCollectionName(adv_coll), someConstraintsExist);
+                someConstraintsExist = true;
+            }
             if(adv_lctn != null)
-                getIntersection(resultList, itemService.getItemByLocation(adv_lctn));
+                getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
             model.addAttribute("itemList", resultList);
         }
 

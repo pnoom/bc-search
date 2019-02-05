@@ -85,7 +85,7 @@
     <div class="columns">
         <div class="column is-half">
             <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title"> Welcome to Bristol Archives </h1>
+            <h1 class="title">Item page:</h1>
         </div>
         <div class="column is-quarter">
         </div>
@@ -100,7 +100,7 @@
 
 <!-- This is what creates the navbar -->
 <div class="block">
-    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-burger burger" data-target="navMenu">
             <span></span>
             <span></span>
@@ -123,7 +123,20 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript">
+    <style>
+        .content{
+            padding: 20px;
+        }
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .sticky + .content{
+            padding-top: 60px;
+        }
+    </style>
+    <script>
         (function() {
             var burger = document.querySelector('.burger');
             var nav = document.querySelector('#'+burger.dataset.target);
@@ -132,6 +145,16 @@
                 nav.classList.toggle('is-active');
             });
         })();
+        window.onscroll = function() {navbarStick()};
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function navbarStick() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
     </script>
 </div>
 <div class="block">
@@ -141,7 +164,7 @@
             <div>
             <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
-            <img id="myImg" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" th:alt=${item.name}/>
+            <img id="myImg" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediairn} + '&format=jpeg'}" th:alt=${item.name}/>
             <div id="myModal" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img01">
@@ -190,12 +213,15 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
         document.getElementsByClassName('navbar')[0].style.visibility = 'visible';
     }
 </script>
+<div class="block">
+    <canvas height="100" style="border:1px transparent">
+    </canvas>
+</div>
 </body>
 </html>

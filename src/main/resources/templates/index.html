@@ -64,7 +64,25 @@
                 nav.classList.toggle('is-active');
             });
         })();
+        window.onscroll = function() {navbarStick()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function navbarStick() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
     </script>
+    <style>
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+    </style>
 </div>
 
 <div class="block">
@@ -76,8 +94,7 @@
     <form action = "#" th:action="@{/search}" method="post" >
     <div class="columns">
         <div class="column is-quarter">
-
-            <!--<a class="button ">Advanced search</a>-->
+            <a class="button" style="margin-left: 200px" href="advanceSearch">Advanced search</a>
         </div>
         <div class="column is-half">
             <div class="control">

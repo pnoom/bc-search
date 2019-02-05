@@ -129,6 +129,21 @@ def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
     return command.format(sub_name, row["Full Name"], get_collection_id(row))
 
+def normalize_date(row):
+    A = "\d{1,2}\s*[-]?\s*\w{2,10}\s*[-]?\s*\d{2,4}\s*"
+    B = "\s*(c.)?\s*\d{4}[s]?\s*"
+    date_regexes = [A
+                    ,"(\[)?"+B+"-"+B+"(\])?"
+                    ,"(\[)?"+B+"(\])?"
+                    ,"\d{0,2}-\d{1,2}\s*[-]?\s*\w{2,10}\s*[-]?\s*\d{2,4}\s*"
+                    ,"\w{2,10}\s*\d{2,4}\s*"
+                    ,"\d{1,2}\s*[-]?\s*\w{2,10}\s*[-]?\s*\d{0,4}\s*[-]?\s*"+A]
+    combined = "(" + ")|(".join(date_regexes) + ")"
+    if row["Date"] != "default":
+        match = re.match(combined, row["Date"])
+        if match == None:
+            print(row["Date"])
+
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
     input_files = ["haslam.csv", "elliott.csv", "trotter.csv"]
@@ -155,7 +170,8 @@ def run():
                 if sub_name != "Uncategorized":
                     sub = insert_subcollection(row, sub_name, get_collection_id(row))
                     output_file.write(sub)
-                
+
+                normalize_date(row)
                 # Should be guaranteed to have the subcollection now, so lookup
                 item = insert_item(row, sub_id)
                 output_file.write(item)

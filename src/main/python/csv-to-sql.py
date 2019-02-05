@@ -132,7 +132,7 @@ def insert_subcollection(row, sub_name, collection_id):
 def normalize_date(row):
     D = "(rd|st|nd|th)?"
     A = "(\d{1,2})"+D+"\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*(\d{2,4})\s*" #DD Month Year (-)
-    B = "\s*(c.)?\s*(\d{4})[s]?\s*" #YYYY
+    B = "\s*(c.)?\s*(\d{4})(s)?\s*" #YYYY
 
     date_regexes = ["(\d{1,2})"+D+"\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*(\d{2,4})\s*[-]?\s*"+A # DD Month YYYY - DD Month YYYY
                     ,"(\d{1,2})\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*"+A # DD Month - DD Month YYYY
@@ -150,8 +150,9 @@ def normalize_date(row):
         match = re.match(combined, row["Date"])
         current = list(match.groups())
         filtered = [x for x in current if x != None]
+        print(filtered[1:])
 
-        print(filtered)
+        #print(filtered)
             
         """if match == None:
             print(row["Date"])"""

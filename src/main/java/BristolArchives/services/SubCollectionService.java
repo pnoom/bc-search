@@ -27,6 +27,8 @@ public class SubCollectionService {
     }
 
     public List<SubCollection> getByCollectionName(String collName){
+        //return collectionService.getByName(collName).stream().map(coll->subCollectionRepo.findByCollection(coll)).flatMap(List::stream).collect(Collectors.toList());
+
         List<Collection> collList = collectionService.getByName(collName);
         List<SubCollection> result = new ArrayList<>();
         for(Collection coll : collList)

@@ -132,29 +132,71 @@ def insert_subcollection(row, sub_name, collection_id):
 
 # ---Date handlers--- (in order of decreasing regex-specificity)
 
-# Each handler must take a list representing the non-null bits of data captured by its regex,
+# Each handler must take a list representing the non-null chunks of data captured by its regex,
 # and return start_date and end_date strings in this format: 
 
 # 1. DD Month YYYY - DD Month YYYY
 def handler1(groups):
-    # handler logic goes here
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
     return start_date, end_date
 
 # 2. DD Month - DD Month YYYY
+def handler2(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 3. DD Month Year
+def handler3(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 4. DD-DD Month YYYY
+def handler4(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 5. Month YYYY
+def handler5(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 6. Month YY
+def handler6(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 7. YYYY-YYYY
+def handler7(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 8. YYYY
+def handler8(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # 9. Location DD Month Year
+def handler9(groups):
+    # placeholder
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # ---Date handlers---
 
@@ -181,13 +223,22 @@ def normalize_date(row):
     
     regexes_and_handlers = OrderedDict(zip(data_regexes, date_handlers)) #may need to convert zip object to list first, check
 
-    # CHECK FOR "default" DATE ENTRIES, AND HANDLE DIFFERENTLY (use NULL or SQL no-date '0000-00-00' value?)
+    # CHECK FOR "default" DATE ENTRIES, AND HANDLE IN ADVANCE (use NULL or SQL no-date '0000-00-00' value?)
+    #if row["Date"] == "default":
+    #    row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00"
+    #    return
+
+    if row["Date"] != "default":
+        print(row["Date"])
     for regex, handler in regexes_and_handlers.items():
         match = re.match(regex, row["Date"])
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
             row["start_date"], row["end_date"]  = handler(filtered[1:])
+            print("start: " + row["start_date"] + " end: " + row["end_date"])
+        else:
+            row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
 
     # Mustn't combine regexes into one: otherwise we don't know which handler to use
     """

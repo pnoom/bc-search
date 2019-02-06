@@ -8,6 +8,21 @@ import javax.persistence.*;
 @Table(name="item")  // This indicates 'Collection' objects are from mysql table 'Collection'
 public class Item {
 
+    public Item(){}
+
+    public Item(String itemRef, String name, String location, String description, String dateCreated, String copyrighted, String extent, String physTechDesc, String multimediaIrn, SubCollection subCollection) {
+        this.itemRef = itemRef;
+        this.name = name;
+        this.location = location;
+        this.description = description;
+        this.dateCreated = dateCreated;
+        this.copyrighted = copyrighted;
+        this.extent = extent;
+        this.physTechDesc = physTechDesc;
+        this.multimediaIrn = multimediaIrn;
+        this.subCollection = subCollection;
+    }
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +58,6 @@ public class Item {
     @OneToOne
     @JoinColumn(name = "subcollection_id")
     private SubCollection subCollection;
-
 
     public Integer getId() {
         return id;

@@ -137,9 +137,10 @@ def insert_subcollection(row, sub_name, collection_id):
 
 # 1. DD Month YYYY - DD Month YYYY
 def handler1(groups):
-    # placeholder
+    print(groups)
     start_date = "0000-00-00"
     end_date = "0000-00-00"
+    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
 # 2. DD Month - DD Month YYYY
@@ -228,17 +229,20 @@ def normalize_date(row):
     #    row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00"
     #    return
 
-    print(row["Date"])
+    # print(row["Date"])
     for regex, handler in regexes_and_handlers.items():
         match = re.match(regex, row["Date"])
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            row["start_date"], row["end_date"]  = handler(filtered[1:])
+            if date_regexes.index(regex) == 0:
+                print(row["Date"])
+            row["start_date"], row["end_date"]  = handler(filtered)
+            break
         else:
             row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
 
-    print("start: " + row["start_date"] + " end: " + row["end_date"])
+    # print("start: " + row["start_date"] + " end: " + row["end_date"])
     # Mustn't combine regexes into one: otherwise we don't know which handler to use
     """
     combined = "(" + ")|(".join(date_regexes) + ")"

@@ -132,14 +132,31 @@ def insert_subcollection(row, sub_name, collection_id):
 
 # ---Date handlers--- (in order of decreasing regex-specificity)
 
+def month_to_number(month):
+    names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    numbers = dict(zip(names, [x for x in range(1, 13)]))
+    return numbers[month[:3]]
+
+# "{:02d}".format(n)
+
 # Each handler must take a list representing the non-null chunks of data captured by its regex,
 # and return start_date and end_date strings in this format: 
+
+"""
+def format_DD_Month_YYYY(dd-month-yyyy):
+    dd-month-yyyy[1] = month_to_number(dd-month-yyyy[1])
+    dd-month-yyyy = [int(i) for i in dd-month-yyyy]
+    return "{:04d}-{:02d}-{:02d}".format(*reversed(dd-month-yyyy))
+"""
 
 # 1. DD Month YYYY - DD Month YYYY
 def handler1(groups):
     print(groups)
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    groups[1] = month_to_number(groups[1])
+    groups[4] = month_to_number(groups[4])
+    groups = [int(i) for i in groups]
+    start_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups[:3]))
+    end_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups[3:]))
     print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
@@ -205,7 +222,7 @@ def handler9(groups):
 # start_date and end_date before this function returns.
 
 def normalize_date(row):
-    D = "(rd|st|nd|th)?"
+    D = "(?:rd|st|nd|th)?"
     A = "(\d{1,2})"+D+"\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*(\d{2,4})\s*" #DD Month Year (-)
     B = "\s*(c.)?\s*(\d{4})(s)?\s*" #YYYY
     

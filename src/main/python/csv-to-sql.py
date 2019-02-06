@@ -147,67 +147,34 @@ def format_DD_Month_YYYY(dd_month_yyyy):
     dd_month_yyyy = [int(i) for i in dd_month_yyyy]
     return "{:04d}-{:02d}-{:02d}".format(*reversed(dd_month_yyyy))
 
-# 1. DD Month YYYY - DD Month YYYY
-def handler1(groups):
+# SHOULD BE 11 HANDLERS
+
+# 0. DD Month YYYY - DD Month YYYY
+def handler0(groups):
     start_date = format_DD_Month_YYYY(groups[:3])
     end_date = format_DD_Month_YYYY(groups[3:])
     return start_date, end_date
 
-# 2. DD Month - DD Month YYYY
-def handler2(groups):
+# 1. DD Month - DD Month YYYY
+def handler1(groups):
     start_date = format_DD_Month_YYYY([groups[0], groups[1], groups[-1]])
     end_date = format_DD_Month_YYYY(groups[2:])
     return start_date, end_date
 
-# 3. DD Month YYYY
-def handler3(groups):
-    print(groups)
+# 2. DD Month YYYY
+def handler2(groups):
     start_date = format_DD_Month_YYYY(groups[:3])
     end_date = format_DD_Month_YYYY(groups[:3])
-    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
-# 4. DD-DD Month YYYY
-def handler4(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+# 3. DD-DD Month YYYY
+def handler3(groups):
+    start_date = format_DD_Month_YYYY([groups[0], groups[2], groups[3]])
+    end_date = format_DD_Month_YYYY([groups[1], groups[2], groups[3]])
     return start_date, end_date
 
-# 5. Month YYYY
-def handler5(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    return start_date, end_date
+# 4. Month YYYY - Month YYYY
 
-# 6. Month YY
-def handler6(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    return start_date, end_date
-
-# 7. YYYY-YYYY
-def handler7(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    return start_date, end_date
-
-# 8. YYYY
-def handler8(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    return start_date, end_date
-
-# 9. Location DD Month Year
-def handler9(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    return start_date, end_date
 
 # ---Date handlers---
 
@@ -216,21 +183,24 @@ def handler9(groups):
 
 def normalize_date(row):
     D = "(?:rd|st|nd|th)?"
+    C = "\[?([a-zA-Z]{2,10})\]?\s*(\d{2,4})\s*" # Month YYYY
     A = "(\d{1,2})"+D+"\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*(\d{2,4})\s*" #DD Month Year (-)
     B = "\s*(c.)?\s*(\d{4})(s)?\s*" #YYYY
     
     date_regexes = ["(\d{1,2})"+D+"\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*(\d{2,4})\s*[-]?\s*"+A # DD Month YYYY - DD Month YYYY
                     ,"(\d{1,2})\s*[-]?\s*([a-zA-Z]{2,10})\s*[-]?\s*"+A # DD Month - DD Month YYYY
-                    ,A #DD Month Year
+                    ,A #DD Month YYYY
                     ,"(\d{0,2})-(\d{1,2})\s*[-]?\s*(\w{2,10})\s*[-]?\s*(\d{2,4})\s*" #DD-DD Month YYYY
-                    ,"\[?([a-zA-Z]{2,10})\]?\s*(\d{2,4})\s*" # Month YYYY
+                    ,C+"\s*[-]?\s*"+C # Month YYYY - Month YYYY
+                    ,C+"\s*[-]?\s*"+B # Month YYYY - YYYY
+                    ,C # Month YYYY
                     ,"\[?([a-zA-Z]{2,10})\]?\s*[-]?\s*(\d{2})\s*" #Month YY
                     ,"\[?"+B+"-"+B+"\]?" #YYYY-YYYY
                     ,"\[?"+B+"\]?" #YYYY
                     ,"[a-zA-Z]+,\s*"+A #Location DD Month Year
                     ]
 
-    date_handlers = [handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9]
+    date_handlers = [handler0, handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10]
     
     regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) #may need to convert zip object to list first, check
 
@@ -245,7 +215,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 2:
+            if date_regexes.index(regex) == 4:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

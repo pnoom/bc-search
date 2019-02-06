@@ -174,7 +174,43 @@ def handler3(groups):
     return start_date, end_date
 
 # 4. Month YYYY - Month YYYY
+def handler4(groups):
+    print(groups)
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    print("start: " + start_date + " end: " + end_date)
+    return start_date, end_date
 
+# DUMMIES
+def handler5(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
+
+def handler6(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
+
+def handler7(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
+
+def handler8(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
+
+def handler9(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
+
+def handler10(groups):
+    start_date = "0000-00-00"
+    end_date = "0000-00-00"
+    return start_date, end_date
 
 # ---Date handlers---
 

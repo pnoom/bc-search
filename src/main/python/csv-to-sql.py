@@ -11,20 +11,26 @@ from collections import OrderedDict
 # For now, assume everything is a string, incl. the multimedia irn
 
 def insert_item(row, subcollection_id):
-    command = "INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
+    if row["Date"] == "default":
+        command = "INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', NULL, NULL, '{}', '{}', '{}', '{}', '{}', {});\n"
+        return command.format(row["Object Number"], row["Geographic Name"],
+                          row["Full Name"], row["Scope And Content"],
+                          row["Date"], row["Copyright"], row["Extent"],
+                          row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
+    else:
+        command = "INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
 
-    # Normalize data here and splice in using format.
+        # Normalize data here and splice in using format.
 
-    # "Object Number","Collection Name","Geographic Name","Full Name",
-    # "Scope And Content","Date","Extent","Physical/Technical","Multimedia name",
-    # "Copyright","Multimedia irn"
-    
-    return command.format(row["Object Number"], row["Geographic Name"],
+        # "Object Number","Collection Name","Geographic Name","Full Name",
+        # "Scope And Content","Date","Extent","Physical/Technical","Multimedia name",
+        # "Copyright","Multimedia irn"
+        return command.format(row["Object Number"], row["Geographic Name"],
                           row["Full Name"], row["Scope And Content"],
                           row["start_date"], row["end_date"],
                           row["Date"], row["Copyright"], row["Extent"],
                           row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
-
+    
 # The "Extent" field is useful for determining subcollections ("Level" rarely
 # helps, so that is omitted) but
 # is inconsistently formatted. Need to keep a dict of subcollection names and

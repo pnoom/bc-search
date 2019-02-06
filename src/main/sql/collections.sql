@@ -27,8 +27,8 @@ CREATE TABLE item (
   location                      VARCHAR(100)   NOT NULL,
   name           		VARCHAR(100)   NULL,
   description           	TEXT           NULL,
-  start_date			DATE	       NOT NULL,
-  end_date			DATE	       NOT NULL,
+  start_date			DATE	       NULL,
+  end_date			DATE	       NULL,
   -- What the archivists typed in
   display_date                  VARCHAR(100)   NOT NULL,
   copyrighted                   VARCHAR(100)   NOT NULL,

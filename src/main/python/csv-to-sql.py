@@ -175,16 +175,16 @@ def handler3(groups):
 
 # 4. Month YYYY - Month YYYY
 def handler4(groups):
+    start_date = format_DD_Month_YYYY([1, groups[0], groups[1]])
+    end_date = format_DD_Month_YYYY([28, groups[2], groups[3]])
+    return start_date, end_date
+
+# 5. Month YYYY - YYYY
+def handler5(groups):
     print(groups)
     start_date = "0000-00-00"
     end_date = "0000-00-00"
     print("start: " + start_date + " end: " + end_date)
-    return start_date, end_date
-
-# DUMMIES
-def handler5(groups):
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
     return start_date, end_date
 
 def handler6(groups):
@@ -251,7 +251,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 4:
+            if date_regexes.index(regex) == 5:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

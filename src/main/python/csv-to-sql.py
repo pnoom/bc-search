@@ -193,22 +193,26 @@ def handler6(groups):
 
 # 7. Month YY
 def handler7(groups):
-    print(groups)
     groups[0] = month_to_number(groups[0])
     groups = [int(i) for i in groups]
     start_date = "{:04d}-{:02d}-{:02d}".format(groups[1]+1900, groups[0], 1)
     end_date = "{:04d}-{:02d}-{:02d}".format(groups[1]+1900, groups[0], 28)
-    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
+# 8. YYYY-YYYY
 def handler8(groups):
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    groups = [x for x in groups if ((x != 's') and (x != 'c.'))]
+    groups = [int(i) for i in groups]
+    start_date = "{:04d}-{:02d}-{:02d}".format(groups[0], 1, 1)
+    end_date = "{:04d}-{:02d}-{:02d}".format(groups[1], 12, 31)
     return start_date, end_date
 
+# 9. YYYY
 def handler9(groups):
+    print(groups)
     start_date = "0000-00-00"
     end_date = "0000-00-00"
+    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
 def handler10(groups):
@@ -255,7 +259,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 7:
+            if date_regexes.index(regex) == 9:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

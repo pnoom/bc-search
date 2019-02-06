@@ -238,10 +238,7 @@ def handler9(groups):
 
 # 10. Location DD Month Year
 def handler10(groups):
-    print(groups)
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    print("start: " + start_date + " end: " + end_date)
+    start_date, end_date = handler2(groups)
     return start_date, end_date
 
 # ---Date handlers---
@@ -265,7 +262,7 @@ def normalize_date(row):
                     ,"\[?([a-zA-Z]{2,10})\]?\s*[-]?\s*(\d{2})\s*" # Month YY
                     ,"\[?"+B+"-"+B+"\]?" #YYYY-YYYY
                     ,"\[?"+B+"\]?" #YYYY
-                    ,"[a-zA-Z]+,\s*"+A #Location DD Month Year
+                    ,"(?:[a-zA-Z]+,\s*)"+A #Location DD Month Year
                     ]
 
     date_handlers = [handler0, handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10]

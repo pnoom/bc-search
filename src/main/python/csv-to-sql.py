@@ -142,36 +142,29 @@ def month_to_number(month):
 # Each handler must take a list representing the non-null chunks of data captured by its regex,
 # and return start_date and end_date strings in this format: 
 
-"""
-def format_DD_Month_YYYY(dd-month-yyyy):
-    dd-month-yyyy[1] = month_to_number(dd-month-yyyy[1])
-    dd-month-yyyy = [int(i) for i in dd-month-yyyy]
-    return "{:04d}-{:02d}-{:02d}".format(*reversed(dd-month-yyyy))
-"""
+def format_DD_Month_YYYY(dd_month_yyyy):
+    dd_month_yyyy[1] = month_to_number(dd_month_yyyy[1])
+    dd_month_yyyy = [int(i) for i in dd_month_yyyy]
+    return "{:04d}-{:02d}-{:02d}".format(*reversed(dd_month_yyyy))
 
 # 1. DD Month YYYY - DD Month YYYY
 def handler1(groups):
-    print(groups)
-    groups[1] = month_to_number(groups[1])
-    groups[4] = month_to_number(groups[4])
-    groups = [int(i) for i in groups]
-    start_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups[:3]))
-    end_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups[3:]))
-    print("start: " + start_date + " end: " + end_date)
+    start_date = format_DD_Month_YYYY(groups[:3])
+    end_date = format_DD_Month_YYYY(groups[3:])
     return start_date, end_date
 
 # 2. DD Month - DD Month YYYY
 def handler2(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    start_date = format_DD_Month_YYYY([groups[0], groups[1], groups[-1]])
+    end_date = format_DD_Month_YYYY(groups[2:])
     return start_date, end_date
 
-# 3. DD Month Year
+# 3. DD Month YYYY
 def handler3(groups):
-    # placeholder
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    print(groups)
+    start_date = format_DD_Month_YYYY(groups[:3])
+    end_date = format_DD_Month_YYYY(groups[:3])
+    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
 # 4. DD-DD Month YYYY
@@ -252,7 +245,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 0:
+            if date_regexes.index(regex) == 2:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

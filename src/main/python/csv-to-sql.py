@@ -181,20 +181,24 @@ def handler4(groups):
 
 # 5. Month YYYY - YYYY
 def handler5(groups):
-    print(groups)
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
-    print("start: " + start_date + " end: " + end_date)
+    start_date = format_DD_Month_YYYY([1, groups[0], groups[1]])
+    end_date = format_DD_Month_YYYY([28, groups[0], groups[2]])
     return start_date, end_date
 
+# 6. Month YYYY
 def handler6(groups):
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    start_date = format_DD_Month_YYYY([1, groups[0], groups[1]])
+    end_date = format_DD_Month_YYYY([28, groups[0], groups[1]])
     return start_date, end_date
 
+# 7. Month YY
 def handler7(groups):
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
+    print(groups)
+    groups[0] = month_to_number(groups[0])
+    groups = [int(i) for i in groups]
+    start_date = "{:04d}-{:02d}-{:02d}".format(groups[1]+1900, groups[0], 1)
+    end_date = "{:04d}-{:02d}-{:02d}".format(groups[1]+1900, groups[0], 28)
+    print("start: " + start_date + " end: " + end_date)
     return start_date, end_date
 
 def handler8(groups):
@@ -230,7 +234,7 @@ def normalize_date(row):
                     ,C+"\s*[-]?\s*"+C # Month YYYY - Month YYYY
                     ,C+"\s*[-]?\s*"+B # Month YYYY - YYYY
                     ,C # Month YYYY
-                    ,"\[?([a-zA-Z]{2,10})\]?\s*[-]?\s*(\d{2})\s*" #Month YY
+                    ,"\[?([a-zA-Z]{2,10})\]?\s*[-]?\s*(\d{2})\s*" # Month YY
                     ,"\[?"+B+"-"+B+"\]?" #YYYY-YYYY
                     ,"\[?"+B+"\]?" #YYYY
                     ,"[a-zA-Z]+,\s*"+A #Location DD Month Year
@@ -251,7 +255,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 5:
+            if date_regexes.index(regex) == 7:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

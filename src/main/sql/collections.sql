@@ -30,7 +30,7 @@ CREATE TABLE item (
   start_date			DATE	       NOT NULL,
   end_date			DATE	       NOT NULL,
   -- What the archivists typed in
-  date_created                  VARCHAR(100)   NOT NULL,
+  display_date                  VARCHAR(100)   NOT NULL,
   copyrighted                   VARCHAR(100)   NOT NULL,
   extent			VARCHAR(100)   NOT NULL,
   phys_tech_desc		TEXT           NULL,

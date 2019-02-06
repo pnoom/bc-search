@@ -11,7 +11,7 @@ from collections import OrderedDict
 # For now, assume everything is a string, incl. the multimedia irn
 
 def insert_item(row, subcollection_id):
-    command = "INSERT INTO item (item_ref, location, name, description, date_created, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
+    command = "INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', {});\n"
 
     # Normalize data here and splice in using format.
 
@@ -21,6 +21,7 @@ def insert_item(row, subcollection_id):
     
     return command.format(row["Object Number"], row["Geographic Name"],
                           row["Full Name"], row["Scope And Content"],
+                          row["start_date"], row["end_date"],
                           row["Date"], row["Copyright"], row["Extent"],
                           row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
 
@@ -269,37 +270,16 @@ def normalize_date(row):
     
     regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) #may need to convert zip object to list first, check
 
-    # CHECK FOR "default" DATE ENTRIES, AND HANDLE IN ADVANCE (use NULL or SQL no-date '0000-00-00' value?)
-    #if row["Date"] == "default":
-    #    row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00"
-    #    return
-
-    # print(row["Date"])
     for regex, handler in regexes_and_handlers.items():
         match = re.match(regex, row["Date"])
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 10:
-                print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break
         else:
             row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
 
-    # print("start: " + row["start_date"] + " end: " + row["end_date"])
-    # Mustn't combine regexes into one: otherwise we don't know which handler to use
-    """
-    combined = "(" + ")|(".join(date_regexes) + ")"
-    if row["Date"] != "default":
-        print(row["Date"])
-        match = re.match(combined, row["Date"])
-        current = list(match.groups())
-        filtered = [x for x in current if x != None]
-        print(filtered[1:])
-
-        #print(filtered)
-    """
 
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))

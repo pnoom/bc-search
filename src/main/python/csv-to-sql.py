@@ -199,6 +199,8 @@ def handler7(groups):
     end_date = "{:04d}-{:02d}-{:02d}".format(groups[1]+1900, groups[0], 28)
     return start_date, end_date
 
+# NOTE: does not consider 's'-es on RHS of range
+
 # 8. YYYY-YYYY
 def handler8(groups):
     groups = [x for x in groups if ((x != 's') and (x != 'c.'))]
@@ -208,16 +210,38 @@ def handler8(groups):
     return start_date, end_date
 
 # 9. YYYY
+# if both circa and s, give or take 1 decade
+# if just circa, give or take 2 years
+# if just s, add 10 years
+# if neither, just YYYY
 def handler9(groups):
+    if (('c.' in groups) and ('s' in groups)):
+        groups = [x for x in groups if ((x != 's') and (x != 'c.'))]
+        groups = [int(i) for i in groups]
+        start_date = "{:04d}-{:02d}-{:02d}".format(groups[0]-10, 1, 1)
+        end_date = "{:04d}-{:02d}-{:02d}".format(groups[0]+9, 12, 31)
+    elif ('c.' in groups):
+        groups = [x for x in groups if x != 'c.']
+        groups = [int(i) for i in groups]
+        start_date = "{:04d}-{:02d}-{:02d}".format(groups[0]-2, 1, 1)
+        end_date = "{:04d}-{:02d}-{:02d}".format(groups[0]+2, 12, 31)
+    elif ('s' in groups):
+        groups = [x for x in groups if x != 's']
+        groups = [int(i) for i in groups]
+        start_date = "{:04d}-{:02d}-{:02d}".format(groups[0], 1, 1)
+        end_date = "{:04d}-{:02d}-{:02d}".format(groups[0]+9, 12, 31)
+    else:
+        groups = [int(i) for i in groups]
+        start_date = "{:04d}-{:02d}-{:02d}".format(groups[0], 1, 1)
+        end_date = "{:04d}-{:02d}-{:02d}".format(groups[0], 12, 31)
+    return start_date, end_date
+
+# 10. Location DD Month Year
+def handler10(groups):
     print(groups)
     start_date = "0000-00-00"
     end_date = "0000-00-00"
     print("start: " + start_date + " end: " + end_date)
-    return start_date, end_date
-
-def handler10(groups):
-    start_date = "0000-00-00"
-    end_date = "0000-00-00"
     return start_date, end_date
 
 # ---Date handlers---
@@ -259,7 +283,7 @@ def normalize_date(row):
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
-            if date_regexes.index(regex) == 9:
+            if date_regexes.index(regex) == 10:
                 print(row["Date"])
             row["start_date"], row["end_date"]  = handler(filtered)
             break

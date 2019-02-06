@@ -221,25 +221,24 @@ def normalize_date(row):
 
     date_handlers = [handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9]
     
-    regexes_and_handlers = OrderedDict(zip(data_regexes, date_handlers)) #may need to convert zip object to list first, check
+    regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) #may need to convert zip object to list first, check
 
     # CHECK FOR "default" DATE ENTRIES, AND HANDLE IN ADVANCE (use NULL or SQL no-date '0000-00-00' value?)
     #if row["Date"] == "default":
     #    row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00"
     #    return
 
-    if row["Date"] != "default":
-        print(row["Date"])
+    print(row["Date"])
     for regex, handler in regexes_and_handlers.items():
         match = re.match(regex, row["Date"])
         if match:
             filtered = [x for x in list(match.groups()) if x != None]
             # Mutates row dict so that its entries can be used in insert_item()
             row["start_date"], row["end_date"]  = handler(filtered[1:])
-            print("start: " + row["start_date"] + " end: " + row["end_date"])
         else:
             row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
 
+    print("start: " + row["start_date"] + " end: " + row["end_date"])
     # Mustn't combine regexes into one: otherwise we don't know which handler to use
     """
     combined = "(" + ")|(".join(date_regexes) + ")"

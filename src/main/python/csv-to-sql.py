@@ -250,8 +250,9 @@ def handler10(groups):
 
 # 11. DD/MM/YYYY
 def handler11(groups):
-    start_date = format_DD_Month_YYYY(groups)
-    end_date = format_DD_Month_YYYY(groups)
+    groups = [int(i) for i in groups]
+    start_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups))
+    end_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups))
     return start_date, end_date
 
 # ---Date handlers---

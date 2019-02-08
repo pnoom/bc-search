@@ -34,5 +34,5 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
 
     @Query("select i from item i where not (i.start_date > :start or i.end_date < :end)")
     List<Item> findByDateRange(@Param("start")String start, @Param("end")String end);
-    
+
 }

@@ -92,4 +92,35 @@ public class ItemService {
         return itemRepo.findWithRef(ref).get(0);
     }
 
+    public List<Item> advancedSearch(String specific_date, String start_date, String end_date, String collection, String location, String precision) {
+        List<Item> results = new ArrayList<>();
+        if (specific_date != null) {
+            results.addAll(itemRepo.findBySpecificDate(specific_date));
+        }
+        if (start_date != null && end_date != null) {
+            List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+        /*
+        if (collection != null) {
+            List<Item> currResults = itemRepo.findByCollection(collection);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+        */
+        if (location != null) {
+            List<Item> currResults = itemRepo.findLocation(location);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+        // this.getItem(precision, results); // TODO: getItem should take results param and mutate it
+        return results;
+    }
 }

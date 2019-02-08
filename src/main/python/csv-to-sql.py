@@ -248,6 +248,12 @@ def handler10(groups):
     start_date, end_date = handler2(groups)
     return start_date, end_date
 
+# 11. DD/MM/YYYY
+def handler11(groups):
+    start_date = format_DD_Month_YYYY(groups)
+    end_date = format_DD_Month_YYYY(groups)
+    return start_date, end_date
+
 # ---Date handlers---
 
 # You can add a key to a dictionary (here the row dict) by assigning a value to that key. We'll add keys for
@@ -270,9 +276,10 @@ def normalize_date(row):
                     ,"\[?"+B+"-"+B+"\]?" #YYYY-YYYY
                     ,"\[?"+B+"\]?" #YYYY
                     ,"(?:[a-zA-Z]+,\s*)"+A #Location DD Month Year
+                    ,"(\d{2})(?:/)(\d{2})(?:/)(\d{4})" # DD/MM/YYYY
                     ]
 
-    date_handlers = [handler0, handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10]
+    date_handlers = [handler0, handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10,handler11]
     
     regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) #may need to convert zip object to list first, check
 

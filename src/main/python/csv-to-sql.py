@@ -94,40 +94,32 @@ x documents
 x volumes
 x films
 x pamphlets
+x photographs
+x book
 
 Extent stuff NOT to match:
 
 1 negative
 1 document
-1 volume
 1 film [Xmm]
 1 pamphlet
 
 """
 # BE PRECISE with regexes
 
-def get_subcollection_name(row):
-    # Strategy 1: extent only
-
-    # Extend this
-    extent_regexes = ["^\d+ box[es]", "^\d+ file[s]", "^\d+ envelope[s]",
-                      "^\d+ folder[es]", "^\d+ negatives", "^\d+ documents",
-                      "^\d+ volumes", "^\d+ films", "^\d+ pamphlets"]
+def get_subcollection_name(row):    
+    extent_regexes = ["box(es)?", "file(s)?", "envelope(s)?",
+                      "folder(s)?", "negatives", "documents",
+                      "volume(s)?", "films", "pamphlets",
+                      "book(s)?", "photographs"]
+    col_reg = "[Cc]ollection"
     for pattern in extent_regexes:
-        if re.match(pattern, row["Extent"]):
+        if (re.search(col_reg, row["Full Name"])):
+            break
+        if (re.search(pattern, row["Extent"])):
+            print(row["Collection Name"]+": "+row["Full Name"])
             return row["Object Number"]
 
-    # Strategy 2: object number only
-    # eg. "2001/090/1/1", possibly followed by "/number/number/..."
-    
-    #obj_num_regex = "^\d{4}/\d+/\d+/\d" # Modify to specify level
-    #match = re.match(obj_num_regex, row["Object Number"])
-    #if match:
-    #    return match.group(0)
-
-    # Strategy 3: check both
-    
-    # Catch-all
     return "Uncategorized"
 
 # dict.get(key, default=None)

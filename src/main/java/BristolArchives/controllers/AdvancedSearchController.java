@@ -79,6 +79,8 @@ public class AdvancedSearchController {
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
             return "redirect:/advanceSearch";
         else{
+            model.addAttribute("itemList", itemService.getAdvancedSearch(adv_date,adv_date_start,adv_date_end,adv_coll,adv_lctn,adv_name));
+            /*
             boolean someConstraintsExist = false;
             List<Item> resultList = new ArrayList();
             if(adv_name != null) {
@@ -96,6 +98,7 @@ public class AdvancedSearchController {
             if(adv_lctn != null)
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
             model.addAttribute("itemList", resultList);
+            */
         }
 
         return "itemResults";

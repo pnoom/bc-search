@@ -92,7 +92,7 @@ public class ItemService {
         return itemRepo.findWithRef(ref).get(0);
     }
 
-    public List<Item> advancedSearch(String specific_date, String start_date, String end_date, String collection, String location, String precision) {
+    public List<Item> getAdvancedSearch(String specific_date, String start_date, String end_date, String collection, String location, String precision) {
         List<Item> results = new ArrayList<>();
         if (specific_date != null) {
             results.addAll(itemRepo.findBySpecificDate(specific_date));

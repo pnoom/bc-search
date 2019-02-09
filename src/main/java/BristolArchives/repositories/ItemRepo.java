@@ -2,10 +2,12 @@ package BristolArchives.repositories;
 
 import BristolArchives.entities.Item;
 import BristolArchives.entities.SubCollection;
+import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.lang.annotation.Native;
 import java.util.List;
 
 public interface ItemRepo extends JpaRepository<Item,Integer>{

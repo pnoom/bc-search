@@ -13,7 +13,7 @@ cd bc-search/src/main/sql/
 ```
 sudo mysql -u root -p
 Enter password: .......
-```
+``` 
 
 1. Do this at MySQL prompt:
 

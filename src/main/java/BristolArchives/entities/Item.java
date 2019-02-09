@@ -26,14 +26,14 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "display_date")
-    private String displayDate;
-
     @Column(name="start_date")
     private Date startDate;
 
     @Column(name="end_date")
     private Date endDate;
+
+    @Column(name = "display_date")
+    private String displayDate;
 
     @Column(name = "copyrighted")
     private String copyrighted;

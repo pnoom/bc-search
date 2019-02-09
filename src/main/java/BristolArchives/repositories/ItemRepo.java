@@ -2,10 +2,13 @@ package BristolArchives.repositories;
 
 import BristolArchives.entities.Item;
 import BristolArchives.entities.SubCollection;
+import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.lang.annotation.Native;
+import java.util.Date;
 import java.util.List;
 
 public interface ItemRepo extends JpaRepository<Item,Integer>{
@@ -33,6 +36,6 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     List<Item> findBySpecificDate(@Param("specificdate")String specificdate);
 
     @Query("select i from item i where not (i.startDate > CONCAT(:start,'') or i.endDate < CONCAT(:end,''))")
-    List<Item> findByDateRange(@Param("start")String start, @Param("end")String end);
+    List<Item> findByDateRange(@Param("start") Date start, @Param("end")Date end);
 
 }

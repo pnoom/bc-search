@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 /*
 @Controller
@@ -69,16 +70,18 @@ public class AdvancedSearchController {
     public String displayResult(
             @RequestParam(value = "coll", required = false) String adv_coll,
             @RequestParam(value = "date", required = false) String adv_date,
-            @RequestParam(value = "dateStart", required = false) String adv_date_start,
-            @RequestParam(value = "dateEnd", required = false) String adv_date_end,
+            @RequestParam(value = "dateStart", required = false) Date adv_date_start,
+            @RequestParam(value = "dateEnd", required = false) Date adv_date_end,
             @RequestParam(value = "name", required = false) String adv_name,
             @RequestParam(value = "lctn", required = false) String adv_lctn,
             Model model
             ){
 
-        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
+        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && (adv_date_start) != null && (adv_date_end) != null)
             return "redirect:/advanceSearch";
         else{
+            model.addAttribute("itemList", itemService.getAdvancedSearch(adv_date,adv_date_start,adv_date_end,adv_coll,adv_lctn,adv_name));
+            /*
             boolean someConstraintsExist = false;
             List<Item> resultList = new ArrayList();
             if(adv_name != null) {
@@ -96,6 +99,7 @@ public class AdvancedSearchController {
             if(adv_lctn != null)
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
             model.addAttribute("itemList", resultList);
+            */
         }
 
         return "itemResults";

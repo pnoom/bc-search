@@ -27,7 +27,7 @@ use archivesearch;
 1. Then do these IN THIS ORDER:
 
 ```
-source master-script.sql
+source master-script.sql;
 ```
 
 1. Now you can run some SQL queries directly, eg:

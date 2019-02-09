@@ -18,6 +18,7 @@ Enter password: .......
 1. Do this at MySQL prompt:
 
 ```
+drop database archivesearch;
 create database archivesearch;
 grant all on archivesearch.* to 'archiveuser'@'%';
 use archivesearch;

@@ -50,7 +50,7 @@ def get_sub_id(row, subcollections):
     for i in subcollections:
         if subcollections[i] in row["Object Number"] :
             return subcollections[i] # Return subcollection object number (Placeholder)
-    return "Uncategorized reference" # Placeholder
+    return "Uncategorized reference" # Placeholder will need to be changed to accomodate uncategorised
             
 
 """
@@ -95,6 +95,7 @@ def identify_subcollections(row):
         if (re.search(pattern, row["Extent"])):
             return row
 
+# May need to alter based on new system of identifying subcollections but not sure
 def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
     return command.format("sub", row["Full Name"], get_collection_id(row))
@@ -275,14 +276,16 @@ def run():
                 # Escape single quotes in fields
                 for key, value in row.items():
                     row[key] = value.replace(r"'", r"\'")
-                #Want to run through identifying and adding subcollections to the SQL script. If not a subcollection run through a second time and define sub-c based on already added statements.
+                # Runs through identifying subcollections and adding to the to output file and a dictionary called subcollections.
                 if identify_subcollections(row) != None:
                     normalize_date(row)
                     subcollections[row["Full Name"]] = row["Object Number"]
                     item = insert_subcollection(row, row["Full Name"], get_collection_id(row))
                     output_file.write(item)
-                                       
+
+            # Goes back to the start of the csv_reader                            
             input_file.seek(0)
+            # Runs through checking all individual items and adding them with assigned subcollection
             for row in csv_reader:
                 if (row["Full Name"] not in subcollections) and (row["Full Name"] != "Full Name"):
                     normalize_date(row)

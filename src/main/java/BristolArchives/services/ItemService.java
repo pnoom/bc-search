@@ -134,6 +134,10 @@ public class ItemService {
 
         if (hasSth(collection)) {
             List<Item> currResults = getItemByCollectionName(collection);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
         }
 
         if (hasSth(location)) {

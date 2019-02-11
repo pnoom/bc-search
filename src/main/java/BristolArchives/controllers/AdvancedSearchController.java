@@ -108,7 +108,7 @@ public class AdvancedSearchController {
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && !hasSth(adv_date_start) && !hasSth(adv_date_end))
             return "redirect:/advanceSearch";
 
-        if (hasSth(adv_date))
+        if (hasSth(adv_date)) {
             model.addAttribute("itemList",
                     itemService.getAdvancedSearch(
                             parseDate(adv_date),
@@ -117,7 +117,8 @@ public class AdvancedSearchController {
                             adv_coll,
                             adv_lctn,
                             adv_name));
-        else {
+        }
+        if(hasSth(adv_date_start) && hasSth(adv_date_end)) {
             model.addAttribute("itemList",
                     itemService.getAdvancedSearch(
                             null,
@@ -145,6 +146,17 @@ public class AdvancedSearchController {
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
             model.addAttribute("itemList", resultList);
             */
+        }
+        if(!hasSth(adv_date) && (!hasSth(adv_date_start) || !hasSth(adv_date_end))){
+            model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            null,
+                            null,
+                            null,
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));
+
         }
 
         return "itemResults";

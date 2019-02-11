@@ -30,44 +30,12 @@ def insert_item(row, subcollection_id):
                           row["start_date"], row["end_date"],
                           row["Date"], row["Copyright"], row["Extent"],
                           row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
+
     
-# The "Extent" field is useful for determining subcollections ("Level" rarely
-# helps, so that is omitted) but
-# is inconsistently formatted. Need to keep a dict of subcollection names and
-# ids. If not found, construct an extra SQL query to create that sub-
-# collection, before adding the item to id. Uncategorized can be 1, 2 or 3 though.
-
-# Need to compare both Extent and object numbers in order to determine uniqueness
-# of subcollections. Actually, could use object numbers as keys to in subcollection
-# dictionary! That is better than description. YES.
-
-# When does an item belong in Uncategorized? When its Extent matches "1 negative"
-# or sth, but not "x box(es)"
-
-# In order to insert an item, need to know its subcollection.
-# In order to insert a subcollection, need to know its collection.
-# For the former, check "Extext" and "Object Number" against patterns and existing
-# subcollections, respectively.
-# For the latter, check "Collection Name".
-
 def get_collection(row):
     return row["Collection Name"]
 
-# Implementation happens to be the same
 def get_collection_id(row):
-    return get_uncategorized_sub_id(row)
-
-def get_sub_id_adding_if_needed(row, sub_name, subcollections):
-    if sub_name == "Uncategorized":
-        return get_uncategorized_sub_id(row)
-    elif subcollections.get(sub_name, "not found") == "not found":
-        #Add entry to dict, then return its id
-        subcollections[sub_name] = len(subcollections.keys()) + 1
-        return subcollections[sub_name]
-    else:
-        return  subcollections[sub_name]
-
-def get_uncategorized_sub_id(row):
     if row["Collection Name"] == "Trotter":
         return 3
     elif row["Collection Name"] == "Haslam":
@@ -76,6 +44,14 @@ def get_uncategorized_sub_id(row):
         return 2
     else:
         assert false, "Something went wrong"
+
+def get_sub_id(row, subcollections):
+    # Checks all subcollections for one which is a substring of the items object number
+    for i in subcollections:
+        if subcollections[i] in row["Object Number"] :
+            return subcollections[i] # Return subcollection object number (Placeholder)
+    return "Uncategorized reference" # Placeholder
+            
 
 """
 Extent stuff to match:
@@ -107,7 +83,7 @@ Extent stuff NOT to match:
 """
 # BE PRECISE with regexes
 
-def get_subcollection_name(row):    
+def identify_subcollections(row):    
     extent_regexes = ["box(es)?", "file(s)?", "envelope(s)?",
                       "folder(s)?", "negatives", "documents",
                       "volume(s)?", "films", "pamphlets",
@@ -117,17 +93,11 @@ def get_subcollection_name(row):
         if (re.search(col_reg, row["Full Name"])):
             break
         if (re.search(pattern, row["Extent"])):
-            print(row["Collection Name"]+": "+row["Full Name"])
-            return row["Object Number"]
-
-    return "Uncategorized"
-
-# dict.get(key, default=None)
-# dict.has_key(key)
+            return row
 
 def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
-    return command.format(sub_name, row["Full Name"], get_collection_id(row))
+    return command.format("sub", row["Full Name"], get_collection_id(row))
 
 # ---Date handlers--- (in order of decreasing regex-specificity)
 
@@ -296,7 +266,7 @@ def run():
     output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))
                         for f in output_files]
     
-    subcollections = {"Uncategorized": 0}  # 0 is placeholder, do not use value
+    subcollections = {}  # 0 is placeholder, do not use value
 
     for inf, outf in zip(input_pathnames, output_pathnames):
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:
@@ -305,19 +275,20 @@ def run():
                 # Escape single quotes in fields
                 for key, value in row.items():
                     row[key] = value.replace(r"'", r"\'")
-                # Get subcollection name, adding it if it doesn't already exist
-                # in the database
-                sub_name = get_subcollection_name(row)
-                sub_id = get_sub_id_adding_if_needed(row, sub_name, subcollections)
-                #print(sub_name[:6], sub_id, len(subcollections.keys()))
-                if sub_name != "Uncategorized":
-                    sub = insert_subcollection(row, sub_name, get_collection_id(row))
-                    output_file.write(sub)
-
-                normalize_date(row)
-                # Should be guaranteed to have the subcollection now, so lookup
-                item = insert_item(row, sub_id)
-                output_file.write(item)
+                #Want to run through identifying and adding subcollections to the SQL script. If not a subcollection run through a second time and define sub-c based on already added statements.
+                if identify_subcollections(row) != None:
+                    normalize_date(row)
+                    subcollections[row["Full Name"]] = row["Object Number"]
+                    item = insert_subcollection(row, row["Full Name"], get_collection_id(row))
+                    output_file.write(item)
+                                       
+            input_file.seek(0)
+            for row in csv_reader:
+                if (row["Full Name"] not in subcollections) and (row["Full Name"] != "Full Name"):
+                    normalize_date(row)
+                    sub_id = get_sub_id(row,subcollections)
+                    item = insert_item(row, sub_id)
+                    output_file.write(item)
 
 if __name__ == "__main__":
     run()

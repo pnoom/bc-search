@@ -32,10 +32,10 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query("select i from item i where i.itemRef = CONCAT(:search,'')")
     List<Item> findWithRef(@Param("search")String search);
 
-    @Query("select i from item i where i.startDate = ':specificdate' or (':specificdate' between i.startDate and i.endDate)")
+    @Query("select i from item i where i.startDate = :specificdate or (:specificdate between i.startDate and i.endDate)")
     List<Item> findBySpecificDate(@Param("specificdate")Date specificdate);
 
-    @Query("select i from item i where not (i.startDate > ':start' or i.endDate < ':end')")
+    @Query("select i from item i where not (i.startDate > :start or i.endDate < :end)")
     List<Item> findByDateRange(@Param("start") Date start, @Param("end")Date end);
 
 }

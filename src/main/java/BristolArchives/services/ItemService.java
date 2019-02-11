@@ -92,10 +92,15 @@ public class ItemService {
         return itemRepo.findWithRef(ref).get(0);
     }
 
-    public List<Item> getAdvancedSearch(String specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
+    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
         List<Item> results = new ArrayList<>();
         if (specific_date != null) {
-            results.addAll(itemRepo.findBySpecificDate(specific_date));
+            List<Item> currResults = itemRepo.findBySpecificDate(specific_date);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+            //results.addAll(itemRepo.findBySpecificDate(specific_date));
         }
         if (start_date != null && end_date != null) {
             List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);

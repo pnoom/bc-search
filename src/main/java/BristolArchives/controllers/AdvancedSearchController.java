@@ -40,22 +40,21 @@ public class AdvancedSearchController {
     @PostMapping("/advSearch")
     public String sendResult(
             @RequestParam(value = "collection_search", required = false) String adv_coll,
-            @RequestParam(value = "date_search", required = false) String adv_date,
-            @RequestParam(value = "date_start", required = false) String adv_date_start,
-            @RequestParam(value = "date_end", required = false) String adv_date_end,
+            @RequestParam(value = "date_search", required = false) Date adv_date,
+            @RequestParam(value = "date_start", required = false) Date adv_date_start,
+            @RequestParam(value = "date_end", required = false) Date adv_date_end,
             @RequestParam(value = "precision_search", required = false) String adv_name,
             @RequestParam(value = "location_search", required = false) String adv_lctn
         ){
         String search = "?";
-
         if(hasSth(adv_coll))
             search += "&coll=" + adv_coll;
-        if(hasSth(adv_date_start))
+        if(adv_date_start != null)
             search += "&dateStart=" + adv_date_start;
-        if(hasSth(adv_date_end))
+        if((adv_date_end) != null)
             search += "&dateEnd=" + adv_date_end;
-        if(hasSth(adv_date))
-            search += "&date=" + adv_date ;
+        if((adv_date) != null)
+            search += "&date=" + adv_date;
         if(hasSth(adv_name))
             search += "&name=" + adv_name;
         if(hasSth(adv_lctn))
@@ -69,7 +68,7 @@ public class AdvancedSearchController {
     @GetMapping("/advSearch")
     public String displayResult(
             @RequestParam(value = "coll", required = false) String adv_coll,
-            @RequestParam(value = "date", required = false) String adv_date,
+            @RequestParam(value = "date", required = false) Date adv_date,
             @RequestParam(value = "dateStart", required = false) Date adv_date_start,
             @RequestParam(value = "dateEnd", required = false) Date adv_date_end,
             @RequestParam(value = "name", required = false) String adv_name,
@@ -77,7 +76,7 @@ public class AdvancedSearchController {
             Model model
             ){
 
-        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && (adv_date_start) != null && (adv_date_end) != null)
+        if(!hasSth(adv_coll) && (adv_date) != null && !hasSth(adv_name) && !hasSth(adv_lctn) && (adv_date_start) != null && (adv_date_end) != null)
             return "redirect:/advanceSearch";
         else{
             model.addAttribute("itemList", itemService.getAdvancedSearch(adv_date,adv_date_start,adv_date_end,adv_coll,adv_lctn,adv_name));

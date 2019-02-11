@@ -109,15 +109,14 @@ public class ItemService {
                     results.add(i);
             }
         }
-        /*
+
         if (collection != null) {
-            List<Item> currResults = itemRepo.findByCollection(collection);
+            List<Item> currResults = getItemByCollectionName(collection);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
         }
-        */
         if (location != null) {
             List<Item> currResults = itemRepo.findLocation(location);
             for(Item i: currResults){

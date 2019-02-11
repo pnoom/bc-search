@@ -89,13 +89,13 @@
                     <div class="columns">
                 <div class="column is-one-fifth">Search date here:</div>
                 <div class="column">
-                    <div id="noRange" style="display: block"><input type="date" id="date_search" value=""></div>
-                    <div id="startRange" style="display: none"> <input type="date" id="date_start" value=""></div>
+                    <div id="noRange" style="display: block"><input type="date" name="date_search" value=""></div>
+                    <div id="startRange" style="display: none"> <input type="date" name="date_start" value=""></div>
 
                 </div>
                <div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 30px; display: none; " >To</div>
                 </div>
-                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" value=""></div>
+                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" name="date_end" value=""></div>
                 </div>
                 <div class="column"><a onclick="range()" class="button" style="margin-left: 20px">Date range</a>
 
@@ -110,15 +110,15 @@
                         y.style.display = "block";
                         z.style.display = "block";
                         p.style.display = "none";
-                        document.getElementById('date_search').value = "";
+                        document.getElementByName('date_search').value = "";
                     }
                     else {
                         x.style.display = "none";
                         y.style.display = "none";
                         z.style.display = "none";
                         p.style.display = "block";
-                        document.getElementById('date_start').value = '';
-                        document.getElementById('date_end').value = '';
+                        document.getElementByName('date_start').value = '';
+                        document.getElementByName('date_end').value = '';
                     }
                 }
 

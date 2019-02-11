@@ -47,6 +47,7 @@ public class AdvancedSearchController {
             @RequestParam(value = "location_search", required = false) String adv_lctn
         ){
         String search = "?";
+
         if(hasSth(adv_coll))
             search += "&coll=" + adv_coll;
         if(adv_date_start != null)

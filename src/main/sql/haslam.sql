@@ -1,7 +1,4 @@
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1', 'Photograph albums showing sights in the Gulf, India and Africa', 1);
-INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/1', 'Photograph album with views taken in the Gulf and India', 1);
-INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/2', 'Photograph album with views from Kenya, Uganda, and Tanzania', 1);
-INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/3', 'Photograph album showing Indian Navy visit to East Africa, and Kenya / Tanzania Game Reserve', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/2', 'Films showing scenes in Africa, India, UK and Switzerland', 1);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'Persian Gulf', 'Haslam collection', 'Ivan Haslam grew up in Jabalpur in India. After he finished university in 1943, he joined the Persian Gulf Service and served in Muscat for two years. He worked for the Political Resident whose responsibilities included the oversight of foreign relations of the Sheikdoms of the Gulf and jurisdiction over foreigners in the Arab State. Part of Haslam\'s role was as Censor officer for all outgoing mail.
 In his biographical notes he says that Muscat was isolated during the war, receiving ships only if a convoy could be found. \'We were also visited by the occasional tramp ship. The SS Daphu was one such and escaped from the war in the Far East. It was torpedoed whilst in Muscat Harbour and was not cleared until well after the war ended.\' He refers to the fact that during the war he handled \'confidential matters including the movement of ships, and telegram correspondence relating to the oil negotiations with the Gulf Sheikhs.\'
@@ -21,6 +18,36 @@ INSERT INTO item (item_ref, location, name, description, start_date, end_date, d
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243822', 1);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243825', 1);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243826', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'India', 'Photograph album with views taken in the Gulf and India', 'The first part of this volume covers scenes in the Persian Gulf, where Haslam worked from 1943 to 1946. Later photographs in the album were taken in India. Haslam was assigned to the Foreign Office of the new government of India from 1948.
+
+The volume includes photographs showing:
+p.1 Views taken on an airstrip with two young Indians, and an aeroplane badged Airwork Ltd London (a company established in 1928 and which provided support service to the RAF and overseas air services).
+p.2-6 Kuwait, various scenes including shipyard with traditional Arab dhow, streetlife and market square, probably Souk Al-Mubarakeya (one of the oldest souks in Kuwait), old city gate and mosque, the waterfront.
+p.7 Oman, port at Muscat including street scenes.
+p.8-10 Salalah, capital city of southern Oman\'s Dhofar province. Fertile oasis gardens and military-style fort, also small military billets, and group of four Indians.
+p.11 Muscat, regimental drill and Al Jalali harbour fort (16th century Portugese). Note above one photo \'Flagpole (slaves)\' refers to legend that any slave who touched the flagpole was freed.
+p.12-13 Oman, camels with traders and in caravan. Group of Indians.
+p.14-15 Muscat, views over low rooftops and towards the sea
+p.16-17 Muscat harbour, salvage of SS Daphu, sunk by enemy action in 1944
+p.18 Persian Gulf, on board ship and views of four other ships including SS Nearchus
+p.19-20 Bahrain, ruins of Q\'alat-al-Bahrain ancient fort
+p.21-24 Bahrain Gulf, streets, waterfront, beach shore, artesian well, profile of young woman and evening sea.
+p.25 Bahrain, offshore
+p.26-28 Bahrain (ex Naval Base), Union Jack on flagpole, swimming pool, gardens, distant view of battleships, seashore.
+p.29 Gulf, Arabs in souk and group picture, dhows at sea, 
+p.30 Persepolis in Iran, young Indians at the ruined palace of Darius I, close to the city of Shiraz.
+p.31-32 New Delhi, Lutyen-designed buildings of India Gate, the Parliament buildings, Viceroy\'s House (now the President\'s House), Jaipur House, Jaipur Column, and the empty roads of Rajpath
+p.33 India, unidentified river scenes, ruined fort
+p.34 New Delhi, Jantar Mantar astronomical observatory  (18th century)
+p.35 New Delhi, Qtb Minar (12th century)
+p.36-37 New Delhi, Humayun\'s Tomb (16th century)
+p.38 New Delhi, India gate area at night
+p.39 Delhi, various images including Purana Qila (Old fort), Lal Qila (Red Fort), Lhodi Gardens
+p.40 New Delhi, Republic Day parades from Rajpath
+p.41-43 Fatehpur Sikri, Agra Fort and Taj Mahal
+p.44 Voyage to UK, photographs from ship to various shore locations including grand harbour at Malta
+p.45 Bahrain, date palms
+p.46 Bahrain, dhow', '1943-01-01', '1948-12-31', '[c.1943-1948]', '[Copyright] Bristol Record Office', '1 volume', '1 photograph album containing 48 pages of b/w (and some colour) photographs attached to the pages with hinges. Some captions have been added in ballpoint pen.', '177275', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177284', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177285', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177286', 4);
@@ -69,6 +96,57 @@ INSERT INTO item (item_ref, location, name, description, start_date, end_date, d
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177282', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177283', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', 'default', 'default', 'default', 'default', 4);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/2', 'Rwanda', 'Photograph album with views from Kenya, Uganda, and Tanzania', 'This volume shows scenes in various countries in East Africa, covering trips taken by Haslam.
+
+The volume includes photographs showing:
+Six loose photographs of an official engagement with senior officer boarding ship
+p.1-3 Indian Navy visit to East Africa 1952 with various ships of the fleet 
+p.5-7 Rwanda, ceremonial dances, village huts and occupants
+p.8 Uganda, various images of village life
+p.9 Kenya, Maasai people, warriors with shields and drum, in several shots an Indian is accompanying warriors
+p.10 Tanzania, Maasai Mara, large groups of males, and 2 of nursing mothers
+p.11 Maasai Mara, young men and boys
+p.12 Maasai encampment, young women and girls
+p.13-14 Rwanda, various landscapes , town building, Indian woman looking over dam, statue of Leopold II, possible fossil beds
+p.15 Uganda, Jinja (source of River Nile), views of rapids, boy fishing and Sikh onlooker
+p.16 Uganda, Kampala, views of Rubaga and Namirembe Cathedrals
+p.17-18 Uganda views including Equator sign and Lake Albert
+p.19-20 Kenya (14 Falls) images of waterfalls include picnicking and bathing 
+p.21 Kenya Thika Falls
+p.22 Victoria Falls including railway bridge
+p.23 Uganda Murchison Falls
+p.24-28 Victoria Falls
+p.29-33 Kilimanjaro - includes newspaper cutting from Times of India [11 Aug 1953?], referring to Haslam\'s climb as part of an expedition to site solar instrument recorder. Photos include unfurling of flags of India and UK
+p.34 Kenya / Tanzania, Amboseli National Park
+p.35-36 Trek to Kilimanjaro, Indian men in walking gear
+
+Quotes from newspaper cuttings on p.34:
+\'Indians climb Kilimanjaro  - Serving Cause of Science The Indian mountaineering team, consisting of Mr Haslam and Mr Pradhan, members of the Indian Commission in Nairobi (East Africa) has successfully climbed the summit of Mount Kilimanjaro. One of the objectives of the expedition was to serve the cause of science and help Prof Dixit of the Institute of Science, Bombay, in conducting experiments with nuclear emulsions exposed to cosmic rays\'
+Attached to this a second cutting:
+\'Mr I C Haslam, member of the Indian Commission staff in Nairobi, is returning to India after three years on home leave.  After expiry of his leave he will join duties in the External Affairs Ministry of India. He is leaving Nairobi on the 3rd January to catch SS Amra, sailing from Mombasa on the 5th January 1954.  During his stay in these territories Mr Haslam earned for himself friendship of various people He is an enthusiastic photographer. He is a sportsman and played cricket and tennis very well. On the eve of his departure from Kenya Mr Haslam received the sad news of the death of his father, whom he was to meet after an absence of three years.\'', '1950-01-01', '1953-12-31', '[c.1950-1953]', 'default', '1 volume', '1 photograph album containing 40 pages of b/w and some colour photographs attached to the pages with hinges. There are also some loose photographs. Some captions have been added in ballpoint pen.
+Most of the pages are loose - handle with care.', 'default', 4);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/3', 'Rwanda', 'Photograph album showing Indian Navy visit to East Africa, and Kenya / Tanzania Game Reserve', 'This volume is the most personal of the three, with many photographs of companions and colleagues. It covers an Indian Navy visit to East Africa and the Kenya/Tanzania game reserve. It is interesting for details of uniforms, clothing and domestic interiors. [See also films of safari and picnics.]
+
+The volume includes photographs showing:
+p.1 Indian Navy Visit to East Africa - Naval officers with Admiral, Indian diplomats with Indian High Commissioner, together with Mayor of Nairobi
+p.2 Naval officers being entertained by High Commission staff - informal groupings in home settings, with wives and children (including an African nanny)
+p.3 Three photos of young women, dressed in early 1950s fashion.  Also one photo of unkempt children with European priest
+p.4 Groups of men in formal pose
+p.5 Friendship groups possibly Christmas? Notably European, and seated before Sacred Heart picture
+p.7-9 Informal family groups of Indians, many small children (in 2 instances with African nanny)
+p.10 Friends on picnic expedition
+p.11-15 Groups of friends including individual photos of young woman, and family group.  (Note on p.14 photo of Princess Elizabeth in motorcade through Nairobi)
+p.16-17 Indian group visiting African village in Rwanda, sightseeing, taking notes at roadside
+p.18 Serengeti Game Park, Tanzania and Congo showing groups of friends on safari
+p.19-20 Lake Albert Murchison Falls, Uganda showing groups of friends, women in western dress, paddling, boating
+p.21 Large photograph of young woman called Pauline
+p.22-25 Amboseli Game Park, Tanzania / Kenya showing group photographed outside \'Kajiado\' store run by Sayeed Omar Bros as they set off on safari [see also 2009/008/2/9]. Photographs of camp, safari truck, meetings with Masai, accompanied by armed African guard
+p.26 Tsavo Game Park, Kenya. Mainly Indian men relaxing and bathing in leafy riverside. 
+p.27-28 Foundation stone is laid, Indian flag raised and formally dressed Indians attend a reception with Europeans and Africans [see also 2009/008/2/9]
+p.29 Family groups, women in saris
+p.30-31 Formal groups including cricket team and one with caption \'Kenya African leaders pre-indep.\'
+p.32 Semi-formal groups
+p.33-34 Informal family groups and children', '1952-01-01', '1952-12-31', '1952', 'default', '1 volume', '1 photograph album containing 48 pages of b/w photographs (also 2 in colour) attached to the pages with hinges. Some captions have been added in ballpoint pen.', 'default', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/1', 'Kenya', 'Film taken on an African Safari', 'General description
 This film shows scenes taken during a safari and includes many shots of wildlife. It is interesting in the context of westernised Indians on safari, including women. Haslam\'s notes refer to an outing on the Serengeti Plains and being forced to spend the night in the car which might refer to this trip, though there are several films showing footage taken on safaris in the collection. 
 
@@ -85,7 +163,7 @@ Further shots of lioness and elephants, a herd of antelope and large crane or st
 Running time: 15:35
 Length: 400ft
 b/w and colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/10', 'UK', 'Film showing views in London', 'General description
 The theme of this film is London sightseeing, but has been taken over several months, from springtime blossom to late summer flowers. There are iconic images of trooping the colour together with Piccadilly Circus by day and night when neon advertising was seen as a spectacle.
 
@@ -101,7 +179,7 @@ Scenes in London - Trooping the Colour, Trafalgar Square and Nelson\'s Column. F
 Running time: 14:56
 Length: 400ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/11', 'Uganda', 'Film taken at the Murchison Falls and the Equator', 'General description
 This film shows another expedition to see waterfalls and game at Murchison Falls and Lake Albert. There are some interesting images of Africans, and also of long horned cattle on the Jampala-Masaka road which the Equator intersects.
 
@@ -115,7 +193,7 @@ Film opens with close-up of spectacular waterfall, and moves to view of 3 men on
 Running time: 10:26mins
 Length: 300ft 
 colour and b/w 
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/2', 'Tanzania', 'Film taken on an African Safari', 'General description
 This film shows scenes taken at a safari, but probably a separate occasion from the safari in 2009/008/2/1 as this is in a semi-tropical setting. 
 
@@ -129,7 +207,7 @@ Looking down at broad street on causeway to small island on the Lake, where ther
 Running time: 16:00mins
 Length: 400ft
 colour and b/w
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/3', 'Zimbabwe', 'Views of Victoria Falls and Royal Visit to Kenya in 1952', 'General description
 Over half of the film is taken up with views of Victoria Falls, followed by the Great Zimbabwe Ruins. The last third shows the motorcade of the State Visit of Princess Elizabeth to Kenya prior to her father\'s death, dating this to February 1952.
 
@@ -145,7 +223,7 @@ Close up of lioness followed by extended shot of waterfalls [Victoria Falls].
 Running time: 16:00mins
 Length: 400ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/4', 'Netherlands', 'Film of Sea Voyage from Europe to Africa', 'General description
 This film was taken during a sea voyage, travelling from Europe to Africa via the Suez Canal.
 
@@ -157,7 +235,7 @@ Northern European city [Rotterdam] from the water, a boat trip past working whar
 Running time: 15.36mins
 Length: 400ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/5', 'Tanzania', 'Film showing Mount Kilimanjaro and the Maasai', 'General description
 This film was taken to record an ascent of Mount Kilimanjaro by a small group of Indians, followed by an expedition in the surrounding National Park by larger group, including women and children. A final section shows scenes on a visit to a Maasai village.
 
@@ -174,7 +252,7 @@ View of snow-capped Mount Kilimanjaro, young man walks into forefront. Panning s
 Running time: 15:29mins
 Length: 400ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/6', 'Switzerland', 'Film taken at Lake Geneva showing alpine views and waterfalls', 'General description
 This film was probably taken on a trip to Lake Geneva in early spring, when waterfalls are at their most spectacular due to recent snowmelt. Good views of mountains and valleys from cable cars/chairlifts.
 
@@ -187,7 +265,7 @@ The last section is from the lake, looking at views framed with spring blossom.'
 Running time: 16:01mins
 Length: 400ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/7', 'Canada', 'Scenes at Niagara Falls and Expo 67 in Canada, and Kew Gardens in the UK', 'General description
 The first part of this film was shot in Canada and shows Niagara Falls and a visit to Expo 67 in Montreal. Later there are scenes possibly taken in Scotland and an extended stroll in Kew Gardens, London.
 
@@ -202,7 +280,7 @@ A magnificent waterfall opens this film, with silhouetted high-rise buildings on
 Running time: 16:16mins 
 Length: 400ft 
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/8', 'India', 'Film taken during visit to India', 'General description
 This film begins with an elaborate procession, perhaps to mark a significant national day in India.  This may be an all-India event as Cochin and Pondicherry are named on floats but also North India.  There is a sequence filmed in New Delhi and Agra, and the film finishes in Bombay.
 
@@ -221,7 +299,7 @@ Film starts with close up of young woman, and pans down over mountainside to a l
 Running time: 14:00mins
 Length: 300ft
 colour
-silent', 'default', 8);
+silent', 'default', 5);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/9', 'Kenya', 'Safari to Lake Amboseli', 'General description
 This film reflects the life of Indians in Africa with detailed close-ups of a large group travelling together on an expedition, which includes game drives, a sequence of a cricket match, picnics, and a flag-raising ceremony, as a prelude to the laying of a foundation stone. Family life and relationships between the generations are frequently glimpsed, and there are details of clothing and transport.
 
@@ -239,4 +317,4 @@ Film begins with boxes and packages assembled in front of truck painted with sig
 Running time: 19:22mins
 Length: 400ft
 b/w 
-silent', 'default', 8);
+silent', 'default', 5);

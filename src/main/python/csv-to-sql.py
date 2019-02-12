@@ -247,6 +247,12 @@ def normalize_date(row):
             break
         else:
             row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
+            
+def sub_check(row, subcollections):
+    for i in subcollections:
+        if subcollections[i] in row["Object Number"]:
+            return False
+    return True
 
 # File access and calling of all relevant data functions
 def run():
@@ -268,7 +274,7 @@ def run():
                 for key, value in row.items():
                     row[key] = value.replace(r"'", r"\'")
                 # Runs through identifying subcollections and adding to the to output file and a dictionary called subcollections.
-                if identify_subcollections(row) != None:
+                if (identify_subcollections(row) != None) and (sub_check(row, subcollections)):
                     normalize_date(row)
                     subcollections[row["Full Name"]] = row["Object Number"]
                     item = insert_subcollection(row, row["Full Name"], get_collection_id(row))

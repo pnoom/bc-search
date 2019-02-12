@@ -35,7 +35,7 @@ public class ItemControllerTest {
         testSubColl.setId(1);
         testSubColl.setName("testSubColl");
 
-        Item testItem = new Item("01/2019","testItem","testLocation","test Description","06/02/2019","false","testExten","testPhysDesc","testMulIrn",testSubColl);
+        Item testItem = new Item("01/2019","testItem","testLocation","test Description",null,null,"06/02/2019","false","testExten","testPhysDesc","testMulIrn",testSubColl);
 
         List<Item> allItems = Arrays.asList(testItem);
 

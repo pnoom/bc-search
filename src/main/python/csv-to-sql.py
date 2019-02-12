@@ -62,9 +62,11 @@ def get_collection_id(row):
 # Find the subcollection ID of a record to allow relational database with subcollection tables.
 def get_sub_id(row, subcollections):
     # Checks all subcollections for one which is a substring of the items object number
+    id_counter = 0
     for i in subcollections:
+        id_counter +=1
         if subcollections[i] in row["Object Number"] :
-            return subcollections[i] # Return subcollection object number (Placeholder)
+            return id_counter
     return "Uncategorized" # Placeholder will need to be changed to accomodate uncategorised
 
 # Use regexes to decide based on extent description whether an entry is a subcollection.
@@ -78,7 +80,7 @@ def identify_subcollections(row):
     for pattern in extent_regexes:
         # Checking that the main collection isn't being included as a subcollection.
         if (re.search(col_reg, row["Full Name"])):
-            break
+            return "Col Start"
         # Returning the current record if a value matches.
         if (re.search(pattern, row["Extent"])):
             return row
@@ -261,14 +263,20 @@ def run():
                 for key, value in row.items():
                     row[key] = value.replace(r"'", r"\'")
                 # Runs through identifying subcollections and adding to the to output file and a dictionary called subcollections.
-                if identify_subcollections(row) != None:
+                if identify_subcollections(row) == "Col Start":
+                    normalize_date(row)
+                    subcollections[row["Full Name"]+"Uncategorized"] = row["Object Number"]
+                    item = insert_subcollection(row, row["Full Name"], get_collection_id(row))
+                    output_file.write(item)
+                elif identify_subcollections(row) != None:
                     normalize_date(row)
                     subcollections[row["Full Name"]] = row["Object Number"]
                     item = insert_subcollection(row, row["Full Name"], get_collection_id(row))
                     output_file.write(item)
-
+                    
             # Goes back to the start of the csv_reader                            
             input_file.seek(0)
+            
             # Runs through checking all individual items and adding them with assigned subcollection
             for row in csv_reader:
                 if (row["Full Name"] not in subcollections) and (row["Full Name"] != "Full Name"):

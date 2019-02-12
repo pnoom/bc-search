@@ -85,7 +85,7 @@ def identify_subcollections(row):
     for pattern in extent_regexes:
         # Checking that the main collection isn't being included as a subcollection.
         if (re.search(col_reg, row["Full Name"])):
-            return "Col Start"
+            break
         # Returning the current record if a value matches.
         if (re.search(pattern, row["Extent"])):
             return row

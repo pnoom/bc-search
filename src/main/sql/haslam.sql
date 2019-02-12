@@ -1,20 +1,26 @@
-INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008', 'Haslam collection', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1', 'Photograph albums showing sights in the Gulf, India and Africa', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/1', 'Photograph album with views taken in the Gulf and India', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/2', 'Photograph album with views from Kenya, Uganda, and Tanzania', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/1/3', 'Photograph album showing Indian Navy visit to East Africa, and Kenya / Tanzania Game Reserve', 1);
 INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('2009/008/2', 'Films showing scenes in Africa, India, UK and Switzerland', 1);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243814', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243815', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243816', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243817', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243818', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243819', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243820', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243821', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243822', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243825', 4);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243826', 4);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'Persian Gulf', 'Haslam collection', 'Ivan Haslam grew up in Jabalpur in India. After he finished university in 1943, he joined the Persian Gulf Service and served in Muscat for two years. He worked for the Political Resident whose responsibilities included the oversight of foreign relations of the Sheikdoms of the Gulf and jurisdiction over foreigners in the Arab State. Part of Haslam's role was as Censor officer for all outgoing mail.
+In his biographical notes he says that Muscat was isolated during the war, receiving ships only if a convoy could be found. 'We were also visited by the occasional tramp ship. The SS Daphu was one such and escaped from the war in the Far East. It was torpedoed whilst in Muscat Harbour and was not cleared until well after the war ended.' He refers to the fact that during the war he handled 'confidential matters including the movement of ships, and telegram correspondence relating to the oil negotiations with the Gulf Sheikhs.'
+In 1948 Haslam was transferred to Bahrain when responsibility was moved from the India Office on its closure to the Colonial Office. The Gulf States objected that non-UK nationals (Haslam is Indian) were handling confidential matters. Haslam and five other Indians were later transferred to the Foreign Service of the newly independent Government of India in New Delhi.
+Haslam was posted to the office of the Indian Commissioner in East Africa in the early 1950s, based in Nairobi. This role meant extensive travel to many countries south of the Sahara, and during this time he visited several game reserves and climbed Mount Kilimanjaro. He was in Nairobi when Princess Elizabeth made the State Visit during which her father died and she became Queen. 
+In 1956 Haslam was posted to the Indian High Commission in London where he met his future wife Mary Russell. He later worked for the London County Council and its successor bodies, retiring in 1989. Ivan Haslam died in April 2016.
+
+This collection consists of two series - (1) a set of 3 photograph albums and (2) 12 films. The albums cover Haslam's time in the Gulf, India and East Africa. The films mainly show his time in East Africa, but there are also films taken during his travels eg in Canada, India and the UK.', '1940-01-01', '1960-12-31', '1940s-1960', '[Copyright] Bristol Record Office', '2 boxes', 'default', '243813', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243814', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243815', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243816', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243817', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243818', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243819', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243820', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243821', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243822', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243825', 1);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '243826', 1);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177284', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177285', 4);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/1/1', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '177286', 4);
@@ -79,7 +85,7 @@ Further shots of lioness and elephants, a herd of antelope and large crane or st
 Running time: 15:35
 Length: 400ft
 b/w and colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/10', 'UK', 'Film showing views in London', 'General description
 The theme of this film is London sightseeing, but has been taken over several months, from springtime blossom to late summer flowers. There are iconic images of trooping the colour together with Piccadilly Circus by day and night when neon advertising was seen as a spectacle.
 
@@ -95,7 +101,7 @@ Scenes in London - Trooping the Colour, Trafalgar Square and Nelson's Column. Fo
 Running time: 14:56
 Length: 400ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/11', 'Uganda', 'Film taken at the Murchison Falls and the Equator', 'General description
 This film shows another expedition to see waterfalls and game at Murchison Falls and Lake Albert. There are some interesting images of Africans, and also of long horned cattle on the Jampala-Masaka road which the Equator intersects.
 
@@ -109,7 +115,7 @@ Film opens with close-up of spectacular waterfall, and moves to view of 3 men on
 Running time: 10:26mins
 Length: 300ft 
 colour and b/w 
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/2', 'Tanzania', 'Film taken on an African Safari', 'General description
 This film shows scenes taken at a safari, but probably a separate occasion from the safari in 2009/008/2/1 as this is in a semi-tropical setting. 
 
@@ -123,7 +129,7 @@ Looking down at broad street on causeway to small island on the Lake, where ther
 Running time: 16:00mins
 Length: 400ft
 colour and b/w
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/3', 'Zimbabwe', 'Views of Victoria Falls and Royal Visit to Kenya in 1952', 'General description
 Over half of the film is taken up with views of Victoria Falls, followed by the Great Zimbabwe Ruins. The last third shows the motorcade of the State Visit of Princess Elizabeth to Kenya prior to her father's death, dating this to February 1952.
 
@@ -139,7 +145,7 @@ Close up of lioness followed by extended shot of waterfalls [Victoria Falls].
 Running time: 16:00mins
 Length: 400ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/4', 'Netherlands', 'Film of Sea Voyage from Europe to Africa', 'General description
 This film was taken during a sea voyage, travelling from Europe to Africa via the Suez Canal.
 
@@ -151,7 +157,7 @@ Northern European city [Rotterdam] from the water, a boat trip past working whar
 Running time: 15.36mins
 Length: 400ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/5', 'Tanzania', 'Film showing Mount Kilimanjaro and the Maasai', 'General description
 This film was taken to record an ascent of Mount Kilimanjaro by a small group of Indians, followed by an expedition in the surrounding National Park by larger group, including women and children. A final section shows scenes on a visit to a Maasai village.
 
@@ -168,7 +174,7 @@ View of snow-capped Mount Kilimanjaro, young man walks into forefront. Panning s
 Running time: 15:29mins
 Length: 400ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/6', 'Switzerland', 'Film taken at Lake Geneva showing alpine views and waterfalls', 'General description
 This film was probably taken on a trip to Lake Geneva in early spring, when waterfalls are at their most spectacular due to recent snowmelt. Good views of mountains and valleys from cable cars/chairlifts.
 
@@ -181,7 +187,7 @@ The last section is from the lake, looking at views framed with spring blossom.'
 Running time: 16:01mins
 Length: 400ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/7', 'Canada', 'Scenes at Niagara Falls and Expo 67 in Canada, and Kew Gardens in the UK', 'General description
 The first part of this film was shot in Canada and shows Niagara Falls and a visit to Expo 67 in Montreal. Later there are scenes possibly taken in Scotland and an extended stroll in Kew Gardens, London.
 
@@ -196,7 +202,7 @@ A magnificent waterfall opens this film, with silhouetted high-rise buildings on
 Running time: 16:16mins 
 Length: 400ft 
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/8', 'India', 'Film taken during visit to India', 'General description
 This film begins with an elaborate procession, perhaps to mark a significant national day in India.  This may be an all-India event as Cochin and Pondicherry are named on floats but also North India.  There is a sequence filmed in New Delhi and Agra, and the film finishes in Bombay.
 
@@ -215,7 +221,7 @@ Film starts with close up of young woman, and pans down over mountainside to a l
 Running time: 14:00mins
 Length: 300ft
 colour
-silent', 'default', 4);
+silent', 'default', 8);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2009/008/2/9', 'Kenya', 'Safari to Lake Amboseli', 'General description
 This film reflects the life of Indians in Africa with detailed close-ups of a large group travelling together on an expedition, which includes game drives, a sequence of a cricket match, picnics, and a flag-raising ceremony, as a prelude to the laying of a foundation stone. Family life and relationships between the generations are frequently glimpsed, and there are details of clothing and transport.
 
@@ -233,4 +239,4 @@ Film begins with boxes and packages assembled in front of truck painted with sig
 Running time: 19:22mins
 Length: 400ft
 b/w 
-silent', 'default', 4);
+silent', 'default', 8);

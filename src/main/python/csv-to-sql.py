@@ -10,7 +10,12 @@ from collections import OrderedDict
 
 # For now, assume everything is a string, incl. the multimedia irn
 
+
+
+# ---SQL Statement Creation (Data entry)---
+
 def insert_item(row, subcollection_id):
+    # Allows NULL values for records without a date.
     if row["Date"] == "default":
         command = "INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('{}', '{}', '{}', '{}', NULL, NULL, '{}', '{}', '{}', '{}', '{}', {});\n"
         return command.format(row["Object Number"], row["Geographic Name"],
@@ -31,7 +36,16 @@ def insert_item(row, subcollection_id):
                           row["Date"], row["Copyright"], row["Extent"],
                           row["Physical/Technical"], row["Multimedia irn"], subcollection_id)
 
-    
+
+# May need to alter based on new system of identifying subcollections but not sure
+def insert_subcollection(row, sub_name, collection_id):
+    command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
+    return command.format("sub", row["Full Name"], get_collection_id(row))
+
+
+
+# ---Subcollection Categorisation---
+   
 def get_collection(row):
     return row["Collection Name"]
 
@@ -45,79 +59,53 @@ def get_collection_id(row):
     else:
         assert false, "Something went wrong"
 
+# Find the subcollection ID of a record to allow relational database with subcollection tables.
 def get_sub_id(row, subcollections):
     # Checks all subcollections for one which is a substring of the items object number
     for i in subcollections:
         if subcollections[i] in row["Object Number"] :
             return subcollections[i] # Return subcollection object number (Placeholder)
     return "Uncategorized reference" # Placeholder will need to be changed to accomodate uncategorised
-            
 
-"""
-Extent stuff to match:
-
-1 box
-x boxes
-1 file
-x files
-1 envelope
-x envelopes (?)
-1 folder
-x folders
-Anything like "10 folders, 3 envelopes"
-x negatives
-x documents
-x volumes
-x films
-x pamphlets
-x photographs
-x book
-
-Extent stuff NOT to match:
-
-1 negative
-1 document
-1 film [Xmm]
-1 pamphlet
-
-"""
-# BE PRECISE with regexes
-
-def identify_subcollections(row):    
+# Use regexes to decide based on extent description whether an entry is a subcollection.
+def identify_subcollections(row):
+    # Values we want to match.
     extent_regexes = ["box(es)?", "file(s)?", "envelope(s)?",
                       "folder(s)?", "negatives", "documents",
                       "volume(s)?", "films", "pamphlets",
                       "book(s)?", "photographs"]
     col_reg = "[Cc]ollection"
     for pattern in extent_regexes:
+        # Checking that the main collection isn't being included as a subcollection.
         if (re.search(col_reg, row["Full Name"])):
             break
+        # Returning the current record if a value matches.
         if (re.search(pattern, row["Extent"])):
             return row
 
-# May need to alter based on new system of identifying subcollections but not sure
-def insert_subcollection(row, sub_name, collection_id):
-    command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
-    return command.format("sub", row["Full Name"], get_collection_id(row))
 
-# ---Date handlers--- (in order of decreasing regex-specificity)
 
-def month_to_number(month):
-    names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    numbers = dict(zip(names, [x for x in range(1, 13)]))
-    return numbers[month[:3]]
+# ---Date Normalisation ---
 
 # "{:02d}".format(n)
 
 # Each handler must take a list representing the non-null chunks of data captured by its regex,
 # and return start_date and end_date strings in this format: 
 
+# Helper functions:
+
+def month_to_number(month):
+    names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    numbers = dict(zip(names, [x for x in range(1, 13)]))
+    return numbers[month[:3]]
+
+
 def format_DD_Month_YYYY(dd_month_yyyy):
     dd_month_yyyy[1] = month_to_number(dd_month_yyyy[1])
     dd_month_yyyy = [int(i) for i in dd_month_yyyy]
     return "{:04d}-{:02d}-{:02d}".format(*reversed(dd_month_yyyy))
 
-# SHOULD BE 11 HANDLERS
+# ---Date handlers--- (in order of decreasing regex-specificity)
 
 # 0. DD Month YYYY - DD Month YYYY
 def handler0(groups):
@@ -218,11 +206,7 @@ def handler11(groups):
     end_date = "{:04d}-{:02d}-{:02d}".format(*reversed(groups))
     return start_date, end_date
 
-# ---Date handlers---
-
-# You can add a key to a dictionary (here the row dict) by assigning a value to that key. We'll add keys for
-# start_date and end_date before this function returns.
-
+# Main date normalization function that matches input data to a range of regexes and thus passes data to the correct handler.
 def normalize_date(row):
     D = "(?:rd|st|nd|th)?"
     C = "\[?([a-zA-Z]{2,10})\]?\s*(\d{2,4})\s*" # Month YYYY
@@ -257,7 +241,7 @@ def normalize_date(row):
         else:
             row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
 
-
+# File access and calling of all relevant data functions
 def run():
     script_pathname = os.path.abspath(os.path.dirname(__file__))
     input_files = ["haslam.csv", "elliott.csv", "trotter.csv"]
@@ -267,7 +251,7 @@ def run():
     output_pathnames = [os.path.join(script_pathname, ("../sql/" + f))
                         for f in output_files]
     
-    subcollections = {}  # 0 is placeholder, do not use value
+    subcollections = {}  # Dictionary of subcollections and their respective object numbers.
 
     for inf, outf in zip(input_pathnames, output_pathnames):
         with open(inf, 'r') as input_file, open(outf,'w+') as output_file:

@@ -6,6 +6,8 @@ import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -92,4 +94,60 @@ public class ItemService {
         return itemRepo.findWithRef(ref).get(0);
     }
 
+    private boolean hasSth(String s) {
+        return (s != null) && (!s.isEmpty());
+    }
+
+    // for printf only
+    private String checkForNull(Date date) {
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        if (date == null) {
+            return "";
+        }
+        else {
+            return df.format(date);
+        }
+    }
+
+    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
+        List<Item> results = new ArrayList<>();
+        //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
+        //        collection, checkForNull(specific_date), checkForNull(start_date), checkForNull(end_date), precision, location);
+
+        if (start_date == null && end_date == null) {
+
+            //List<Item> currResults = itemRepo.findBySpecificDate(specific_date);
+            //for(Item i: currResults){
+            //    if (!results.contains(i))
+            //        results.add(i);
+            // }
+            results.addAll(itemRepo.findBySpecificDate(specific_date));
+        }
+        if (specific_date == null) {
+            //System.out.println("The if worked");
+            List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+
+        if (hasSth(collection)) {
+            List<Item> currResults = getItemByCollectionName(collection);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+
+        if (hasSth(location)) {
+            List<Item> currResults = itemRepo.findLocation(location);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }
+        }
+        // this.getItem(precision, results); // TODO: getItem should take results param and mutate it
+        return results;
+    }
 }

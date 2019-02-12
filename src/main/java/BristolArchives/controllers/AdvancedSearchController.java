@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,6 +40,17 @@ public class AdvancedSearchController {
         return "advanceSearch";
     }
 
+    // for printf only
+    private String checkForNull(Date date) {
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        if (date == null) {
+            return "";
+        }
+        else {
+            return df.format(date);
+        }
+    }
+
     @PostMapping("/advSearch")
     public String sendResult(
             @RequestParam(value = "collection_search", required = false) String adv_coll,
@@ -45,6 +60,10 @@ public class AdvancedSearchController {
             @RequestParam(value = "precision_search", required = false) String adv_name,
             @RequestParam(value = "location_search", required = false) String adv_lctn
         ){
+
+        //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
+        //        adv_coll, checkForNull(adv_date), checkForNull(adv_date_start), checkForNull(adv_date_end), adv_name, adv_lctn);
+
         String search = "?";
 
         if(hasSth(adv_coll))
@@ -54,7 +73,7 @@ public class AdvancedSearchController {
         if(hasSth(adv_date_end))
             search += "&dateEnd=" + adv_date_end;
         if(hasSth(adv_date))
-            search += "&date=" + adv_date ;
+            search += "&date=" + adv_date;
         if(hasSth(adv_name))
             search += "&name=" + adv_name;
         if(hasSth(adv_lctn))
@@ -63,6 +82,16 @@ public class AdvancedSearchController {
         search = search.replaceAll("/","%2F");
 
         return "redirect:/advSearch" + search;
+    }
+
+    private Date parseDate(String str) {
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            return df.parse(str);
+        }
+        catch (ParseException e) {
+            return new Date();
+        }
     }
 
     @GetMapping("/advSearch")
@@ -76,9 +105,29 @@ public class AdvancedSearchController {
             Model model
             ){
 
-        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn))
+        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && !hasSth(adv_date_start) && !hasSth(adv_date_end))
             return "redirect:/advanceSearch";
-        else{
+
+        if (hasSth(adv_date)) {
+            model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            parseDate(adv_date),
+                            null,
+                            null,
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));
+        }
+        if(hasSth(adv_date_start) && hasSth(adv_date_end)) {
+            model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            null,
+                            parseDate(adv_date_start),
+                            parseDate(adv_date_end),
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));
+            /*
             boolean someConstraintsExist = false;
             List<Item> resultList = new ArrayList();
             if(adv_name != null) {
@@ -96,6 +145,18 @@ public class AdvancedSearchController {
             if(adv_lctn != null)
                 getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
             model.addAttribute("itemList", resultList);
+            */
+        }
+        if(!hasSth(adv_date) && (!hasSth(adv_date_start) || !hasSth(adv_date_end))){
+            model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            null,
+                            null,
+                            null,
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));
+
         }
 
         return "itemResults";

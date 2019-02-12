@@ -13,11 +13,12 @@ cd bc-search/src/main/sql/
 ```
 sudo mysql -u root -p
 Enter password: .......
-```
+``` 
 
 1. Do this at MySQL prompt:
 
 ```
+drop database archivesearch;
 create database archivesearch;
 grant all on archivesearch.* to 'archiveuser'@'%';
 use archivesearch;
@@ -26,7 +27,7 @@ use archivesearch;
 1. Then do these IN THIS ORDER:
 
 ```
-source master-script.sql
+source master-script.sql;
 ```
 
 1. Now you can run some SQL queries directly, eg:

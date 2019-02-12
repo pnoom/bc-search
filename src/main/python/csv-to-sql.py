@@ -40,7 +40,7 @@ def insert_item(row, subcollection_id):
 # May need to alter based on new system of identifying subcollections but not sure
 def insert_subcollection(row, sub_name, collection_id):
     command = "INSERT INTO subcollection (subcollection_ref, name, collection_id) VALUES ('{}', '{}', {});\n"
-    return command.format("sub", row["Full Name"], get_collection_id(row))
+    return command.format(row["Object Number"], row["Full Name"], get_collection_id(row))
 
 
 
@@ -65,7 +65,7 @@ def get_sub_id(row, subcollections):
     for i in subcollections:
         if subcollections[i] in row["Object Number"] :
             return subcollections[i] # Return subcollection object number (Placeholder)
-    return "Uncategorized reference" # Placeholder will need to be changed to accomodate uncategorised
+    return "Uncategorized" # Placeholder will need to be changed to accomodate uncategorised
 
 # Use regexes to decide based on extent description whether an entry is a subcollection.
 def identify_subcollections(row):

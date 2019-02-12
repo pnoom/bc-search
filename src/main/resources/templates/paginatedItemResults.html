@@ -101,7 +101,7 @@
 <div style="margin-left=100px;" class="block">
     <table class="table">
         <tbody>
-        <tr th:if="${itemList.empty}">
+        <tr th:if="!${itemPage.hasContent()}">
             <td colspan="2"> No Items Available </td>
         </tr>
         <tr th:each="item : ${itemPage.content}">
@@ -123,14 +123,18 @@
         </tbody>
     </table>
 </div>
-<div th:if="${itemPage.totalPages > 0}" class="pagination"
-     th:each="pageNumber : ${pageNumbers}">
-    <a th:href="@{/listItems(size=${itemPage.size}, page=${pageNumber})}"
+<h2>Page select:</h2>
+<th th:if="${itemPage.totalPages > 0}" class="pagination"
+    th:each="pageNumber : ${pageNumbers}">
+    <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
        th:text=${pageNumber}
        th:class="${pageNumber==itemPage.number + 1} ? active"></a>
-</div>
+</th>
 </body>
 <style>
+    .pagination:hover{
+        text-decoration: underline;
+    }
     .itemName {
         cursor: pointer;
     }

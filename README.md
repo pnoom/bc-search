@@ -23,7 +23,7 @@ program with `mvn clean compile package`.
 Then initialize the database as follows. Run:
 
 ```
-cd bc-search/src/main/sql/
+cd src/main/sql/
 ```
 
 Start MySQL up as root:
@@ -52,7 +52,9 @@ target/archives-api-1.0-SNAPSHOT.jar`. Open a browser window, type
 
 Try the following example search terms in the search bar:
 
+```
 Cinderella, KAR, Uniformed soldiers, Trotter, Uganda
+```
 
 You should be met with a list of results. Click the name of a result to see its
 detail page. Click images to enlarge them, if present. Click the Back button in

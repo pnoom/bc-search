@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,10 +33,10 @@ public class AdvancedSearchController {
             result.retainAll(newItems);
     }
 
-    @GetMapping("/advanceSearch")
+    @GetMapping("/advancedSearch")
     public String advanceSearch(Model model) {
         //model.addAttribute("collectionList",collectionService.getAllCollections());
-        return "advanceSearch";
+        return "advancedSearch";
     }
 
     // for printf only
@@ -106,7 +105,7 @@ public class AdvancedSearchController {
             ){
 
         if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && !hasSth(adv_date_start) && !hasSth(adv_date_end))
-            return "redirect:/advanceSearch";
+            return "redirect:/advancedSearch";
 
         if (hasSth(adv_date)) {
             model.addAttribute("itemList",

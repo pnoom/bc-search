@@ -50,6 +50,13 @@ public class ItemService {
         return itemRepo.findDate(date);
     }
 
+    private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
+        if(result.isEmpty() && !someConstraintsExist)
+            result.addAll(newItems);
+        else
+            result.retainAll(newItems);
+    }
+
     public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
         List<Item> results = new ArrayList<>();
@@ -111,41 +118,58 @@ public class ItemService {
 
     public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
         List<Item> results = new ArrayList<>();
+        boolean someConstraintsExist = false;
         //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
         //        collection, checkForNull(specific_date), checkForNull(start_date), checkForNull(end_date), precision, location);
 
-        if (start_date == null && end_date == null) {
+        if (specific_date != null) {
 
             //List<Item> currResults = itemRepo.findBySpecificDate(specific_date);
             //for(Item i: currResults){
             //    if (!results.contains(i))
             //        results.add(i);
             // }
-            results.addAll(itemRepo.findBySpecificDate(specific_date));
+            getIntersection(results,itemRepo.findBySpecificDate(specific_date),false);
+            someConstraintsExist = true;
         }
-        if (specific_date == null) {
+        if (start_date != null && end_date != null) {
             //System.out.println("The if worked");
-            List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
+            getIntersection(results,itemRepo.findByDateRange(start_date,end_date),someConstraintsExist);
+            someConstraintsExist = true;
+            /*List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
-            }
+            }*/
         }
 
         if (hasSth(collection)) {
-            List<Item> currResults = getItemByCollectionName(collection);
+            getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
+            someConstraintsExist = true;
+            /*List<Item> currResults = getItemByCollectionName(collection);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
-            }
+            }*/
         }
 
         if (hasSth(location)) {
-            List<Item> currResults = itemRepo.findLocation(location);
+            getIntersection(results,itemRepo.findLocation(location),someConstraintsExist);
+            someConstraintsExist = true;
+            /*List<Item> currResults = itemRepo.findLocation(location);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
-            }
+            }*/
+        }
+        if (hasSth(precision)) {
+            getIntersection(results,getItemByName(precision),someConstraintsExist);
+            someConstraintsExist = true;
+            /*List<Item> currResults = getItemByName(precision);
+            for(Item i: currResults){
+                if (!results.contains(i))
+                    results.add(i);
+            }*/
         }
         // this.getItem(precision, results); // TODO: getItem should take results param and mutate it
         return results;

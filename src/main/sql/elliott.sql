@@ -89,7 +89,7 @@ Original manuscript caption: My dining room', '1908-01-01', '1912-12-31', 'c. 19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/124', 'Somalia', 'Jubaland staff and settlers', 'Posed group portrait with dog inside house.
 
 Original manuscript caption: Juberland Staff & settlers. Heywood, Salkeld, Grimshaw, Riegr (x), Mrs.Salkeld, Dr. Lumb, Argyroupoule (x). x= settlers.', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205246', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/125', 'Somalia', 'Elliott's house', 'Exterior view of whitewashed house with palm fronds.
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/125', 'Somalia', 'Elliott\'s house', 'Exterior view of whitewashed house with palm fronds.
 
 Original manuscript caption: The front of my house', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205248', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/126', 'Somalia', 'Wa Boni village', 'View of round huts with Somalian villagers and a European man standing  in front of them.
@@ -101,7 +101,7 @@ Original manuscript caption: Xmas lunch', '1908-01-01', '1912-12-31', 'c. 1910',
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/128', 'Somalia', 'Kismayu Club', 'Three men seated in clubhouse with standing servant. Hunting trophies adorn the walls.
 
 Original manuscript caption: Kismayu Club', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205251', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/129', 'Somalia', 'Entrance Hall', 'View of square room with table, presumably in Elliott's house.
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/129', 'Somalia', 'Entrance Hall', 'View of square room with table, presumably in Elliott\'s house.
 
 Original manuscript caption: Entrance Hall', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205252', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/13', 'Somalia', 'Kismayu doctor', 'Profile view of man standing on steps
@@ -155,10 +155,10 @@ Original manuscript caption: Loading up ready for next march', '1908-01-01', '19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/144', 'Somalia', 'Group at Afinadu', 'Group shot of Somali men armed with spears, flanked by a group of police troops.
 
 Original manuscript caption: @ Afinadu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205267', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/145', 'Somalia', 'Elliott's verandah', 'Elliot seated among palm fronds, behind a signalling lamp.
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/145', 'Somalia', 'Elliott\'s verandah', 'Elliot seated among palm fronds, behind a signalling lamp.
 
 Original manuscript caption: My verandah', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205268', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/146', 'Somalia', 'Elliott's verandah', 'Elliot seated among palm fronds, behind a signalling lamp.
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/146', 'Somalia', 'Elliott\'s verandah', 'Elliot seated among palm fronds, behind a signalling lamp.
 
 Original manuscript caption: Quick ? [blurred] in foreground. Signalling lamp behind', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205269', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/147', 'Somalia', 'View of Kismayu', 'View of one storey buildings and thatched shelters stretching into the distance
@@ -205,7 +205,7 @@ INSERT INTO item (item_ref, location, name, description, start_date, end_date, d
 
 Original manuscript caption: Mombasa Police', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204488', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/160', 'Somalia', 'View of steamer across the water', 'View of steamer taken from another boat', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205283', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/161', 'Somalia', 'Elliott's orderly', 'A Somali man in uniform posing with buildings behind him
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/161', 'Somalia', 'Elliott\'s orderly', 'A Somali man in uniform posing with buildings behind him
 
 Original manuscript caption: One of my orderlys', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205284', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/162', 'Somalia', 'Two Somali policemen', 'One tall and one short man pose in police uniform in front of a thatched building
@@ -284,9 +284,9 @@ Original manuscript caption: Somali Chiefs', '1908-01-01', '1912-12-31', 'c. 191
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/189', 'Somalia', 'Wooden bridge with creeping vines', 'Side view of wooden bridge
 
 Original manuscript caption: Native bridge of creeping vines', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album, in very faded condition', '205312', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/19', 'Somalia', 'Doctor's House, Kismayu', 'Exterior of house
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/19', 'Somalia', 'Doctor\'s House, Kismayu', 'Exterior of house
 
-Original manuscript caption: Doctor's House, Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204491', 9);
+Original manuscript caption: Doctor\'s House, Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204491', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/190', 'Somalia', 'Somali Chiefs', 'Two seated men in white robes, with one man standing between them, possibly a policeman
 
 Original manuscript caption: Somali Chiefs', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205313', 9);
@@ -330,7 +330,7 @@ Original manuscript caption: Street in Lamu', '1908-01-01', '1912-12-31', 'c. 19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/202', 'Somalia', 'Kismayu buildings', 'View of some buildings and open space in Kismayu
 
 Original manuscript caption: Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205325', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/203', 'Somalia', 'Exterior view of Elliott's house', 'Exterior view of large two storey house with balcony
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/203', 'Somalia', 'Exterior view of Elliott\'s house', 'Exterior view of large two storey house with balcony
 
 Original manuscript caption: My House', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205326', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/204', 'Somalia', 'Active group of Somali men', 'Group of Somali men in white robes, holding spears. Possibly dancing.', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205327', 9);
@@ -362,7 +362,7 @@ Original manuscript caption: Forbidden Game', '1908-01-01', '1912-12-31', 'c. 19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/213', 'Somalia', 'Hunted buffalo', 'European man with shotgun standing by a dead buffalo
 
 Buffalo. One we did not shoot bagged by Maling of the K.A.R.', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205336', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/214', 'Somalia', 'Hunted gazelle', 'A Somalian man holds up a dead gazelle's horns to show its face
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/214', 'Somalia', 'Hunted gazelle', 'A Somalian man holds up a dead gazelle\'s horns to show its face
 
 Original manuscript caption: A fair Peterseye by Elliott', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205337', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/215', 'Somalia', 'Hunted waterbuck', 'A European man in a pith helmet holds a dead animal by its horns
@@ -371,15 +371,15 @@ Original manuscript caption: Bois over a good head of Waterbuck', '1908-01-01', 
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/216', 'Somalia', 'Somali bush country', 'View of bush country on safari
 
 Original manuscript caption: Somali country', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205339', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/217', 'Somalia', 'Grant's Gazelle', 'Grants Gazelle lying in a field
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/217', 'Somalia', 'Grant\'s Gazelle', 'Grants Gazelle lying in a field
 
-Original manuscript caption: Elliott's Grants' Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205340', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/218', 'Somalia', 'Hunted kudu', 'An African man holds up a dead kudu's horns to show its face
+Original manuscript caption: Elliott\'s Grants\' Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205340', 9);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/218', 'Somalia', 'Hunted kudu', 'An African man holds up a dead kudu\'s horns to show its face
 
 Original manuscript caption: Lesser Kudoo Bois in luck again', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205341', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/219', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead gazelle's horns to show its face
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/219', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead gazelle\'s horns to show its face
 
-Original manuscript caption: Real beauty Grants' Gazelle Elliott', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205342', 9);
+Original manuscript caption: Real beauty Grants\' Gazelle Elliott', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205342', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/22', 'Somalia', 'Jail, Kismayu', 'View of building with figures in foreground
 
 Original manuscript caption: Jail Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204494', 9);
@@ -395,7 +395,7 @@ Printed caption: Vue Generale de Port Said', '1908-01-01', '1912-12-31', 'c. 191
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/223', 'Somalia', 'Hunted oryx beisa', 'View of dead antelope with rifle laid across it
 
 Original manuscript caption: My Oryx Beisa', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205346', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/224', 'Somalia', 'Hunted lesser kudu', 'An African man holds up a dead antelope's horns to show its face
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/224', 'Somalia', 'Hunted lesser kudu', 'An African man holds up a dead antelope\'s horns to show its face
 
 Original manuscript caption: Lesser Kudoo Bois', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205347', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/225', 'Somalia', 'Safari campfire and tents', 'Distant view of campfire and tents in a tranquil setting, with figures sitting in the camp.
@@ -404,10 +404,10 @@ Original manuscript caption: Peace perfect peace', '1908-01-01', '1912-12-31', '
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/226', 'Somalia', 'View across Somali bushland', 'View across bushland on safari
 
 Original manuscript caption: Somali Country', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205349', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/227', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead gazelle's horns to show its face
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/227', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead gazelle\'s horns to show its face
 
-Original manuscript caption: Fine Grants' Gazelle by Bois', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205350', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/228', 'Somalia', 'Hunted kudu', 'An African man holds up a dead antelope's horns to show its face
+Original manuscript caption: Fine Grants\' Gazelle by Bois', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205350', 9);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/228', 'Somalia', 'Hunted kudu', 'An African man holds up a dead antelope\'s horns to show its face
 
 Original manuscript caption: Lesser Kudoo Bois', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205351', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/229', 'Somalia', 'Camping spot, Deshek Warnu', 'A pool with bush land, trees and hills beyond
@@ -416,13 +416,13 @@ Original manuscript caption: My favourite camping place Deshek Warnu', '1908-01-
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/23', 'Somalia', 'Kismayu', 'View from above of buildings and trees
 
 Original manuscript caption: Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204495', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/230', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead Soemmering gazelle's horns to show its face
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/230', 'Somalia', 'Hunted gazelle', 'An African man holds up a dead Soemmering gazelle\'s horns to show its face
 
 Original manuscript caption: Good Goemmering [sic] Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205353', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/231', 'Somalia', 'Panorama of Kismayu', 'Panoramic view of Kismayu created from 4 photographs, showing coastline, thatched huts and formal buildings
 
 Original manuscript caption: Kismayu', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '4 b/w photographs glued into album', '204374', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/24', 'Somalia', 'Col. Kirk-Patrick 3rd K.A.R.', 'Three men photographed from behind, including Col. Kirk-Patrick of the King's African Rifles in foreground
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/24', 'Somalia', 'Col. Kirk-Patrick 3rd K.A.R.', 'Three men photographed from behind, including Col. Kirk-Patrick of the King\'s African Rifles in foreground
 
 Original manuscript caption: Col. Kirk-Patrick 3rd K.A.R.', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204496', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/25', 'Somalia', 'Kismayu Group', 'Eleven men in pith helmets posed for a group photograph
@@ -449,15 +449,15 @@ Original manuscript caption: Capt. Robertson-Eustace', '1908-01-01', '1912-12-31
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/31', 'Kenya', 'Capt. Robertson-Eustace', 'Man standing on verandah with plants below, holding a pith helmet.
 
 Original manuscript caption: Capt. Robertson-Eustace', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', 'default', '1 b/w photograph glued into album', '204503', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/32', 'Somalia', 'Police on transfer', 'Crowd of men under a ship's awning
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/32', 'Somalia', 'Police on transfer', 'Crowd of men under a ship\'s awning
 
 Original manuscript caption: Police on transfer', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204504', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/33', 'Somalia', 'Disembarking troops, Anglo-Somali War', 'Troops on deck of ship, returning from one of the campaigns of the Anglo-Somali War
 
 Original manuscript caption: Disembarking troops returning from Mad Mullah Campaign', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204505', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/34', 'Somalia', 'Major Branding's orderly', 'African man standing next to horse with nosebag
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/34', 'Somalia', 'Major Branding\'s orderly', 'African man standing next to horse with nosebag
 
-Original manuscript caption: Major Branding's orderly', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204506', 9);
+Original manuscript caption: Major Branding\'s orderly', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204506', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/35', 'Somalia', 'Troop ship, Anglo-Somali War', 'Section of a troop ship
 
 Original manuscript caption: Troops returning from Mad Mullah Campaign', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204507', 9);
@@ -503,9 +503,9 @@ Original manuscript caption: Rhino feeding', '1908-01-01', '1912-12-31', 'c. 191
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/48', 'Kenya', 'Rhino feeding', 'View of open land with trees
 
 Original manuscript caption: Rhino feeding', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204520', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/49', 'Kenya', 'Mrs. Rigby's-drawing room', 'Corner of room with sofa, lamps and photographs
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/49', 'Kenya', 'Mrs. Rigby\'s-drawing room', 'Corner of room with sofa, lamps and photographs
 
-Original manuscript caption: Mrs. Rigby's-drawing room', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204521', 9);
+Original manuscript caption: Mrs. Rigby\'s-drawing room', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204521', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/5', 'Somalia', 'Group of house cleaners', 'Four young men and a dog sitting on the steps of a house.
 
 Original manuscript caption: Some of my house boys', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204477', 9);
@@ -518,30 +518,30 @@ Original manuscript caption: Mr. Ewart A.D.S.P.', '1908-01-01', '1912-12-31', 'c
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/52', 'Kenya', 'Mr. Ewart A.D.S.P.', 'Profile view of man in garden
 
 Original manuscript caption: Mr. Ewart A.D.S.P.', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204525', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/53', 'Kenya', 'Uniformed servant with dead Thomson's gazelle', 'Uniformed man standing by dead gazelle 
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/53', 'Kenya', 'Uniformed servant with dead Thomson\'s gazelle', 'Uniformed man standing by dead gazelle 
 
-Original manuscript caption: One of my orderlies + Thomson's Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204526', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/54', 'Kenya', 'Uniformed servant with dead Thomson's gazelle', 'Uniformed man standing by dead gazelle 
+Original manuscript caption: One of my orderlies + Thomson\'s Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204526', 9);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/54', 'Kenya', 'Uniformed servant with dead Thomson\'s gazelle', 'Uniformed man standing by dead gazelle 
 
-Original manuscript caption: One of my orderlies + Thomson's Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204527', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/55', 'Kenya', 'Uniformed servant with dead Thomson's gazelle', 'Uniformed man standing by dead gazelle 
+Original manuscript caption: One of my orderlies + Thomson\'s Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204527', 9);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/55', 'Kenya', 'Uniformed servant with dead Thomson\'s gazelle', 'Uniformed man standing by dead gazelle 
 
-Original manuscript caption: One of my orderlies + Thomson's Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204528', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/56', 'Kenya', 'Uniformed servant with dead Thomson's gazelle', 'Uniformed man standing by dead gazelle 
+Original manuscript caption: One of my orderlies + Thomson\'s Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204528', 9);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/56', 'Kenya', 'Uniformed servant with dead Thomson\'s gazelle', 'Uniformed man standing by dead gazelle 
 
-Original manuscript caption: One of my orderlies + Thomson's Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204529', 9);
+Original manuscript caption: One of my orderlies + Thomson\'s Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204529', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/57', 'Kenya', 'Kenyan shamba', 'Man (probably Frank Elliott) with hands in pockets standing in cultivated land
 
 Original manuscript caption: A bit of my shamba at Nairobi', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204530', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/6', 'Somalia', 'Capt. Robertson-Eustace and an Inspector of Police', 'Three white officials in discussion.
 
 Original manuscript caption: Capt. Robertson-Eustace and an Inspector of Police', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204478', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/60', 'Kenya', 'Men bending over an African antelope', 'Uniformed man (FE's orderly) bending over an African antelope
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/60', 'Kenya', 'Men bending over an African antelope', 'Uniformed man (FE\'s orderly) bending over an African antelope
 
 Original manuscript caption: Harte-beeste or Kongoni.  The finishing touches', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204534', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/61', 'Kenya', 'Uniformed servant with a Grant's Gazelle', 'Uniformed servant standing with a dead Grant's Gazelle
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/61', 'Kenya', 'Uniformed servant with a Grant\'s Gazelle', 'Uniformed servant standing with a dead Grant\'s Gazelle
 
-Original manuscript caption: My orderly + a Grant's Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204535', 9);
+Original manuscript caption: My orderly + a Grant\'s Gazelle', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204535', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/62', 'Aden', 'View of Aden', 'Distant view of Aden with trees beyond
 
 Original manuscript caption: View of Aden', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204536', 9);
@@ -551,10 +551,10 @@ Original manuscript caption: One of the tanks, Aden', '1908-01-01', '1912-12-31'
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/64', 'Egypt', 'Port Said + entrance to the canal', 'View of Port Said from the deck of a ship
 
 Original manuscript caption: Port Said + entrance to the canal', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204538', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/65', 'Egypt', 'The Suez Canal', 'A view of the Suez canal with ship's deck in foreground
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/65', 'Egypt', 'The Suez Canal', 'A view of the Suez canal with ship\'s deck in foreground
 
 Original manuscript caption: The Suez Canal', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204539', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/66', 'Egypt', 'The Suez Canal', 'A view of the Suez canal with ship's deck in foreground
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/66', 'Egypt', 'The Suez Canal', 'A view of the Suez canal with ship\'s deck in foreground
 
 Original manuscript caption: The Suez Canal', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204540', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/67', 'Egypt', 'View of Port Said', 'View of Port Said from the deck of a ship
@@ -578,10 +578,10 @@ Original manuscript caption: An Aden Street', '1908-01-01', '1912-12-31', 'c. 19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/72', 'Egypt', 'Suez', 'View of buildings seen across the Suez canal
 
 Original manuscript caption: Suez', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204546', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/73', 'Egypt', 'Entrance to the canal from Suez', 'View of the Suez canal with ship's rail in foreground
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/73', 'Egypt', 'Entrance to the canal from Suez', 'View of the Suez canal with ship\'s rail in foreground
 
 Original manuscript caption: Entrance to the canal from Suez', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204547', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/74', 'Egypt', 'Suez Canal', 'View of the Suez canal with ship's deck to one side
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/74', 'Egypt', 'Suez Canal', 'View of the Suez canal with ship\'s deck to one side
 
 Original manuscript caption: The Canal', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '204548', 9);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/75', 'Yemen', 'A fort at Aden', 'View of a hill fort
@@ -662,10 +662,10 @@ Original manuscript caption: Juberland Bush', '1908-01-01', '1912-12-31', 'c. 19
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/1/99', 'Somalia', 'Street scene taken from balcony', 'Shot of road running past buildings down to water
 
 Original manuscript caption: Snap of Road from my balcony', '1908-01-01', '1912-12-31', 'c. 1910', '[Copyright] Bristol Record Office', '1 photograph', '1 b/w photograph glued into album', '205221', 9);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/3/2', 'East Africa', 'The War Graves of the British Empire - Cemeteries in East Africa 60-133', 'A register, published 1931 by the Imperial War Graves Commission, containing short biographical details of those who died during the First World War and are buried in cemeteries in East Africa (except Kenya & Tanganyika, Mauritius and the Seychelles). The grave locations are described and diagrams of some cemeteries are included. Elliott's entry is on page 13.', '1931-01-01', '1931-12-31', '1931', 'default', '1 pamphlet', '1 pamphlet containing 51 pages', 'default', 11);
-INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078', 'Yemen', 'Elliott collection', 'Francis Elliott was born in Gainsborough, Lincolnshire, on January 1st 1881, the son of Rev Canon J. R. Elliott, former headmaster of Queen Elizabeth Grammar School, Gainsborough where Elliott was a pupil. He fought in the Boer War as a 2nd Lieutenant in the 3rd Battalion Lincolnshire Regiment. In 1907 he joined the East Africa Police and in 1908 was made District Superintendent of Police for Jubaland, British East Africa (now Somalia). In 1913 he was elected Fellow of the Royal Geographical Society for his research on Jubaland. On the outbreak of WW1, Elliott rejoined the Lincolnshire Regiment, attached to the King's African Rifles. He worked as an intelligence officer against the Marehan Somalis, and was mentioned in despatches. In 1915 Elliott saw action on the border with German East Africa as a temporary Captain in the K.A.R. and on his return was made District Commissioner of Jubaland. Owing to K.A.R. regular troops being deployed elsewhere in East Africa as the war waged on, the defence of Jubaland was left to African police troops working under Elliott. He was killed alongside a number of his men at Serenli on the Juba River on 2nd February 1916, aged 35, during an attack on his station by hostile Somalis, and was buried at Bardera.
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078/3/2', 'East Africa', 'The War Graves of the British Empire - Cemeteries in East Africa 60-133', 'A register, published 1931 by the Imperial War Graves Commission, containing short biographical details of those who died during the First World War and are buried in cemeteries in East Africa (except Kenya & Tanganyika, Mauritius and the Seychelles). The grave locations are described and diagrams of some cemeteries are included. Elliott\'s entry is on page 13.', '1931-01-01', '1931-12-31', '1931', 'default', '1 pamphlet', '1 pamphlet containing 51 pages', 'default', 11);
+INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078', 'Yemen', 'Elliott collection', 'Francis Elliott was born in Gainsborough, Lincolnshire, on January 1st 1881, the son of Rev Canon J. R. Elliott, former headmaster of Queen Elizabeth Grammar School, Gainsborough where Elliott was a pupil. He fought in the Boer War as a 2nd Lieutenant in the 3rd Battalion Lincolnshire Regiment. In 1907 he joined the East Africa Police and in 1908 was made District Superintendent of Police for Jubaland, British East Africa (now Somalia). In 1913 he was elected Fellow of the Royal Geographical Society for his research on Jubaland. On the outbreak of WW1, Elliott rejoined the Lincolnshire Regiment, attached to the King\'s African Rifles. He worked as an intelligence officer against the Marehan Somalis, and was mentioned in despatches. In 1915 Elliott saw action on the border with German East Africa as a temporary Captain in the K.A.R. and on his return was made District Commissioner of Jubaland. Owing to K.A.R. regular troops being deployed elsewhere in East Africa as the war waged on, the defence of Jubaland was left to African police troops working under Elliott. He was killed alongside a number of his men at Serenli on the Juba River on 2nd February 1916, aged 35, during an attack on his station by hostile Somalis, and was buried at Bardera.
 
-This collection contains Elliott's photograph album detailing his life in Kenya and Somalia before WW1, a folder of his letters home, his book "Jubaland and its Inhabitants", a pamphlet describing his war grave and a 1908 map of Jubaland used during the course of his Police work.
+This collection contains Elliott\'s photograph album detailing his life in Kenya and Somalia before WW1, a folder of his letters home, his book "Jubaland and its Inhabitants", a pamphlet describing his war grave and a 1908 map of Jubaland used during the course of his Police work.
 
 This catalogue was produced with support from the National Cataloguing Grants Programme for Archives', '1902-01-01', '1931-12-31', '1902-1931', '[Copyright] Bristol Record Office', 'default', 'default', '167532', 2);
 INSERT INTO item (item_ref, location, name, description, start_date, end_date, display_date, copyrighted, extent, phys_tech_desc, multimedia_irn, subcollection_id) VALUES ('2005/078', 'default', 'default', 'default', NULL, NULL, 'default', '[Copyright] Bristol Record Office', 'default', 'default', '204376', 2);

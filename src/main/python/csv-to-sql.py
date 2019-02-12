@@ -278,7 +278,11 @@ def run():
             input_file.seek(0)
             
             # Runs through checking all individual items and adding them with assigned subcollection
-            for row in csv_reader:
+            csv_reader2 = csv.DictReader(input_file, quotechar='"', delimiter=',')
+            for row in csv_reader2:
+                # Escape single quotes in fields
+                for key, value in row.items():
+                    row[key] = value.replace(r"'", r"\'")
                 if (row["Full Name"] not in subcollections) and (row["Full Name"] != "Full Name"):
                     normalize_date(row)
                     sub_id = get_sub_id(row,subcollections)

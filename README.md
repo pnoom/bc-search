@@ -1,4 +1,4 @@
-## Bristol Archive Search Engine
+# Bristol Archive Search Engine
 
 A web application for searching the Bristol Archive. It is intended to be a
 "unified interface" for accessing the Archive's multimedia collections,
@@ -11,10 +11,10 @@ locally by following the below instructions.
 It is being developed by a group of second-year Computer Science students at
 the University of Bristol.
 
-# Installation
+## Installation
 
 First install [Maven](https://maven.apache.org/install.html) and
-MySQL(https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/). For the
+[MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/). For the
 latter, be sure to set a memorable root password during installation.
 
 Then clone this repository. Change into its root directory, then compile the
@@ -48,15 +48,11 @@ Finally, start the program using `mvn exec:java` or `java -jar
 target/archives-api-1.0-SNAPSHOT.jar`. Open a browser window, type
 `localhost:8011` into the address bar, and hit go.
 
-# Usage instructions
+## Usage instructions
 
 Try the following example search terms in the search bar:
 
-Cinderella
-KAR
-Uniformed soldiers
-Trotter
-Uganda
+Cinderella, KAR, Uniformed soldiers, Trotter, Uganda
 
 You should be met with a list of results. Click the name of a result to see its
 detail page. Click images to enlarge them, if present. Click the Back button in
@@ -69,12 +65,12 @@ various places in Africa, so if you search for dates and places outside of
 these then you may be met with no results.) Click "Date Range" to toggle
 between searching by a specific date and searching by a range of dates.
 
-# Image credits
+## Image credits
 
 The Bristol Council and Archive logos are taken from their respective
 websites. All items in the database are copyright of the Bristol Record Office.
 
-# Original Brief
+## Original Brief
 
 "At the Bristol Archives, we hold over 10,000 historical photographs and film
 from the British Empire and Commonwealth Collection. Archives staff are working

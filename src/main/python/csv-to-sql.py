@@ -62,12 +62,17 @@ def get_collection_id(row):
 # Find the subcollection ID of a record to allow relational database with subcollection tables.
 def get_sub_id(row, subcollections):
     # Checks all subcollections for one which is a substring of the items object number
-    id_counter = 0
+    id_counter = 3
     for i in subcollections:
         id_counter +=1
         if subcollections[i] in row["Object Number"] :
             return id_counter
-    return "Uncategorized" # Placeholder will need to be changed to accomodate uncategorised
+    if get_collection_id(row) == 1:
+       return 1
+    if get_collection_id(row) == 2:
+       return 2
+    if get_collection_id(row) == 3:
+       return 3  
 
 # Use regexes to decide based on extent description whether an entry is a subcollection.
 def identify_subcollections(row):
@@ -263,12 +268,7 @@ def run():
                 for key, value in row.items():
                     row[key] = value.replace(r"'", r"\'")
                 # Runs through identifying subcollections and adding to the to output file and a dictionary called subcollections.
-                if identify_subcollections(row) == "Col Start":
-                    normalize_date(row)
-                    subcollections[row["Full Name"]+"Uncategorized"] = row["Object Number"]
-                    item = insert_subcollection(row, row["Full Name"], get_collection_id(row))
-                    output_file.write(item)
-                elif identify_subcollections(row) != None:
+                if identify_subcollections(row) != None:
                     normalize_date(row)
                     subcollections[row["Full Name"]] = row["Object Number"]
                     item = insert_subcollection(row, row["Full Name"], get_collection_id(row))

@@ -27,15 +27,14 @@ CREATE TABLE item (
   location                      VARCHAR(100)   NOT NULL,
   name           		VARCHAR(100)   NULL,
   description           	TEXT           NULL,
-  -- For MVP, date will be a single string, due to inconsistent data entry
-  -- date_added		 	DATE	       NULL,
-  -- earliest_date_created      DATE	       NULL,
-  -- latest_date_created	DATE	       NULL,
-  date_created                  VARCHAR(100)   NOT NULL,
-  
+  start_date			DATE	       NULL,
+  end_date			DATE	       NULL,
+  -- What the archivists typed in
+  display_date                  VARCHAR(100)   NOT NULL,
   copyrighted                   VARCHAR(100)   NOT NULL,
   extent			VARCHAR(100)   NOT NULL,
   phys_tech_desc		TEXT           NULL,
+  multimedia_irn    		VARCHAR(100),
   
   subcollection_id              INTEGER        NULL,
   FOREIGN KEY (subcollection_id) REFERENCES subcollection(id)

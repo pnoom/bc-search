@@ -3,6 +3,7 @@ package BristolArchives.entities;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name="item")
 @Table(name="item")  // This indicates 'Collection' objects are from mysql table 'Collection'
@@ -25,8 +26,14 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "date_created")
-    private String dateCreated;
+    @Column(name="start_date")
+    private Date startDate;
+
+    @Column(name="end_date")
+    private Date endDate;
+
+    @Column(name = "display_date")
+    private String displayDate;
 
     @Column(name = "copyrighted")
     private String copyrighted;
@@ -36,6 +43,9 @@ public class Item {
 
     @Column(name = "phys_tech_desc")
     private String physTechDesc;
+
+    @Column(name = "multimedia_irn")
+    private String multimediaIrn;
 
     @OneToOne
     @JoinColumn(name = "subcollection_id")
@@ -82,14 +92,6 @@ public class Item {
         this.description = description;
     }
 
-    public String getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
     public String getCopyrighted() {
         return copyrighted;
     }
@@ -104,6 +106,12 @@ public class Item {
 
     public void setExtent(String extent) {
         this.extent = extent;
+    }
+
+    public String getMultimediaIrn(){return multimediaIrn;}
+
+    public void setMultimediaIrn(String multimediaIrn) {
+        this.multimediaIrn = multimediaIrn;
     }
 
     public String getPhysTechDesc() {
@@ -125,4 +133,33 @@ public class Item {
     public String getShortDesc(){
         return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
+
+    public String getURLOfImage(){
+        return "http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + getMultimediaIrn() + "&format=jpeg.jpeg";
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getDisplayDate() {
+        return displayDate;
+    }
+
+    public void setDisplayDate(String displayDate) {
+        this.displayDate = displayDate;
+    }
+
 }

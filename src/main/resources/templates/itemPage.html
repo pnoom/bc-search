@@ -9,6 +9,76 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bristol Archives Collections</title>
+    <!--code for zooming was inspired by https://www.w3schools.com/howto/howto_css_modal_images.asp-->
+    <style>
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .modal{
+            display: none;
+            position: fixed;
+            z-index: 2;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 100%;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 40%;
+            height: 100%;
+            max-width: 700px;
+            max-height: 700px;
+        }
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+        @-webkit-keyframes zoom {
+            from {-webkit-transform:scale(0)}
+            to {-webkit-transform:scale(1)}
+        }
+
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -17,7 +87,7 @@
     <div class="columns">
         <div class="column is-half">
             <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title"> Welcome to Bristol Archives </h1>
+            <h1 class="title">Item page:</h1>
         </div>
         <div class="column is-quarter">
         </div>
@@ -32,7 +102,7 @@
 
 <!-- This is what creates the navbar -->
 <div class="block">
-    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-burger burger" data-target="navMenu">
             <span></span>
             <span></span>
@@ -55,7 +125,20 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript">
+    <style>
+        .content{
+            padding: 20px;
+        }
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .sticky + .content{
+            padding-top: 60px;
+        }
+    </style>
+    <script>
         (function() {
             var burger = document.querySelector('.burger');
             var nav = document.querySelector('#'+burger.dataset.target);
@@ -64,6 +147,16 @@
                 nav.classList.toggle('is-active');
             });
         })();
+        window.onscroll = function() {navbarStick()};
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function navbarStick() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
     </script>
 </div>
 <div class="block">
@@ -73,7 +166,12 @@
             <div>
             <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
-            <img th:src="@{/placeholder.jpg}" alt="Placeholder" width="128" height="128"/>
+            <img id="myImg" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" th:alt=${item.name}/>
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
             <table class="table">
                 <tbody>
                 <tr>
@@ -86,7 +184,7 @@
                 </tr>
                 <tr>
                     <th>Date:</th>
-                    <td><span th:text=${item.dateCreated}> </span></td>
+                    <td><span th:text=${item.displayDate}> </span></td>
                 </tr>
                 <tr>
                     <th>Description:</th>
@@ -100,6 +198,32 @@
     </div>
 
 </div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+        document.getElementsByClassName('navbar')[0].style.visibility = 'hidden';
+    }
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+        document.getElementsByClassName('navbar')[0].style.visibility = 'visible';
+    }
+</script>
+<div class="block">
+    <canvas height="100" style="border:1px transparent">
+    </canvas>
+</div>
 </body>
 </html>

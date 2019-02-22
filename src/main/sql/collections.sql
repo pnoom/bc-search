@@ -24,7 +24,7 @@ CREATE TABLE subcollection (
 
 CREATE TABLE item (
   id             		INTEGER        PRIMARY KEY AUTO_INCREMENT,
-  object_number                 VARCHAR(200)   NOT NULL,
+  item_ref                      VARCHAR(200)   NOT NULL,
   location                      VARCHAR(200)   NOT NULL,
   name           		VARCHAR(200)   NULL,
   description           	TEXT           NULL,

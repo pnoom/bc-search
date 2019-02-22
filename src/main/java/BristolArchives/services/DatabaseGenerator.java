@@ -42,10 +42,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -60,7 +57,7 @@ public class DatabaseGenerator {
     @Autowired
     private DeptRepo deptRepo;
 
-    public File getCSVFile(String filename) {
+    public File getFile(String filename) {
         Resource resource = new ClassPathResource("public/" + filename);
         try {
             File file = resource.getFile();
@@ -71,21 +68,32 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File file) {
+        File logFile = this.getFile("db-gen-log.txt");
+        PrintWriter logWriter;
+        try {
+            logWriter = new PrintWriter(logFile);
+        } catch (FileNotFoundException exception) {
+            System.out.println("LOG FILE NOT FOUND");
+            return;
+        }
         FileReader fileReader;
         Map<String, String> row;
         try {
             fileReader = new FileReader(file);
         } catch (FileNotFoundException exception) {
             System.out.println("FILE NOT FOUND");
+            logWriter.println("FILE NOT FOUND");
             return;
         }
         try {
             row = new CSVReaderHeaderAware(fileReader).readMap();
         } catch (IOException exception) {
             System.out.println("IO ERROR ON CSV READ");
+            logWriter.println("IO ERROR ON CSV READ");
             return;
         }
         System.out.println(row.get("Object Number"));
+        logWriter.println(row.get("Object Number"));
         // row.readNext()
     }
 }

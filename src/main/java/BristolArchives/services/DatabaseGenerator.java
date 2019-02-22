@@ -67,15 +67,7 @@ public class DatabaseGenerator {
         }
     }
 
-    public void generateDatabase(File file) {
-        File logFile = this.getFile("db-gen-log.txt");
-        PrintWriter logWriter;
-        try {
-            logWriter = new PrintWriter(logFile);
-        } catch (FileNotFoundException exception) {
-            System.out.println("LOG FILE NOT FOUND");
-            return;
-        }
+    public void generateDatabase(File file, PrintWriter logWriter) {
         FileReader fileReader;
         Map<String, String> row;
         try {

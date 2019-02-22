@@ -48,12 +48,12 @@ public class Item {
     private String multimediaIrn;
 
     @OneToOne
-    @JoinColumn(name = "subcollection_id")
-    private SubCollection subCollection;
+    @JoinColumn(name = "collection_id")
+    private Collection collection;
 
     public Item(){};
 
-    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String copyrighted, String extent, String physTechDesc, String multimediaIrn, SubCollection subCollection) {
+    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String copyrighted, String extent, String physTechDesc, String multimediaIrn, Collection collection) {
         this.itemRef = itemRef;
         this.name = name;
         this.location = location;
@@ -65,7 +65,7 @@ public class Item {
         this.extent = extent;
         this.physTechDesc = physTechDesc;
         this.multimediaIrn = multimediaIrn;
-        this.subCollection = subCollection;
+        this.collection = collection;
     }
 
     public Integer getId() {
@@ -138,14 +138,6 @@ public class Item {
         this.physTechDesc = physTechDesc;
     }
 
-    public SubCollection getSubCollection() {
-        return subCollection;
-    }
-
-    public void setSubCollection(SubCollection subCollection) {
-        this.subCollection = subCollection;
-    }
-
     public String getShortDesc(){
         return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
@@ -178,4 +170,11 @@ public class Item {
         this.displayDate = displayDate;
     }
 
+    public Collection getCollection() {
+        return collection;
+    }
+
+    public void setCollection(Collection collection) {
+        this.collection = collection;
+    }
 }

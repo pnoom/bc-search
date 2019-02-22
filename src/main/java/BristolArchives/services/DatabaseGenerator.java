@@ -37,8 +37,16 @@ Need to keep track of those that have already been added.
 import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
+import com.opencsv.CSVReaderHeaderAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -52,4 +60,31 @@ public class DatabaseGenerator {
     @Autowired
     private DeptRepo deptRepo;
 
+    public File getCSVFile(String filename) {
+        Resource resource = new ClassPathResource("public/" + filename);
+        try {
+            File file = resource.getFile();
+            return file;
+        } catch (IOException exception) {
+            return null;
+        }
+    }
+
+    public void generateDatabase(File file) {
+        FileReader fileReader;
+        Map<String, String> rows;
+        try {
+            fileReader = new FileReader(file);
+        } catch (FileNotFoundException exception) {
+            System.out.println("FILE NOT FOUND");
+            return;
+        }
+        try {
+            rows = new CSVReaderHeaderAware(fileReader).readMap();
+        } catch (IOException exception) {
+            System.out.println("IO ERROR ON CSV READ");
+            return;
+        }
+        System.out.println(rows);
+    }
 }

@@ -67,25 +67,70 @@ public class DatabaseGenerator {
         }
     }
 
-    public void generateDatabase(File file, PrintWriter logWriter) {
+    // This may actually need to return something
+    private void processRow(Map<String, String> row) {
+        return;
+    }
+
+    public void generateDatabase(File file) {
+        // Open a log file
+        File logFile = this.getFile("db-gen-log.txt");
+        PrintWriter logWriter;
+        try {
+            logWriter = new PrintWriter(logFile);
+        } catch (FileNotFoundException exception) {
+            System.out.println("LOG FILE NOT FOUND");
+            return;
+        }
+        logWriter.println("Start of log file:");
+
+        // Open the CSV file, read column headings to use as keys, and read
+        // first line of values into Map under those keys
         FileReader fileReader;
+        CSVReaderHeaderAware rowReader;
         Map<String, String> row;
         try {
             fileReader = new FileReader(file);
         } catch (FileNotFoundException exception) {
             System.out.println("FILE NOT FOUND");
             logWriter.println("FILE NOT FOUND");
+            logWriter.flush();
+            logWriter.close();
             return;
         }
         try {
-            row = new CSVReaderHeaderAware(fileReader).readMap();
+            rowReader = new CSVReaderHeaderAware(fileReader);
+            row = rowReader.readMap();
         } catch (IOException exception) {
             System.out.println("IO ERROR ON CSV READ");
             logWriter.println("IO ERROR ON CSV READ");
+            logWriter.flush();
+            logWriter.close();
             return;
         }
+
+        // Just an example to check it's working
         System.out.println(row.get("Object Number"));
         logWriter.println(row.get("Object Number"));
-        // row.readNext()
+
+        // Now process each row in the CSV file
+        while (row != null) {
+            this.processRow(row);
+
+            try {
+                row = rowReader.readMap();
+            } catch (IOException exception) {
+                System.out.println("IO ERROR ON CSV READ");
+                logWriter.println("IO ERROR ON CSV READ");
+                logWriter.flush();
+                logWriter.close();
+                return;
+            }
+        }
+
+        System.out.println("All rows processed.");
+        logWriter.println("All rows processed.");
+        logWriter.flush();
+        logWriter.close();
     }
 }

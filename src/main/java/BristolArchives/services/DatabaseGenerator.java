@@ -72,7 +72,7 @@ public class DatabaseGenerator {
 
     public void generateDatabase(File file) {
         FileReader fileReader;
-        Map<String, String> rows;
+        Map<String, String> row;
         try {
             fileReader = new FileReader(file);
         } catch (FileNotFoundException exception) {
@@ -80,11 +80,12 @@ public class DatabaseGenerator {
             return;
         }
         try {
-            rows = new CSVReaderHeaderAware(fileReader).readMap();
+            row = new CSVReaderHeaderAware(fileReader).readMap();
         } catch (IOException exception) {
             System.out.println("IO ERROR ON CSV READ");
             return;
         }
-        System.out.println(rows);
+        System.out.println(row.get("Object Number"));
+        // row.readNext()
     }
 }

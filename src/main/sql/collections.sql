@@ -1,11 +1,17 @@
-DROP TABLE IF EXISTS account;
+-- DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS collection;
+DROP TABLE IF EXISTS dept;
+
+CREATE TABLE dept (
+  id             INTEGER       PRIMARY KEY AUTO_INCREMENT,
+  name           VARCHAR(200)  NOT NULL
+);
 
 CREATE TABLE collection (
   id             INTEGER       PRIMARY KEY AUTO_INCREMENT,
-  name           VARCHAR(200)  NOT NULL,
-  description    TEXT          NOT NULL
+  name           VARCHAR(200)  NOT NULL
+  FOREIGN KEY (dept_id) REFERENCES dept(id)
 );
 
 /*
@@ -35,11 +41,14 @@ CREATE TABLE item (
   copyrighted                   VARCHAR(200)   NOT NULL,
   extent			VARCHAR(200)   NOT NULL,
   phys_tech_desc		TEXT           NULL,
-  multimedia_irn    		VARCHAR(200),
+  multimedia_irn    		VARCHAR(200)   NULL,
+  collection_display_name       VARCHAR(200)   NULL,
   collection_id                 INTEGER        NULL,
   FOREIGN KEY (collection_id) REFERENCES collection(id)
 );
 
+/*
 CREATE TABLE account (
   id				INTEGER		PRIMARY KEY AUTO_INCREMENT
 );
+*/

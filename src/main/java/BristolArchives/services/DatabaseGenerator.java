@@ -8,7 +8,8 @@ insert them into the MySQL database that the program is connected to. It may hav
 to do so in batches, firstly to limit memory usage, and secondly to minimize the
 number of SQL queries necessary, thereby increasing performance.
 
-This class should therefore depend on the Repo classes, and a CSV-reading library.
+This class should therefore depend on the Repo classes, a CSV-reading library, and
+a regex library.
 
 The set of data fields needed for an Item is as follows:
 
@@ -33,6 +34,22 @@ Need to keep track of those that have already been added.
 
  */
 
+import BristolArchives.repositories.CollectionRepo;
+import BristolArchives.repositories.DeptRepo;
+import BristolArchives.repositories.ItemRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class DatabaseGenerator {
+    @Autowired
+    private ItemRepo itemRepo;
+
+    @Autowired
+    private CollectionRepo collectionRepo;
+
+    @Autowired
+    private DeptRepo deptRepo;
 
 }

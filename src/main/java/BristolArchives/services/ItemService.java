@@ -1,7 +1,6 @@
 package BristolArchives.services;
 
 import BristolArchives.entities.Item;
-import BristolArchives.entities.SubCollection;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class ItemService {
     private ItemRepo itemRepo;
 
     @Autowired
-    private SubCollectionService subCollectionService;
+    private CollectionService collectionService;
 
     public List<Item> getAllItems(){
         return itemRepo.findAll();
@@ -30,6 +29,7 @@ public class ItemService {
         return itemRepo.findByNameContaining(name);
     }
 
+    /*
     public List<Item> getItemByCollectionName(String collName) {
         List<SubCollection> subCollList = subCollectionService.getByCollectionName(collName);
         List<Item> result = new ArrayList<>();
@@ -37,6 +37,7 @@ public class ItemService {
             result.addAll(itemRepo.findBySubCollection(subColl));
         return result;
     }
+    */
 
 //    public List<Item> getItemBySubCollectionName(String subCollName) {
 //        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
@@ -148,15 +149,15 @@ public class ItemService {
             }*/
         }
 
-        if (hasSth(collection)) {
-            getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
-            someConstraintsExist = true;
+        //if (hasSth(collection)) {
+        //    getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
+        //    someConstraintsExist = true;
             /*List<Item> currResults = getItemByCollectionName(collection);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }*/
-        }
+        //}
 
         if (hasSth(location)) {
             getIntersection(results,itemRepo.findLocation(location),someConstraintsExist);

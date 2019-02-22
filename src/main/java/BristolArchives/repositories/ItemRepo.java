@@ -15,7 +15,7 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
 
     List<Item> findByName(String name);
     List<Item> findByNameContaining(String name);
-    List<Item> findBySubCollection(SubCollection subColl);
+    // List<Item> findBySubCollection(SubCollection subColl);
 
     @Query("select i from item i where i.name like CONCAT('%',:search,'%')")
     List<Item> findName(@Param("search")String search);

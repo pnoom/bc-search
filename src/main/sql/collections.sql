@@ -1,14 +1,14 @@
+DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS item;
-DROP TABLE IF EXISTS subcollection;
 DROP TABLE IF EXISTS collection;
 
 CREATE TABLE collection (
   id             INTEGER       PRIMARY KEY AUTO_INCREMENT,
-  collection_ref VARCHAR(100)  NOT NULL,
-  name           VARCHAR(100)  NOT NULL,
+  name           VARCHAR(200)  NOT NULL,
   description    TEXT          NOT NULL
 );
 
+/*
 CREATE TABLE subcollection (
   id                INTEGER        PRIMARY KEY AUTO_INCREMENT,
   subcollection_ref VARCHAR(100)   NOT NULL,
@@ -20,22 +20,26 @@ CREATE TABLE subcollection (
   collection_id     INTEGER        NOT NULL,
   FOREIGN KEY    (collection_id)   REFERENCES collection(id)
 );
+*/
 
 CREATE TABLE item (
   id             		INTEGER        PRIMARY KEY AUTO_INCREMENT,
-  item_ref                      VARCHAR(100)   NOT NULL,
-  location                      VARCHAR(100)   NOT NULL,
-  name           		VARCHAR(100)   NULL,
+  object_number                 VARCHAR(200)   NOT NULL,
+  location                      VARCHAR(200)   NOT NULL,
+  name           		VARCHAR(200)   NULL,
   description           	TEXT           NULL,
   start_date			DATE	       NULL,
   end_date			DATE	       NULL,
   -- What the archivists typed in
-  display_date                  VARCHAR(100)   NOT NULL,
-  copyrighted                   VARCHAR(100)   NOT NULL,
-  extent			VARCHAR(100)   NOT NULL,
+  display_date                  VARCHAR(200)   NOT NULL,
+  copyrighted                   VARCHAR(200)   NOT NULL,
+  extent			VARCHAR(200)   NOT NULL,
   phys_tech_desc		TEXT           NULL,
-  multimedia_irn    		VARCHAR(100),
-  
-  subcollection_id              INTEGER        NULL,
-  FOREIGN KEY (subcollection_id) REFERENCES subcollection(id)
+  multimedia_irn    		VARCHAR(200),
+  collection_id                 INTEGER        NULL,
+  FOREIGN KEY (collection_id) REFERENCES collection(id)
+);
+
+CREATE TABLE account (
+  id				INTEGER		PRIMARY KEY AUTO_INCREMENT
 );

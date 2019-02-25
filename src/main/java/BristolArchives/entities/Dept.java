@@ -19,6 +19,7 @@ public class Dept {
     }
 
     public Dept() {};
+
     public Integer getId() {
         return id;
     }

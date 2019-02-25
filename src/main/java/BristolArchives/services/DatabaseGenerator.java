@@ -34,6 +34,9 @@ Need to keep track of those that have already been added.
 
  */
 
+import BristolArchives.entities.Collection;
+import BristolArchives.entities.Dept;
+import BristolArchives.entities.Item;
 import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
@@ -43,6 +46,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -67,14 +72,59 @@ public class DatabaseGenerator {
         }
     }
 
+    // Start reading the file from the start
+    private CSVReaderHeaderAware getCSVReader(File file, PrintWriter logWriter) {
+        FileReader fileReader;
+        CSVReaderHeaderAware rowReader;
+        try {
+            fileReader = new FileReader(file);
+        } catch (FileNotFoundException exception) {
+            System.out.println("CSV FILE NOT FOUND");
+            logWriter.println("CSV FILE NOT FOUND");
+            return null;
+        }
+        try {
+            rowReader = new CSVReaderHeaderAware(fileReader);
+        } catch (IOException exception) {
+            System.out.println("IO ERROR ON CSV READ");
+            logWriter.println("IO ERROR ON CSV READ");
+            return null;
+        }
+        return rowReader;
+    }
+
+    // Read a row into a Map with column headings as keys and row entries as values
+    private Map<String, String> getRow(CSVReaderHeaderAware rowReader, PrintWriter logWriter) {
+        Map<String, String> row;
+        try {
+            row = rowReader.readMap();
+        } catch (IOException exception) {
+            System.out.println("IO ERROR ON CSV READ");
+            logWriter.println("IO ERROR ON CSV READ");
+            return null;
+        }
+        return row;
+    }
+
     // This may actually need to return something
-    private void processRow(Map<String, String> row) {
+    private void processDeptsAndCollections(Map<String, String> row, List<String> deptsAdded, List<String> collectionsAdded) {
+        // Create list of Entities, then batch-insert using repo.saveAll()
+        // But can't really batch-insert Items if we don't know that all their Depts and Collections already exist, right?
+        // Only know that once we've gone through the whole file, but if we accumulate Items as we go, we'll have 75000 of
+        // them in memory by then, right? So HAVE to go through the file twice. Save the list of Map objects instead? Any
+        // memory gain?
+
         return;
+    }
+
+    // Creates an Item and adds it to the buffer (destructively)
+    private void processItems(Map<String, String> row, List<Item> itemBuffer) {
+
     }
 
     public void generateDatabase(File file) {
         // Open a log file
-        File logFile = this.getFile("db-gen-log.txt");
+        File logFile = getFile("db-gen-log.txt");
         PrintWriter logWriter;
         try {
             logWriter = new PrintWriter(logFile);
@@ -84,52 +134,33 @@ public class DatabaseGenerator {
         }
         logWriter.println("Start of log file:");
 
-        // Open the CSV file, read column headings to use as keys, and read
-        // first line of values into Map under those keys
-        FileReader fileReader;
-        CSVReaderHeaderAware rowReader;
-        Map<String, String> row;
-        try {
-            fileReader = new FileReader(file);
-        } catch (FileNotFoundException exception) {
-            System.out.println("FILE NOT FOUND");
-            logWriter.println("FILE NOT FOUND");
-            logWriter.flush();
-            logWriter.close();
-            return;
-        }
-        try {
-            rowReader = new CSVReaderHeaderAware(fileReader);
-            row = rowReader.readMap();
-        } catch (IOException exception) {
-            System.out.println("IO ERROR ON CSV READ");
-            logWriter.println("IO ERROR ON CSV READ");
-            logWriter.flush();
-            logWriter.close();
-            return;
-        }
-
         // Just an example to check it's working
-        System.out.println(row.get("Object Number"));
-        logWriter.println(row.get("Object Number"));
+        //System.out.println(row.get("Object Number"));
+        //logWriter.println(row.get("Object Number"));
 
-        // Now process each row in the CSV file
+        // Go through file once, adding all necessary Depts and Collections individually, in right order
+        List<String> deptsAdded = new ArrayList<>();
+        List<String> collectionsAdded = new ArrayList<>();
+        CSVReaderHeaderAware rowReader = getCSVReader(file, logWriter);
+        Map<String, String> row = getRow(rowReader, logWriter);
         while (row != null) {
-            this.processRow(row);
+            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
+            row = getRow(rowReader, logWriter);
+        }
+        System.out.println("All depts and collections added.");
+        logWriter.println("All rows processed.");
 
-            try {
-                row = rowReader.readMap();
-            } catch (IOException exception) {
-                System.out.println("IO ERROR ON CSV READ");
-                logWriter.println("IO ERROR ON CSV READ");
-                logWriter.flush();
-                logWriter.close();
-                return;
-            }
+        // Go through file again, adding Items in batches to reduce memory usage and SQL processing times
+        rowReader = getCSVReader(file, logWriter);
+        row = getRow(rowReader, logWriter);
+        List<Item> itemBuffer = new ArrayList<>();
+        while (row != null) {
+            processItems(row, itemBuffer);
+            row = getRow(rowReader, logWriter);
         }
 
-        System.out.println("All rows processed.");
-        logWriter.println("All rows processed.");
+        System.out.println("All items added.");
+        logWriter.println("All items added.");
         logWriter.flush();
         logWriter.close();
     }

@@ -64,7 +64,7 @@ public class DatabaseGenerator {
     @Autowired
     private DeptRepo deptRepo;
 
-    private Integer bufferSize = 10;
+    private Integer bufferSize = 1000;
 
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
@@ -134,7 +134,7 @@ public class DatabaseGenerator {
             dept.setName(deptName);
             //deptRepo.save(dept); // UNCOMMENT ME
             deptsAdded.put(deptName, dept);
-            logWriter.printf("Department: %s\n", deptName);
+            System.out.printf("Department: %s\n", deptName);
         }
         // Its dept is guaranteed to exist at this point, so get its id from deptsAdded dict
         if (collectionsAdded.get(collName) == null) {
@@ -145,7 +145,7 @@ public class DatabaseGenerator {
             coll.setDept(deptsAdded.get(deptName));
             //collectionRepo.save(coll); // UNCOMMENT ME
             collectionsAdded.put(collName, coll);
-            logWriter.printf("Collection: %s\n", collName);
+            System.out.printf("Collection: %s\n", collName);
         }
     }
 
@@ -156,6 +156,7 @@ public class DatabaseGenerator {
         // Create list of Entities, then batch-insert using repo.saveAll()
         if (itemBuffer.size() == bufSize) {
             //itemRepo.saveAll(itemBuffer); // UNCOMMENT ME
+            System.out.println("Batch insert");
             itemBuffer.clear();
         }
 
@@ -178,6 +179,7 @@ public class DatabaseGenerator {
         //item.setPhysTechDesc();
         //item.setMultimediaIrn();  // will have to combine the IRNs with the main spreadsheet somehow
         item.setCollectionDisplayName(row.get("Named Collection"));
+        itemBuffer.add(item);
     }
 
     public void generateDatabase(File file) throws IOException, FileNotFoundException {

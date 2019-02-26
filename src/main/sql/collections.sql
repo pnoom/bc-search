@@ -10,7 +10,8 @@ CREATE TABLE dept (
 
 CREATE TABLE collection (
   id             INTEGER       PRIMARY KEY AUTO_INCREMENT,
-  name           VARCHAR(200)  NOT NULL
+  name           VARCHAR(200)  NOT NULL,
+  dept_id	 INTEGER       NOT NULL,
   FOREIGN KEY (dept_id) REFERENCES dept(id)
 );
 

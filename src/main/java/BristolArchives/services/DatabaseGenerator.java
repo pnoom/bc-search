@@ -166,9 +166,6 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File file) throws IOException {
-        // Go through file once, adding all necessary Depts and Collections individually, in right order.
-        // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
-        // Don't need to use ids explicitly since the Java program understands the schema.
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
 
@@ -176,6 +173,9 @@ public class DatabaseGenerator {
         Map<String, Collection> collectionsAdded = new HashMap<>();
         List<Item> itemBuffer = new ArrayList<>();
 
+        // Go through file once, adding all necessary Depts and Collections individually, in right order.
+        // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
+        // Don't need to use ids explicitly since the Java program understands the schema.
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
         while (row != null) {
@@ -187,12 +187,10 @@ public class DatabaseGenerator {
         // Go through file again, adding Items in batches to reduce memory usage and SQL processing times
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
-
         while (row != null) {
             processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded);
             row = getRow(rowReader);
         }
-
         System.out.println("All items added.");
     }
 }

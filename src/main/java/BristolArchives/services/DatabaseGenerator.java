@@ -42,6 +42,7 @@ import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -104,11 +105,15 @@ public class DatabaseGenerator {
         return rowReader.readMap();
     }
 
+    private String sanitizeString(String string) {
+        return WordUtils.capitalizeFully(string.trim().toLowerCase().replaceAll(" +", " "));
+    }
+
     // This may actually need to return something
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
-        String deptName = row.get("Department");
-        String collName = row.get("Collection");
+        String deptName = sanitizeString(row.get("Department"));
+        String collName = sanitizeString(row.get("Collection"));
         Dept dept;
         Collection coll;
         if (deptsAdded.get(deptName) == null) {
@@ -118,7 +123,7 @@ public class DatabaseGenerator {
             dept.setName(deptName);
             //deptRepo.save(dept); // UNCOMMENT ME
             deptsAdded.put(deptName, dept);
-            System.out.printf("Department: %s\n", deptName);
+            System.out.printf("Department: '%s'\n", deptName);
         }
         // Its dept is guaranteed to exist at this point, so get its id from deptsAdded dict
         if (collectionsAdded.get(collName) == null) {
@@ -129,7 +134,7 @@ public class DatabaseGenerator {
             coll.setDept(deptsAdded.get(deptName));
             //collectionRepo.save(coll); // UNCOMMENT ME
             collectionsAdded.put(collName, coll);
-            System.out.printf("Collection: %s\n", collName);
+            System.out.printf("Collection: '%s'\n", collName);
         }
     }
 
@@ -148,7 +153,7 @@ public class DatabaseGenerator {
         Item item = new Item();
         // auto-generated?
         // item.setId()
-        item.setCollection(collectionsAdded.get(row.get("Collection")));
+        item.setCollection(collectionsAdded.get(sanitizeString(row.get("Collection"))));
         item.setItemRef(row.get("Object Number"));
         item.setLocation("placeholder");
         item.setName(row.get("Full Name"));

@@ -43,6 +43,7 @@ import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.text.WordUtils;
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -67,7 +68,7 @@ public class DatabaseGenerator {
     @Autowired
     private DeptRepo deptRepo;
 
-    private Integer bufferSize = 1000;
+    private Integer bufferSize = 100;
 
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
@@ -108,7 +109,19 @@ public class DatabaseGenerator {
     }
 
     private String sanitizeString(String string) {
-        return WordUtils.capitalizeFully(string.trim().toLowerCase().replaceAll(" +", " "));
+        if (string == null) {
+            return "";
+        }
+        string = WordUtils.capitalizeFully(string.trim().toLowerCase().replaceAll(" +", " "));
+        return string;
+    }
+
+    private String truncateString(String string, Integer maxLength) {
+        if (string == null) {
+            return "";
+        }
+        string = string.trim();
+        return string.substring(0, Math.min(maxLength-1, string.length()));
     }
 
     // This may actually need to return something
@@ -139,22 +152,33 @@ public class DatabaseGenerator {
     // Creates an Item and adds it to the buffer (destructively)
     private void processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded) {
-        // Create list of Entities, then batch-insert using repo.saveAll()
+
+        // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
+        // Items, but difficult with batch saving.
         if (itemBuffer.size() == bufSize) {
-            //itemRepo.saveAll(itemBuffer); // UNCOMMENT ME
-            System.out.println("Batch insert");
+            try {
+                itemRepo.saveAll(itemBuffer);
+            } catch (DataException exception) {
+                System.out.println("Skipped batch: contained malformed item(s)");
+            } finally {
+                itemRepo.flush();
+            }
+
+            //System.out.println("Batch insert");
             itemBuffer.clear();
         }
+
+        // TODO: Should have a DISTINCT constraint on Object Number. SQL should complain if we try to add an item that
+        // already exists. Since we're giving clients access to this code, we should make this check.
 
         // Some of these values are missing, and/or their column is dependent on whether it's a museum
         // or archive item, so use placeholders for now to check other code
         Item item = new Item();
-        // auto-generated?
-        // item.setId()
+        // id is auto-generated
         item.setCollection(collectionsAdded.get(sanitizeString(row.get("Collection"))));
-        item.setItemRef(row.get("Object Number"));
+        item.setItemRef(row.get("Object Number").trim());
         item.setLocation("placeholder");
-        item.setName(row.get("Full Name"));
+        item.setName(truncateString(row.get("Full Name"), 200));
         // can be null, so leave as null for now
         //item.setDescription("placeholder");
         //item.setDisplayDate("placeholder");
@@ -164,7 +188,7 @@ public class DatabaseGenerator {
         //item.setExtent();
         //item.setPhysTechDesc();
         //item.setMultimediaIrn();  // will have to combine the IRNs with the main spreadsheet somehow
-        item.setCollectionDisplayName(row.get("Named Collection"));
+        item.setCollectionDisplayName(sanitizeString(row.get("Named Collection"))); //must
         itemBuffer.add(item);
     }
 

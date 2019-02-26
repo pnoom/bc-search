@@ -32,7 +32,7 @@ CREATE TABLE subcollection (
 CREATE TABLE item (
   id             		INTEGER        PRIMARY KEY AUTO_INCREMENT,
   item_ref                      VARCHAR(200)   NOT NULL,
-  location                      VARCHAR(200)   NOT NULL, -- should be NOT NULL, really
+  location                      VARCHAR(200)   NULL, -- should be NOT NULL, really
   name           		VARCHAR(200)   NULL,
   description           	TEXT           NULL,
   start_date			DATE	       NULL,

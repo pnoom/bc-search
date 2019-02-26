@@ -51,9 +51,12 @@ public class Item {
     @JoinColumn(name = "collection_id")
     private Collection collection;
 
+    @Column(name = "collection_display_name")
+    private String collectionDisplayName;
+
     public Item(){};
 
-    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String copyrighted, String extent, String physTechDesc, String multimediaIrn, Collection collection) {
+    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String copyrighted, String extent, String physTechDesc, String multimediaIrn, Collection collection, String collectionDisplayName) {
         this.itemRef = itemRef;
         this.name = name;
         this.location = location;
@@ -66,6 +69,7 @@ public class Item {
         this.physTechDesc = physTechDesc;
         this.multimediaIrn = multimediaIrn;
         this.collection = collection;
+        this.collectionDisplayName = collectionDisplayName;
     }
 
     public Integer getId() {
@@ -176,5 +180,13 @@ public class Item {
 
     public void setCollection(Collection collection) {
         this.collection = collection;
+    }
+
+    public String getCollectionDisplayName() {
+        return collectionDisplayName;
+    }
+
+    public void setCollectionDisplayName(String collectionDisplayName) {
+        this.collectionDisplayName = collectionDisplayName;
     }
 }

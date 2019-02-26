@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 
@@ -14,8 +15,18 @@ public class BristolArchivesRunController {
     @GetMapping("/")
     public String index() {
         DatabaseGenerator dbGen = new DatabaseGenerator();
-        File file = dbGen.getFile("haslam.csv");
-        dbGen.generateDatabase(file);
+        File file = null;
+        try {
+            file = dbGen.getFile("emu-content.csv");
+        } catch (IOException exception) {
+            System.out.println("Error opening CSV file");
+        }
+        try {
+            dbGen.generateDatabase(file);
+        } catch (IOException exception) {
+            System.out.println("Could not generate database");
+        }
+
         return "index";
     }
 }

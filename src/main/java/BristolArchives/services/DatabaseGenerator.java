@@ -66,40 +66,47 @@ public class DatabaseGenerator {
 
     private Integer bufferSize = 10;
 
-    public File getFile(String filename) {
+    public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
+        File file;
         try {
-            File file = resource.getFile();
+            file = resource.getFile();
             return file;
         } catch (IOException exception) {
-            return null;
+            System.out.printf("FILE '%s' NOT FOUND\n", filename);
+            throw exception;
         }
     }
 
     // Start reading the file from the start
-    private CSVReaderHeaderAware getCSVReader(File file, PrintWriter logWriter) {
-        FileReader fileReader;
-        CSVReaderHeaderAware rowReader;
+    private CSVReaderHeaderAware getCSVReader(File file, PrintWriter logWriter)
+            throws IOException, FileNotFoundException {
+        FileReader fileReader = null;
+        CSVReaderHeaderAware rowReader = null;
         try {
             fileReader = new FileReader(file);
+            try {
+                rowReader = new CSVReaderHeaderAware(fileReader);
+            } catch (IOException exception) {
+                System.out.println("IO ERROR ON CSV READ");
+                logWriter.println("IO ERROR ON CSV READ");
+                throw exception;
+            }
         } catch (FileNotFoundException exception) {
             System.out.println("CSV FILE NOT FOUND");
             logWriter.println("CSV FILE NOT FOUND");
-            return null;
+            throw exception;
         }
-        try {
-            rowReader = new CSVReaderHeaderAware(fileReader);
-        } catch (IOException exception) {
-            System.out.println("IO ERROR ON CSV READ");
-            logWriter.println("IO ERROR ON CSV READ");
-            return null;
-        }
+        //System.out.printf("fileReader: %s, rowReader: %s", fileReader, rowReader);
         return rowReader;
     }
 
     // Read a row into a Map with column headings as keys and row entries as values
-    private Map<String, String> getRow(CSVReaderHeaderAware rowReader, PrintWriter logWriter) {
+    private Map<String, String> getRow(CSVReaderHeaderAware rowReader, PrintWriter logWriter)
+            throws IOException {
         Map<String, String> row;
+        row = rowReader.readMap();
+        /*
         try {
             row = rowReader.readMap();
         } catch (IOException exception) {
@@ -107,6 +114,8 @@ public class DatabaseGenerator {
             logWriter.println("IO ERROR ON CSV READ");
             return null;
         }
+        */
+        //System.out.println(row);
         return row;
     }
 
@@ -138,7 +147,6 @@ public class DatabaseGenerator {
             collectionsAdded.put(collName, coll);
             logWriter.printf("Collection: %s\n", collName);
         }
-        return;
     }
 
     // Creates an Item and adds it to the buffer (destructively)
@@ -172,15 +180,16 @@ public class DatabaseGenerator {
         item.setCollectionDisplayName(row.get("Named Collection"));
     }
 
-    public void generateDatabase(File file) {
+    public void generateDatabase(File file) throws IOException, FileNotFoundException {
         // Open a log file
-        File logFile = getFile("db-gen-log.txt");
+        String fileName = "db-gen-log.txt";
+        File logFile = getFile(fileName);
         PrintWriter logWriter;
         try {
             logWriter = new PrintWriter(logFile);
         } catch (FileNotFoundException exception) {
-            System.out.println("LOG FILE NOT FOUND");
-            return;
+            System.out.printf("LOG FILE '%s' NOT FOUND\n", fileName);
+            throw exception;
         }
         logWriter.println("Start of log file:");
 
@@ -195,7 +204,7 @@ public class DatabaseGenerator {
         Map<String, Collection> collectionsAdded = new HashMap<>();
         CSVReaderHeaderAware rowReader = getCSVReader(file, logWriter);
         Map<String, String> row = getRow(rowReader, logWriter);
-        logWriter.printf("test: %s\n", row.get("Department"));
+        //System.out.printf("test: %s\n", (row == null));
         while (row != null) {
             processDeptsAndCollections(row, deptsAdded, collectionsAdded, logWriter);
             row = getRow(rowReader, logWriter);
@@ -207,7 +216,7 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(file, logWriter);
         row = getRow(rowReader, logWriter);
         List<Item> itemBuffer = new ArrayList<>();
-        logWriter.printf("test: %s\n", row.get("Simple name"));
+        //System.out.printf("test: %s\n", (row == null));
         while (row != null) {
             processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, logWriter);
             row = getRow(rowReader, logWriter);

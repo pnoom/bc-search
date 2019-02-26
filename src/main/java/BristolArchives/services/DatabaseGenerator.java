@@ -79,50 +79,34 @@ public class DatabaseGenerator {
     }
 
     // Start reading the file from the start
-    private CSVReaderHeaderAware getCSVReader(File file, PrintWriter logWriter)
-            throws IOException, FileNotFoundException {
-        FileReader fileReader = null;
-        CSVReaderHeaderAware rowReader = null;
+    private CSVReaderHeaderAware getCSVReader(File file)
+            throws IOException {
+        FileReader fileReader;
+        CSVReaderHeaderAware rowReader;
         try {
             fileReader = new FileReader(file);
             try {
                 rowReader = new CSVReaderHeaderAware(fileReader);
             } catch (IOException exception) {
                 System.out.println("IO ERROR ON CSV READ");
-                logWriter.println("IO ERROR ON CSV READ");
                 throw exception;
             }
         } catch (FileNotFoundException exception) {
             System.out.println("CSV FILE NOT FOUND");
-            logWriter.println("CSV FILE NOT FOUND");
             throw exception;
         }
-        //System.out.printf("fileReader: %s, rowReader: %s", fileReader, rowReader);
         return rowReader;
     }
 
     // Read a row into a Map with column headings as keys and row entries as values
-    private Map<String, String> getRow(CSVReaderHeaderAware rowReader, PrintWriter logWriter)
+    private Map<String, String> getRow(CSVReaderHeaderAware rowReader)
             throws IOException {
-        Map<String, String> row;
-        row = rowReader.readMap();
-        /*
-        try {
-            row = rowReader.readMap();
-        } catch (IOException exception) {
-            System.out.println("IO ERROR ON CSV READ");
-            logWriter.println("IO ERROR ON CSV READ");
-            return null;
-        }
-        */
-        //System.out.println(row);
-        return row;
+        return rowReader.readMap();
     }
 
     // This may actually need to return something
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
-                                            Map<String, Collection> collectionsAdded,
-                                            PrintWriter logWriter) {
+                                            Map<String, Collection> collectionsAdded) {
         String deptName = row.get("Department");
         String collName = row.get("Collection");
         Dept dept;
@@ -151,8 +135,7 @@ public class DatabaseGenerator {
 
     // Creates an Item and adds it to the buffer (destructively)
     private void processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
-                              Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
-                              PrintWriter logWriter) {
+                              Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded) {
         // Create list of Entities, then batch-insert using repo.saveAll()
         if (itemBuffer.size() == bufSize) {
             //itemRepo.saveAll(itemBuffer); // UNCOMMENT ME
@@ -182,51 +165,34 @@ public class DatabaseGenerator {
         itemBuffer.add(item);
     }
 
-    public void generateDatabase(File file) throws IOException, FileNotFoundException {
-        // Open a log file
-        String fileName = "db-gen-log.txt";
-        File logFile = getFile(fileName);
-        PrintWriter logWriter;
-        try {
-            logWriter = new PrintWriter(logFile);
-        } catch (FileNotFoundException exception) {
-            System.out.printf("LOG FILE '%s' NOT FOUND\n", fileName);
-            throw exception;
-        }
-        logWriter.println("Start of log file:");
-
-        // Just an example to check it's working
-        //System.out.println(row.get("Object Number"));
-        //logWriter.println(row.get("Object Number"));
-
+    public void generateDatabase(File file) throws IOException {
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+        CSVReaderHeaderAware rowReader;
+        Map<String, String> row;
+
         Map<String, Dept> deptsAdded = new HashMap<>();
         Map<String, Collection> collectionsAdded = new HashMap<>();
-        CSVReaderHeaderAware rowReader = getCSVReader(file, logWriter);
-        Map<String, String> row = getRow(rowReader, logWriter);
-        //System.out.printf("test: %s\n", (row == null));
+        List<Item> itemBuffer = new ArrayList<>();
+
+        rowReader = getCSVReader(file);
+        row = getRow(rowReader);
         while (row != null) {
-            processDeptsAndCollections(row, deptsAdded, collectionsAdded, logWriter);
-            row = getRow(rowReader, logWriter);
+            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
+            row = getRow(rowReader);
         }
         System.out.println("All depts and collections added.");
-        logWriter.println("All rows processed.");
 
         // Go through file again, adding Items in batches to reduce memory usage and SQL processing times
-        rowReader = getCSVReader(file, logWriter);
-        row = getRow(rowReader, logWriter);
-        List<Item> itemBuffer = new ArrayList<>();
-        //System.out.printf("test: %s\n", (row == null));
+        rowReader = getCSVReader(file);
+        row = getRow(rowReader);
+
         while (row != null) {
-            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, logWriter);
-            row = getRow(rowReader, logWriter);
+            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded);
+            row = getRow(rowReader);
         }
 
         System.out.println("All items added.");
-        logWriter.println("All items added.");
-        logWriter.flush();
-        logWriter.close();
     }
 }

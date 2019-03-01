@@ -131,6 +131,7 @@ public class DatabaseGenerator {
         String collName = sanitizeString(row.get("Collection"));
         Dept dept;
         Collection coll;
+        System.out.println(deptsAdded.get(deptName));
         if (deptsAdded.get(deptName) == null) {
             dept = new Dept();
             // id is auto-generated
@@ -139,6 +140,7 @@ public class DatabaseGenerator {
             deptsAdded.put(deptName, dept);
         }
         // Its dept is guaranteed to exist at this point, so get it deptsAdded dict
+        System.out.println(collectionsAdded.get(collName));
         if (collectionsAdded.get(collName) == null) {
             coll = new Collection();
             // id is auto-generated
@@ -168,6 +170,11 @@ public class DatabaseGenerator {
             itemBuffer.clear();
         }
 
+        // Trim whitespace etc for all values
+        //for (Map.Entry<String, String> pair : row.entrySet()) {
+        //    pair.getKey()
+        //}
+
         // TODO: Should have a DISTINCT constraint on Object Number. SQL should complain if we try to add an item that
         // already exists. Since we're giving clients access to this code, we should make this check.
 
@@ -177,18 +184,42 @@ public class DatabaseGenerator {
         // id is auto-generated
         item.setCollection(collectionsAdded.get(sanitizeString(row.get("Collection"))));
         item.setItemRef(row.get("Object Number").trim());
-        item.setLocation("placeholder");
+
+        if (row.get("Geographic Name: (Names)") != null) {
+            item.setLocation(row.get("Geographic Name: (Names)"));
+        } else if (row.get("Place Details: (Production Place)") != null) {
+            item.setLocation(row.get("Place Details: (Production Place)"));
+        }
+
         item.setName(truncateString(row.get("Full Name"), 200));
         // can be null, so leave as null for now
-        //item.setDescription("placeholder");
-        //item.setDisplayDate("placeholder");
+
+        if (row.get("Physical Description: (Collection Details)") != null) {
+            item.setDescription(row.get("Physical Description: (Collection Details)"));
+        } else if (row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)") != null) {
+            item.setDescription(row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)"));
+        }
+
+        if (row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)") != null) {
+            item.setDisplayDate(row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)"));
+        } else if (row.get("Associated Date: (Content Details)/Production Date: (Production Dates)") != null) {
+            item.setDisplayDate(row.get("Associated Date: (Content Details)/Production Date: (Production Dates)"));
+        }
+
+        // Needs normalization
         //item.setStartDate();
         //item.setEndDate();
-        //item.setCopyrighted();
-        //item.setExtent();
+
+        if (row.get("Extent: (ISAD(G) Identity Statement)") != null) {
+            item.setExtent(row.get("Extent: (ISAD(G) Identity Statement)"));
+        } else if (row.get("Simple Name: (Collection Details)/Object Name/Object Name: (Classification)") != null) {
+            item.setExtent(row.get("Simple Name: (Collection Details)/Object Name/Object Name: (Classification)"));
+        }
+
+        // Missing/already used
         //item.setPhysTechDesc();
-        //item.setMultimediaIrn();  // will have to combine the IRNs with the main spreadsheet somehow
-        item.setCollectionDisplayName(sanitizeString(row.get("Named Collection"))); //must
+
+        item.setCollectionDisplayName(sanitizeString(row.get("Named Collection")));
         itemBuffer.add(item);
     }
 

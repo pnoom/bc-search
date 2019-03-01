@@ -21,7 +21,7 @@ public class BristolArchivesRunController {
 
         File file = null;
         try {
-            file = dbGen.getFile("emu-content.csv");
+            file = dbGen.getFile("emu-content2.csv");
         } catch (IOException exception) {
             System.out.println("Error opening CSV file");
         }

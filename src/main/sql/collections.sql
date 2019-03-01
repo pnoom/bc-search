@@ -28,7 +28,6 @@ CREATE TABLE item (
   display_date                  VARCHAR(200)   NULL,
   extent			VARCHAR(200)   NULL,
   phys_tech_desc		TEXT           NULL,
-  multimedia_irn    		VARCHAR(200)   NULL,
   collection_display_name       VARCHAR(200)   NULL,
   collection_id                 INTEGER        NOT NULL,
   FOREIGN KEY (collection_id) REFERENCES collection(id)

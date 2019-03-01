@@ -48,7 +48,7 @@ public class ItemService {
     }
 
     public List<Item> getItemByLocation(String location) {
-        return itemRepo.findLocation(location);
+        return itemRepo.findByLocationLike(location);
     }
 
     public List<Item> getItemByDate(String date) {
@@ -76,12 +76,12 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findName(s);
+            currResults = itemRepo.findByName(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findLocation(s);
+            currResults = itemRepo.findByLocationLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -91,7 +91,7 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findDescription(s);
+            currResults = itemRepo.findByDescriptionContaining(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -135,12 +135,12 @@ public class ItemService {
             //    if (!results.contains(i))
             //        results.add(i);
             // }
-            getIntersection(results,itemRepo.findBySpecificDate(specific_date),false);
+            getIntersection(results,itemRepo.findWithSpecificDate(specific_date),false);
             someConstraintsExist = true;
         }
         if (start_date != null && end_date != null) {
             //System.out.println("The if worked");
-            getIntersection(results,itemRepo.findByDateRange(start_date,end_date),someConstraintsExist);
+            getIntersection(results,itemRepo.findWithDateRange(start_date,end_date),someConstraintsExist);
             someConstraintsExist = true;
             /*List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
             for(Item i: currResults){
@@ -160,7 +160,7 @@ public class ItemService {
         //}
 
         if (hasSth(location)) {
-            getIntersection(results,itemRepo.findLocation(location),someConstraintsExist);
+            getIntersection(results,itemRepo.findByLocationLike(location),someConstraintsExist);
             someConstraintsExist = true;
             /*List<Item> currResults = itemRepo.findLocation(location);
             for(Item i: currResults){

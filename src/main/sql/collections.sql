@@ -26,7 +26,6 @@ CREATE TABLE item (
   end_date			DATE	       NULL,
   -- What the archivists typed in
   display_date                  VARCHAR(200)   NULL,
-  copyrighted                   VARCHAR(200)   NULL,
   extent			VARCHAR(200)   NULL,
   phys_tech_desc		TEXT           NULL,
   multimedia_irn    		VARCHAR(200)   NULL,
@@ -38,6 +37,7 @@ CREATE TABLE item (
 CREATE TABLE multimedia (
   id				INTEGER		PRIMARY KEY AUTO_INCREMENT,
   irn				VARCHAR(200)	NOT NULL UNIQUE,
+  copyrighted                   VARCHAR(200)    NOT NULL,
   item_id			INTEGER 	NOT NULL,
   FOREIGN KEY (item_id) REFERENCES item(id)
 );

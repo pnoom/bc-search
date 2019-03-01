@@ -35,17 +35,11 @@ public class Item {
     @Column(name = "display_date")
     private String displayDate;
 
-    @Column(name = "copyrighted")
-    private String copyrighted;
-
     @Column(name = "extent")
     private String extent;
 
     @Column(name = "phys_tech_desc")
     private String physTechDesc;
-
-    @Column(name = "multimedia_irn")
-    private String multimediaIrn;
 
     @OneToOne
     @JoinColumn(name = "collection_id")
@@ -56,7 +50,7 @@ public class Item {
 
     public Item(){};
 
-    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String copyrighted, String extent, String physTechDesc, String multimediaIrn, Collection collection, String collectionDisplayName) {
+    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String extent, String physTechDesc, Collection collection, String collectionDisplayName) {
         this.itemRef = itemRef;
         this.name = name;
         this.location = location;
@@ -64,10 +58,8 @@ public class Item {
         this.startDate = startDate;
         this.endDate = endDate;
         this.displayDate = displayDate;
-        this.copyrighted = copyrighted;
         this.extent = extent;
         this.physTechDesc = physTechDesc;
-        this.multimediaIrn = multimediaIrn;
         this.collection = collection;
         this.collectionDisplayName = collectionDisplayName;
     }
@@ -112,26 +104,12 @@ public class Item {
         this.description = description;
     }
 
-    public String getCopyrighted() {
-        return copyrighted;
-    }
-
-    public void setCopyrighted(String copyrighted) {
-        this.copyrighted = copyrighted;
-    }
-
     public String getExtent() {
         return extent;
     }
 
     public void setExtent(String extent) {
         this.extent = extent;
-    }
-
-    public String getMultimediaIrn(){return multimediaIrn;}
-
-    public void setMultimediaIrn(String multimediaIrn) {
-        this.multimediaIrn = multimediaIrn;
     }
 
     public String getPhysTechDesc() {
@@ -146,8 +124,9 @@ public class Item {
         return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
 
+    // TODO: move elsewhere
     public String getURLOfImage(){
-        return "http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + getMultimediaIrn() + "&format=jpeg.jpeg";
+        return ""; // http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + getMultimediaIrn() + "&format=jpeg.jpeg";
     }
 
     public Date getStartDate() {

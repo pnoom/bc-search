@@ -52,7 +52,7 @@ public class ItemService {
     }
 
     public List<Item> getItemByDate(String date) {
-        return itemRepo.findDate(date);
+        return itemRepo.findByDisplayDateLike(date);
     }
 
     private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
@@ -71,7 +71,7 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findWithRef(s);
+            currResults = itemRepo.findByItemRef(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -86,7 +86,7 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findDate(s);
+            currResults = itemRepo.findByDisplayDateLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -102,9 +102,9 @@ public class ItemService {
     }
 
     public Item getExactItem(String ref){
-        if(itemRepo.findWithRef(ref).size() <= 0)
+        if(itemRepo.findByItemRef(ref).size() <= 0)
             return null;
-        return itemRepo.findWithRef(ref).get(0);
+        return itemRepo.findByItemRef(ref).get(0);
     }
 
     private boolean hasSth(String s) {

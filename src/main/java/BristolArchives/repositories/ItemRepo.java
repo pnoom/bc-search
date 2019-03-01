@@ -15,6 +15,8 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
 
     List<Item> findByName(String name);
     List<Item> findByNameContaining(String name);
+    List<Item> findByItemRef(String ref);
+    List<Item> findByDisplayDateLike(String date);
     // List<Item> findBySubCollection(SubCollection subColl);
 
     @Query("select i from item i where i.name like CONCAT('%',:search,'%')")
@@ -23,14 +25,14 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query("select i from item i where i.location like CONCAT('%',:search,'%')")
     List<Item> findLocation(@Param("search")String search);
 
-    @Query("select i from item i where i.displayDate like CONCAT('%',:search,'%')")
-    List<Item> findDate(@Param("search")String search);
+    //@Query("select i from item i where i.displayDate like CONCAT('%',:search,'%')")
+    //List<Item> findDate(@Param("search")String search);
 
     @Query("select i from item i where i.description like CONCAT('%',:search,'%')")
     List<Item> findDescription(@Param("search")String search);
 
-    @Query("select i from item i where i.itemRef = CONCAT(:search,'')")
-    List<Item> findWithRef(@Param("search")String search);
+    //@Query(value = "select i from item i where i.itemRef = :search", nativeQuery = true)
+    //List<Item> findWithRef(@Param("search")String search);
 
     @Query("select i from item i where i.startDate = :specificdate or (:specificdate between i.startDate and i.endDate)")
     List<Item> findBySpecificDate(@Param("specificdate")Date specificdate);

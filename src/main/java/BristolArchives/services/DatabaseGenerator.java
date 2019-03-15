@@ -131,7 +131,7 @@ public class DatabaseGenerator {
         String collName = sanitizeString(row.get("Collection"));
         Dept dept;
         Collection coll;
-        System.out.println(deptsAdded.get(deptName));
+        //System.out.println(deptsAdded.get(deptName));
         if (deptsAdded.get(deptName) == null) {
             dept = new Dept();
             // id is auto-generated
@@ -140,7 +140,7 @@ public class DatabaseGenerator {
             deptsAdded.put(deptName, dept);
         }
         // Its dept is guaranteed to exist at this point, so get it deptsAdded dict
-        System.out.println(collectionsAdded.get(collName));
+        //System.out.println(collectionsAdded.get(collName));
         if (collectionsAdded.get(collName) == null) {
             coll = new Collection();
             // id is auto-generated
@@ -205,7 +205,11 @@ public class DatabaseGenerator {
         }
 
         item.setMediaIrn(lowestIrns.get(row.get("Object Number")));
-        item.setMediaCount(mediaCounts.get(row.get("Object Number")));
+        if (mediaCounts.get(row.get("Object Number")) == null) {
+            item.setMediaCount(0);
+        } else {
+            item.setMediaCount(mediaCounts.get(row.get("Object Number")));
+        }
 
         // Hard code it for now
         item.setCopyrighted("© Bristol Culture");
@@ -236,18 +240,18 @@ public class DatabaseGenerator {
     private void processMedia(Map<String, String> row, Map<String, Integer> lowestIrns, Map<String, Integer> mediaCounts) {
         String objNum = row.get("Object Number");
         Integer irn = Integer.parseInt(row.get("multimedia irn"));
-        if (lowestIrns.get("Object Number") == null) {
+        if (lowestIrns.get(objNum) == null) {
             lowestIrns.put(objNum, irn);
             mediaCounts.put(objNum, 1);
         } else {
-            if (lowestIrns.get("Object Number") > irn) {
+            if (lowestIrns.get(objNum) > irn) {
                 lowestIrns.put(objNum, irn);
             }
-            mediaCounts.put(objNum, mediaCounts.get("Object Number") + 1);
+            mediaCounts.put(objNum, mediaCounts.get(objNum) + 1);
         }
     }
 
-    public void generateDatabase(File file) throws IOException {
+    public void generateDatabase(File dataFile, File mediaFile) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
 
@@ -260,7 +264,7 @@ public class DatabaseGenerator {
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
-        rowReader = getCSVReader(file);
+        rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
             processDeptsAndCollections(row, deptsAdded, collectionsAdded);
@@ -276,15 +280,16 @@ public class DatabaseGenerator {
             processMedia(row, lowestIrns, mediaCounts);
             row = getRow(rowReader);
         }
-        System.out.println("All items added.");
+        System.out.println("All media irns calculated.");
 
         // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
-        rowReader = getCSVReader(file);
+        rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
             processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, lowestIrns, mediaCounts);
             row = getRow(rowReader);
         }
         System.out.println("All items added.");
+
     }
 }

@@ -20,14 +20,16 @@ public class BristolArchivesRunController {
     public String index() {
 
 
-        File file = null;
+        File dataFile = null;
+        File mediaFile = null;
         try {
-            file = dbGen.getFile("emu-content2.csv");
+            dataFile = dbGen.getFile("emu-content2.csv");
+            mediaFile = dbGen.getFile("emu-content-mm2.csv");
         } catch (IOException exception) {
             System.out.println("Error opening CSV file");
         }
         try {
-            dbGen.generateDatabase(file);
+            dbGen.generateDatabase(dataFile, mediaFile);
         } catch (IOException exception) {
             System.out.println("Could not generate database");
         }

@@ -28,7 +28,7 @@ CREATE TABLE item (
   display_date                  VARCHAR(200)   NULL,
   extent			VARCHAR(200)   NULL,
   phys_tech_desc		TEXT           NULL,
-  media_irn				VARCHAR(200)	NOT NULL,
+  media_irn				VARCHAR(200)	NULL,
   media_count     INTEGER       NOT NULL,
   copyrighted                   VARCHAR(200)    NOT NULL,
   collection_display_name       VARCHAR(200)   NULL,

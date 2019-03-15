@@ -1,9 +1,19 @@
 package BristolArchives.security;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import java.util.Collections;
+
 @EnableWebSecurity
 @Configuration
 @Order(1)
@@ -22,7 +32,7 @@ public class AppConfigurationAdapter extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/loginAdmin")
-                .loginProcessingUrl("/admin_login")
+                .loginProcessingUrl("/login")
                 .failureUrl("/loginAdmin?error=loginError")
                 .defaultSuccessUrl("/adminPage")
 
@@ -38,5 +48,19 @@ public class AppConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .csrf().disable();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        User admin = new User("admin", "1234", Collections.singleton(new SimpleGrantedAuthority("ADMIN")));
+        manager.createUser(admin);
+
+        return manager;
+    }
+
+    @Bean
+    public static PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
     }
 }

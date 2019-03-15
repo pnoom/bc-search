@@ -1,6 +1,7 @@
 package BristolArchives.services;
 
 import BristolArchives.entities.Item;
+import BristolArchives.entities.Collection;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,15 @@ public class ItemService {
 //    public List<Item> getItemBySubCollectionName(String subCollName) {
 //        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
 //    }
+
+
+    public List<Item> getItemByCollectionName(String collName) {
+        List<Item> result = new ArrayList<>();
+        List<Collection> collList = collectionService.getByName(collName);
+        for (Collection coll : collList)
+            result.addAll(itemRepo.findByCollection(coll));
+        return result;
+    }
 
     public List<Item> getItemByName(String name) {
         return itemRepo.findByName(name);
@@ -149,15 +159,15 @@ public class ItemService {
             }*/
         }
 
-        //if (hasSth(collection)) {
-        //    getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
-        //    someConstraintsExist = true;
-            /*List<Item> currResults = getItemByCollectionName(collection);
+        if (hasSth(collection)) {
+            getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
+            someConstraintsExist = true;
+            List<Item> currResults = getItemByCollectionName(collection);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
-            }*/
-        //}
+            }
+        }
 
         if (hasSth(location)) {
             getIntersection(results,itemRepo.findByLocationLike(location),someConstraintsExist);

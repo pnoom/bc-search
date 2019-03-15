@@ -226,12 +226,28 @@ public class DatabaseGenerator {
         itemBuffer.add(item);
     }
 
+    private void processMedia(Map<String, String> row, Map<String, Integer> lowestIrns, Map<String, Integer> mediaCounts) {
+        String objNum = row.get("Object Number");
+        Integer irn = Integer.parseInt(row.get("multimedia irn"));
+        if (lowestIrns.get("Object Number") == null) {
+            lowestIrns.put(objNum, irn);
+            mediaCounts.put(objNum, 1);
+        } else {
+            if (lowestIrns.get("Object Number") > irn) {
+                lowestIrns.put(objNum, irn);
+            }
+            mediaCounts.put(objNum, mediaCounts.get("Object Number") + 1);
+        }
+    }
+
     public void generateDatabase(File file) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
 
         Map<String, Dept> deptsAdded = new HashMap<>();
         Map<String, Collection> collectionsAdded = new HashMap<>();
+        Map<String, Integer> lowestIrns = new HashMap<>();
+        Map<String, Integer> mediaCounts = new HashMap<>();
         List<Item> itemBuffer = new ArrayList<>();
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
@@ -245,7 +261,17 @@ public class DatabaseGenerator {
         }
         System.out.println("All depts and collections added.");
 
-        // Go through file again, adding Items in batches to reduce memory usage and SQL processing times
+        // Go through multimedia file, storing mappings from object numbers to lowest media IRN and the number
+        // of media things per object
+        rowReader = getCSVReader(mediaFile);
+        row = getRow(rowReader);
+        while (row != null) {
+            processMedia(row, lowestIrns, mediaCounts);
+            row = getRow(rowReader);
+        }
+        System.out.println("All items added.");
+
+        // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
         while (row != null) {

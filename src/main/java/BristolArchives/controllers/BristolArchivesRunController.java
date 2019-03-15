@@ -19,7 +19,8 @@ public class BristolArchivesRunController {
     @GetMapping("/")
     public String index() {
 
-
+        // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")
+        /*
         File dataFile = null;
         File mediaFile = null;
         try {
@@ -33,7 +34,7 @@ public class BristolArchivesRunController {
         } catch (IOException exception) {
             System.out.println("Could not generate database");
         }
-
+        */
 
         return "index";
     }

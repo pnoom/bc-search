@@ -1,13 +1,11 @@
 package BristolArchives.repositories;
 
+import BristolArchives.entities.Collection;
 import BristolArchives.entities.Item;
-import BristolArchives.entities.SubCollection;
-import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.lang.annotation.Native;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +17,8 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     List<Item> findByDisplayDateLike(String date);
     List<Item> findByLocationLike(String location);
     List<Item> findByDescriptionContaining(String search);
-    // List<Item> findBySubCollection(SubCollection subColl);
+    List<Item> findByCollection(Collection coll);
+    //List<Item> findBySubCollection(SubCollection subColl);
 
     //@Query("select i from item i where i.name like CONCAT('%',:search,'%')")
     //List<Item> findName(@Param("search")String search);

@@ -166,7 +166,10 @@
             <div>
             <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
+            <!--
             <img id="myImg" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" th:alt=${item.name}/>
+            -->
+            <img id="myImg" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=180616&format=jpeg'}" th:alt=${item.name}/>
             <div id="myModal" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img01">

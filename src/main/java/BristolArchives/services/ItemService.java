@@ -200,4 +200,23 @@ public class ItemService {
         return itemPage;
     }
 
+    public Page<Item> findPaginatedAdvSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision, Pageable pageable) {
+        final List<Item> items = getAdvancedSearch(specific_date,start_date,end_date,collection,location,precision);
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<Item> list;
+
+        if (items.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, items.size());
+            list = items.subList(startItem, toIndex);
+        }
+
+        Page<Item> itemPage
+                = new PageImpl<Item>(list, PageRequest.of(currentPage, pageSize), items.size());
+
+        return itemPage;
+    }
 }

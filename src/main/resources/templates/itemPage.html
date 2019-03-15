@@ -84,21 +84,10 @@
 <body>
 <!-- This creates the logos at the top of the page -->
 <div class="block">
-    <div class="columns">
-        <div class="column is-half">
-            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title">Item page:</h1>
-        </div>
-        <div class="column is-quarter">
-        </div>
-
-        <div class="column is-quarter">
-            <img th:src="@{/Bristol-City-Council-Logo.png}" alt="Bristol City Council Logo" style="width: 300px; height: 115px" >
-
-        </div>
-
-    </div>
+    <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="max-width: 38%; height: auto; left: 2px; top: 2px">
+    <img th:src="@{/Bristol-City-Council-Logo.png}" alt="Bristol City Council Logo" style="max-width: 38%; height: auto;position: fixed; right: 0; top: 0">
 </div>
+<div class="block"><h1 class="title" style="font-size:3vw"> Welcome to Bristol Archives </h1></div>
 
 <!-- This is what creates the navbar -->
 <div class="block">

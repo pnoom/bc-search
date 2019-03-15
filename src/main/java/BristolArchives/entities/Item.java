@@ -41,6 +41,12 @@ public class Item {
     @Column(name = "phys_tech_desc")
     private String physTechDesc;
 
+    @Column(name = "media_irn")
+    private Integer mediaIrn;
+
+    @Column(name = "media_count")
+    private Integer mediaCount;
+
     @OneToOne
     @JoinColumn(name = "collection_id")
     private Collection collection;
@@ -167,5 +173,21 @@ public class Item {
 
     public void setCollectionDisplayName(String collectionDisplayName) {
         this.collectionDisplayName = collectionDisplayName;
+    }
+
+    public Integer getMediaIrn() {
+        return mediaIrn;
+    }
+
+    public void setMediaIrn(Integer mediaIrn) {
+        this.mediaIrn = mediaIrn;
+    }
+
+    public Integer getMediaCount() {
+        return mediaCount;
+    }
+
+    public void setMediaCount(Integer mediaCount) {
+        this.mediaCount = mediaCount;
     }
 }

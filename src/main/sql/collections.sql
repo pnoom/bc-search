@@ -28,17 +28,12 @@ CREATE TABLE item (
   display_date                  VARCHAR(200)   NULL,
   extent			VARCHAR(200)   NULL,
   phys_tech_desc		TEXT           NULL,
+  media_irn				VARCHAR(200)	NOT NULL,
+  media_count     INTEGER       NOT NULL,
+  copyrighted                   VARCHAR(200)    NOT NULL,
   collection_display_name       VARCHAR(200)   NULL,
   collection_id                 INTEGER        NOT NULL,
   FOREIGN KEY (collection_id) REFERENCES collection(id)
-);
-
-CREATE TABLE multimedia (
-  id				INTEGER		PRIMARY KEY AUTO_INCREMENT,
-  irn				VARCHAR(200)	NOT NULL UNIQUE,
-  copyrighted                   VARCHAR(200)    NOT NULL,
-  item_id			INTEGER 	NOT NULL,
-  FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
 /*

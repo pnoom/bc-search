@@ -14,21 +14,18 @@
 <body>
 <!-- This creates the logos at the top of the page -->
 <div class="block">
-    <div class="columns">
-        <div class="column is-half">
-            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title"> Welcome to Bristol Archives </h1>
+    <div class="columns is-mobile">
+        <div class="column is-one-third">
+            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-quarter">
+        <div class="column is-one-third">
         </div>
-
-        <div class="column is-quarter">
-            <img th:src="@{/Bristol-City-Council-Logo.png}" alt="Bristol City Council Logo" style="width: 300px; height: 115px" >
-
+        <div class="column is-one-third">
+            <img class="image is-pulled-right" th:src="@{/Bristol-City-Council-Logo.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 85%; height: auto;">
         </div>
-
     </div>
 </div>
+<div class="block"><h1 class="title" style="font-size:3vw"> Welcome to Bristol Archives </h1></div>
 
 <!-- This is what creates the navbar -->
 <div class="block">
@@ -92,13 +89,13 @@
 
 <div class="block">
     <form action = "#" th:action="@{/search}" method="post" >
-    <div class="columns">
+    <div class="columns is-mobile">
         <div class="column is-quarter">
-            <a class="button" style="margin-left: 200px" href="advancedSearch">Advanced search</a>
+            <a class="button is-pulled-right" style="max-width: 100%; height: auto;" href="advancedSearch">Advanced search</a>
         </div>
-        <div class="column is-half">
+        <div class="column">
             <div class="control">
-                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." >
+                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." style="max-width: 100%; height: auto;">
                 <p></p>
             </div>
         </div>

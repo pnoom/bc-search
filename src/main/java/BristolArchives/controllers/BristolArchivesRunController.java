@@ -19,6 +19,7 @@ public class BristolArchivesRunController {
     @GetMapping("/")
     public String index() {
 
+        /*
         File file = null;
         try {
             file = dbGen.getFile("emu-content2.csv");
@@ -30,6 +31,7 @@ public class BristolArchivesRunController {
         } catch (IOException exception) {
             System.out.println("Could not generate database");
         }
+        */
 
         return "index";
     }

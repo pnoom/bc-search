@@ -2,8 +2,8 @@ package BristolArchives.entities;
 
 import javax.persistence.*;
 
-@Entity(name="item")
-@Table(name="item")
+@Entity(name="multimedia")
+@Table(name="multimedia")
 public class Multimedia {
     @Id
     @Column(name = "id")

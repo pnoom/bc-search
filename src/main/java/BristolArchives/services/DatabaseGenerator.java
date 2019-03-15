@@ -191,8 +191,11 @@ public class DatabaseGenerator {
             item.setLocation(row.get("Place Details: (Production Place)"));
         }
 
-        item.setName(truncateString(row.get("Full Name"), 200));
-        // can be null, so leave as null for now
+        if (row.get("Full Name") != null) {
+            item.setName(truncateString(row.get("Full Name"), 200));
+        } else {
+            item.setName(row.get("Object Number"));
+        }
 
         if (row.get("Physical Description: (Collection Details)") != null) {
             item.setDescription(row.get("Physical Description: (Collection Details)"));
@@ -219,7 +222,7 @@ public class DatabaseGenerator {
         // Missing/already used
         //item.setPhysTechDesc();
 
-        item.setCollectionDisplayName(sanitizeString(row.get("Named Collection")));
+        item.setCollectionDisplayName(truncateString(sanitizeString(row.get("Named Collection")), 200));
         itemBuffer.add(item);
     }
 

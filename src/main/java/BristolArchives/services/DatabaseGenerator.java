@@ -153,7 +153,8 @@ public class DatabaseGenerator {
 
     // Creates an Item and adds it to the buffer (destructively)
     private void processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
-                              Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded) {
+                              Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
+                              Map<String, Integer> lowestIrns, Map<String, Integer> mediaCounts) {
 
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
         // Items, but difficult with batch saving.
@@ -202,6 +203,12 @@ public class DatabaseGenerator {
         } else if (row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)") != null) {
             item.setDescription(row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)"));
         }
+
+        item.setMediaIrn(lowestIrns.get(row.get("Object Number")));
+        item.setMediaCount(mediaCounts.get(row.get("Object Number")));
+
+        // Hard code it for now
+        item.setCopyrighted("© Bristol Culture");
 
         if (row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)") != null) {
             item.setDisplayDate(row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)"));
@@ -275,7 +282,7 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
         while (row != null) {
-            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded);
+            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, lowestIrns, mediaCounts);
             row = getRow(rowReader);
         }
         System.out.println("All items added.");

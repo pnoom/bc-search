@@ -47,6 +47,9 @@ public class Item {
     @Column(name = "media_count")
     private Integer mediaCount;
 
+    @Column(name = "copyrighted")
+    private String copyrighted;
+
     @OneToOne
     @JoinColumn(name = "collection_id")
     private Collection collection;
@@ -189,5 +192,13 @@ public class Item {
 
     public void setMediaCount(Integer mediaCount) {
         this.mediaCount = mediaCount;
+    }
+
+    public String getCopyrighted() {
+        return copyrighted;
+    }
+
+    public void setCopyrighted(String copyrighted) {
+        this.copyrighted = copyrighted;
     }
 }

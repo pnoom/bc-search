@@ -1,7 +1,6 @@
 package BristolArchives.services;
 
 import BristolArchives.entities.Item;
-import BristolArchives.entities.SubCollection;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class ItemService {
     private ItemRepo itemRepo;
 
     @Autowired
-    private SubCollectionService subCollectionService;
+    private CollectionService collectionService;
 
     public List<Item> getAllItems(){
         return itemRepo.findAll();
@@ -30,6 +29,7 @@ public class ItemService {
         return itemRepo.findByNameContaining(name);
     }
 
+    /*
     public List<Item> getItemByCollectionName(String collName) {
         List<SubCollection> subCollList = subCollectionService.getByCollectionName(collName);
         List<Item> result = new ArrayList<>();
@@ -37,6 +37,7 @@ public class ItemService {
             result.addAll(itemRepo.findBySubCollection(subColl));
         return result;
     }
+    */
 
 //    public List<Item> getItemBySubCollectionName(String subCollName) {
 //        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
@@ -47,11 +48,11 @@ public class ItemService {
     }
 
     public List<Item> getItemByLocation(String location) {
-        return itemRepo.findLocation(location);
+        return itemRepo.findByLocationLike(location);
     }
 
     public List<Item> getItemByDate(String date) {
-        return itemRepo.findDate(date);
+        return itemRepo.findByDisplayDateLike(date);
     }
 
     private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
@@ -70,27 +71,27 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findWithRef(s);
+            currResults = itemRepo.findByItemRef(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findName(s);
+            currResults = itemRepo.findByName(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findLocation(s);
+            currResults = itemRepo.findByLocationLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findDate(s);
+            currResults = itemRepo.findByDisplayDateLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findDescription(s);
+            currResults = itemRepo.findByDescriptionContaining(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -101,9 +102,9 @@ public class ItemService {
     }
 
     public Item getExactItem(String ref){
-        if(itemRepo.findWithRef(ref).size() <= 0)
+        if(itemRepo.findByItemRef(ref).size() <= 0)
             return null;
-        return itemRepo.findWithRef(ref).get(0);
+        return itemRepo.findByItemRef(ref).get(0);
     }
 
     private boolean hasSth(String s) {
@@ -134,12 +135,12 @@ public class ItemService {
             //    if (!results.contains(i))
             //        results.add(i);
             // }
-            getIntersection(results,itemRepo.findBySpecificDate(specific_date),false);
+            getIntersection(results,itemRepo.findWithSpecificDate(specific_date),false);
             someConstraintsExist = true;
         }
         if (start_date != null && end_date != null) {
             //System.out.println("The if worked");
-            getIntersection(results,itemRepo.findByDateRange(start_date,end_date),someConstraintsExist);
+            getIntersection(results,itemRepo.findWithDateRange(start_date,end_date),someConstraintsExist);
             someConstraintsExist = true;
             /*List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
             for(Item i: currResults){
@@ -148,18 +149,18 @@ public class ItemService {
             }*/
         }
 
-        if (hasSth(collection)) {
-            getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
-            someConstraintsExist = true;
+        //if (hasSth(collection)) {
+        //    getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
+        //    someConstraintsExist = true;
             /*List<Item> currResults = getItemByCollectionName(collection);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }*/
-        }
+        //}
 
         if (hasSth(location)) {
-            getIntersection(results,itemRepo.findLocation(location),someConstraintsExist);
+            getIntersection(results,itemRepo.findByLocationLike(location),someConstraintsExist);
             someConstraintsExist = true;
             /*List<Item> currResults = itemRepo.findLocation(location);
             for(Item i: currResults){

@@ -13,14 +13,11 @@ public class Collection {
     @Column(name="name")
     private String name;
 
-    @Column(name="collection_ref")
-    // MySQL is not case sensitive. @Column(name="collectionRef") will be parse as column "collection_ref"
-    private String collectionRef;
+    @OneToOne
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
 
-    @Column(name="description")
-    private String description;
-
-    public Collection(){}
+    public Collection() {};
 
     public Integer getId() {
         return id;
@@ -38,24 +35,16 @@ public class Collection {
         this.name = name;
     }
 
-    public String getCollectionRef() {
-        return collectionRef;
-    }
-
-    public void setCollectionRef(String collectionRef) {
-        this.collectionRef = collectionRef;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public String toString() {
         return this.name;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 }

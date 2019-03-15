@@ -2,7 +2,7 @@
 
 1. Install MySQL, setting a root password that you can actually remember.
 
-1. Run:
+2. Run:
 
 ```
 cd bc-search/src/main/sql/

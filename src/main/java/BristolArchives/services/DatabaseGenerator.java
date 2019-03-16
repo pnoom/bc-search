@@ -50,6 +50,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,7 +69,7 @@ public class DatabaseGenerator {
     @Autowired
     private DeptRepo deptRepo;
 
-    private Integer bufferSize = 100;
+    private Integer bufferSize = 1000;
 
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
@@ -129,6 +130,10 @@ public class DatabaseGenerator {
                                             Map<String, Collection> collectionsAdded) {
         String deptName = sanitizeString(row.get("Department"));
         String collName = sanitizeString(row.get("Collection"));
+        //if (deptName.isEmpty()) {
+        //    // Don't add anything if the department field was empty
+        //    return;
+        //}
         Dept dept;
         Collection coll;
         //System.out.println(deptsAdded.get(deptName));
@@ -152,6 +157,7 @@ public class DatabaseGenerator {
     }
 
     private String stringifyIrns(List<String> allIrns) {
+        // System.out.println(allIrns);
         return String.join(",", allIrns);
     }
 
@@ -165,8 +171,9 @@ public class DatabaseGenerator {
         if (itemBuffer.size() == bufSize) {
             try {
                 itemRepo.saveAll(itemBuffer);
-            } catch (DataException exception) {
+            } catch (Exception exception) {
                 System.out.println("Skipped batch: contained malformed item(s)");
+                System.out.println(exception.toString());
             } finally {
                 itemRepo.flush();
             }
@@ -208,7 +215,10 @@ public class DatabaseGenerator {
             item.setDescription(row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)"));
         }
 
-        item.setMediaIrns(stringifyIrns(allIrns.get(row.get("Object Number"))));
+        if (allIrns.get(row.get("Object Number")) != null) {
+            item.setMediaIrns(stringifyIrns(allIrns.get(row.get("Object Number"))));
+        }
+
         if (mediaCounts.get(row.get("Object Number")) == null) {
             item.setMediaCount(0);
         } else {
@@ -244,12 +254,15 @@ public class DatabaseGenerator {
     private void processMedia(Map<String, String> row, Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         String objNum = row.get("Object Number");
         String irn = row.get("multimedia irn");
+        List<String> irnList;
         if (allIrns.get(objNum) == null) {
-            allIrns.put(objNum, new ArrayList<String>());
+            irnList = new ArrayList<String>();
+            irnList.add(irn);
+            allIrns.put(objNum, irnList);
             mediaCounts.put(objNum, 1);
         } else {
             if (!allIrns.get(objNum).contains(irn)) {
-                List<String> irnList = allIrns.get(objNum);
+                irnList = allIrns.get(objNum);
                 irnList.add(irn);
                 allIrns.put(objNum, irnList);
             }
@@ -270,6 +283,12 @@ public class DatabaseGenerator {
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+        rowReader = getCSVReader(dataFile);
+        row = getRow(rowReader);
+        while (row != null) {
+            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
+            row = getRow(rowReader);
+        }
 
         // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
         // of media things per object
@@ -285,7 +304,6 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
-            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
             processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
             row = getRow(rowReader);
         }

@@ -164,6 +164,8 @@ public class DatabaseGenerator {
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
                               Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         boolean batchAdded = false;
+
+        if (row == null) return batchAdded;
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
         // Items, but difficult with batch saving.
         if (itemBuffer.size() == bufSize) {
@@ -312,8 +314,13 @@ public class DatabaseGenerator {
 
         // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
         rowReader = getCSVReader(dataFile);
-        row = getRow(rowReader);
-        while (row != null) {
+        do {
+            row = getRow(rowReader);
+            if (batchesAdded == 91) {
+                if (row != null) {
+                    System.out.println(row.get("Object Number"));
+                }
+            }
             if (batchesAdded == fullBatches) {
                 batchAdded = processItems(row, itemBuffer, lastBatchSize - 1, deptsAdded, collectionsAdded, allIrns, mediaCounts);
             } else {
@@ -323,8 +330,7 @@ public class DatabaseGenerator {
                 batchesAdded++;
                 System.out.println(batchesAdded);
             }
-            row = getRow(rowReader);
-        }
+        } while (row != null);
         System.out.println("All items added.");
 
     }

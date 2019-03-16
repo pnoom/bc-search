@@ -41,22 +41,20 @@ import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.text.WordUtils;
-import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.sql.SQLException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 @Service
 public class DatabaseGenerator {
@@ -273,7 +271,7 @@ public class DatabaseGenerator {
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
-
+        int fileSize = 0;
         Map<String, Dept> deptsAdded = new HashMap<>();
         Map<String, Collection> collectionsAdded = new HashMap<>();
         Map<String, List<String>> allIrns = new HashMap<>();
@@ -288,7 +286,11 @@ public class DatabaseGenerator {
         while (row != null) {
             processDeptsAndCollections(row, deptsAdded, collectionsAdded);
             row = getRow(rowReader);
+            fileSize++;
         }
+        int lastIt = fileSize/bufferSize;
+        int lastBatchSize = fileSize % bufferSize;
+        int currIt = -1;
 
         // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
         // of media things per object
@@ -304,7 +306,12 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
-            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
+            if(currIt != lastIt)
+                processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
+            else
+                processItems(row, itemBuffer, lastBatchSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
+            if(itemBuffer.size() == 1)
+                currIt++;
             row = getRow(rowReader);
         }
         System.out.println("All items added.");

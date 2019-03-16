@@ -121,10 +121,10 @@
         <tr th:each="item : ${itemPage.content}">
             <td>
                 <figure class="image is-128x128">
+                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=147310&format=jpeg'}" style="width: 128px;height: 128px" />
                     <!--
-                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" style="width: 128px;height: 128px" />
+                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + getFirstMultimediaIrn(item.mediaIrns) + '&format=jpeg'}" style="width: 128px;height: 128px" />
                     -->
-                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=180616&format=jpeg'}" style="width: 128px;height: 128px" />
                 </figure>
 
             </td>
@@ -169,6 +169,12 @@
 <script>
     function rowClicked(itemRef) {
         location.href = '/items/' + itemRef.split('/').join('-');
+    }
+    // item.mediaIrns
+    function getFirstMultimediaIrn(irnsString) {
+        if (irnsString != null) {
+            return irnsString.split(",")[0];
+        }
     }
 </script>
 

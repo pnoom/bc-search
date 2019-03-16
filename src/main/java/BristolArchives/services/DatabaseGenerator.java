@@ -69,6 +69,8 @@ public class DatabaseGenerator {
 
     private Integer bufferSize = 1000;
 
+    private String departmentHeading = "Department: ";
+    private String collectionHeading = "Collection";
     private String locationHeadingArchive = "Geographic Name: (Names)";
     private String locationHeadingMuseum = "Place Details: (Production Place)";
     private String nameHeading = "Full Name";
@@ -80,6 +82,7 @@ public class DatabaseGenerator {
     private String extentHeadingArchive = "Extent: (ISAD(G) Identity Statement)";
     private String extentHeadingMuseum = "Simple Name: (Collection Details)/Object Name/Object Name: (Classification)";
     private String collectionDisplayNameHeading = "Named Collection";
+    private String multimediaIrnHeading = "multimedia irn";
 
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
@@ -138,8 +141,8 @@ public class DatabaseGenerator {
     // This may actually need to return something
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
-        String deptName = sanitizeString(row.get("Department: "));
-        String collName = sanitizeString(row.get("Collection"));
+        String deptName = sanitizeString(row.get(departmentHeading));
+        String collName = sanitizeString(row.get(collectionHeading));
         //if (deptName.isEmpty()) {
         //    // Don't add anything if the department field was empty
         //    return;
@@ -207,7 +210,7 @@ public class DatabaseGenerator {
         // or archive item, so use placeholders for now to check other code
         Item item = new Item();
         // id is auto-generated
-        item.setCollection(collectionsAdded.get(sanitizeString(row.get("Collection"))));
+        item.setCollection(collectionsAdded.get(sanitizeString(row.get(collectionHeading))));
         item.setItemRef(row.get(itemRefHeading).trim());
 
         if (row.get(locationHeadingArchive) != null) {
@@ -266,8 +269,8 @@ public class DatabaseGenerator {
     }
 
     private void processMedia(Map<String, String> row, Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
-        String objNum = row.get("Object Number");
-        String irn = row.get("multimedia irn");
+        String objNum = row.get(itemRefHeading);
+        String irn = row.get(multimediaIrnHeading);
         List<String> irnList;
         if (allIrns.get(objNum) == null) {
             irnList = new ArrayList<String>();
@@ -330,7 +333,7 @@ public class DatabaseGenerator {
             row = getRow(rowReader);
             if (batchesAdded == 91) {
                 if (row != null) {
-                    System.out.println(row.get("Object Number"));
+                    System.out.println(row.get(itemRefHeading));
                 }
             }
             if (batchesAdded == fullBatches) {

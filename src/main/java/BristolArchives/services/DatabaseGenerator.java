@@ -41,7 +41,6 @@ import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.text.WordUtils;
 import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +48,14 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 @Service
 public class DatabaseGenerator {
@@ -227,6 +227,7 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File file) throws IOException {
+        int fileSize = 0;
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
 
@@ -240,6 +241,7 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
         while (row != null) {
+            fileSize++;
             processDeptsAndCollections(row, deptsAdded, collectionsAdded);
             row = getRow(rowReader);
         }
@@ -248,6 +250,8 @@ public class DatabaseGenerator {
         // Go through file again, adding Items in batches to reduce memory usage and SQL processing times
         rowReader = getCSVReader(file);
         row = getRow(rowReader);
+
+
         while (row != null) {
             processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded);
             row = getRow(rowReader);

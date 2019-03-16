@@ -179,10 +179,11 @@ public class DatabaseGenerator {
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
                               Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         boolean batchAdded = false;
-
         if (row == null) return batchAdded;
-        // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
-        // Items, but difficult with batch saving.
+        // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip indiviual malformed
+        // Items, but difficult with batch saving. Instead, skip the entire batch containing the malformed entry.
+
+        // TODO: provide info about what is malformed, and how
         if (itemBuffer.size() == bufSize) {
             try {
                 itemRepo.saveAll(itemBuffer);
@@ -192,22 +193,12 @@ public class DatabaseGenerator {
             } finally {
                 itemRepo.flush();
             }
-
-            //System.out.println("Batch insert");
             itemBuffer.clear();
             batchAdded = true;
         }
 
-        // Trim whitespace etc for all values
-        //for (Map.Entry<String, String> pair : row.entrySet()) {
-        //    pair.getKey()
-        //}
+        // TODO: trim whitespace etc for all values?
 
-        // TODO: Should have a DISTINCT constraint on Object Number. SQL should complain if we try to add an item that
-        // already exists. Since we're giving clients access to this code, we should make this check.
-
-        // Some of these values are missing, and/or their column is dependent on whether it's a museum
-        // or archive item, so use placeholders for now to check other code
         Item item = new Item();
         // id is auto-generated
         item.setCollection(collectionsAdded.get(sanitizeString(row.get(collectionHeading))));
@@ -300,6 +291,8 @@ public class DatabaseGenerator {
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+
+        // TODO: check that the last line is processed
         rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
@@ -319,6 +312,8 @@ public class DatabaseGenerator {
 
         // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
         // of media things per object
+
+        // TODO: check that the last line is processed
         rowReader = getCSVReader(mediaFile);
         row = getRow(rowReader);
         while (row != null) {
@@ -328,6 +323,8 @@ public class DatabaseGenerator {
         System.out.println("All media irns calculated.");
 
         // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
+
+        // TODO: fix s.t. last line is processed
         rowReader = getCSVReader(dataFile);
         do {
             row = getRow(rowReader);

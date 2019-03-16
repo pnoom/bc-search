@@ -41,8 +41,8 @@ public class Item {
     @Column(name = "phys_tech_desc")
     private String physTechDesc;
 
-    @Column(name = "media_irn")
-    private Integer mediaIrn;
+    @Column(name = "media_irns")
+    private String mediaIrns;
 
     @Column(name = "media_count")
     private Integer mediaCount;
@@ -58,20 +58,6 @@ public class Item {
     private String collectionDisplayName;
 
     public Item(){};
-
-    public Item(String itemRef, String name, String location, String description, Date startDate, Date endDate, String displayDate, String extent, String physTechDesc, Collection collection, String collectionDisplayName) {
-        this.itemRef = itemRef;
-        this.name = name;
-        this.location = location;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.displayDate = displayDate;
-        this.extent = extent;
-        this.physTechDesc = physTechDesc;
-        this.collection = collection;
-        this.collectionDisplayName = collectionDisplayName;
-    }
 
     public Integer getId() {
         return id;
@@ -178,14 +164,6 @@ public class Item {
         this.collectionDisplayName = collectionDisplayName;
     }
 
-    public Integer getMediaIrn() {
-        return mediaIrn;
-    }
-
-    public void setMediaIrn(Integer mediaIrn) {
-        this.mediaIrn = mediaIrn;
-    }
-
     public Integer getMediaCount() {
         return mediaCount;
     }
@@ -200,5 +178,13 @@ public class Item {
 
     public void setCopyrighted(String copyrighted) {
         this.copyrighted = copyrighted;
+    }
+
+    public String getMediaIrns() {
+        return mediaIrns;
+    }
+
+    public void setMediaIrns(String mediaIrns) {
+        this.mediaIrns = mediaIrns;
     }
 }

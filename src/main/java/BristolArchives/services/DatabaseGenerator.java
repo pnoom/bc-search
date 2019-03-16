@@ -151,10 +151,14 @@ public class DatabaseGenerator {
         }
     }
 
+    private String stringifyIrns(List<String> allIrns) {
+        return String.join(",", allIrns);
+    }
+
     // Creates an Item and adds it to the buffer (destructively)
     private void processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
-                              Map<String, Integer> lowestIrns, Map<String, Integer> mediaCounts) {
+                              Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
 
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
         // Items, but difficult with batch saving.
@@ -204,7 +208,7 @@ public class DatabaseGenerator {
             item.setDescription(row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)"));
         }
 
-        item.setMediaIrn(lowestIrns.get(row.get("Object Number")));
+        item.setMediaIrns(stringifyIrns(allIrns.get(row.get("Object Number"))));
         if (mediaCounts.get(row.get("Object Number")) == null) {
             item.setMediaCount(0);
         } else {
@@ -237,15 +241,17 @@ public class DatabaseGenerator {
         itemBuffer.add(item);
     }
 
-    private void processMedia(Map<String, String> row, Map<String, Integer> lowestIrns, Map<String, Integer> mediaCounts) {
+    private void processMedia(Map<String, String> row, Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         String objNum = row.get("Object Number");
-        Integer irn = Integer.parseInt(row.get("multimedia irn"));
-        if (lowestIrns.get(objNum) == null) {
-            lowestIrns.put(objNum, irn);
+        String irn = row.get("multimedia irn");
+        if (allIrns.get(objNum) == null) {
+            allIrns.put(objNum, new ArrayList<String>());
             mediaCounts.put(objNum, 1);
         } else {
-            if (lowestIrns.get(objNum) > irn) {
-                lowestIrns.put(objNum, irn);
+            if (!allIrns.get(objNum).contains(irn)) {
+                List<String> irnList = allIrns.get(objNum);
+                irnList.add(irn);
+                allIrns.put(objNum, irnList);
             }
             mediaCounts.put(objNum, mediaCounts.get(objNum) + 1);
         }
@@ -257,27 +263,20 @@ public class DatabaseGenerator {
 
         Map<String, Dept> deptsAdded = new HashMap<>();
         Map<String, Collection> collectionsAdded = new HashMap<>();
-        Map<String, Integer> lowestIrns = new HashMap<>();
+        Map<String, List<String>> allIrns = new HashMap<>();
         Map<String, Integer> mediaCounts = new HashMap<>();
         List<Item> itemBuffer = new ArrayList<>();
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
-        rowReader = getCSVReader(dataFile);
-        row = getRow(rowReader);
-        while (row != null) {
-            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
-            row = getRow(rowReader);
-        }
-        System.out.println("All depts and collections added.");
 
-        // Go through multimedia file, storing mappings from object numbers to lowest media IRN and the number
+        // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
         // of media things per object
         rowReader = getCSVReader(mediaFile);
         row = getRow(rowReader);
         while (row != null) {
-            processMedia(row, lowestIrns, mediaCounts);
+            processMedia(row, allIrns, mediaCounts);
             row = getRow(rowReader);
         }
         System.out.println("All media irns calculated.");
@@ -286,7 +285,8 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
-            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, lowestIrns, mediaCounts);
+            processDeptsAndCollections(row, deptsAdded, collectionsAdded);
+            processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
             row = getRow(rowReader);
         }
         System.out.println("All items added.");

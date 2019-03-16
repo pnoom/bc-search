@@ -126,7 +126,7 @@ public class DatabaseGenerator {
     // This may actually need to return something
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
-        String deptName = sanitizeString(row.get("Department"));
+        String deptName = sanitizeString(row.get("Department: "));
         String collName = sanitizeString(row.get("Collection"));
         //if (deptName.isEmpty()) {
         //    // Don't add anything if the department field was empty
@@ -160,10 +160,10 @@ public class DatabaseGenerator {
     }
 
     // Creates an Item and adds it to the buffer (destructively)
-    private void processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
+    private boolean processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
                               Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
-
+        boolean batchAdded = false;
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip malformed
         // Items, but difficult with batch saving.
         if (itemBuffer.size() == bufSize) {
@@ -178,6 +178,7 @@ public class DatabaseGenerator {
 
             //System.out.println("Batch insert");
             itemBuffer.clear();
+            batchAdded = true;
         }
 
         // Trim whitespace etc for all values
@@ -247,6 +248,7 @@ public class DatabaseGenerator {
 
         item.setCollectionDisplayName(truncateString(sanitizeString(row.get("Named Collection")), 200));
         itemBuffer.add(item);
+        return batchAdded;
     }
 
     private void processMedia(Map<String, String> row, Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
@@ -288,9 +290,15 @@ public class DatabaseGenerator {
             row = getRow(rowReader);
             fileSize++;
         }
-        int lastIt = fileSize/bufferSize;
+        System.out.println("All depts and collections added.");
+
+        int fullBatches = fileSize / bufferSize;
         int lastBatchSize = fileSize % bufferSize;
-        int currIt = -1;
+        int batchesAdded = 0;
+        boolean batchAdded = false;
+
+        System.out.println(fullBatches);
+        System.out.println(lastBatchSize);
 
         // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
         // of media things per object
@@ -306,12 +314,15 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(dataFile);
         row = getRow(rowReader);
         while (row != null) {
-            if(currIt != lastIt)
-                processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
-            else
-                processItems(row, itemBuffer, lastBatchSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
-            if(itemBuffer.size() == 1)
-                currIt++;
+            if (batchesAdded == fullBatches) {
+                batchAdded = processItems(row, itemBuffer, lastBatchSize - 1, deptsAdded, collectionsAdded, allIrns, mediaCounts);
+            } else {
+                batchAdded = processItems(row, itemBuffer, bufferSize, deptsAdded, collectionsAdded, allIrns, mediaCounts);
+            }
+            if (batchAdded) {
+                batchesAdded++;
+                System.out.println(batchesAdded);
+            }
             row = getRow(rowReader);
         }
         System.out.println("All items added.");

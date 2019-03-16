@@ -69,6 +69,18 @@ public class DatabaseGenerator {
 
     private Integer bufferSize = 1000;
 
+    private String locationHeadingArchive = "Geographic Name: (Names)";
+    private String locationHeadingMuseum = "Place Details: (Production Place)";
+    private String nameHeading = "Full Name";
+    private String itemRefHeading = "Object Number";
+    private String descriptionHeadingArchive = "Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)";
+    private String descriptionHeadingMuseum = "Physical Description: (Collection Details)";
+    private String displayDateHeadingArchive = "Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)";
+    private String displayDateHeadingMuseum = "Associated Date: (Content Details)/Production Date: (Production Dates)";
+    private String extentHeadingArchive = "Extent: (ISAD(G) Identity Statement)";
+    private String extentHeadingMuseum = "Simple Name: (Collection Details)/Object Name/Object Name: (Classification)";
+    private String collectionDisplayNameHeading = "Named Collection";
+
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
         File file;
@@ -196,59 +208,59 @@ public class DatabaseGenerator {
         Item item = new Item();
         // id is auto-generated
         item.setCollection(collectionsAdded.get(sanitizeString(row.get("Collection"))));
-        item.setItemRef(row.get("Object Number").trim());
+        item.setItemRef(row.get(itemRefHeading).trim());
 
-        if (row.get("Geographic Name: (Names)") != null) {
-            item.setLocation(row.get("Geographic Name: (Names)"));
-        } else if (row.get("Place Details: (Production Place)") != null) {
-            item.setLocation(row.get("Place Details: (Production Place)"));
+        if (row.get(locationHeadingArchive) != null) {
+            item.setLocation(row.get(locationHeadingArchive));
+        } else if (row.get(locationHeadingMuseum) != null) {
+            item.setLocation(row.get(locationHeadingMuseum));
         }
 
-        if (row.get("Full Name") != null) {
-            item.setName(truncateString(row.get("Full Name"), 200));
+        if (row.get(nameHeading) != null) {
+            item.setName(truncateString(row.get(nameHeading), 200));
         } else {
-            item.setName(row.get("Object Number"));
+            item.setName(row.get(itemRefHeading));
         }
 
-        if (row.get("Physical Description: (Collection Details)") != null) {
-            item.setDescription(row.get("Physical Description: (Collection Details)"));
-        } else if (row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)") != null) {
-            item.setDescription(row.get("Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)"));
+        if (row.get(descriptionHeadingMuseum) != null) {
+            item.setDescription(row.get(descriptionHeadingMuseum));
+        } else if (row.get(descriptionHeadingArchive) != null) {
+            item.setDescription(row.get(descriptionHeadingArchive));
         }
 
-        if (allIrns.get(row.get("Object Number")) != null) {
-            item.setMediaIrns(stringifyIrns(allIrns.get(row.get("Object Number"))));
+        if (allIrns.get(row.get(itemRefHeading)) != null) {
+            item.setMediaIrns(stringifyIrns(allIrns.get(row.get(itemRefHeading))));
         }
 
-        if (mediaCounts.get(row.get("Object Number")) == null) {
+        if (mediaCounts.get(row.get(itemRefHeading)) == null) {
             item.setMediaCount(0);
         } else {
-            item.setMediaCount(mediaCounts.get(row.get("Object Number")));
+            item.setMediaCount(mediaCounts.get(row.get(itemRefHeading)));
         }
 
         // Hard code it for now
         item.setCopyrighted("© Bristol Culture");
 
-        if (row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)") != null) {
-            item.setDisplayDate(row.get("Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)"));
-        } else if (row.get("Associated Date: (Content Details)/Production Date: (Production Dates)") != null) {
-            item.setDisplayDate(row.get("Associated Date: (Content Details)/Production Date: (Production Dates)"));
+        if (row.get(displayDateHeadingArchive) != null) {
+            item.setDisplayDate(row.get(displayDateHeadingArchive));
+        } else if (row.get(displayDateHeadingMuseum) != null) {
+            item.setDisplayDate(row.get(displayDateHeadingMuseum));
         }
 
         // Needs normalization
         //item.setStartDate();
         //item.setEndDate();
 
-        if (row.get("Extent: (ISAD(G) Identity Statement)") != null) {
-            item.setExtent(row.get("Extent: (ISAD(G) Identity Statement)"));
-        } else if (row.get("Simple Name: (Collection Details)/Object Name/Object Name: (Classification)") != null) {
-            item.setExtent(row.get("Simple Name: (Collection Details)/Object Name/Object Name: (Classification)"));
+        if (row.get(extentHeadingArchive) != null) {
+            item.setExtent(row.get(extentHeadingArchive));
+        } else if (row.get(extentHeadingMuseum) != null) {
+            item.setExtent(row.get(extentHeadingMuseum));
         }
 
         // Missing/already used
         //item.setPhysTechDesc();
 
-        item.setCollectionDisplayName(truncateString(sanitizeString(row.get("Named Collection")), 200));
+        item.setCollectionDisplayName(truncateString(sanitizeString(row.get(collectionDisplayNameHeading)), 200));
         itemBuffer.add(item);
         return batchAdded;
     }

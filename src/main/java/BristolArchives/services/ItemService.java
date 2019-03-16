@@ -22,6 +22,10 @@ public class ItemService {
     @Autowired
     private CollectionService collectionService;
 
+    public List<String> getMultimediaIrns(Item item) {
+        return new ArrayList<>(Arrays.asList(item.getMediaIrns().split(",")));
+    }
+
     public List<Item> getAllItems(){
         return itemRepo.findAll();
     }
@@ -30,21 +34,7 @@ public class ItemService {
         return itemRepo.findByNameContaining(name);
     }
 
-    /*
-    public List<Item> getItemByCollectionName(String collName) {
-        List<SubCollection> subCollList = subCollectionService.getByCollectionName(collName);
-        List<Item> result = new ArrayList<>();
-        for (SubCollection subColl : subCollList)
-            result.addAll(itemRepo.findBySubCollection(subColl));
-        return result;
-    }
-    */
-
-//    public List<Item> getItemBySubCollectionName(String subCollName) {
-//        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
-//    }
-
-
+    // Matches on collName exactly
     public List<Item> getItemByCollectionName(String collName) {
         List<Item> result = new ArrayList<>();
         List<Collection> collList = collectionService.getByName(collName);
@@ -72,6 +62,7 @@ public class ItemService {
             result.retainAll(newItems);
     }
 
+    // Simple search
     public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
         List<Item> results = new ArrayList<>();
@@ -82,11 +73,6 @@ public class ItemService {
                     results.add(i);
             }
             currResults = itemRepo.findByItemRef(s);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }
-            currResults = itemRepo.findByName(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);

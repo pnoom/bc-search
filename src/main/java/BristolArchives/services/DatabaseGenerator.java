@@ -380,10 +380,16 @@ public class DatabaseGenerator {
 
             List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
 
-            for (Pattern pat : patterns) {
-                Matcher matcher = pat.matcher(displayDate);
+            List<Runnable> handlers new ArrayList<>(Arrays.asList(this::handler0, this::handler1, this::handler2, this::handler3, this::handler4,
+                    this::handler5,this::handler6,this::handler7,this::handler8,this::handler9));
+
+            for (int i=0; i<patterns.size(); i++) {
+                Matcher matcher = patterns.get(i).matcher(displayDate);
                 boolean matches = matcher.matches();
                 System.out.println(matches);
+                if (matches) {
+                    handlers[i]();
+                }
             }
             return "";
         }

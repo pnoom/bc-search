@@ -51,10 +51,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class DatabaseGenerator {
@@ -242,6 +242,9 @@ public class DatabaseGenerator {
         }
 
         // Needs normalization
+
+
+
         //item.setStartDate();
         //item.setEndDate();
 
@@ -350,10 +353,10 @@ public class DatabaseGenerator {
 
 
     class DateMatcher {
-        String StartDate;
-        String EndDate;
+        String startDate;
+        String endDate;
 
-        public String MatchAttempt(String DisplayDate) {
+        public String matchAttempt(String displayDate) {
 
             String D = "(?:rd|st|nd|th)?";
             String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*";
@@ -362,7 +365,7 @@ public class DatabaseGenerator {
 
 
 
-            String patternString = "(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
+            List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
                     ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A
                     ,A
                     ,"(\\d{0,2})-(\\d{1,2})\\s*[-]?\\s*(\\w{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"
@@ -372,13 +375,16 @@ public class DatabaseGenerator {
                     ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*"
                     ,"\\[?"+B+"-"+B+"\\]?"
                     ,"\\[?"+B+"\\]?"
-                    ,"(?:[a-zA-Z]+,\\s*)"+A
-                    ]
+                    ,"(?:[a-zA-Z]+,\\s*)"+A));
 
-            Pattern pattern = Pattern.compile(patternString);
+            List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
 
-            Matcher matcher = pattern.matcher(DisplayDate);
-            boolean matches = matcher.matches();
+            for (Pattern pat : patterns) {
+                Matcher matcher = pat.matcher(displayDate);
+                boolean matches = matcher.matches();
+                System.out.println(matches);
+            }
+
         }
     }
 }

@@ -243,7 +243,8 @@ public class DatabaseGenerator {
 
         // Needs normalization
 
-
+        DateMatcher dateMatcher = new DateMatcher();
+        dateMatcher.matchAttempt(item.getDisplayDate());
 
         //item.setStartDate();
         //item.setEndDate();
@@ -384,7 +385,7 @@ public class DatabaseGenerator {
                 boolean matches = matcher.matches();
                 System.out.println(matches);
             }
-
+            return "";
         }
     }
 }

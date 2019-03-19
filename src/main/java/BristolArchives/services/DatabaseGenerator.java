@@ -51,7 +51,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -351,20 +357,16 @@ public class DatabaseGenerator {
 
     }
 
-
-
     class DateMatcher {
         String startDate;
         String endDate;
 
-        public String matchAttempt(String displayDate) {
+        public void matchAttempt(String displayDate) {
 
             String D = "(?:rd|st|nd|th)?";
             String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*";
             String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*";
             String B = "\\s*(c.)?\\s*(\\d{4})(s)?\\s*";
-
-
 
             List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
                     ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A
@@ -380,19 +382,100 @@ public class DatabaseGenerator {
 
             List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
 
-            List<Runnable> handlers new ArrayList<>(Arrays.asList(this::handler0, this::handler1, this::handler2, this::handler3, this::handler4,
-                    this::handler5,this::handler6,this::handler7,this::handler8,this::handler9));
+            List<Consumer<Matcher>> handlers = new ArrayList<>(Arrays.asList(handler0,
+                    handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10));
 
             for (int i=0; i<patterns.size(); i++) {
                 Matcher matcher = patterns.get(i).matcher(displayDate);
                 boolean matches = matcher.matches();
-                System.out.println(matches);
+                // System.out.println(matches);
                 if (matches) {
-                    handlers[i]();
+                     handlers.get(i).accept(matcher);
                 }
             }
-            return "";
         }
+
+        private Date formatDDMonthYY(List<String> ddMonthYyyy) {
+            Integer month = monthToNumber(ddMonthYyyy.get(1));
+            Integer day = Integer.parseInt(ddMonthYyyy.get(0));
+            Integer year = Integer.parseInt(ddMonthYyyy.get(3));
+
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try {
+                return df.parse(String.format("%4d-%2d-%2d", year, month, day));
+            } catch (ParseException exception) {
+                return null;
+            }
+        }
+
+        private Integer monthToNumber(String month) {
+            List<String> names = new ArrayList<>(Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"));
+            for (String name : names) {
+                if (name.contains(month)) {
+                    return Month.valueOf(name.toUpperCase()).getValue();
+                }
+            }
+            return -1;
+        }
+
+        // DD Month YYYY - DD Month YYYY
+        Consumer<Matcher> handler0  = matcher -> {
+            // System.out.printf("%s %s %s\n", matcher.group(1), matcher.group(2), matcher.group(3));
+            //matcher.group(1); // 1, 2, 3
+            //startDate = ;
+            //endDate = ;
+        };
+
+        //
+        Consumer<Matcher> handler1  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler2  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler3  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler4  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler5  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler6  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler7  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler8  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler9  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler10  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
     }
 }
 

@@ -346,4 +346,40 @@ public class DatabaseGenerator {
         System.out.println("All items added.");
 
     }
+
+
+
+    class DateMatcher {
+        String StartDate;
+        String EndDate;
+
+        public String MatchAttempt(String DisplayDate) {
+
+            String D = "(?:rd|st|nd|th)?";
+            String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*";
+            String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*";
+            String B = "\\s*(c.)?\\s*(\\d{4})(s)?\\s*";
+
+
+
+            String patternString = "(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
+                    ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A
+                    ,A
+                    ,"(\\d{0,2})-(\\d{1,2})\\s*[-]?\\s*(\\w{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"
+                    ,C+"\\s*[-]?\\s*"+C
+                    ,C+"\\s*[-]?\\s*"+B
+                    ,C
+                    ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*"
+                    ,"\\[?"+B+"-"+B+"\\]?"
+                    ,"\\[?"+B+"\\]?"
+                    ,"(?:[a-zA-Z]+,\\s*)"+A
+                    ]
+
+            Pattern pattern = Pattern.compile(patternString);
+
+            Matcher matcher = pattern.matcher(DisplayDate);
+            boolean matches = matcher.matches();
+        }
+    }
 }
+

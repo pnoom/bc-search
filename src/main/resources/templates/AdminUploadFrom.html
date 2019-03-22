@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <body>
 
 <div th:if="${message}">
@@ -6,7 +6,7 @@
 </div>
 
 <div>
-    <form method="POST" enctype="multipart/form-data" action="/">
+    <form method="POST" enctype="multipart/form-data" action="/adminUpload">
         <table>
             <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
             <tr><td></td><td><input type="submit" value="Upload" /></td></tr>

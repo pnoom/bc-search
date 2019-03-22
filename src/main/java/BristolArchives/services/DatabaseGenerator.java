@@ -161,7 +161,6 @@ public class DatabaseGenerator {
 
     */
 
-    // TODO: pre-populate the dictionaries first by queriying DB for existing depts and colls
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
         String deptName = sanitizeString(row.get(departmentHeading));
@@ -193,7 +192,8 @@ public class DatabaseGenerator {
                 failedDeptAttempts++;
             }
         }
-        if (collectionsAdded.get(collName) == null && deptsAdded.get(deptName) != null) {
+        // How to handle null deptsAdded.get(deptName)?
+        if (collectionsAdded.get(collName) == null) {
             coll = new Collection();
             // id is auto-generated
             coll.setName(collName);
@@ -334,10 +334,31 @@ public class DatabaseGenerator {
         Map<String, List<String>> allIrns = new HashMap<>();
         Map<String, Integer> mediaCounts = new HashMap<>();
         List<Item> itemBuffer = new ArrayList<>();
+        List<Dept> existingDepts;
+        List<Collection> existingCollections;
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+
+        // Pre-populate the dicts of Depts and Colls with the current contents of the DB
+        try {
+            existingDepts = deptRepo.findAll();
+            existingCollections = collectionRepo.findAll();
+        } catch (Exception exception) {
+            throw new RuntimeException("Aborting: failed to retrieve existing Depts and/or Collections");
+        }
+        // Check lists of existing, convert to Map from names to object references
+        if (existingDepts != null) {
+            for (Dept dept : existingDepts) {
+                deptsAdded.put(dept.getName(), dept);
+            }
+        }
+        if (existingCollections != null) {
+            for (Collection coll : existingCollections) {
+                collectionsAdded.put(coll.getName(), coll);
+            }
+        }
 
         // TODO: check that the last line is processed
         rowReader = getCSVReader(dataFile);

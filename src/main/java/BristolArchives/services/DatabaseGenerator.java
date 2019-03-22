@@ -43,8 +43,11 @@ import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
 import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.NestedRuntimeException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -159,6 +162,10 @@ public class DatabaseGenerator {
     Outer
     org.springframework.transaction.CannotCreateTransactionException
 
+    I think the parent of the ones I want is:
+    org.springframework.dao.DataAccessException
+    The parent of that is:
+    org.springframework.core.NestedRuntimeException
     */
 
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
@@ -186,7 +193,8 @@ public class DatabaseGenerator {
             try {
                 deptRepo.saveAndFlush(dept);
                 deptsAdded.put(deptName, dept);
-            } catch (Exception exception) {
+            }
+            catch (Exception exception) {
                 System.out.println("Skipped Dept: duplicate or malformed entry");
                 System.out.println(exception.toString());
                 failedDeptAttempts++;
@@ -214,22 +222,40 @@ public class DatabaseGenerator {
         return String.join(",", allIrns);
     }
 
+    private String extractUsefulErrorMessage(NestedRuntimeException exception) {
+        return exception.getMostSpecificCause().getMessage();
+    }
+
+    private String extractDuplicateItemRef(String duplicateErrorMessage) {
+        String result = duplicateErrorMessage.substring(duplicateErrorMessage.indexOf('\'') + 1);
+        result = result.substring(0, result.indexOf('\''));
+        return result;
+    }
+
     // Creates an Item and adds it to the buffer (destructively)
     private boolean processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
                               Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         boolean batchAdded = false;
         if (row == null) return batchAdded;
+
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip indiviual malformed
         // Items, but difficult with batch saving. Instead, skip the entire batch containing the malformed entry.
 
-        // TODO: provide info about what is malformed, and how
+        // TODO: maybe handle blank lines and malformed items/dates more gracefully. Can a required Dept/Collection actually be missing?
+        // That shouldn't be the case unless there were some exceptions earlier on.
         if (itemBuffer.size() == bufSize) {
             try {
                 itemRepo.saveAll(itemBuffer);
-            } catch (Exception exception) {
-                System.out.println("Skipped batch: contained duplicate or malformed item(s), or Dept/Collection missing");
-                System.out.println(exception.toString());
+            }
+            catch (DataIntegrityViolationException exception) {
+                System.out.printf("Skipped batch: contained duplicate item(s), starting with the item with reference number '%s'\n",
+                        extractDuplicateItemRef(extractUsefulErrorMessage(exception)));
+                //System.out.println(extractUsefulErrorMessage(exception));
+            }
+            catch (NestedRuntimeException exception) {
+                System.out.println("Skipped batch: contained malformed item(s), blank line, or a required Dept/Collection was missing. Details:");
+                System.out.println(extractUsefulErrorMessage(exception));
             } finally {
                 itemRepo.flush();
             }
@@ -286,8 +312,8 @@ public class DatabaseGenerator {
 
         // Needs normalization
 
-        DateMatcher dateMatcher = new DateMatcher();
-        dateMatcher.matchAttempt(item.getDisplayDate());
+        // DateMatcher dateMatcher = new DateMatcher();
+        // dateMatcher.matchAttempt(item.getDisplayDate());
 
         //item.setStartDate();
         //item.setEndDate();

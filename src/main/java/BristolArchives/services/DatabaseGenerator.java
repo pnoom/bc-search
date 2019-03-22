@@ -74,6 +74,10 @@ public class DatabaseGenerator {
     private DeptRepo deptRepo;
 
     private Integer bufferSize = 1000;
+    private Integer maxDeptAttempts = 10;
+    private Integer maxCollAttempts = 10;
+    private Integer failedDeptAttempts = 0;
+    private Integer failedCollAttempts = 0;
 
     private String departmentHeading = "Department: ";
     private String collectionHeading = "Collection";
@@ -144,7 +148,20 @@ public class DatabaseGenerator {
         return string.substring(0, Math.min(maxLength-1, string.length()));
     }
 
-    // This may actually need to return something
+    /*
+    Possible exceptions?
+    Inner
+    org.hibernate.exception.ConstraintViolationException
+    Outer
+    org.springframework.dao.DataIntegrityConstraintViolationException
+    Inner
+    java.lang.IllegalStateException
+    Outer
+    org.springframework.transaction.CannotCreateTransactionException
+
+    */
+
+    // TODO: pre-populate the dictionaries first by queriying DB for existing depts and colls
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
         String deptName = sanitizeString(row.get(departmentHeading));
@@ -155,23 +172,40 @@ public class DatabaseGenerator {
         //}
         Dept dept;
         Collection coll;
+
+        if (failedDeptAttempts >= maxDeptAttempts) {
+            throw new RuntimeException("Aborting: too many failed attempts to add Departments");
+        }
+        if (failedCollAttempts >= maxCollAttempts) {
+            throw new RuntimeException("Aborting: too many failed attempts to add Collections");
+        }
         //System.out.println(deptsAdded.get(deptName));
         if (deptsAdded.get(deptName) == null) {
             dept = new Dept();
             // id is auto-generated
             dept.setName(deptName);
-            deptRepo.saveAndFlush(dept);
-            deptsAdded.put(deptName, dept);
+            try {
+                deptRepo.saveAndFlush(dept);
+                deptsAdded.put(deptName, dept);
+            } catch (Exception exception) {
+                System.out.println("Skipped Dept: duplicate or malformed entry");
+                System.out.println(exception.toString());
+                failedDeptAttempts++;
+            }
         }
-        // Its dept is guaranteed to exist at this point, so get it deptsAdded dict
-        //System.out.println(collectionsAdded.get(collName));
-        if (collectionsAdded.get(collName) == null) {
+        if (collectionsAdded.get(collName) == null && deptsAdded.get(deptName) != null) {
             coll = new Collection();
             // id is auto-generated
             coll.setName(collName);
             coll.setDept(deptsAdded.get(deptName));
-            collectionRepo.saveAndFlush(coll);
-            collectionsAdded.put(collName, coll);
+            try {
+                collectionRepo.saveAndFlush(coll);
+                collectionsAdded.put(collName, coll);
+            } catch (Exception exception) {
+                System.out.println("Skipped Collection: duplicate or malformed entry, or missing Dept");
+                System.out.println(exception.toString());
+                failedCollAttempts++;
+            }
         }
     }
 
@@ -194,7 +228,7 @@ public class DatabaseGenerator {
             try {
                 itemRepo.saveAll(itemBuffer);
             } catch (Exception exception) {
-                System.out.println("Skipped batch: contained malformed item(s)");
+                System.out.println("Skipped batch: contained duplicate or malformed item(s), or Dept/Collection missing");
                 System.out.println(exception.toString());
             } finally {
                 itemRepo.flush();
@@ -207,6 +241,9 @@ public class DatabaseGenerator {
 
         Item item = new Item();
         // id is auto-generated
+
+        // TODO: check for null collection and skip this individual Item (never add it to the buffer, and reduce the
+        // total number of items to add (i.e. fullBatches and/or lastBatchSize etc))
         item.setCollection(collectionsAdded.get(sanitizeString(row.get(collectionHeading))));
         item.setItemRef(row.get(itemRefHeading).trim());
 

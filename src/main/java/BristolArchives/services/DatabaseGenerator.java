@@ -414,17 +414,20 @@ public class DatabaseGenerator {
         System.out.println(fullBatches);
         System.out.println(lastBatchSize);
 
-        // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
-        // of media things per object
+        // Go through multimedia file (if provided) storing mappings from object numbers to a list of media IRNs and
+        // the number of media things per object
 
-        // TODO: check that the last line is processed
-        rowReader = getCSVReader(mediaFile);
-        row = getRow(rowReader);
-        while (row != null) {
-            processMedia(row, allIrns, mediaCounts);
+
+        if (mediaFile != null) {
+            // TODO: check that the last line is processed
+            rowReader = getCSVReader(mediaFile);
             row = getRow(rowReader);
+            while (row != null) {
+                processMedia(row, allIrns, mediaCounts);
+                row = getRow(rowReader);
+            }
+            System.out.println("All media irns calculated.");
         }
-        System.out.println("All media irns calculated.");
 
         // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
 

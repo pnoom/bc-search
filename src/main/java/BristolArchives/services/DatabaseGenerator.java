@@ -374,6 +374,7 @@ public class DatabaseGenerator {
             row = getRow(rowReader);
         }
 
+        // TODO: investigate why 320 items are left after this. Maybe untrimmed whitespace in Object Numbers?
         try {
             itemRepo.deleteAll(itemRepo.findByItemRefIn(itemRefs));
         } catch (NestedRuntimeException exception) {

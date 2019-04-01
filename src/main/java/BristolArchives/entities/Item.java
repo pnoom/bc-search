@@ -10,10 +10,6 @@ import java.util.Date;
 public class Item {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
     @Column(name = "item_ref")
     private String itemRef;
 
@@ -58,14 +54,6 @@ public class Item {
     private String collectionDisplayName;
 
     public Item(){};
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getItemRef() {
         return itemRef;

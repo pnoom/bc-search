@@ -17,8 +17,7 @@ CREATE TABLE collection (
 );
 
 CREATE TABLE item (
-  id             		INTEGER        PRIMARY KEY AUTO_INCREMENT,
-  item_ref                      VARCHAR(200)   NOT NULL UNIQUE,
+  item_ref                      VARCHAR(200)   PRIMARY KEY,
   location                      VARCHAR(200)   NULL,
   name           		VARCHAR(200)   NULL,
   description           	TEXT           NULL,

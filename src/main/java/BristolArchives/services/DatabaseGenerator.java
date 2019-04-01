@@ -351,6 +351,16 @@ public class DatabaseGenerator {
         }
     }
 
+    public void deleteEntireDatabase() {
+        try {
+            itemRepo.deleteAllInBatch();
+            collectionRepo.deleteAllInBatch();
+            deptRepo.deleteAllInBatch();
+        } catch (Exception exception) {
+            throw new RuntimeException("Failed to delete all database content");
+        }
+    }
+
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;

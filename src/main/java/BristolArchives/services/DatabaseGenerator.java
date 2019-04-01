@@ -361,6 +361,29 @@ public class DatabaseGenerator {
         }
     }
 
+    public void deleteSpecifiedItems(File dataFile) throws IOException {
+        CSVReaderHeaderAware rowReader;
+        Map<String, String> row;
+        List<String> itemRefs = new ArrayList<>();
+
+        // TODO: check it gets the last one too
+        rowReader = getCSVReader(dataFile);
+        row = getRow(rowReader);
+        while (row != null) {
+            itemRefs.add(row.get(itemRefHeading)); // this should never be null, right?
+            row = getRow(rowReader);
+        }
+
+        try {
+            itemRepo.deleteAll(itemRepo.findByItemRefIn(itemRefs));
+        } catch (NestedRuntimeException exception) {
+            System.out.println("Deletion failed. Details:");
+            System.out.println(extractUsefulErrorMessage(exception));
+        } finally {
+            itemRepo.flush();
+        }
+    }
+
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;

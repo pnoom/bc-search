@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-<div class="block"><h1 class="title" style="font-size:3vw"> Welcome to Bristol Archives </h1></div>
+<div class="block"><h1 class="title" style="font-size:3vw"> Advanced Search: </h1></div>
 
 <!-- This is what creates the navbar -->
 <div class="block">
@@ -39,6 +39,8 @@
 
             <div class="navbar-start">
                 <a href="/" class="navbar-item">Home</a>
+                <a href="/aboutArchives" class="navbar-item">About the Archives</a>
+                <a href="/loginPage" class="navbar-item">Admin login</a>
                 <!--<a class="navbar-item">Image Gallery</a>
                 <a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
@@ -64,7 +66,7 @@
     </script>
 </div>
 <div class="block">
-    <canvas height="25" style="border:1px transparent">
+    <canvas height="20" style="border:1px transparent">
     </canvas>
 </div>
 
@@ -105,9 +107,12 @@
                     if (x.style.display === "none") {
                         x.style.display = "block";
                         y.style.display = "block";
-                        z.style.display = "block";
+                        z.style.display = "block";  
                         p.style.display = "none";
                         document.getElementById('date_search').value = "";
+                        document.getElementById('date_search').className = "hidden";
+                        document.getElementById('date_start').className = "unhidden";
+                        document.getElementById('date_end').className = "unhidden";
                     }
                     else {
                         x.style.display = "none";
@@ -116,6 +121,9 @@
                         p.style.display = "block";
                         document.getElementById('date_start').value = '';
                         document.getElementById('date_end').value = '';
+                        document.getElementById('date_start').className = "hidden";
+                        document.getElementById('date_end').className = "hidden";
+                        document.getElementById('date_search').className = "unhidden";
                     }
                 }
 

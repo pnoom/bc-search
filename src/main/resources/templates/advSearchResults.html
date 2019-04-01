@@ -23,16 +23,16 @@
 <body>
 <!-- This creates the logos at the top of the page -->
 <div class="block">
-<div class="columns is-mobile">
-    <div class="column is-one-third">
-    <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
+    <div class="columns is-mobile">
+        <div class="column is-one-third">
+            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
+        </div>
+        <div class="column is-one-third">
+        </div>
+        <div class="column is-one-third">
+            <img class="image is-pulled-right" th:src="@{/Bristol-City-Council-Logo.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 85%; height: auto;">
+        </div>
     </div>
-    <div class="column is-one-third">
-    </div>
-    <div class="column is-one-third">
-    <img class="image is-pulled-right" th:src="@{/Bristol-City-Council-Logo.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 85%; height: auto;">
-    </div>
-</div>
 </div>
 <div class="block"><h1 class="title" style="font-size:3vw"> Welcome to Bristol Archives </h1></div>
 
@@ -48,6 +48,8 @@
 
             <div class="navbar-start">
                 <a href="/" class="navbar-item">Home</a>
+                <a href="/aboutArchives" class="navbar-item">About the Archives</a>
+                <a href="/loginPage" class="navbar-item">Admin login</a>
                 <!--<a class="navbar-item">Image Gallery</a>
                 <a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
@@ -106,7 +108,10 @@
         <div class="column">
             <th th:if="${itemPage.totalPages > 0}" class="pagination"
                 th:each="pageNumber : ${pageNumbers}">
-                <a style="font-size:160%;" th:href="@{/advSearch(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
+                <
+                <a style="font-size:160%;" th:href="@{/advSearch(coll=${collection},date=date?${specificDate},
+                date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},
+                size=${itemPage.size},page=${pageNumber})}"
                    th:text=${pageNumber}
                    th:class="${pageNumber==itemPage.number + 1} ? active"></a>
             </th>
@@ -123,7 +128,10 @@
         <tr th:each="item : ${itemPage.content}">
             <td>
                 <figure class="image is-128x128">
+                    <!--
                     <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" style="width: 128px;height: 128px" />
+                    -->
+                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=180616&format=jpeg'}" style="width: 128px;height: 128px" />
 
                 </figure>
 

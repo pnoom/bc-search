@@ -22,22 +22,22 @@ public class BristolArchivesRunController {
 
         // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")
 
-        File dataFile = null;
-        File mediaFile = null;
-        try {
-            dataFile = dbGen.getFile("emu-content2.csv");
-            //dataFile = dbGen.getFile("reduced-size-emu.csv");
-            //mediaFile = dbGen.getFile("emu-content-mm2.csv");
-        } catch (IOException exception) {
-            System.out.println("Error opening CSV file");
-        }
-        try {
-            dbGen.generateDatabase(dataFile, mediaFile);
-            //dbGen.deleteSpecifiedItems(dataFile);
-        } catch (IOException exception) {
-            System.out.println("Could not generate database");
-            System.out.println(exception.toString());
-        }
+//        File dataFile = null;
+//        File mediaFile = null;
+//        try {
+//            dataFile = dbGen.getFile("emu-content2.csv");
+//            //dataFile = dbGen.getFile("reduced-size-emu.csv");
+//            //mediaFile = dbGen.getFile("emu-content-mm2.csv");
+//        } catch (IOException exception) {
+//            System.out.println("Error opening CSV file");
+//        }
+//        try {
+//            dbGen.generateDatabase(dataFile, mediaFile);
+//            //dbGen.deleteSpecifiedItems(dataFile);
+//        } catch (IOException exception) {
+//            System.out.println("Could not generate database");
+//            System.out.println(exception.toString());
+//        }
 
         return "index";
     }

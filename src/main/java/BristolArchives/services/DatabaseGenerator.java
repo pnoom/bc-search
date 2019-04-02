@@ -400,13 +400,7 @@ public class DatabaseGenerator {
         DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
         DateMatcher dateMatcher = new DateMatcher();
 
-        //dateMatcher.matchAttempt("May 1920 - Jun 1980");
-        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
-
-        //dateMatcher.matchAttempt("May 1990 - 1991");
-        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
-
-        dateMatcher.matchAttempt("May 1980");
+        dateMatcher.matchAttempt("Bristol 13 May 1990");
         System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
@@ -520,11 +514,14 @@ public class DatabaseGenerator {
 
             for (int i=0; i<patterns.size(); i++) {
                 Matcher matcher = patterns.get(i).matcher(displayDate);
-                //System.out.println(matcher);
                 boolean matches = matcher.matches();
-                //System.out.println(matches);
                 if (matches) {
-                     handlers.get(i).accept(matcher);
+                    //System.out.println(matcher.groupCount());
+                    //for (int j=0; j<matcher.groupCount(); j++) {
+                    //    System.out.printf("%s ", matcher.group(j));
+                    //}
+                    //System.out.printf("\n");
+                    handlers.get(i).accept(matcher);
                 }
             }
         }
@@ -534,7 +531,6 @@ public class DatabaseGenerator {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             //System.out.printf("%4s-%2s-%2s\n", year, month, day);
             try {
-
                 return df.parse(String.format("%4s-%2s-%2s", year, month, day));
             } catch (ParseException exception) {
                 throw new RuntimeException("Parse error");
@@ -593,25 +589,58 @@ public class DatabaseGenerator {
             endDate = formatDDMonthYY("28", matcher.group(1), matcher.group(2));
         };
 
-        
+        // Month YY
         Consumer<Matcher> handler7  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            Integer tempMonth = monthToNumber(matcher.group(1));
+            Integer tempYear = Integer.parseInt(matcher.group(2));
+            tempYear += 1900;
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try {
+                startDate = df.parse(String.format("%4d-%2d-%2d", tempYear, tempMonth, 1));
+                endDate = df.parse(String.format("%4d-%2d-%2d", tempYear, tempMonth, 28));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
         };
 
+        // YYYY - YYYY
         Consumer<Matcher> handler8  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try {
+                startDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(2), 1, 1));
+                endDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(5), 12, 31));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
         };
 
+        // YYYY with circa/s inference
         Consumer<Matcher> handler9  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            Integer startTempYear = Integer.parseInt(matcher.group(2));
+            Integer endTempYear = Integer.parseInt(matcher.group(2));
+
+            if (matcher.group(1) != null && matcher.group(3) != null) {
+                startTempYear -= 10;
+                endTempYear += 9;
+            } else if (matcher.group(1) != null) {
+                startTempYear -= 2;
+                endTempYear += 2;
+            } else if (matcher.group(3) != null) {
+                endTempYear += 9;
+            }
+            try {
+                startDate = df.parse(String.format("%4d-%2d-%2d", startTempYear, 1, 1));
+                endDate = df.parse(String.format("%4d-%2d-%2d", endTempYear, 12, 31));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
         };
 
+        // Location DD Month YYYY (Same code as handler 2)
         Consumer<Matcher> handler10  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY(matcher.group(2), matcher.group(3), matcher.group(4));
+            endDate = formatDDMonthYY(matcher.group(2), matcher.group(3), matcher.group(4));
         };
     }
 }

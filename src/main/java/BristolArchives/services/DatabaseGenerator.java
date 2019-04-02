@@ -470,10 +470,11 @@ public class DatabaseGenerator {
             }
             if (batchAdded) {
                 batchesAdded++;
-                System.out.println(batchesAdded);
+              //  System.out.println(batchesAdded);
             }
         } while (row != null);
         System.out.println("All items added.");
+
 
     }
 

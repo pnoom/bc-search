@@ -5,11 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 
 @Controller
 public class BristolArchivesRunController {
@@ -41,8 +36,8 @@ public class BristolArchivesRunController {
             System.out.println("Could not generate database");
             System.out.println(exception.toString());
         }
-        */
 
+        */
         return "index";
     }
 }

@@ -2,6 +2,7 @@ package BristolArchives.controllers;
 
 import BristolArchives.entities.Item;
 import BristolArchives.services.CollectionService;
+import BristolArchives.services.DeptService;
 import BristolArchives.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +26,12 @@ import java.util.stream.IntStream;
 public class AdvancedSearchController {
     @Autowired
     private ItemService itemService;
-//    private CollectionService collectionService;
+
+    @Autowired
+    private CollectionService collectionService;
+
+    @Autowired
+    private DeptService deptService;
 
     private boolean hasSth(String s) {
         return (s != null) && (!s.isEmpty());
@@ -34,7 +39,8 @@ public class AdvancedSearchController {
 
     @GetMapping("/advancedSearch")
     public String advanceSearch(Model model) {
-        //model.addAttribute("collectionList",collectionService.getAllCollections());
+        model.addAttribute("collectionList",collectionService.getAllCollections());
+        model.addAttribute("deptList",deptService.getAllDepts());
         return "advancedSearch";
     }
 

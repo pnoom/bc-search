@@ -69,41 +69,16 @@
     </canvas>
 </div>
 
-<div class="block">
-    <form th:action="@{/loginPage}" method="post">
-        <div class="columns is-mobile">
-            <div class="column is-one-fifth"></div>
-            <div class="column">
-                    <div class="block">
-                        <div class="columns">
-                            <div class="column is-one-fifth">Username:</div>
-                            <div class="column">
-                                <input type="text" name="username" class="input" placeholder="Login...">
-                            </div>
-                        </div>
-                    </div>
-                <div class="block">
-                    <div class="columns">
-                        <div class="column is-one-fifth">Password:</div>
-                        <div class="column"><input type="password" name="password" class="input" placeholder="Password..."></div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-one-fifth"></div>
-        </div>
-
-        <div class="block">
-            <div class="columns">
-                <div class="column is-one-quarter"></div>
-                <div class="column"><button class="button" style="margin-left: 96px" type="submit">Login</button></div>
-                <div class="column is-one-third"></div>
-            </div>
-        </div>
-
-    </form>
-
-
+<div>
+    <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
 </div>
+<button id="submitbutton" type="button">add entries</button>
 
 </body>
+<script>
+    $("#submitbutton").on("click", function(){
+        var dg = new DatabaseGenerator();
+        dq.generateDatabase($(#txtFileUpload), null);
+    });
+</script>
 </html>

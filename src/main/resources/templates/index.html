@@ -18,17 +18,17 @@
         <div class="column is-one-third">
             <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-one-third">
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px"> Welcome to Bristol Archives </h1>
         </div>
         <div class="column is-one-third">
             <img class="image is-pulled-right" th:src="@{/Bristol-City-Council-Logo.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 85%; height: auto;">
         </div>
     </div>
 </div>
-<div class="block"><h1 class="title" style="font-size:3vw"> Welcome to Bristol Archives </h1></div>
+<div class="block">
 
 <!-- This is what creates the navbar -->
-<div class="block">
+
     <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
         <div class="navbar-burger burger" data-target="navMenu">
             <span></span>
@@ -36,7 +36,6 @@
             <span></span>
         </div>
         <div class="navbar-menu" id="navMenu">
-
             <div class="navbar-start">
                 <a href="/" class="navbar-item">Home</a>
                 <a href="/aboutArchives" class="navbar-item">About the Archives</a>
@@ -84,24 +83,68 @@
 </div>
 
 <div class="block">
-    <canvas height="100" style="border:1px transparent">
-        </canvas>
+    <div id="MTG">
     </div>
-
-<div class="block">
+    <script>
+        var viewportwidth;
+        var viewportheight;
+        if (typeof window.innerWidth != 'undefined')
+        {
+            viewportwidth = window.innerWidth,
+                viewportheight = window.innerHeight
+        }
+    </script>
+    <style>
+        #MTG
+        {
+            width: 1024px;
+            height: 960px;
+            position:fixed;
+            animation-name:MTG;
+            animation-duration:15s;
+            animation-timing-function:linear;
+            animation-iteration-count:infinite;
+            animation-direction:alternate;
+            transition-duration:5s;
+        }
+        @keyframes MTG
+        {
+            0%,15%
+            {
+                background-image:url('/public/boat.jpg')
+                /*background-image:url(http://lorempixel.com/1024/960/nature/2/)*/
+            }
+            15%,35%
+            {
+                background-image:url(http://lorempixel.com/1024/960/nature/2/)
+            }
+            35%,50%
+            {
+                background-image:url(http://lorempixel.com/1024/960/nature/3/)
+            }
+            50%,75%
+            {
+                background-image:url(http://lorempixel.com/1024/960/nature/4/)
+            }
+            75%,100%
+            {
+                background-image:url(http://lorempixel.com/1024/960/nature/5/)
+            }
+        }
+        <img src="../public/imgloop1.jpg" height="3066" width="5318"/></style>
     <form action = "#" th:action="@{/search}" method="post" >
     <div class="columns is-mobile">
         <div class="column is-quarter">
-            <a class="button is-pulled-right" style="max-width: 100%; height: auto;" href="advancedSearch">Advanced search</a>
+            <a class="button is-pulled-right" style="max-width: 100%; height: auto; margin-top: 100px" href="advancedSearch">Advanced search</a>
         </div>
         <div class="column">
             <div class="control">
-                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." style="max-width: 100%; height: auto;">
+                <input type="text" name="main_search" class="input" placeholder="Search The Bristol Archives Database..." style="max-width: 100%; height: auto; margin-top: 100px">
                 <p></p>
             </div>
         </div>
         <div class="column is-quarter">
-            <button type="submit" class="button" >Search</button>
+            <button type="submit" class="button" style="margin-top: 100px" >Search</button>
 
         </div>
 

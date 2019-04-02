@@ -134,6 +134,7 @@ public class ItemService {
             getIntersection(results, itemRepo.findWithDateRange(start_date, end_date), someConstraintsExist);
             someConstraintsExist = true;
         }
+
         if (hasSth(collection)) {
             List<Item> currResults = getItemByCollectionName(collection);
             getIntersection(results, currResults, someConstraintsExist);
@@ -173,12 +174,14 @@ public class ItemService {
     public Page<Item> findPaginatedAdvSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision, Pageable pageable) {
         final List<Item> items = getAdvancedSearch(specific_date,start_date,end_date,collection,location,precision);
         int pageSize = pageable.getPageSize();
-        int currentPage = pageable.getPageNumber();
+        int maxPageNum = (int)Math.max(0, Math.ceil(1.0*items.size()/pageSize)-1);
+        int currentPage = Math.min(maxPageNum,pageable.getPageNumber());
         int startItem = currentPage * pageSize;
+
         List<Item> list;
 
         if (items.size() < startItem) {
-            list = Collections.emptyList();
+            list = items.subList(Math.max(0, items.size()-pageSize), items.size());
         } else {
             int toIndex = Math.min(startItem + pageSize, items.size());
             list = items.subList(startItem, toIndex);

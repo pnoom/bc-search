@@ -274,7 +274,7 @@ def normalize_date(row):
 
     date_handlers = [handler0, handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10]
     
-    regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) #may need to convert zip object to list first, check
+    regexes_and_handlers = OrderedDict(zip(date_regexes, date_handlers)) 
 
     for regex, handler in regexes_and_handlers.items():
         match = re.match(regex, row["Date"])
@@ -284,7 +284,7 @@ def normalize_date(row):
             row["start_date"], row["end_date"]  = handler(filtered)
             break
         else:
-            row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #for now, defaults handled here
+            row["start_date"], row["end_date"]  = "0000-00-00", "0000-00-00" #defaults handled here
 
 
 def run():

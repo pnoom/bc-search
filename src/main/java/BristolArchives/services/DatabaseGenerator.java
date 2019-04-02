@@ -43,18 +43,27 @@ import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
 import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.NestedRuntimeException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Month;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class DatabaseGenerator {
@@ -68,6 +77,10 @@ public class DatabaseGenerator {
     private DeptRepo deptRepo;
 
     private Integer bufferSize = 1000;
+    private Integer maxDeptAttempts = 10;
+    private Integer maxCollAttempts = 10;
+    private Integer failedDeptAttempts = 0;
+    private Integer failedCollAttempts = 0;
 
     private String departmentHeading = "Department: ";
     private String collectionHeading = "Collection";
@@ -138,7 +151,23 @@ public class DatabaseGenerator {
         return string.substring(0, Math.min(maxLength-1, string.length()));
     }
 
-    // This may actually need to return something
+    /*
+    Possible exceptions?
+    Inner
+    org.hibernate.exception.ConstraintViolationException
+    Outer
+    org.springframework.dao.DataIntegrityConstraintViolationException
+    Inner
+    java.lang.IllegalStateException
+    Outer
+    org.springframework.transaction.CannotCreateTransactionException
+
+    I think the parent of the ones I want is:
+    org.springframework.dao.DataAccessException
+    The parent of that is:
+    org.springframework.core.NestedRuntimeException
+    */
+
     private void processDeptsAndCollections(Map<String, String> row, Map<String, Dept> deptsAdded,
                                             Map<String, Collection> collectionsAdded) {
         String deptName = sanitizeString(row.get(departmentHeading));
@@ -149,23 +178,42 @@ public class DatabaseGenerator {
         //}
         Dept dept;
         Collection coll;
+
+        if (failedDeptAttempts >= maxDeptAttempts) {
+            throw new RuntimeException("Aborting: too many failed attempts to add Departments");
+        }
+        if (failedCollAttempts >= maxCollAttempts) {
+            throw new RuntimeException("Aborting: too many failed attempts to add Collections");
+        }
         //System.out.println(deptsAdded.get(deptName));
         if (deptsAdded.get(deptName) == null) {
             dept = new Dept();
             // id is auto-generated
             dept.setName(deptName);
-            deptRepo.saveAndFlush(dept);
-            deptsAdded.put(deptName, dept);
+            try {
+                deptRepo.saveAndFlush(dept);
+                deptsAdded.put(deptName, dept);
+            }
+            catch (Exception exception) {
+                System.out.println("Skipped Dept: duplicate or malformed entry");
+                System.out.println(exception.toString());
+                failedDeptAttempts++;
+            }
         }
-        // Its dept is guaranteed to exist at this point, so get it deptsAdded dict
-        //System.out.println(collectionsAdded.get(collName));
+        // How to handle null deptsAdded.get(deptName)?
         if (collectionsAdded.get(collName) == null) {
             coll = new Collection();
             // id is auto-generated
             coll.setName(collName);
             coll.setDept(deptsAdded.get(deptName));
-            collectionRepo.saveAndFlush(coll);
-            collectionsAdded.put(collName, coll);
+            try {
+                collectionRepo.saveAndFlush(coll);
+                collectionsAdded.put(collName, coll);
+            } catch (Exception exception) {
+                System.out.println("Skipped Collection: duplicate or malformed entry, or missing Dept");
+                System.out.println(exception.toString());
+                failedCollAttempts++;
+            }
         }
     }
 
@@ -174,22 +222,40 @@ public class DatabaseGenerator {
         return String.join(",", allIrns);
     }
 
+    private String extractUsefulErrorMessage(NestedRuntimeException exception) {
+        return exception.getMostSpecificCause().getMessage();
+    }
+
+    private String extractDuplicateItemRef(String duplicateErrorMessage) {
+        String result = duplicateErrorMessage.substring(duplicateErrorMessage.indexOf('\'') + 1);
+        result = result.substring(0, result.indexOf('\''));
+        return result;
+    }
+
     // Creates an Item and adds it to the buffer (destructively)
     private boolean processItems(Map<String, String> row, List<Item> itemBuffer, Integer bufSize,
                               Map<String, Dept> deptsAdded, Map<String, Collection> collectionsAdded,
                               Map<String, List<String>> allIrns, Map<String, Integer> mediaCounts) {
         boolean batchAdded = false;
         if (row == null) return batchAdded;
+
         // Create list of Entities, then batch-insert using repo.saveAll(). Would be nice to be able to skip indiviual malformed
         // Items, but difficult with batch saving. Instead, skip the entire batch containing the malformed entry.
 
-        // TODO: provide info about what is malformed, and how
+        // TODO: maybe handle blank lines and malformed items/dates more gracefully. Can a required Dept/Collection actually be missing?
+        // That shouldn't be the case unless there were some exceptions earlier on.
         if (itemBuffer.size() == bufSize) {
             try {
                 itemRepo.saveAll(itemBuffer);
-            } catch (Exception exception) {
-                System.out.println("Skipped batch: contained malformed item(s)");
-                System.out.println(exception.toString());
+            }
+            catch (DataIntegrityViolationException exception) {
+                System.out.printf("Skipped batch: contained duplicate item(s), starting with the item with reference number '%s'\n",
+                        extractDuplicateItemRef(extractUsefulErrorMessage(exception)));
+                //System.out.println(extractUsefulErrorMessage(exception));
+            }
+            catch (NestedRuntimeException exception) {
+                System.out.println("Skipped batch: contained malformed item(s), blank line, or a required Dept/Collection was missing. Details:");
+                System.out.println(extractUsefulErrorMessage(exception));
             } finally {
                 itemRepo.flush();
             }
@@ -201,6 +267,9 @@ public class DatabaseGenerator {
 
         Item item = new Item();
         // id is auto-generated
+
+        // TODO: check for null collection and skip this individual Item (never add it to the buffer, and reduce the
+        // total number of items to add (i.e. fullBatches and/or lastBatchSize etc))
         item.setCollection(collectionsAdded.get(sanitizeString(row.get(collectionHeading))));
         item.setItemRef(row.get(itemRefHeading).trim());
 
@@ -242,6 +311,10 @@ public class DatabaseGenerator {
         }
 
         // Needs normalization
+
+        // DateMatcher dateMatcher = new DateMatcher();
+        // dateMatcher.matchAttempt(item.getDisplayDate());
+
         //item.setStartDate();
         //item.setEndDate();
 
@@ -278,6 +351,39 @@ public class DatabaseGenerator {
         }
     }
 
+    public void deleteEntireDatabase() {
+        try {
+            itemRepo.deleteAllInBatch();
+            collectionRepo.deleteAllInBatch();
+            deptRepo.deleteAllInBatch();
+        } catch (Exception exception) {
+            throw new RuntimeException("Failed to delete all database content");
+        }
+    }
+
+    public void deleteSpecifiedItems(File dataFile) throws IOException {
+        CSVReaderHeaderAware rowReader;
+        Map<String, String> row;
+        List<String> itemRefs = new ArrayList<>();
+
+        // TODO: check it gets the last one too
+        rowReader = getCSVReader(dataFile);
+        row = getRow(rowReader);
+        while (row != null) {
+            itemRefs.add(row.get(itemRefHeading)); // this should never be null, right?
+            row = getRow(rowReader);
+        }
+
+        try {
+            itemRepo.deleteAll(itemRepo.findByItemRefIn(itemRefs));
+        } catch (NestedRuntimeException exception) {
+            System.out.println("Deletion failed. Details:");
+            System.out.println(extractUsefulErrorMessage(exception));
+        } finally {
+            itemRepo.flush();
+        }
+    }
+
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
@@ -287,10 +393,31 @@ public class DatabaseGenerator {
         Map<String, List<String>> allIrns = new HashMap<>();
         Map<String, Integer> mediaCounts = new HashMap<>();
         List<Item> itemBuffer = new ArrayList<>();
+        List<Dept> existingDepts;
+        List<Collection> existingCollections;
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+
+        // Pre-populate the dicts of Depts and Colls with the current contents of the DB
+        try {
+            existingDepts = deptRepo.findAll();
+            existingCollections = collectionRepo.findAll();
+        } catch (Exception exception) {
+            throw new RuntimeException("Aborting: failed to retrieve existing Depts and/or Collections");
+        }
+        // Check lists of existing, convert to Map from names to object references
+        if (existingDepts != null) {
+            for (Dept dept : existingDepts) {
+                deptsAdded.put(dept.getName(), dept);
+            }
+        }
+        if (existingCollections != null) {
+            for (Collection coll : existingCollections) {
+                collectionsAdded.put(coll.getName(), coll);
+            }
+        }
 
         // TODO: check that the last line is processed
         rowReader = getCSVReader(dataFile);
@@ -310,17 +437,20 @@ public class DatabaseGenerator {
         System.out.println(fullBatches);
         System.out.println(lastBatchSize);
 
-        // Go through multimedia file, storing mappings from object numbers to a list of media IRNs and the number
-        // of media things per object
+        // Go through multimedia file (if provided) storing mappings from object numbers to a list of media IRNs and
+        // the number of media things per object
 
-        // TODO: check that the last line is processed
-        rowReader = getCSVReader(mediaFile);
-        row = getRow(rowReader);
-        while (row != null) {
-            processMedia(row, allIrns, mediaCounts);
+
+        if (mediaFile != null) {
+            // TODO: check that the last line is processed
+            rowReader = getCSVReader(mediaFile);
             row = getRow(rowReader);
+            while (row != null) {
+                processMedia(row, allIrns, mediaCounts);
+                row = getRow(rowReader);
+            }
+            System.out.println("All media irns calculated.");
         }
-        System.out.println("All media irns calculated.");
 
         // Go through first file again, adding Items in batches to reduce memory usage and SQL processing times
 
@@ -346,4 +476,125 @@ public class DatabaseGenerator {
         System.out.println("All items added.");
 
     }
+
+    class DateMatcher {
+        Date startDate;
+        Date endDate;
+
+        public void matchAttempt(String displayDate) {
+
+            String D = "(?:rd|st|nd|th)?";
+            String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*";
+            String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*";
+            String B = "\\s*(c.)?\\s*(\\d{4})(s)?\\s*";
+
+            List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
+                    ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A
+                    ,A
+                    ,"(\\d{0,2})-(\\d{1,2})\\s*[-]?\\s*(\\w{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"
+                    ,C+"\\s*[-]?\\s*"+C
+                    ,C+"\\s*[-]?\\s*"+B
+                    ,C
+                    ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*"
+                    ,"\\[?"+B+"-"+B+"\\]?"
+                    ,"\\[?"+B+"\\]?"
+                    ,"(?:[a-zA-Z]+,\\s*)"+A));
+
+            List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
+
+            List<Consumer<Matcher>> handlers = new ArrayList<>(Arrays.asList(handler0,
+                    handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10));
+
+            for (int i=0; i<patterns.size(); i++) {
+                Matcher matcher = patterns.get(i).matcher(displayDate);
+                boolean matches = matcher.matches();
+                // System.out.println(matches);
+                if (matches) {
+                     handlers.get(i).accept(matcher);
+                }
+            }
+        }
+
+        private Date formatDDMonthYY(String day, String mon, String year) {
+            Integer month = monthToNumber(mon);
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            System.out.printf("%4s-%2s-%2s\n", year, month, day);
+            try {
+
+                return df.parse(String.format("%4s-%2s-%2s", year, month, day));
+            } catch (ParseException exception) {
+                return null;
+            }
+        }
+
+        private Integer monthToNumber(String month) {
+            List<String> names = new ArrayList<>(Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"));
+            for (String name : names) {
+                if (name.contains(month)) {
+                    return Month.valueOf(name.toUpperCase()).getValue();
+                }
+            }
+            return -1;
+        }
+
+        // DD Month YYYY - DD Month YYYY
+        Consumer<Matcher> handler0  = matcher -> {
+            startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
+            endDate = formatDDMonthYY(matcher.group(4), matcher.group(5), matcher.group(6));
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            System.out.printf("%s %s\n", df.format(startDate), df.format(endDate));
+        };
+
+        //
+        Consumer<Matcher> handler1  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler2  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler3  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler4  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler5  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler6  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler7  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler8  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler9  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+
+        Consumer<Matcher> handler10  = matcher -> {
+            //startDate = ;
+            //endDate = ;
+        };
+    }
 }
+

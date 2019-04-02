@@ -14,6 +14,7 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     List<Item> findByName(String name);
     List<Item> findByNameContaining(String name);
     List<Item> findByItemRef(String ref);
+    List<Item> findByItemRefIn(List<String> refs);
     List<Item> findByDisplayDateLike(String date);
     List<Item> findByLocationLike(String location);
     List<Item> findByDescriptionContaining(String search);

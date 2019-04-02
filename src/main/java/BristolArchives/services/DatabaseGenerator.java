@@ -397,10 +397,16 @@ public class DatabaseGenerator {
         List<Collection> existingCollections;
 
         // Testing dates code
-        DateMatcher dateMatcher = new DateMatcher();
-            //DD Month YYYY - DD Month YYYY
-        dateMatcher.matchAttempt("31 Jun - 12 May 1980");
         DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        DateMatcher dateMatcher = new DateMatcher();
+
+        //dateMatcher.matchAttempt("May 1920 - Jun 1980");
+        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
+
+        //dateMatcher.matchAttempt("May 1990 - 1991");
+        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
+
+        dateMatcher.matchAttempt("May 1980");
         System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
@@ -531,7 +537,7 @@ public class DatabaseGenerator {
 
                 return df.parse(String.format("%4s-%2s-%2s", year, month, day));
             } catch (ParseException exception) {
-                return null;
+                throw new RuntimeException("Parse error");
             }
         }
 
@@ -557,31 +563,37 @@ public class DatabaseGenerator {
             endDate = formatDDMonthYY(matcher.group(3), matcher.group(4), matcher.group(5));
         };
 
+        // DD Month YYYY
         Consumer<Matcher> handler2  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
+            endDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
         };
 
+        // DD-DD Month YYYY
         Consumer<Matcher> handler3  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY(matcher.group(1), matcher.group(3), matcher.group(4));
+            endDate = formatDDMonthYY(matcher.group(2), matcher.group(3), matcher.group(4));
         };
 
+        // Month YYYY - Month YYYY
         Consumer<Matcher> handler4  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY("1", matcher.group(1), matcher.group(2));
+            endDate = formatDDMonthYY("28", matcher.group(3), matcher.group(4));
         };
 
+        // Month YYYY - YYYY
         Consumer<Matcher> handler5  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY("1", matcher.group(1), matcher.group(2));
+            endDate = formatDDMonthYY("28", matcher.group(1), matcher.group(4));
         };
 
+        // Month YYYY
         Consumer<Matcher> handler6  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY("1", matcher.group(1), matcher.group(2));
+            endDate = formatDDMonthYY("28", matcher.group(1), matcher.group(2));
         };
 
+        
         Consumer<Matcher> handler7  = matcher -> {
             //startDate = ;
             //endDate = ;

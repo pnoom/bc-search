@@ -312,8 +312,8 @@ public class DatabaseGenerator {
 
         // Needs normalization
 
-        // DateMatcher dateMatcher = new DateMatcher();
-        // dateMatcher.matchAttempt(item.getDisplayDate());
+        DateMatcher dateMatcher = new DateMatcher();
+        dateMatcher.matchAttempt(item.getDisplayDate());
 
         //item.setStartDate();
         //item.setEndDate();
@@ -395,6 +395,13 @@ public class DatabaseGenerator {
         List<Item> itemBuffer = new ArrayList<>();
         List<Dept> existingDepts;
         List<Collection> existingCollections;
+
+        // Testing dates code
+        DateMatcher dateMatcher = new DateMatcher();
+            //DD Month YYYY - DD Month YYYY
+        dateMatcher.matchAttempt("31 Jun - 12 May 1980");
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
 
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
@@ -507,8 +514,9 @@ public class DatabaseGenerator {
 
             for (int i=0; i<patterns.size(); i++) {
                 Matcher matcher = patterns.get(i).matcher(displayDate);
+                //System.out.println(matcher);
                 boolean matches = matcher.matches();
-                // System.out.println(matches);
+                //System.out.println(matches);
                 if (matches) {
                      handlers.get(i).accept(matcher);
                 }
@@ -518,7 +526,7 @@ public class DatabaseGenerator {
         private Date formatDDMonthYY(String day, String mon, String year) {
             Integer month = monthToNumber(mon);
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-            System.out.printf("%4s-%2s-%2s\n", year, month, day);
+            //System.out.printf("%4s-%2s-%2s\n", year, month, day);
             try {
 
                 return df.parse(String.format("%4s-%2s-%2s", year, month, day));
@@ -541,14 +549,12 @@ public class DatabaseGenerator {
         Consumer<Matcher> handler0  = matcher -> {
             startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
             endDate = formatDDMonthYY(matcher.group(4), matcher.group(5), matcher.group(6));
-            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-            System.out.printf("%s %s\n", df.format(startDate), df.format(endDate));
         };
 
-        //
+        // DD Month - DD Month YYYY
         Consumer<Matcher> handler1  = matcher -> {
-            //startDate = ;
-            //endDate = ;
+            startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(5));
+            endDate = formatDDMonthYY(matcher.group(3), matcher.group(4), matcher.group(5));
         };
 
         Consumer<Matcher> handler2  = matcher -> {

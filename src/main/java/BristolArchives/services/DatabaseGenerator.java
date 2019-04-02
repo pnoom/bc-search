@@ -41,6 +41,7 @@ import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NestedRuntimeException;
@@ -304,19 +305,18 @@ public class DatabaseGenerator {
         // Hard code it for now
         item.setCopyrighted("© Bristol Culture");
 
-        if (row.get(displayDateHeadingArchive) != null) {
+        if (row.get(displayDateHeadingArchive) != null && !StringUtils.isAllBlank(row.get(displayDateHeadingArchive))) {
             item.setDisplayDate(row.get(displayDateHeadingArchive));
-        } else if (row.get(displayDateHeadingMuseum) != null) {
+        } else if (row.get(displayDateHeadingMuseum) != null && !StringUtils.isAllBlank(row.get(displayDateHeadingMuseum))) {
             item.setDisplayDate(row.get(displayDateHeadingMuseum));
         }
 
-        // Needs normalization
-
-        DateMatcher dateMatcher = new DateMatcher();
-        dateMatcher.matchAttempt(item.getDisplayDate());
-
-        //item.setStartDate();
-        //item.setEndDate();
+        if (item.getDisplayDate() != null) {
+            DateMatcher dateMatcher = new DateMatcher();
+            dateMatcher.matchAttempt(item.getDisplayDate());
+            item.setStartDate(dateMatcher.startDate);
+            item.setEndDate(dateMatcher.endDate);
+        }
 
         if (row.get(extentHeadingArchive) != null) {
             item.setExtent(row.get(extentHeadingArchive));
@@ -396,13 +396,6 @@ public class DatabaseGenerator {
         List<Dept> existingDepts;
         List<Collection> existingCollections;
 
-        // Testing dates code
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        DateMatcher dateMatcher = new DateMatcher();
-
-        dateMatcher.matchAttempt("Bristol 13 May 1990");
-        System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
-
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
@@ -441,8 +434,8 @@ public class DatabaseGenerator {
         int batchesAdded = 0;
         boolean batchAdded = false;
 
-        System.out.println(fullBatches);
-        System.out.println(lastBatchSize);
+        //System.out.println(fullBatches);
+        //System.out.println(lastBatchSize);
 
         // Go through multimedia file (if provided) storing mappings from object numbers to a list of media IRNs and
         // the number of media things per object
@@ -465,11 +458,11 @@ public class DatabaseGenerator {
         rowReader = getCSVReader(dataFile);
         do {
             row = getRow(rowReader);
-            if (batchesAdded == 91) {
-                if (row != null) {
-                    System.out.println(row.get(itemRefHeading));
-                }
-            }
+            //if (batchesAdded == 91) {
+            //    if (row != null) {
+            //        System.out.println(row.get(itemRefHeading));
+            //    }
+            //}
             if (batchesAdded == fullBatches) {
                 batchAdded = processItems(row, itemBuffer, lastBatchSize - 1, deptsAdded, collectionsAdded, allIrns, mediaCounts);
             } else {
@@ -477,7 +470,7 @@ public class DatabaseGenerator {
             }
             if (batchAdded) {
                 batchesAdded++;
-                System.out.println(batchesAdded);
+                //System.out.println(batchesAdded);
             }
         } while (row != null);
         System.out.println("All items added.");
@@ -505,24 +498,24 @@ public class DatabaseGenerator {
                     ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*"
                     ,"\\[?"+B+"-"+B+"\\]?"
                     ,"\\[?"+B+"\\]?"
-                    ,"(?:[a-zA-Z]+,\\s*)"+A));
+                    ,"(?:[a-zA-Z]+[,]?\\s*)"+A));
 
             List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
 
             List<Consumer<Matcher>> handlers = new ArrayList<>(Arrays.asList(handler0,
                     handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10));
 
+            boolean matches = false;
             for (int i=0; i<patterns.size(); i++) {
                 Matcher matcher = patterns.get(i).matcher(displayDate);
-                boolean matches = matcher.matches();
+                matches = matcher.matches();
                 if (matches) {
-                    //System.out.println(matcher.groupCount());
-                    //for (int j=0; j<matcher.groupCount(); j++) {
-                    //    System.out.printf("%s ", matcher.group(j));
-                    //}
-                    //System.out.printf("\n");
                     handlers.get(i).accept(matcher);
+                    break;
                 }
+            }
+            if (!matches) {
+                System.out.println(displayDate);
             }
         }
 
@@ -639,8 +632,8 @@ public class DatabaseGenerator {
 
         // Location DD Month YYYY (Same code as handler 2)
         Consumer<Matcher> handler10  = matcher -> {
-            startDate = formatDDMonthYY(matcher.group(2), matcher.group(3), matcher.group(4));
-            endDate = formatDDMonthYY(matcher.group(2), matcher.group(3), matcher.group(4));
+            startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
+            endDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
         };
     }
 }

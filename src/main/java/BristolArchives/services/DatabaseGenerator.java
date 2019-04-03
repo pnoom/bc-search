@@ -47,7 +47,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +60,6 @@ import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -385,6 +383,7 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
+        System.out.println("generator called");
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
         int fileSize = 0;
@@ -399,6 +398,13 @@ public class DatabaseGenerator {
         // Go through file once, adding all necessary Depts and Collections individually, in right order.
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
+
+        //DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        //DateMatcher dateMatcher = new DateMatcher();
+        // DD/MM/YYYY
+        //dateMatcher.matchAttempt("12-05-1921");
+        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
+
 
         // Pre-populate the dicts of Depts and Colls with the current contents of the DB
         try {
@@ -484,26 +490,31 @@ public class DatabaseGenerator {
         public void matchAttempt(String displayDate) {
 
             String D = "(?:rd|st|nd|th)?";
-            String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*";
-            String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*";
-            String B = "\\s*(c.)?\\s*(\\d{4})(s)?\\s*";
+            String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*"; //Month YYYY
+            String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"; //DD Month YYYY (-)
+            String B = "\\s*(?:n.d.|nd)?\\s*(c.|c|C|C.)?\\s*(\\d{4})(s)?\\s*([\\(]?circa[\\)]?)?\\s*"; //YYYY
+            String E = "\\s*(\\d{1,2})(?:.|\\|/)(\\d{1,2})(?:.|\\|/)(\\d{4})\\s*"; //DD/MM/YYYY
 
-            List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A
-                    ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A
-                    ,A
-                    ,"(\\d{0,2})-(\\d{1,2})\\s*[-]?\\s*(\\w{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"
-                    ,C+"\\s*[-]?\\s*"+C
-                    ,C+"\\s*[-]?\\s*"+B
-                    ,C
-                    ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*"
-                    ,"\\[?"+B+"-"+B+"\\]?"
-                    ,"\\[?"+B+"\\]?"
-                    ,"(?:[a-zA-Z]+[,]?\\s*)"+A));
+            List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A //DD Month YYYY - DD Month YYYY
+                    ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A //DD Month - DD Month YYYY
+                    ,A //DD Month YYYY
+                    ,"(\\d{0,2})-(\\d{1,2})\\s*[-]?\\s*(\\w{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*" //DD-DD Month YYYY
+                    ,C+"\\s*[-]?\\s*"+C //Month YYYY - Month YYYY
+                    ,C+"\\s*[-]?\\s*"+B //Month YYYY - YYYY
+                    ,C //Month YYYY
+                    ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*" //Month YY
+                    ,"\\[?"+B+"-"+B+"\\]?" // YYYY - YYYY
+                    ,"\\[?"+B+"-\\s*(\\d{2})\\s*\\]?" // YYYY - YY
+                    ,"\\[?"+B+"\\]?" // YYYY
+                    ,"(?:[a-zA-Z]+[,]?\\s*)"+A //Location, DD Month YYYY
+                    ,E+"\\s*[-]?\\s*"+E //DD/MM/YYYY - DD/MM/YYYY
+                    ,E //DD/MM/YYYY
+                    ));
 
             List<Pattern> patterns = patternStrings.stream().map(x -> Pattern.compile(x)).collect(Collectors.toList());
 
             List<Consumer<Matcher>> handlers = new ArrayList<>(Arrays.asList(handler0,
-                    handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10));
+                    handler1, handler2, handler3, handler4, handler5, handler6, handler7, handler8, handler9, handler10, handler11,  handler12,  handler13));
 
             boolean matches = false;
             for (int i=0; i<patterns.size(); i++) {
@@ -601,22 +612,36 @@ public class DatabaseGenerator {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             try {
                 startDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(2), 1, 1));
-                endDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(5), 12, 31));
+                endDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(6), 12, 31));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
+        };
+
+        // YYYY-YY
+        Consumer<Matcher> handler9  = matcher -> {
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            String centString = matcher.group(2).substring(0,2);
+            String decString = matcher.group(5).substring(0,2);
+            String concatString = centString.concat(decString);
+            try {
+                startDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(2), 1, 1));
+                endDate = df.parse(String.format("%4s-%2d-%2d", concatString, 12, 31));
             } catch (ParseException exception) {
                 throw new RuntimeException("Parse error");
             }
         };
 
         // YYYY with circa/s inference
-        Consumer<Matcher> handler9  = matcher -> {
+        Consumer<Matcher> handler10  = matcher -> {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             Integer startTempYear = Integer.parseInt(matcher.group(2));
             Integer endTempYear = Integer.parseInt(matcher.group(2));
 
-            if (matcher.group(1) != null && matcher.group(3) != null) {
+            if ((matcher.group(1) != null || matcher.group(4) != null) && matcher.group(3) != null) {
                 startTempYear -= 10;
                 endTempYear += 9;
-            } else if (matcher.group(1) != null) {
+            } else if (matcher.group(1) != null || matcher.group(4) != null) {
                 startTempYear -= 2;
                 endTempYear += 2;
             } else if (matcher.group(3) != null) {
@@ -631,9 +656,31 @@ public class DatabaseGenerator {
         };
 
         // Location DD Month YYYY (Same code as handler 2)
-        Consumer<Matcher> handler10  = matcher -> {
+        Consumer<Matcher> handler11  = matcher -> {
             startDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
             endDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
+        };
+
+        // DD/MM/YYYY - DD/MM/YYYY
+        Consumer<Matcher> handler12  = matcher -> {
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try {
+                startDate = df.parse(String.format("%4s-%2s-%2s", matcher.group(3),matcher.group(2),matcher.group(1)));
+                endDate = df.parse(String.format("%4s-%2s-%2s", matcher.group(6),matcher.group(5),matcher.group(4)));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
+        };
+
+        // DD/MM/YYYY
+        Consumer<Matcher> handler13  = matcher -> {
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try {
+                startDate = df.parse(String.format("%4s-%2s-%2s", matcher.group(3),matcher.group(2),matcher.group(1)));
+                endDate = df.parse(String.format("%4s-%2s-%2s", matcher.group(3),matcher.group(2),matcher.group(1)));
+            } catch (ParseException exception) {
+                throw new RuntimeException("Parse error");
+            }
         };
     }
 }

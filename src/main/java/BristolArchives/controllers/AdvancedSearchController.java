@@ -170,87 +170,87 @@ public class AdvancedSearchController {
         displayPageNumber(model, itemPage, currentPage);
 
 
-//        if (hasSth(date)) {
-//            System.out.println("advanced date");
-//            /*model.addAttribute("itemList",
-//                    itemService.getAdvancedSearch(
-//                            parseDate(adv_date),
-//                            null,
-//                            null,
-//                            adv_coll,
-//                            adv_lctn,
-//                            adv_name));*/
-//
-//            Page<Item> itemPage = itemService.findPaginatedAdvSearch(parseDate(date),
-//                    null,
-//                    null,
-//                    coll,
-//                    lctn,
-//                    name, PageRequest.of(currentPage - 1, pageSize));
-//
-//            model.addAttribute("itemPage", itemPage);
-//            model.addAttribute("specificDate", date);
-//            model.addAttribute("startDate", "");
-//            model.addAttribute("endDate", "");
-//            model.addAttribute("collection", coll);
-//            model.addAttribute("location", lctn);
-//            model.addAttribute("precision", name);
-//
-//            displayPageNumber(model, itemPage, currentPage);
-//        }
-//        if(hasSth(date_start) && hasSth(date_end)) {
-//           /* model.addAttribute("itemList",
-//                    itemService.getAdvancedSearch(
-//                            null,
-//                            parseDate(adv_date_start),
-//                            parseDate(adv_date_end),
-//                            adv_coll,
-//                            adv_lctn,
-//                            adv_name));*/
-//
-//            Page<Item> itemPage = itemService.findPaginatedAdvSearch(null, parseDate(date_start),
-//                    parseDate(date_end),
-//                    coll,
-//                    lctn,
-//                    name, PageRequest.of(currentPage - 1, pageSize));
-//
-//            model.addAttribute("itemPage", itemPage);
-//            model.addAttribute("specificDate", "");
-//            model.addAttribute("startDate", date_start);
-//            model.addAttribute("endDate", date_end);
-//            model.addAttribute("collection", coll);
-//            model.addAttribute("location", lctn);
-//            model.addAttribute("precision", name);
-//
-//            displayPageNumber(model, itemPage, currentPage);
-//        }
-//        if(!hasSth(date) && (!hasSth(date_start) || !hasSth(date_end))){
-//            /*model.addAttribute("itemList",
-//                    itemService.getAdvancedSearch(
-//                            null,
-//                            null,
-//                            null,
-//                            adv_coll,
-//                            adv_lctn,
-//                            adv_name));*/
-//
-//            Page<Item> itemPage = itemService.findPaginatedAdvSearch(null,
-//                    null,
-//                    null,
-//                    coll,
-//                    lctn,
-//                    name, PageRequest.of(currentPage - 1, pageSize));
-//
-//            model.addAttribute("itemPage", itemPage);
-//            model.addAttribute("specificDate", "");
-//            model.addAttribute("startDate", "");
-//            model.addAttribute("endDate", "");
-//            model.addAttribute("collection", coll);
-//            model.addAttribute("location", lctn);
-//            model.addAttribute("precision", name);
-//
-//            displayPageNumber(model, itemPage, currentPage);
-//        }
+        if (hasSth(date)) {
+            System.out.println("advanced date");
+            /*model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            parseDate(adv_date),
+                            null,
+                            null,
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));*/
+
+            itemPage = itemService.findPaginatedAdvSearch(parseDate(date),
+                    null,
+                    null,
+                    coll,
+                    lctn,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", date);
+            model.addAttribute("startDate", "");
+            model.addAttribute("endDate", "");
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
+        }
+        if(hasSth(date_start) && hasSth(date_end)) {
+           /* model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            null,
+                            parseDate(adv_date_start),
+                            parseDate(adv_date_end),
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));*/
+
+            itemPage = itemService.findPaginatedAdvSearch(null, parseDate(date_start),
+                    parseDate(date_end),
+                    coll,
+                    lctn,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", "");
+            model.addAttribute("startDate", date_start);
+            model.addAttribute("endDate", date_end);
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
+        }
+        if(!hasSth(date) && (!hasSth(date_start) || !hasSth(date_end))){
+            /*model.addAttribute("itemList",
+                    itemService.getAdvancedSearch(
+                            null,
+                            null,
+                            null,
+                            adv_coll,
+                            adv_lctn,
+                            adv_name));*/
+
+            itemPage = itemService.findPaginatedAdvSearch(null,
+                    null,
+                    null,
+                    coll,
+                    lctn,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", "");
+            model.addAttribute("startDate", "");
+            model.addAttribute("endDate", "");
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
+        }
 
         return "advSearchResults";
     }

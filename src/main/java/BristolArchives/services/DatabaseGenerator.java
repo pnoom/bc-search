@@ -400,6 +400,13 @@ public class DatabaseGenerator {
         // Accumulate mappings from deptNames to Depts, and collNames to Collections, for use in second pass.
         // Don't need to use ids explicitly since the Java program understands the schema.
 
+        //DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        //DateMatcher dateMatcher = new DateMatcher();
+        // DD/MM/YYYY
+        //dateMatcher.matchAttempt("12-05-1921");
+        //System.out.printf("%s %s\n", df.format(dateMatcher.startDate), df.format(dateMatcher.endDate));
+
+
         // Pre-populate the dicts of Depts and Colls with the current contents of the DB
         try {
             existingDepts = deptRepo.findAll();
@@ -486,8 +493,8 @@ public class DatabaseGenerator {
             String D = "(?:rd|st|nd|th)?";
             String C = "\\[?([a-zA-Z]{2,10})\\]?\\s*(\\d{2,4})\\s*"; //Month YYYY
             String A = "(\\d{1,2})" +D+ "\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*"; //DD Month YYYY (-)
-            String B = "\\s*(?:n.d.|nd)?\\s*(c.|c)?\\s*(\\d{4})(s)?\\s*([\\(]?circa[\\)]?)?\\s*"; //YYYY
-            String E = "\\s*(\\d{2})(?:.|/)(\\d{2})(?:.|/)(\\d{4})\\s*"; //DD/MM/YYYY
+            String B = "\\s*(?:n.d.|nd)?\\s*(c.|c|C|C.)?\\s*(\\d{4})(s)?\\s*([\\(]?circa[\\)]?)?\\s*"; //YYYY
+            String E = "\\s*(\\d{1,2})(?:.|\\|/)(\\d{1,2})(?:.|\\|/)(\\d{4})\\s*"; //DD/MM/YYYY
 
             List<String> patternStrings = new ArrayList<>(Arrays.asList("(\\d{1,2})"+D+"\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*(\\d{2,4})\\s*[-]?\\s*"+A //DD Month YYYY - DD Month YYYY
                     ,"(\\d{1,2})\\s*[-]?\\s*([a-zA-Z]{2,10})\\s*[-]?\\s*"+A //DD Month - DD Month YYYY
@@ -498,7 +505,7 @@ public class DatabaseGenerator {
                     ,C //Month YYYY
                     ,"\\[?([a-zA-Z]{2,10})\\]?\\s*[-]?\\s*(\\d{2})\\s*" //Month YY
                     ,"\\[?"+B+"-"+B+"\\]?" // YYYY - YYYY
-                    ,"\\[?"+B+"-\\s*(\\d{4})\\s*\\]?" // YYYY - YY
+                    ,"\\[?"+B+"-\\s*(\\d{2})\\s*\\]?" // YYYY - YY
                     ,"\\[?"+B+"\\]?" // YYYY
                     ,"(?:[a-zA-Z]+[,]?\\s*)"+A //Location, DD Month YYYY
                     ,E+"\\s*[-]?\\s*"+E //DD/MM/YYYY - DD/MM/YYYY
@@ -616,8 +623,8 @@ public class DatabaseGenerator {
         Consumer<Matcher> handler9  = matcher -> {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             String centString = matcher.group(2).substring(0,2);
-            String decString = matcher.group(5).substring(2,4);
-            String concatString = decString.concat(centString);
+            String decString = matcher.group(5).substring(0,2);
+            String concatString = centString.concat(decString);
             try {
                 startDate = df.parse(String.format("%4s-%2d-%2d", matcher.group(2), 1, 1));
                 endDate = df.parse(String.format("%4s-%2d-%2d", concatString, 12, 31));
@@ -655,7 +662,7 @@ public class DatabaseGenerator {
             endDate = formatDDMonthYY(matcher.group(1), matcher.group(2), matcher.group(3));
         };
 
-        // DD/MM/YYYY
+        // DD/MM/YYYY - DD/MM/YYYY
         Consumer<Matcher> handler12  = matcher -> {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             try {

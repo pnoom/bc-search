@@ -525,9 +525,10 @@ public class DatabaseGenerator {
                     break;
                 }
             }
-            if (!matches) {
-                System.out.println(displayDate);
-            }
+            // Print all the dates that aren't handled by our current regexes
+//            if (!matches) {
+//                System.out.println(displayDate);
+//            }
         }
 
         private Date formatDDMonthYY(String day, String mon, String year) {

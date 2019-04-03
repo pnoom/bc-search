@@ -81,9 +81,6 @@
             width: 100%;
         }
     </style>
-</div>
-
-<div class="block">
     <div id="MTG">
     </div>
     <script>
@@ -98,26 +95,31 @@
     <style>
         #MTG
         {
-            width: 1440px;
-            height: 780px;
+            width: 100%;
+            height: 70%;
             position:fixed;
             animation-name:MTG;
-            animation-duration:15s;
+            animation-duration:80s;
             animation-timing-function:linear;
             animation-iteration-count:infinite;
             animation-direction:alternate;
-            transition-duration:5s;
+            /*transition-duration:5s;*/
+            -webkit-backface-visibility: hidden;
         }
         @keyframes MTG
         {
             0%,30%
             {
                 /*background-image:url("public/entry.jpg");*/
-                background-image:url("/boat.png")
+                background-image:url("/consider1.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
             30%,50%
             {
-                background-image:url(http://lorempixel.com/1440/780/nature/2/)
+                background-image:url("/boat.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
             /*35%,50%*/
             /*{*/
@@ -125,11 +127,15 @@
             /*}*/
             50%,75%
             {
-                background-image:url(http://lorempixel.com/1440/780/nature/4/)
+                background-image:url("/consider8.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
             75%,100%
             {
-                background-image:url(http://lorempixel.com/1440/780/nature/5/)
+                background-image:url("/consider9.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
         }
 

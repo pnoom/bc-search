@@ -13,9 +13,6 @@ public class aboutArchivesController {
     public String loginPage(){
         return "loginPage";
     }
-    @GetMapping("/submitCsv")
-    public String submitCsv(){
-        return "submitCsv";
-    }
+
 }
 

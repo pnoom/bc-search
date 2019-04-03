@@ -46,7 +46,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.NestedRuntimeException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +59,6 @@ import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.*;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -385,6 +383,7 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
+        System.out.println("generator called");
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
         int fileSize = 0;

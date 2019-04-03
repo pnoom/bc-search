@@ -69,16 +69,12 @@
     </canvas>
 </div>
 
-<div>
-    <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
-</div>
-<button id="submitbutton" type="button">add entries</button>
-
+<form th:action="@{/submitCsv}" method="post" enctype="multipart/form-data">
+    <div>
+        <input type="file" name="uploaded_csv" id="txtFileUpload" accept=".csv" />
+        <button id="submitbutton" class="button" type="submit">add entries</button>
+    </div>
+</form>
 </body>
-<script>
-    $("#submitbutton").on("click", function(){
-        var dg = new DatabaseGenerator();
-        dq.generateDatabase($(#txtFileUpload), null);
-    });
-</script>
+
 </html>

@@ -99,23 +99,25 @@
             height: 70%;
             position:fixed;
             animation-name:MTG;
-            animation-duration:80s;
+            animation-duration:60s;
             animation-timing-function:linear;
             animation-iteration-count:infinite;
             animation-direction:alternate;
             /*transition-duration:5s;*/
             -webkit-backface-visibility: hidden;
+            content: url("/consider8.jpg")
+                     url("/consider9.jpg");
         }
         @keyframes MTG
         {
-            0%,30%
+            0%,25%
             {
                 /*background-image:url("public/entry.jpg");*/
                 background-image:url("/consider1.jpg");
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
             }
-            30%,50%
+            25%,50%
             {
                 background-image:url("/boat.jpg");
                 background-repeat: no-repeat;

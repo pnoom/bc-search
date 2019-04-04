@@ -11,14 +11,14 @@
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <title>Bristol Archives</title>
 </head>
-<body bgcolor="#99ced3">
+<body bgcolor="#e5e0dd" style="height: 100%">
 <!-- This creates the logos at the top of the page -->
-<div class="block" style="margin-bottom: 0px; background-image:radial-gradient(circle,#99ced3,#8b6b61);">
+<div class="block" style="margin-bottom: 0px;">
     <div class="columns is-mobile">
         <div class="column is-one-third has-text-centered">
             <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#5d4037;font-family:Futura; "> Advanced <br>Search: </h1>
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#343c5c;font-family:Futura; "> Advanced <br>Search </h1>
         <!--<div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 60px; color:#5d4037;font-family:Futura; ">Advanced Search</h1>-->
 
         </div>
@@ -34,18 +34,19 @@
 
     <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-burger burger has-background-primary" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
         </div>
-        <div class="navbar-menu" id="navMenu">
+        <div class="navbar-menu has-background-primary" id="navMenu">
             <div class="navbar-start">
                 <a href="/" class="navbar-item has-text-primary">Home</a>
                 <a href="/aboutArchives" class="navbar-item has-text-primary">About the Archives</a>
                 <a href="/loginPage" class="navbar-item has-text-primary">Admin login</a>
                 <!--<a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
-
+            </div>
+            <div class="navbar-end">
                 <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item has-text-primary">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
 
                 <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item has-text-primary" >Visit our Facebook</a>
@@ -70,7 +71,7 @@
 <!--<div class="block">-->
     <form action="#" th:action="@{/advSearch}" method="post">
         <div class="columns is-mobile">
-            <div class="column is-one-fifth" style="background-image:linear-gradient(to right, #8b6b61,#99ced3);"></div>
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
             <div class="column" style="margin-top: 60px">
                <!-- <div class="block">
                     <div class="columns">
@@ -84,15 +85,18 @@
                     <div class="columns">
                 <div class="column is-one-fifth">Search by date:</div>
                 <div class="column">
-                    <div id="noRange" style="display: block"><input type="date" id="date_search" name="date_search" value="" style="font-size: 1.2rem"></div>
+                    <div id="noRange" style="display: inline"><input type="date" id="date_search" name="date_search" value="" style="font-size: 1.1rem"></div>
                     <div id="startRange" style="display: none"> <input type="date" id="date_start" name="date_start" value="" style="font-size: 1.1rem"></div>
+                    <div class="block is-centre" id="simpleText" style="margin-left: 30px; display: none; " >To</div>
+                    <div id="endRange" style="display: none; margin-left: 36px"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>
+                    <a onclick="range()" class="button is-pulled-right" style="margin-right: 5px; display: inline;">Date range</a>
                 </div>
-               <div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 63px; display: none; " >To</div>
-                </div>
+               <!--<div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 63px; display: none; " >To</div>-->
+                <!--</div>-->
 
-                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>
-                </div>
-                <div class="column"><a onclick="range()" class="button" style="margin-left: 27px">Date range</a>
+                <!--<div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>-->
+                <!--</div>-->
+                <!--<div class="column"><a onclick="range()" class="button" style="margin-left: 27px">Date range</a>-->
 
                 <script>
                 function range() {
@@ -101,9 +105,9 @@
                     var z = document.getElementById("startRange");
                     var p = document.getElementById("noRange");
                     if (x.style.display === "none") {
-                        x.style.display = "block";
-                        y.style.display = "block";
-                        z.style.display = "block";
+                        x.style.display = "inline";
+                        y.style.display = "inline";
+                        z.style.display = "inline";
                         p.style.display = "none";
                         document.getElementById('date_search').value = "";
                         document.getElementById('date_search').className = "hidden";
@@ -114,7 +118,7 @@
                         x.style.display = "none";
                         y.style.display = "none";
                         z.style.display = "none";
-                        p.style.display = "block";
+                        p.style.display = "inline";
                         document.getElementById('date_start').value = '';
                         document.getElementById('date_end').value = '';
                         document.getElementById('date_start').className = "hidden";
@@ -124,7 +128,6 @@
                 }
 
                     </script>
-                </div>
             </div>
 
             <div class="block">
@@ -177,12 +180,12 @@
             </div>
             </div>
             </div>
-            <div class="column is-one-fifth" style="background-image:linear-gradient(to left, #8b6b61,#99ced3);"></div>
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
 
 <div class="block">
     <div class="columns">
-        <div class="column is-one-fifth" style="background-image:linear-gradient(to right, #8b6b61,#99ced3);"></div>
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
         <div class="column">
             <div class="columns">
                 <div class="column is-one-fifth"></div>
@@ -191,7 +194,7 @@
                 </div>
             </div>
         </div>
-        <div class="column is-one-fifth" style="background-image:linear-gradient(to left, #8b6b61,#99ced3);"></div>
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
     </div>
 </div>
 

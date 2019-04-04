@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.ui.ModelMap;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,6 +25,12 @@ public class FileUploadController {
         return "submitCsv";
     }
 
+    @GetMapping("/uploadResult")
+    public String uploadResult(ModelMap m){
+        //m.addAttribute("message", "helooowjsoq");
+        return "uploadResult";
+    }
+
     @PostMapping("/submitCsv")
     public String handleFileUpload(@RequestParam("uploaded_csv") MultipartFile file,
                                    RedirectAttributes redirectAttributes) throws IOException {
@@ -32,8 +39,8 @@ public class FileUploadController {
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-
-        return "redirect:/";
+        System.out.println("over here bitch 1");
+        return "redirect:/uploadResult";
     }
 
     public File convert(MultipartFile file) throws IOException

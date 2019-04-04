@@ -36,10 +36,6 @@ public class ItemService {
         }
     }
 
-    public List<Item> getAllItems(){
-        return itemRepo.findAll();
-    }
-
     public List<Item> getItemByNameContaining(String name) {
         return itemRepo.findByNameContaining(name);
     }

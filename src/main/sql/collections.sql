@@ -29,6 +29,7 @@ CREATE TABLE item (
   phys_tech_desc		TEXT           NULL,
   media_irns				TEXT	NULL,
   media_count     INTEGER       NOT NULL,
+  thumbnail_irn   VARCHAR(200) NULL,
   copyrighted                   VARCHAR(200)    NOT NULL,
   collection_display_name       VARCHAR(200)   NULL,
   collection_id                 INTEGER        NOT NULL,

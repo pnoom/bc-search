@@ -326,6 +326,7 @@ public class DatabaseGenerator {
         //item.setPhysTechDesc();
 
         item.setCollectionDisplayName(truncateString(sanitizeString(row.get(collectionDisplayNameHeading)), 200));
+        item.setThumbnailIrn();
         itemBuffer.add(item);
         return batchAdded;
     }

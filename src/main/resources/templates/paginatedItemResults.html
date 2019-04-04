@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bristol Archives Collections</title>
     <script th:inline="javascript">
-        function getFirstMultimediaIrn(irnsString) {
+        function getFirstMultimediaIrnLink(irnsString) {
             console.log(irnsString);
             if (irnsString != null) {
-                return irnsString.split(",")[0];
+                return "http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + irnsString.split(",")[0] + "&format=jpeg";
             }
         }
     </script>
@@ -126,12 +126,12 @@
             </script>
             <td>
                 <figure class="image is-128x128">
-
-                        <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=147310&format=jpeg'}" style="width: 128px;height: 128px" />
-
                     <!--
-                                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + firstMediaIrn + '&format=jpeg'}" style="width: 128px;height: 128px" />
+                                            <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=147310&format=jpeg'}" style="width: 128px;height: 128px" />
                     -->
+
+                    <img class="thumbnail" th:src="'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + ${item.thumbnailIrn} + '&format=jpeg'" th:alt="${item.name}" style="width: 128px;height: 128px" />
+
                                     </figure>
 
                                 </td>

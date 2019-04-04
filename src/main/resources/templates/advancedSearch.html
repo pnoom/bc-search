@@ -131,8 +131,8 @@
                     <div class="column">
                         <div class="control">
                             <div class="select">
-                                <select>
-                                    <option name="dept_search" th:each="dept : ${deptList}" th:text=${dept.name}></option>
+                                <select name="dpt" id="dpt_search">
+                                    <option name="department" th:each="dept : ${deptList}" th:text="${dept.name}"></option>
                                     <option>All</option>
                                 </select>
                             </div>
@@ -146,8 +146,8 @@
                             <div class="column">
                                 <div class="control">
                                     <div class="select">
-                                        <select>
-                                            <option name="collection_search" class="input" th:each="collection : ${collectionList}" th:text=${collection.name}></option>
+                                        <select name="coll" id="coll_search">
+                                            <option name="collection" th:each="collection : ${collectionList}" th:text="${collection.name}"></option>
                                             <option>All</option>
                                         </select>
                                     </div>

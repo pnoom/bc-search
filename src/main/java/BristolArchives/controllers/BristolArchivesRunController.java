@@ -18,7 +18,7 @@ public class BristolArchivesRunController {
     public String index() {
 
         // Uncomment this to delete all database content. USE WITH CAUTION.
-        // dbGen.deleteEntireDatabase();
+//        dbGen.deleteEntireDatabase();
 
         // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")
 
@@ -27,7 +27,7 @@ public class BristolArchivesRunController {
 //        try {
 //            dataFile = dbGen.getFile("emu-content2.csv");
 //            //dataFile = dbGen.getFile("reduced-size-emu.csv");
-//            //mediaFile = dbGen.getFile("emu-content-mm2.csv");
+//            mediaFile = dbGen.getFile("emu-content-mm2.csv");
 //        } catch (IOException exception) {
 //            System.out.println("Error opening CSV file");
 //        }

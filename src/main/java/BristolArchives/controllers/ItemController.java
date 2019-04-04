@@ -98,7 +98,9 @@ public class ItemController {
             return "redirect:/";
         }
         else{
-            model.addAttribute("item", itemService.getExactItem(itemRef));
+            Item item = itemService.getExactItem(itemRef);
+            model.addAttribute("item", item);
+            model.addAttribute("firstMediaIrn", itemService.getFirstMultimediaIrn(item));
         }
         return "itemPage";
     }

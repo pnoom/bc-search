@@ -25,6 +25,16 @@ public class ItemService {
     public List<String> getMultimediaIrns(Item item) {
         return new ArrayList<>(Arrays.asList(item.getMediaIrns().split(",")));
     }
+    
+    public String getFirstMultimediaIrn(Item item) {
+        List<String> all = getMultimediaIrns(item);
+        //System.out.println(all);
+        if (all.isEmpty()) {
+            return "";
+        } else {
+            return all.get(0);
+        }
+    }
 
     public List<Item> getAllItems(){
         return itemRepo.findAll();

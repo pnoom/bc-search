@@ -525,9 +525,9 @@ public class DatabaseGenerator {
                     break;
                 }
             }
-            if (!matches) {
-                System.out.println(displayDate);
-            }
+            //if (!matches) {
+            //    System.out.println(displayDate);
+            //}
         }
 
         private Date formatDDMonthYY(String day, String mon, String year) {

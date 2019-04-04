@@ -85,7 +85,7 @@ public class DatabaseGenerator {
     private String collectionHeading = "Collection";
     private String locationHeadingArchive = "Geographic Name: (Names)";
     private String locationHeadingMuseum = "Place Details: (Production Place)";
-    private String nameHeading = "Full Name";
+    private String nameHeading = "Full Name: (Collection Details)";
     private String itemRefHeading = "Object Number";
     private String descriptionHeadingArchive = "Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)";
     private String descriptionHeadingMuseum = "Physical Description: (Collection Details)";
@@ -94,7 +94,8 @@ public class DatabaseGenerator {
     private String extentHeadingArchive = "Extent: (ISAD(G) Identity Statement)";
     private String extentHeadingMuseum = "Simple Name: (Collection Details)/Object Name/Object Name: (Classification)";
     private String collectionDisplayNameHeading = "Named Collection";
-    private String multimediaIrnHeading = "multimedia irn";
+    private String multimediaIrnHeading = "Multimedia Irn";
+    private String copyrightHeading = "Copyright";
 
     public File getFile(String filename) throws IOException{
         Resource resource = new ClassPathResource("public/" + filename);
@@ -278,7 +279,8 @@ public class DatabaseGenerator {
             item.setLocation(row.get(locationHeadingMuseum));
         }
 
-        if (row.get(nameHeading) != null) {
+        if (row.get(nameHeading) != null &&
+                !truncateString(row.get(nameHeading), 200).isEmpty()) {
             item.setName(truncateString(row.get(nameHeading), 200));
         } else {
             item.setName(row.get(itemRefHeading));
@@ -300,8 +302,12 @@ public class DatabaseGenerator {
             item.setMediaCount(mediaCounts.get(row.get(itemRefHeading)));
         }
 
-        // Hard code it for now
-        item.setCopyrighted("© Bristol Culture");
+        if (row.get(copyrightHeading) !=null) {
+            item.setCopyrighted(row.get(copyrightHeading));
+        } else {
+            item.setCopyrighted("Unknown");
+        }
+
 
         if (row.get(displayDateHeadingArchive) != null && !StringUtils.isAllBlank(row.get(displayDateHeadingArchive))) {
             item.setDisplayDate(row.get(displayDateHeadingArchive));

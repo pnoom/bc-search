@@ -34,12 +34,24 @@ public class FileUploadController {
     @PostMapping("/submitCsv")
     public String handleFileUpload(@RequestParam("uploaded_csv") MultipartFile file,
                                    RedirectAttributes redirectAttributes) throws IOException {
+        if (file == null) {
+            redirectAttributes.addFlashAttribute("message",
+                    "Please select a CSV file to upload.");
+            return "redirect:/uploadResult";
+        }
 
-        dbGen.generateDatabase(convert(file), null);
+        try {
+            dbGen.generateDatabase(convert(file), null);
+        }
+        catch (Exception exception) {
+            redirectAttributes.addFlashAttribute("message",
+                    "An error occured, see below for details. Please ensure that your CSV file is laid out correctly.\n" +
+                    exception.getMessage());
+            return "redirect:/uploadResult";
+        }
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
-        System.out.println("over here bitch 1");
         return "redirect:/uploadResult";
     }
 

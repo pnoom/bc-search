@@ -13,7 +13,7 @@
 </head>
 <body bgcolor="#99ced3">
 <!-- This creates the logos at the top of the page -->
-<div class="block" style="margin-bottom: 0px">
+<div class="block" style="margin-bottom: 0px; background-image:radial-gradient(circle,#99ced3,#8b6b61);">
     <div class="columns is-mobile">
         <div class="column is-one-third has-text-centered">
             <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
@@ -69,7 +69,7 @@
     <form action="#" th:action="@{/advSearch}" method="post">
         <div class="columns is-mobile">
             <div class="column is-one-fifth" style="background-image:linear-gradient(to right, #8b6b61,#99ced3);"></div>
-            <div class="column" style="margin-top: 50px">
+            <div class="column" style="margin-top: 60px">
                <!-- <div class="block">
                     <div class="columns">
                         <div class="column is-one-fifth">Search by Date:</div>
@@ -82,13 +82,13 @@
                     <div class="columns">
                 <div class="column is-one-fifth">Search by date:</div>
                 <div class="column">
-                    <div id="noRange" style="display: block"><input type="date" id="date_search" name="date_search" value=""></div>
-                    <div id="startRange" style="display: none"> <input type="date" id="date_start" name="date_start" value=""></div>
+                    <div id="noRange" style="display: block"><input type="date" id="date_search" name="date_search" value="" style="font-size: 1.2rem"></div>
+                    <div id="startRange" style="display: none"> <input type="date" id="date_start" name="date_start" value="" style="font-size: 1.1rem"></div>
                 </div>
                <div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 63px; display: none; " >To</div>
                 </div>
 
-                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value=""></div>
+                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>
                 </div>
                 <div class="column"><a onclick="range()" class="button" style="margin-left: 27px">Date range</a>
 
@@ -185,7 +185,7 @@
             <div class="columns">
                 <div class="column is-one-fifth"></div>
                 <div class="column">
-                    <button class="button" type="submit">Search</button>
+                    <button class="button" type="submit" style="margin-bottom: 8px">Search</button>
                 </div>
             </div>
         </div>

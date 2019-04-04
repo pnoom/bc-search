@@ -14,7 +14,7 @@ public class DeptService {
     private DeptRepo deptRepo;
 
     public List<Dept> getAllDepts(){
-        return deptRepo.findAll();
+        return deptRepo.findAllAlphabeticalOrder();
     }
 
     public List<Dept> getByNameContaining(String searchTerm){

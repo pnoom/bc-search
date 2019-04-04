@@ -20,6 +20,8 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     List<Item> findByLocationLike(String location);
     List<Item> findByDescriptionContaining(String search);
     List<Item> findByCollection(Collection coll);
+    List<Item> findByCollectionLike(String string);
+    List<Item> findByCollectionDisplayNameLike(String string);
 
     @Query(value = "select *, datediff(start_date, end_date) as closest from item where start_date = :specificdate or (:specificdate between start_date and end_date) order by closest desc", nativeQuery = true)
     List<Item> findWithSpecificDate(@Param("specificdate")Date specificdate);

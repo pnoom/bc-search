@@ -18,7 +18,7 @@
         <div class="column is-one-third has-text-centered">
             <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#5d4037;font-family:Futura; "> Welcome to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bristol Archives </h1>
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#5d4037;font-family:Futura; "> Advanced &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search: </h1>
         </div>
         <div class="column is-one-third has-text-centered">
 
@@ -63,18 +63,13 @@
             });
         })();
     </script>
-</div>
-<div class="block">
-    <canvas height="20" style="border:1px transparent">
-    </canvas>
-</div>
+<!--</div>-->
 
-<div class="block">
+<!--<div class="block">-->
     <form action="#" th:action="@{/advSearch}" method="post">
-
         <div class="columns is-mobile">
-            <div class="column is-one-fifth"></div>
-            <div class="column">
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to right, #8b6b61,#99ced3);"></div>
+            <div class="column" style="margin-top: 50px">
                <!-- <div class="block">
                     <div class="columns">
                         <div class="column is-one-fifth">Search by Date:</div>
@@ -178,14 +173,21 @@
             </div>
             </div>
             </div>
-            <div class="column is-one-fifth"></div>
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to left, #8b6b61,#99ced3);"></div>
         </div>
 
 <div class="block">
     <div class="columns">
-        <div class="column is-one-quarter"></div>
-        <div class="column"><button class="button" style="margin-left: 96px" type="submit">Search</button></div>
-        <div class="column is-one-third"></div>
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to right, #8b6b61,#99ced3);"></div>
+        <div class="column">
+            <div class="columns">
+                <div class="column is-one-fifth"></div>
+                <div class="column">
+                    <button class="button" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to left, #8b6b61,#99ced3);"></div>
     </div>
 </div>
 

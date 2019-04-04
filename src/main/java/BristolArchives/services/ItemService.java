@@ -23,11 +23,23 @@ public class ItemService {
     private CollectionService collectionService;
 
     public List<String> getMultimediaIrns(Item item) {
-        return new ArrayList<>(Arrays.asList(item.getMediaIrns().split(",")));
+        if (item.getMediaIrns() != null)
+            return new ArrayList<>(Arrays.asList(item.getMediaIrns().split(",")));
+        else
+            return null;
     }
 
-    public List<Item> getAllItems(){
-        return itemRepo.findAll();
+    public String getFirstMultimediaIrn(Item item) {
+        List<String> all = getMultimediaIrns(item);
+        //System.out.println(all);
+        if (all != null) {
+            if (all.isEmpty()) {
+                return "";
+            } else {
+                return all.get(0);
+            }
+        } else
+            return "";
     }
 
     public List<Item> getItemByNameContaining(String name) {
@@ -136,7 +148,7 @@ public class ItemService {
         }
 
         if (hasSth(collection)) {
-            List<Item> currResults = getItemByCollectionName(collection);
+            List<Item> currResults = itemRepo.findByCollectionLike(collection);
             getIntersection(results, currResults, someConstraintsExist);
             someConstraintsExist = true;
         }
@@ -144,8 +156,9 @@ public class ItemService {
             getIntersection(results,itemRepo.findByLocationLike(location), someConstraintsExist);
             someConstraintsExist = true;
         }
+        // TODO: precision is not currently used as intended
         if (hasSth(precision)) {
-            getIntersection(results,getItemByName(precision),someConstraintsExist);
+            getIntersection(results, getItemByName(precision),someConstraintsExist);
             someConstraintsExist = true;
         }
         return results;

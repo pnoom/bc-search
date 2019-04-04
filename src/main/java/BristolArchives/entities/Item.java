@@ -3,7 +3,10 @@ package BristolArchives.entities;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name="item")
 @Table(name="item")  // This indicates 'Collection' objects are from mysql table 'Collection'
@@ -42,6 +45,9 @@ public class Item {
 
     @Column(name = "media_count")
     private Integer mediaCount;
+
+    @Column(name = "thumbnail_irn")
+    private String thumbnailIrn;
 
     @Column(name = "copyrighted")
     private String copyrighted;
@@ -107,9 +113,28 @@ public class Item {
         return description.length() > 280 ? description.substring(0,277) + "..." : description;
     }
 
-    // TODO: move elsewhere
-    public String getURLOfImage(){
-        return ""; // http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + getMultimediaIrn() + "&format=jpeg.jpeg";
+    public void setThumbnailIrn() {
+        this.thumbnailIrn = getFirstMultimediaIrn();
+    }
+
+    public List<String> getMultimediaIrns() {
+        if (this.getMediaIrns() != null)
+            return new ArrayList<>(Arrays.asList(this.getMediaIrns().split(",")));
+        else
+            return null;
+    }
+
+    public String getFirstMultimediaIrn() {
+        List<String> all = getMultimediaIrns();
+        //System.out.println(all);
+        if (all != null) {
+            if (all.isEmpty()) {
+                return "";
+            } else {
+                return all.get(0);
+            }
+        } else
+            return "";
     }
 
     public Date getStartDate() {
@@ -174,5 +199,9 @@ public class Item {
 
     public void setMediaIrns(String mediaIrns) {
         this.mediaIrns = mediaIrns;
+    }
+
+    public String getThumbnailIrn() {
+        return thumbnailIrn;
     }
 }

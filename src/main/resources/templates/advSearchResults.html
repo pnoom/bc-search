@@ -131,7 +131,7 @@
                     <!--
                     <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" style="width: 128px;height: 128px" />
                     -->
-                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=180616&format=jpeg'}" style="width: 128px;height: 128px" />
+                    <img class="thumbnail" th:alt="${item.name}" th:src="'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + ${item.thumbnailIrn} + '&format=jpeg'" style="width: 128px;height: 128px" />
 
                 </figure>
 

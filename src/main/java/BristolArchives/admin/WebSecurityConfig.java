@@ -26,8 +26,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
                     .and()
                         .logout()
                         .permitAll();
-                    //.and()
-                      //  .formLogin().defaultSuccessUrl("/index", true);
+
         }
 
         @Bean

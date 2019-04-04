@@ -82,14 +82,14 @@
     </style>
 </head>
 
-<body bgcolor="#99ced3">
+<body bgcolor="#e5e0dd" style="height: 100%">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
         <div class="column is-one-third has-text-centered">
             <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 60px; color:#5d4037;font-family:Futura; ">Bristol Archives</h1>
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#343c5c;font-family:Futura; ">Item<br>page</h1>
         </div>
         <div class="column is-one-third has-text-centered">
 
@@ -103,18 +103,19 @@
 
     <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-burger burger has-background-primary" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
         </div>
-        <div class="navbar-menu" id="navMenu">
+        <div class="navbar-menu has-background-primary" id="navMenu">
             <div class="navbar-start">
                 <a href="/" class="navbar-item has-text-primary">Home</a>
                 <a href="/aboutArchives" class="navbar-item has-text-primary">About the Archives</a>
                 <a href="/loginPage" class="navbar-item has-text-primary">Admin login</a>
                 <!--<a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
-
+            </div>
+            <div class="navbar-end">
                 <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item has-text-primary">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
 
                 <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item has-text-primary" >Visit our Facebook</a>
@@ -157,11 +158,9 @@
             }
         }
     </script>
-</div>
-<div class="block">
     <div class="columns">
-        <div class="column is-one-fifth"></div>
-        <div class="column">
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
+        <div class="column" style="margin-bottom: 100px">
             <div>
             <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
@@ -196,7 +195,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="column is-one-fifth"></div>
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
 
     </div>
 
@@ -224,9 +223,9 @@
         document.getElementsByClassName('navbar')[0].style.visibility = 'visible';
     }
 </script>
-<div class="block">
-    <canvas height="100" style="border:1px transparent">
-    </canvas>
-</div>
+<!--<div class="block">-->
+    <!--<canvas height="100" style="border:1px transparent">-->
+    <!--</canvas>-->
+<!--</div>-->
 </body>
 </html>

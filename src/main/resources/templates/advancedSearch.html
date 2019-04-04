@@ -19,6 +19,8 @@
             <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
         <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#5d4037;font-family:Futura; "> Advanced <br>Search: </h1>
+        <!--<div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 60px; color:#5d4037;font-family:Futura; ">Advanced Search</h1>-->
+
         </div>
         <div class="column is-one-third has-text-centered">
 
@@ -131,8 +133,9 @@
                     <div class="column">
                         <div class="control">
                             <div class="select">
-                                <select>
-                                    <option th:each="dept : ${deptList}" th:text=${dept.name}></option>
+                                <select name="dpt" id="dpt_search">
+                                    <option name="department" th:each="dept : ${deptList}" th:text="${dept.name}"></option>
+                                    <option>All</option>
                                 </select>
                             </div>
                         </div>
@@ -145,8 +148,9 @@
                             <div class="column">
                                 <div class="control">
                                     <div class="select">
-                                        <select>
-                                            <option th:each="collection : ${collectionList}" th:text=${collection.name}></option>
+                                        <select name="coll" id="coll_search">
+                                            <option name="collection" th:each="collection : ${collectionList}" th:text="${collection.name}"></option>
+                                            <option>All</option>
                                         </select>
                                     </div>
                                 </div>

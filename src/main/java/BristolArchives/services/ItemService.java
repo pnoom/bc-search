@@ -1,14 +1,15 @@
 package BristolArchives.services;
 
-import BristolArchives.entities.Item;
 import BristolArchives.entities.Collection;
+import BristolArchives.entities.Item;
+import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,9 @@ import java.util.*;
 public class ItemService {
     @Autowired
     private ItemRepo itemRepo;
+
+    @Autowired
+    private DeptRepo deptRepo;
 
     @Autowired
     private CollectionService collectionService;
@@ -132,7 +136,7 @@ public class ItemService {
     }
 
     // precision means "search for whole phrase"
-    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
+    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String dpt, String precision) {
         List<Item> results = new ArrayList<>();
         boolean someConstraintsExist = false;
         //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
@@ -148,7 +152,8 @@ public class ItemService {
         }
 
         if (hasSth(collection)) {
-            List<Item> currResults = itemRepo.findByCollectionLike(collection);
+            List<Item> currResults = itemRepo.findByCollectionLikeYes(collection);
+            System.out.println(currResults.size());
             getIntersection(results, currResults, someConstraintsExist);
             someConstraintsExist = true;
         }
@@ -158,6 +163,10 @@ public class ItemService {
         }
         if (hasSth(precision)) {
             getIntersection(results, itemRepo.findWholePhrase(precision), someConstraintsExist);
+            someConstraintsExist = true;
+        }
+        if(hasSth(dpt)){
+            getIntersection(results, itemRepo.findByDptPlease(dpt), someConstraintsExist);
             someConstraintsExist = true;
         }
         return results;
@@ -183,8 +192,8 @@ public class ItemService {
         return itemPage;
     }
 
-    public Page<Item> findPaginatedAdvSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision, Pageable pageable) {
-        final List<Item> items = getAdvancedSearch(specific_date,start_date,end_date,collection,location,precision);
+    public Page<Item> findPaginatedAdvSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String dpt, String precision, Pageable pageable) {
+        final List<Item> items = getAdvancedSearch(specific_date,start_date,end_date,collection,location,dpt,precision);
         int pageSize = pageable.getPageSize();
         int maxPageNum = (int)Math.max(0, Math.ceil(1.0*items.size()/pageSize)-1);
         int currentPage = Math.min(maxPageNum,pageable.getPageNumber());

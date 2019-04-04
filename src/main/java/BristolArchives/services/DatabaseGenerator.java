@@ -390,7 +390,6 @@ public class DatabaseGenerator {
     }
 
     public void generateDatabase(File dataFile, File mediaFile) throws IOException {
-        System.out.println("generator called");
         CSVReaderHeaderAware rowReader;
         Map<String, String> row;
         int fileSize = 0;

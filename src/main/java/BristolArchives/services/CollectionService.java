@@ -14,7 +14,7 @@ public class CollectionService {
     private CollectionRepo collectionRepo;
 
     public List<Collection> getAllCollections(){
-        return collectionRepo.findAll();
+        return collectionRepo.findAllAlphabeticalOrder();
     }
 
     public List<Collection> getByNameContaining(String searchTerm){

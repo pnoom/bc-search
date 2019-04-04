@@ -127,20 +127,6 @@
 
             <div class="block">
                 <div class="columns">
-                    <div class="column is-one-fifth">Search by collections:</div>
-                    <div class="column">
-                        <div class="control">
-                            <div class="select">
-                                <select>
-                                    <option th:each="collection : ${collectionList}" th:text=${collection.name}></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="block">
-                <div class="columns">
                     <div class="column is-one-fifth">Search by departments:</div>
                     <div class="column">
                         <div class="control">
@@ -153,6 +139,21 @@
                     </div>
                 </div>
             </div>
+                    <div class="block">
+                        <div class="columns">
+                            <div class="column is-one-fifth">Search by collections:</div>
+                            <div class="column">
+                                <div class="control">
+                                    <div class="select">
+                                        <select>
+                                            <option th:each="collection : ${collectionList}" th:text=${collection.name}></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
             <div class="block">
                 <div class="columns">
                     <div class="column is-one-fifth">Search by locations:</div>

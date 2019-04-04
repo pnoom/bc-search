@@ -131,7 +131,7 @@ public class ItemService {
         }
     }
 
-    // precision means ?
+    // precision means "search for whole phrase"
     public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
         List<Item> results = new ArrayList<>();
         boolean someConstraintsExist = false;
@@ -156,9 +156,8 @@ public class ItemService {
             getIntersection(results,itemRepo.findByLocationLike(location), someConstraintsExist);
             someConstraintsExist = true;
         }
-        // TODO: precision is not currently used as intended
         if (hasSth(precision)) {
-            getIntersection(results, getItemByName(precision),someConstraintsExist);
+            getIntersection(results, itemRepo.findWholePhrase(precision), someConstraintsExist);
             someConstraintsExist = true;
         }
         return results;

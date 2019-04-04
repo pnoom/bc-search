@@ -63,12 +63,13 @@ public class AdvancedSearchController {
             @RequestParam(value = "date_end", required = false) String date_end,
             @RequestParam(value = "precision_search", required = false) String name,
             @RequestParam(value = "location_search", required = false) String lctn,
+            @RequestParam(value = "dept_search", required = false) String dpt,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size
         ){
         String search = "?";
 
-        if(hasSth(coll))
+        if(hasSth(coll) && coll != "All")
             search += "&coll=" + coll;
         if(hasSth(date_start))
             search += "&dateStart=" + date_start;
@@ -80,6 +81,8 @@ public class AdvancedSearchController {
             search += "&name=" + name;
         if(hasSth(lctn))
             search += "&lctn=" + lctn;
+        if(hasSth(dpt))
+            search += "&dpt=" + dpt;
 
         search = search.replaceAll("/","%2F");
 
@@ -129,12 +132,13 @@ public class AdvancedSearchController {
             @RequestParam(value = "dateEnd", required = false) String date_end,
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "lctn", required = false) String lctn,
+            @RequestParam(value = "dpt", required = false) String dpt,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size,
             Model model
             ){
 
-        if(!hasSth(coll) && !hasSth(date) && !hasSth(name) && !hasSth(lctn) && !hasSth(date_start) && !hasSth(date_end))
+        if(!hasSth(coll) && !hasSth(date) && !hasSth(name) && !hasSth(lctn) && !hasSth(date_start) && !hasSth(date_end) && !hasSth(dpt))
             return "redirect:/advancedSearch";
 
         int currentPage = page.orElse(1);
@@ -155,6 +159,7 @@ public class AdvancedSearchController {
                 parseDate(date_end),
                 coll,
                 lctn,
+                dpt,
                 name,
                 PageRequest.of(Math.max(currentPage - 1, 0), Math.max(pageSize, 1))
         );
@@ -186,6 +191,7 @@ public class AdvancedSearchController {
                     null,
                     coll,
                     lctn,
+                    dpt,
                     name, PageRequest.of(currentPage - 1, pageSize));
 
             model.addAttribute("itemPage", itemPage);
@@ -212,6 +218,7 @@ public class AdvancedSearchController {
                     parseDate(date_end),
                     coll,
                     lctn,
+                    dpt,
                     name, PageRequest.of(currentPage - 1, pageSize));
 
             model.addAttribute("itemPage", itemPage);
@@ -239,6 +246,7 @@ public class AdvancedSearchController {
                     null,
                     coll,
                     lctn,
+                    dpt,
                     name, PageRequest.of(currentPage - 1, pageSize));
 
             model.addAttribute("itemPage", itemPage);

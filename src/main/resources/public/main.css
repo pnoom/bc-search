@@ -692,13 +692,15 @@ a.has-text-dark:hover, a.has-text-dark:focus {
   background-color: #363636 !important; }
 
 .has-text-primary {
-  color: #5d4037 !important; }
+
+  color: #d0c7c0 !important; }
 
 a.has-text-primary:hover, a.has-text-primary:focus {
   color: #009e86 !important; }
 
 .has-background-primary {
-  background-color: #edb5bf !important; }
+
+  background-color: #343c5c !important; }
 
 .has-text-link {
   color: #3273dc !important; }

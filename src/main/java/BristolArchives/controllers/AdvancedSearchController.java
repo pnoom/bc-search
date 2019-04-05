@@ -85,7 +85,6 @@ public class AdvancedSearchController {
             search += "&dpt=" + dpt;
 
         search = search.replaceAll("/","%2F");
-        System.out.println("here!");
         return "redirect:/advSearch" + search + "&page=" + page.orElse(1) + "&size=" + size.orElse(5);
     }
 

@@ -153,7 +153,6 @@ public class ItemService {
 
         if (hasSth(collection)) {
             List<Item> currResults = itemRepo.findByCollectionLikeYes(collection);
-            System.out.println(collection + currResults.size());
             getIntersection(results, currResults, someConstraintsExist);
             someConstraintsExist = true;
         }

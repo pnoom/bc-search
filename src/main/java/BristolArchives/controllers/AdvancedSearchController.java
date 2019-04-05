@@ -57,19 +57,19 @@ public class AdvancedSearchController {
 
     @PostMapping("/advSearch")
     public String sendResult(
-            @RequestParam(value = "collection_search", required = false) String coll,
+            @RequestParam(value = "coll", required = false) String coll,
             @RequestParam(value = "date_search", required = false) String date,
             @RequestParam(value = "date_start", required = false) String date_start,
             @RequestParam(value = "date_end", required = false) String date_end,
             @RequestParam(value = "precision_search", required = false) String name,
             @RequestParam(value = "location_search", required = false) String lctn,
-            @RequestParam(value = "dept_search", required = false) String dpt,
+            @RequestParam(value = "dpt", required = false) String dpt,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size
         ){
         String search = "?";
 
-        if(hasSth(coll) && coll != "All")
+        if(hasSth(coll) && !coll.equals("All"))
             search += "&coll=" + coll;
         if(hasSth(date_start))
             search += "&dateStart=" + date_start;
@@ -81,11 +81,10 @@ public class AdvancedSearchController {
             search += "&name=" + name;
         if(hasSth(lctn))
             search += "&lctn=" + lctn;
-        if(hasSth(dpt))
+        if(hasSth(dpt) && !dpt.equals("All"))
             search += "&dpt=" + dpt;
 
         search = search.replaceAll("/","%2F");
-
         return "redirect:/advSearch" + search + "&page=" + page.orElse(1) + "&size=" + size.orElse(5);
     }
 
@@ -170,6 +169,7 @@ public class AdvancedSearchController {
         model.addAttribute("endDate", date_end);
         model.addAttribute("collection", coll);
         model.addAttribute("location", lctn);
+        model.addAttribute("dpt", dpt);
         model.addAttribute("precision", name);
 
         displayPageNumber(model, itemPage, currentPage);
@@ -227,6 +227,7 @@ public class AdvancedSearchController {
             model.addAttribute("endDate", date_end);
             model.addAttribute("collection", coll);
             model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
             model.addAttribute("precision", name);
 
             displayPageNumber(model, itemPage, currentPage);
@@ -255,6 +256,7 @@ public class AdvancedSearchController {
             model.addAttribute("endDate", "");
             model.addAttribute("collection", coll);
             model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
             model.addAttribute("precision", name);
 
             displayPageNumber(model, itemPage, currentPage);

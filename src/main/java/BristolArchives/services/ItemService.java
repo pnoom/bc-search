@@ -1,14 +1,15 @@
 package BristolArchives.services;
 
-import BristolArchives.entities.Item;
 import BristolArchives.entities.Collection;
+import BristolArchives.entities.Item;
+import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,9 @@ import java.util.*;
 public class ItemService {
     @Autowired
     private ItemRepo itemRepo;
+
+    @Autowired
+    private DeptRepo deptRepo;
 
     @Autowired
     private CollectionService collectionService;
@@ -148,7 +152,7 @@ public class ItemService {
         }
 
         if (hasSth(collection)) {
-            List<Item> currResults = itemRepo.findByCollectionLike(collection);
+            List<Item> currResults = itemRepo.findByCollectionLikeYes(collection);
             getIntersection(results, currResults, someConstraintsExist);
             someConstraintsExist = true;
         }
@@ -161,7 +165,7 @@ public class ItemService {
             someConstraintsExist = true;
         }
         if(hasSth(dpt)){
-            getIntersection(results, itemRepo.findByDpt(dpt), someConstraintsExist);
+            getIntersection(results, itemRepo.findByDptPlease(dpt), someConstraintsExist);
             someConstraintsExist = true;
         }
         return results;

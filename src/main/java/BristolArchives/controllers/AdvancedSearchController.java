@@ -69,7 +69,7 @@ public class AdvancedSearchController {
         ){
         String search = "?";
 
-        if(hasSth(coll) && coll != "All")
+        if(hasSth(coll) && !coll.equals("All"))
             search += "&coll=" + coll;
         if(hasSth(date_start))
             search += "&dateStart=" + date_start;
@@ -81,7 +81,7 @@ public class AdvancedSearchController {
             search += "&name=" + name;
         if(hasSth(lctn))
             search += "&lctn=" + lctn;
-        if(hasSth(dpt) && dpt != "All")
+        if(hasSth(dpt) && !dpt.equals("All"))
             search += "&dpt=" + dpt;
 
         search = search.replaceAll("/","%2F");

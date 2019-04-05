@@ -13,7 +13,7 @@ public class BristolArchivesRunController {
     @GetMapping("/")
     public String index() {
 
-        // Uncomment this to delete all database content. USE WITH CAUTION.
+//        // Uncomment this to delete all database content. USE WITH CAUTION.
 //        dbGen.deleteEntireDatabase();
 //
 //        // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")

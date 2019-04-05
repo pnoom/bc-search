@@ -34,10 +34,10 @@ public interface ItemRepo extends JpaRepository<Item,Integer>{
     @Query(value = "select *, datediff(start_date, end_date) as closest from item where not (start_date > :start or end_date < :end) order by closest desc", nativeQuery = true)
     List<Item> findWithDateRange(@Param("start") Date start, @Param("end")Date end);
 
-    @Query(value = "select * from item join collection on collection.id = item.collection_id join dept on collection.dept_id = dept.id where dept.name = concat('', :dpt, '')", nativeQuery = true)
+    @Query(value = "select * from item join collection on collection.id = item.collection_id join dept on collection.dept_id = dept.id where dept.name like concat('%', :dpt, '%')", nativeQuery = true)
     List<Item> findByDptPlease(@Param("dpt") String dpt);
 
-    @Query(value = "select * from item join collection on collection.id = item.collection_id where collection.name = concat('', :collection_name, '')", nativeQuery = true)
+    @Query(value = "select * from item join collection on collection.id = item.collection_id where collection.name like concat('%', :collection_name, '%')", nativeQuery = true)
     List<Item> findByCollectionLikeYes(@Param("collection_name") String collection_name);
 
 }

@@ -101,7 +101,7 @@
                 th:each="pageNumber : ${pageNumbers}">
                 <
                 <a style="font-size:160%;" th:href="@{/advSearch(coll=${collection},date=date?${specificDate},
-                date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},
+                date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},dpt=${dpt},
                 size=${itemPage.size},page=${pageNumber})}"
                    th:text=${pageNumber}
                    th:class="${pageNumber==itemPage.number + 1} ? active"></a>
@@ -147,7 +147,7 @@
         <th th:if="${itemPage.totalPages > 0}" class="pagination"
             th:each="pageNumber : ${pageNumbers}">
             <a style="font-size:160%;" th:href="@{/advSearch(coll=${collection},date=${specificDate},
-            date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},
+            date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},dpt=${dpt},
             size=${itemPage.size},page=${pageNumber})}"
                th:text=${pageNumber}
                th:class="${pageNumber==itemPage.number + 1} ? active"></a>

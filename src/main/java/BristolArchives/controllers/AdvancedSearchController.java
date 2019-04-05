@@ -169,6 +169,7 @@ public class AdvancedSearchController {
         model.addAttribute("endDate", date_end);
         model.addAttribute("collection", coll);
         model.addAttribute("location", lctn);
+        model.addAttribute("dpt", dpt);
         model.addAttribute("precision", name);
 
         displayPageNumber(model, itemPage, currentPage);
@@ -226,6 +227,7 @@ public class AdvancedSearchController {
             model.addAttribute("endDate", date_end);
             model.addAttribute("collection", coll);
             model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
             model.addAttribute("precision", name);
 
             displayPageNumber(model, itemPage, currentPage);
@@ -254,6 +256,7 @@ public class AdvancedSearchController {
             model.addAttribute("endDate", "");
             model.addAttribute("collection", coll);
             model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
             model.addAttribute("precision", name);
 
             displayPageNumber(model, itemPage, currentPage);

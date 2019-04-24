@@ -41,6 +41,9 @@ import BristolArchives.repositories.CollectionRepo;
 import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import com.opencsv.CSVReaderHeaderAware;
+import com.opencsv.CSVWriterBuilder;
+import com.opencsv.ICSVParser;
+import com.opencsv.ICSVWriter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +53,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -386,6 +386,40 @@ public class DatabaseGenerator {
             System.out.println(extractUsefulErrorMessage(exception));
         } finally {
             itemRepo.flush();
+        }
+    }
+
+    private String[] convertItemToStringArray(Item item) {
+        String[] result = {};
+        return result;
+    }
+
+    public void dumpDatabaseToCSV(File outputFile, Integer bufSize) throws IOException {
+        FileWriter fileWriter;
+        ICSVWriter csvWriter;
+
+        fileWriter = new FileWriter(outputFile);
+        csvWriter = new CSVWriterBuilder(fileWriter)
+                .withSeparator(ICSVParser.DEFAULT_SEPARATOR)
+                .withQuoteChar(ICSVParser.DEFAULT_QUOTE_CHARACTER)
+                .withEscapeChar(ICSVParser.DEFAULT_ESCAPE_CHARACTER)
+                .withLineEnd(ICSVWriter.DEFAULT_LINE_END)
+                .build();
+
+        List<Item> items;
+        List<String[]> buffer;
+        String[] line;
+
+
+        if (buffer.size() == bufSize) {
+            csvWriter.writeAll(buffer);
+            buffer.clear();
+        } else {
+
+            for (Item item : items) {
+                line = convertItemToStringArray(item);
+                buffer.add(line);
+            }
         }
     }
 

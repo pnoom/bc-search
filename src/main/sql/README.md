@@ -20,20 +20,16 @@ Enter password: .......
 ```
 drop database archivesearch;
 create database archivesearch;
+create user 'archiveuser'@'%' identified by 'YourDatabasePassword';
 grant all on archivesearch.* to 'archiveuser'@'%';
 use archivesearch;
-```
-
-1. Then do these IN THIS ORDER:
-
-```
-source master-script.sql;
+source schema.sql;
 ```
 
 1. Now you can run some SQL queries directly, eg:
 
 ```
-select item.name from item join subcollection on item.subcollection_id = subcollection.id where subcollection.name like '%African%';
+select item.name from item join collection on item.collection_id = collection.id where collection.name like '%African%';
 ```
 
 1. Now start the Java program!

@@ -18,12 +18,12 @@
 
 The diagram below reflects the current use cases of the Archives:
 
-![](graphviz/domain-model.png?raw=true)
+![](../graphviz/domain-model.png?raw=true)
 
 Our goal is to remove obstacles and conflicting alternatives on the users' path
 to the artifacts they need, as illustrated below:
 
-![](graphviz/reqs2.png?raw=true)
+![](../graphviz/reqs2.png?raw=true)
 
 Below are some illustrative scenarios for the current system:
 

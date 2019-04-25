@@ -1,4 +1,3 @@
--- DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS multimedia;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS collection;
@@ -36,8 +35,3 @@ CREATE TABLE item (
   FOREIGN KEY (collection_id) REFERENCES collection(id)
 );
 
-/*
-CREATE TABLE account (
-  id				INTEGER		PRIMARY KEY AUTO_INCREMENT
-);
-*/

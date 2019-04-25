@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>SPRING</ID>
+  <OriginalElement>mappedClass=BristolArchives.services.ItemService</OriginalElement>
+  <nodes>
+    <node x="426.5" y="682.0">module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo</node>
+    <node x="409.0" y="372.0">module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo</node>
+    <node x="427.0" y="496.0">module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo</node>
+    <node x="391.5" y="0.0">module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController</node>
+    <node x="409.5" y="248.0">module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController</node>
+    <node x="375.0" y="434.0">module=archives-api;bean_class=BristolArchives.controllers.aboutArchivesController;bean_name=aboutArchivesController</node>
+    <node x="402.0" y="62.0">module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService</node>
+    <node x="420.0" y="186.0">module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService</node>
+    <node x="419.5" y="310.0">module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService</node>
+    <node x="369.0" y="124.0">module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController</node>
+    <node x="359.5" y="806.0">module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController</node>
+    <node x="389.0" y="620.0">module=archives-api;bean_class=BristolArchives.controllers.HTTPErrorController;bean_name=HTTPErrorController</node>
+    <node x="393.5" y="744.0">module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator</node>
+    <node x="389.5" y="868.0">module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController</node>
+    <node x="20.0" y="434.0">module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp</node>
+    <node x="395.0" y="558.0">module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService">
+      <point x="-103.0" y="5.5" />
+      <point x="339.0" y="140.5" />
+      <point x="339.0" y="313.66666666666663" />
+      <point x="-52.5" y="-7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="89.5" y="1.466666666666697" />
+      <point x="279.0" y="507.0" />
+      <point x="-45.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig">
+      <point x="89.5" y="2.933333333333337" />
+      <point x="279.0" y="569.0" />
+      <point x="-77.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.aboutArchivesController;bean_name=aboutArchivesController">
+      <point x="89.5" y="-0.0" />
+      <point x="-97.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="89.5" y="-1.4666666666666401" />
+      <point x="279.0" y="383.0" />
+      <point x="-63.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="-78.5" y="-2.75" />
+      <point x="279.0" y="752.25" />
+      <point x="279.0" y="390.3333333333333" />
+      <point x="-63.0" y="7.333333333333314" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="-82.5" y="-5.5" />
+      <point x="279.0" y="873.5" />
+      <point x="279.0" y="763.25" />
+      <point x="-78.5" y="8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="89.5" y="5.866666666666674" />
+      <point x="279.0" y="700.3333333333334" />
+      <point x="-45.5" y="7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="-52.5" y="7.333333333333371" />
+      <point x="309.0" y="328.33333333333337" />
+      <point x="309.0" y="685.6666666666666" />
+      <point x="-45.5" y="-7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController">
+      <point x="89.5" y="-4.399999999999977" />
+      <point x="279.0" y="259.0" />
+      <point x="-62.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="-52.0" y="-8.25" />
+      <point x="349.0" y="188.75" />
+      <point x="349.0" y="80.33333333333331" />
+      <point x="-70.0" y="7.333333333333329" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="-70.0" y="-0.0" />
+      <point x="329.0" y="73.0" />
+      <point x="329.0" y="375.6666666666667" />
+      <point x="-63.0" y="-7.333333333333314" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp">
+      <point x="-89.5" y="-0.0" />
+      <point x="0.0" y="445.0" />
+      <point x="0.0" y="476.0" />
+      <point x="109.5" y="476.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController">
+      <point x="89.5" y="10.266666666666652" />
+      <point x="279.0" y="884.5" />
+      <point x="-82.5" y="5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="-52.0" y="8.25" />
+      <point x="319.0" y="205.25" />
+      <point x="319.0" y="499.66666666666663" />
+      <point x="-45.0" y="-7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController">
+      <point x="89.5" y="-10.266666666666652" />
+      <point x="279.0" y="11.0" />
+      <point x="-80.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController">
+      <point x="89.5" y="8.800000000000011" />
+      <point x="279.0" y="817.0" />
+      <point x="-112.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="0.0" y="11.0" />
+      <point x="0.0" y="-11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="89.5" y="7.333333333333314" />
+      <point x="279.0" y="757.75" />
+      <point x="-78.5" y="2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="-78.5" y="-8.25" />
+      <point x="289.0" y="746.75" />
+      <point x="289.0" y="514.3333333333334" />
+      <point x="-45.0" y="7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="0.0" y="11.0" />
+      <point x="0.0" y="-11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="89.5" y="-8.800000000000011" />
+      <point x="279.0" y="65.66666666666669" />
+      <point x="-70.0" y="-7.333333333333329" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="89.5" y="-5.866666666666674" />
+      <point x="279.0" y="194.25" />
+      <point x="-52.0" y="-2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController">
+      <point x="89.5" y="-7.333333333333314" />
+      <point x="279.0" y="129.5" />
+      <point x="-103.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService">
+      <point x="89.5" y="-2.933333333333337" />
+      <point x="279.0" y="321.0" />
+      <point x="-52.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="-52.0" y="2.75" />
+      <point x="299.0" y="199.75" />
+      <point x="299.0" y="693.0" />
+      <point x="-45.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.HTTPErrorController;bean_name=HTTPErrorController">
+      <point x="89.5" y="4.399999999999977" />
+      <point x="279.0" y="631.0" />
+      <point x="-83.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="292.5" y="445.0" />
+  <SelectedNodes>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController</node>
+    <node>module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.HTTPErrorController;bean_name=HTTPErrorController</node>
+    <node>module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo</node>
+    <node>module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator</node>
+    <node>module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.aboutArchivesController;bean_name=aboutArchivesController</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController</node>
+    <node>module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp</node>
+    <node>module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo</node>
+    <node>module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController</node>
+    <node>module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService</node>
+    <node>module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Local context</Category>
+    <Category>Neighbourhood Mode</Category>
+  </Categories>
+</Diagram>
+

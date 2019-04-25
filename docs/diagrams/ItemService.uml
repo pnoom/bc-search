@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>SPRING</ID>
+  <OriginalElement>mappedClass=BristolArchives.services.ItemService</OriginalElement>
+  <nodes>
+    <node x="44.5" y="2077.0">module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp</node>
+    <node x="501.5" y="1846.6677910052908">module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController</node>
+    <node x="505.5" y="1784.6677910052908">module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator</node>
+    <node x="501.0" y="2032.6677910052908">module=archives-api;bean_class=BristolArchives.controllers.HTTPErrorController;bean_name=HTTPErrorController</node>
+    <node x="471.5" y="1722.6677910052908">module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController</node>
+    <node x="481.0" y="2528.6677910052913">module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController</node>
+    <node x="531.5" y="2404.6677910052913">module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService</node>
+    <node x="532.0" y="2280.667791005291">module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService</node>
+    <node x="514.0" y="2466.6677910052913">module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService</node>
+    <node x="487.0" y="2094.667791005291">module=archives-api;bean_class=BristolArchives.controllers.aboutArchivesController;bean_name=aboutArchivesController</node>
+    <node x="521.5" y="2218.667791005291">module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController</node>
+    <node x="503.5" y="2342.6677910052913">module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController</node>
+    <node x="539.0" y="1908.6677910052908">module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo</node>
+    <node x="521.0" y="1970.6677910052908">module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo</node>
+    <node x="538.5" y="2156.667791005291">module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo</node>
+    <node x="507.0" y="1364.0">module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig</node>
+    <node x="895.5" y="1451.5">module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration</node>
+    <node x="1350.0" y="1327.5">module=archives-api;bean_class=org.springframework.security.context.DelegatingApplicationListener;bean_name=delegatingApplicationListener</node>
+    <node x="1347.0" y="1389.5">module=archives-api;bean_class=org.springframework.security.access.expression.SecurityExpressionHandler;bean_name=webSecurityExpressionHandler</node>
+    <node x="1367.5" y="1513.5">module=archives-api;bean_class=javax.servlet.Filter;bean_name=springSecurityFilterChain</node>
+    <node x="1391.0" y="1575.5">module=archives-api;bean_class=org.springframework.security.web.access.WebInvocationPrivilegeEvaluator;bean_name=privilegeEvaluator</node>
+    <node x="1286.0" y="1451.5">module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.AutowiredWebSecurityConfigurersIgnoreParents;bean_name=autowiredWebSecurityConfigurersIgnoreParents</node>
+    <node x="501.0" y="1488.0">module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor</node>
+    <node x="883.0" y="1302.0">module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.SpringWebMvcImportSelector;bean_name=springWebMvcImportSelector</node>
+    <node x="922.5" y="1364.0">module=archives-api;bean_class=org.springframework.security.core.userdetails.UserDetailsService;bean_name=userDetailsService</node>
+    <node x="472.5" y="1660.6677910052908">module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration</node>
+    <node x="458.0" y="921.0677910052907">module=archives-api;bean_class=org.springframework.web.accept.ContentNegotiationManager;bean_name=mvcContentNegotiationManager</node>
+    <node x="490.5" y="1426.0">module=archives-api;bean_class=org.springframework.web.context.WebApplicationContext;bean_name=webApplicationContext</node>
+    <node x="2712.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter.FaviconConfiguration;bean_name=faviconConfiguration</node>
+    <node x="2964.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;bean_name=faviconHandlerMapping</node>
+    <node x="2966.5" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceHttpRequestHandler;bean_name=faviconRequestHandler</node>
+    <node x="2288.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration.TransactionTemplateConfiguration;bean_name=transactionTemplateConfiguration</node>
+    <node x="2632.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.transaction.support.TransactionTemplate;bean_name=transactionTemplate</node>
+    <node x="2797.0" y="93.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;bean_name=hibernateJpaAutoConfiguration</node>
+    <node x="3124.0" y="93.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration</node>
+    <node x="3448.0" y="186.0">module=archives-api;bean_class=org.springframework.transaction.PlatformTransactionManager;bean_name=transactionManager</node>
+    <node x="3454.0" y="124.0">module=archives-api;bean_class=org.springframework.orm.jpa.JpaVendorAdapter;bean_name=jpaVendorAdapter</node>
+    <node x="3417.0" y="62.0">module=archives-api;bean_class=org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;bean_name=entityManagerFactoryBuilder</node>
+    <node x="3442.0" y="0.0">module=archives-api;bean_class=org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;bean_name=entityManagerFactory</node>
+    <node x="3146.0" y="4250.667791005291">module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.JpaWebConfiguration;bean_name=jpaWebConfiguration</node>
+    <node x="616.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.JpaWebConfiguration.JpaWebMvcConfiguration;bean_name=jpaWebMvcConfiguration</node>
+    <node x="897.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;bean_name=openEntityManagerInViewInterceptor</node>
+    <node x="2574.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.boot.context.properties.EnableConfigurationPropertiesImportSelector;bean_name=enableConfigurationPropertiesImportSelector</node>
+    <node x="3650.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;bean_name=spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties</node>
+    <node x="1937.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration.DataSourceTransactionManagerConfiguration;bean_name=dataSourceTransactionManagerConfiguration</node>
+    <node x="2358.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.jdbc.datasource.DataSourceTransactionManager;bean_name=transactionManager</node>
+    <node x="1372.0" y="4049.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration.EnableTransactionManagementConfiguration.CglibAutoProxyConfiguration;bean_name=cglibAutoProxyConfiguration</node>
+    <node x="1794.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.transaction.annotation.TransactionManagementConfigurationSelector;bean_name=transactionManagementConfigurationSelector</node>
+    <node x="1908.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;bean_name=httpMessageConvertersAutoConfiguration</node>
+    <node x="2309.0" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration;bean_name=jacksonHttpMessageConvertersConfiguration</node>
+    <node x="2399.5" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConverters;bean_name=messageConverters</node>
+    <node x="855.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration;bean_name=mappingJackson2HttpMessageConverterConfiguration</node>
+    <node x="1342.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;bean_name=mappingJackson2HttpMessageConverter</node>
+    <node x="684.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration;bean_name=stringHttpMessageConverterConfiguration</node>
+    <node x="1087.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.http.converter.StringHttpMessageConverter;bean_name=stringHttpMessageConverter</node>
+    <node x="1441.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpEncodingProperties;bean_name=spring.http.encoding-org.springframework.boot.autoconfigure.http.HttpEncodingProperties</node>
+    <node x="978.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;bean_name=dataSourceTransactionManagerAutoConfiguration</node>
+    <node x="334.0" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;bean_name=spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties</node>
+    <node x="3344.0" y="2626.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration;bean_name=dispatcherServletRegistrationConfiguration</node>
+    <node x="3751.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletConfiguration;bean_name=dispatcherServletConfiguration</node>
+    <node x="4074.5" y="2688.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.DispatcherServlet;bean_name=dispatcherServlet</node>
+    <node x="4073.0" y="2626.6677910052913">module=archives-api;bean_class=org.springframework.web.multipart.MultipartResolver;bean_name=multipartResolver</node>
+    <node x="3757.0" y="2595.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;bean_name=dispatcherServletRegistration</node>
+    <node x="2701.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;bean_name=spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties</node>
+    <node x="501.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration;bean_name=embeddedWebServerFactoryCustomizerAutoConfiguration</node>
+    <node x="2517.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration.TomcatWebServerFactoryCustomizerConfiguration;bean_name=tomcatWebServerFactoryCustomizerConfiguration</node>
+    <node x="2971.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.embedded.TomcatWebServerFactoryCustomizer;bean_name=tomcatWebServerFactoryCustomizer</node>
+    <node x="1731.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.ServerProperties;bean_name=server-org.springframework.boot.autoconfigure.web.ServerProperties</node>
+    <node x="1159.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.JacksonObjectMapperConfiguration;bean_name=jacksonObjectMapperConfiguration</node>
+    <node x="1511.0" y="3379.6677910052913">module=archives-api;bean_class=com.fasterxml.jackson.databind.ObjectMapper;bean_name=jacksonObjectMapper</node>
+    <node x="2695.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.PooledDataSourceConfiguration;bean_name=pooledDataSourceConfiguration</node>
+    <node x="3106.5" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.Hikari;bean_name=hikari</node>
+    <node x="3332.0" y="2848.6677910052913">module=archives-api;bean_class=com.zaxxer.hikari.HikariDataSource;bean_name=dataSource</node>
+    <node x="3024.0" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration;bean_name=dataSourceJmxConfiguration</node>
+    <node x="625.0" y="4384.667791005291">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration.Hikari;bean_name=hikari</node>
+    <node x="2361.0" y="3915.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;bean_name=jdbcTemplateAutoConfiguration</node>
+    <node x="1009.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.NamedParameterJdbcTemplateConfiguration;bean_name=namedParameterJdbcTemplateConfiguration</node>
+    <node x="1439.0" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.JdbcTemplateConfiguration;bean_name=jdbcTemplateConfiguration</node>
+    <node x="1746.0" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.jdbc.core.JdbcTemplate;bean_name=jdbcTemplate</node>
+    <node x="1426.0" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;bean_name=namedParameterJdbcTemplate</node>
+    <node x="0.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcProperties;bean_name=spring.jdbc-org.springframework.boot.autoconfigure.jdbc.JdbcProperties</node>
+    <node x="2866.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityRequestMatcherProviderAutoConfiguration;bean_name=securityRequestMatcherProviderAutoConfiguration</node>
+    <node x="3327.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.RequestMatcherProvider;bean_name=requestMatcherProvider</node>
+    <node x="1159.0" y="4250.667791005291">module=archives-api;bean_class=org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;bean_name=aopAutoConfiguration</node>
+    <node x="1644.0" y="4049.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.aop.AopAutoConfiguration.CglibAutoProxyConfiguration;bean_name=cglibAutoProxyConfiguration</node>
+    <node x="3150.0" y="4116.667791005291">module=archives-api;bean_class=org.springframework.context.annotation.AspectJAutoProxyRegistrar;bean_name=aspectJAutoProxyRegistrar</node>
+    <node x="0.0" y="434.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter</node>
+    <node x="471.0" y="620.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration</node>
+    <node x="873.5" y="682.0">module=archives-api;bean_class=org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;bean_name=requestMappingHandlerAdapter</node>
+    <node x="871.0" y="186.0">module=archives-api;bean_class=org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;bean_name=requestMappingHandlerMapping</node>
+    <node x="908.5" y="1240.0">module=archives-api;bean_class=org.springframework.format.support.FormattingConversionService;bean_name=mvcConversionService</node>
+    <node x="940.0" y="434.0">module=archives-api;bean_class=org.springframework.validation.Validator;bean_name=mvcValidator</node>
+    <node x="927.5" y="868.0">module=archives-api;bean_class=org.springframework.util.PathMatcher;bean_name=mvcPathMatcher</node>
+    <node x="923.0" y="310.0">module=archives-api;bean_class=org.springframework.web.util.UrlPathHelper;bean_name=mvcUrlPathHelper</node>
+    <node x="877.0" y="620.0">module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=viewControllerHandlerMapping</node>
+    <node x="891.0" y="496.0">module=archives-api;bean_class=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;bean_name=beanNameHandlerMapping</node>
+    <node x="898.0" y="992.0">module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=resourceHandlerMapping</node>
+    <node x="901.0" y="744.0">module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceUrlProvider;bean_name=mvcResourceUrlProvider</node>
+    <node x="879.0" y="124.0">module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=defaultServletHandlerMapping</node>
+    <node x="877.0" y="930.0">module=archives-api;bean_class=org.springframework.web.method.support.CompositeUriComponentsContributor;bean_name=mvcUriComponentsContributor</node>
+    <node x="887.5" y="248.0">module=archives-api;bean_class=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter;bean_name=httpRequestHandlerAdapter</node>
+    <node x="873.0" y="1116.0">module=archives-api;bean_class=org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;bean_name=simpleControllerHandlerAdapter</node>
+    <node x="895.5" y="372.0">module=archives-api;bean_class=org.springframework.web.servlet.HandlerExceptionResolver;bean_name=handlerExceptionResolver</node>
+    <node x="925.5" y="558.0">module=archives-api;bean_class=org.springframework.web.servlet.ViewResolver;bean_name=mvcViewResolver</node>
+    <node x="871.0" y="1178.0">module=archives-api;bean_class=org.springframework.web.servlet.handler.HandlerMappingIntrospector;bean_name=mvcHandlerMappingIntrospector</node>
+    <node x="500.5" y="310.0">module=archives-api;bean_class=org.springframework.web.servlet.view.InternalResourceViewResolver;bean_name=defaultViewResolver</node>
+    <node x="343.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.view.BeanNameViewResolver;bean_name=beanNameViewResolver</node>
+    <node x="526.5" y="434.0">module=archives-api;bean_class=org.springframework.web.servlet.view.ContentNegotiatingViewResolver;bean_name=viewResolver</node>
+    <node x="522.5" y="372.0">module=archives-api;bean_class=org.springframework.web.servlet.LocaleResolver;bean_name=localeResolver</node>
+    <node x="466.5" y="496.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping;bean_name=welcomePageHandlerMapping</node>
+    <node x="500.0" y="248.0">module=archives-api;bean_class=org.springframework.web.filter.RequestContextFilter;bean_name=requestContextFilter</node>
+    <node x="649.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.ResourceProperties;bean_name=spring.resources-org.springframework.boot.autoconfigure.web.ResourceProperties</node>
+    <node x="3374.0" y="3513.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration;bean_name=configurationPropertiesAutoConfiguration</node>
+    <node x="3357.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.DefaultErrorViewResolverConfiguration;bean_name=defaultErrorViewResolverConfiguration</node>
+    <node x="3737.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.DefaultErrorViewResolver;bean_name=conventionErrorViewResolver</node>
+    <node x="4117.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration;bean_name=messageSourceAutoConfiguration</node>
+    <node x="4459.0" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.MessageSourceProperties;bean_name=messageSourceProperties</node>
+    <node x="4495.0" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.context.MessageSource;bean_name=messageSource</node>
+    <node x="0.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;bean_name=jpaRepositoriesAutoConfiguration</node>
+    <node x="342.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfigureRegistrar;bean_name=jpaRepositoriesAutoConfigureRegistrar</node>
+    <node x="1840.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;bean_name=securityFilterAutoConfiguration</node>
+    <node x="2165.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean;bean_name=securityFilterChainRegistration</node>
+    <node x="4013.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.SecurityProperties;bean_name=spring.security-org.springframework.boot.autoconfigure.security.SecurityProperties</node>
+    <node x="1842.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;bean_name=jmxAutoConfiguration</node>
+    <node x="2125.5" y="2719.6677910052913">module=archives-api;bean_class=org.springframework.jmx.export.annotation.AnnotationMBeanExporter;bean_name=mbeanExporter</node>
+    <node x="2102.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.ParentAwareNamingStrategy;bean_name=objectNamingStrategy</node>
+    <node x="2134.0" y="2595.6677910052913">module=archives-api;bean_class=javax.management.MBeanServer;bean_name=mbeanServer</node>
+    <node x="579.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;bean_name=springDataWebAutoConfiguration</node>
+    <node x="922.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer;bean_name=pageableCustomizer</node>
+    <node x="939.5" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.data.web.config.SortHandlerMethodArgumentResolverCustomizer;bean_name=sortCustomizer</node>
+    <node x="2212.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.data.web.config.SpringDataWebConfiguration;bean_name=springDataWebConfiguration</node>
+    <node x="2521.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.data.web.PageableHandlerMethodArgumentResolver;bean_name=pageableResolver</node>
+    <node x="2538.5" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.data.web.SortHandlerMethodArgumentResolver;bean_name=sortResolver</node>
+    <node x="1142.0" y="3513.6677910052913">module=archives-api;bean_class=org.springframework.data.web.config.EnableSpringDataWebSupport.SpringDataWebConfigurationImportSelector;bean_name=springDataWebConfigurationImportSelector</node>
+    <node x="1809.0" y="4317.667791005291">module=archives-api;bean_class=org.springframework.data.web.config.EnableSpringDataWebSupport.QuerydslActivator;bean_name=querydslActivator</node>
+    <node x="0.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;bean_name=spring.data.web-org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties</node>
+    <node x="0.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;bean_name=XADataSourceAutoConfiguration</node>
+    <node x="598.0" y="2848.6677910052913">module=archives-api;bean_class=javax.sql.DataSource;bean_name=dataSource</node>
+    <node x="1692.0" y="93.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;bean_name=servletWebServerFactoryAutoConfiguration</node>
+    <node x="2149.0" y="186.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar;bean_name=beanPostProcessorsRegistrar</node>
+    <node x="2188.5" y="124.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration.EmbeddedTomcat;bean_name=embeddedTomcat</node>
+    <node x="2505.0" y="124.0">module=archives-api;bean_class=org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;bean_name=tomcatServletWebServerFactory</node>
+    <node x="2125.0" y="61.99999999999999">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryCustomizer;bean_name=servletWebServerFactoryCustomizer</node>
+    <node x="2100.0" y="0.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.TomcatServletWebServerFactoryCustomizer;bean_name=tomcatServletWebServerFactoryCustomizer</node>
+    <node x="641.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;bean_name=securityAutoConfiguration</node>
+    <node x="930.0" y="2719.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration;bean_name=springBootWebSecurityConfiguration</node>
+    <node x="943.5" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration;bean_name=webSecurityEnablerConfiguration</node>
+    <node x="957.0" y="2595.6677910052913">module=archives-api;bean_class=org.springframework.security.authentication.DefaultAuthenticationEventPublisher;bean_name=authenticationEventPublisher</node>
+    <node x="31.5" y="1420.5">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration.DefaultConfigurerAdapter;bean_name=defaultConfigurerAdapter</node>
+    <node x="866.5" y="1519.0">module=archives-api;bean_class=org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration;bean_name=objectPostProcessorConfiguration</node>
+    <node x="879.5" y="1581.0">module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;bean_name=authenticationManagerBuilder</node>
+    <node x="815.0" y="1705.0">module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;bean_name=enableGlobalAuthenticationAutowiredConfigurer</node>
+    <node x="832.0" y="1643.0">module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer;bean_name=initializeUserDetailsBeanManagerConfigurer</node>
+    <node x="790.0" y="1767.0">module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer;bean_name=initializeAuthenticationProviderBeanManagerConfigurer</node>
+    <node x="2030.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration;bean_name=transactionAutoConfiguration</node>
+    <node x="2344.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;bean_name=platformTransactionManagerCustomizers</node>
+    <node x="2961.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration.EnableTransactionManagementConfiguration;bean_name=enableTransactionManagementConfiguration</node>
+    <node x="4043.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionProperties;bean_name=spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties</node>
+    <node x="2844.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;bean_name=restTemplateAutoConfiguration</node>
+    <node x="3170.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.web.client.RestTemplateBuilder;bean_name=restTemplateBuilder</node>
+    <node x="0.0" y="3446.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafDefaultConfiguration;bean_name=thymeleafDefaultConfiguration</node>
+    <node x="322.0" y="3446.6677910052913">module=archives-api;bean_class=org.thymeleaf.spring5.SpringTemplateEngine;bean_name=templateEngine</node>
+    <node x="2155.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration;bean_name=jtaAutoConfiguration</node>
+    <node x="2408.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JndiJtaConfiguration;bean_name=jndiJtaConfiguration</node>
+    <node x="2657.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.transaction.jta.JtaTransactionManager;bean_name=transactionManager</node>
+    <node x="2567.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JtaProperties;bean_name=spring.jta-org.springframework.boot.autoconfigure.transaction.jta.JtaProperties</node>
+    <node x="0.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;bean_name=validationAutoConfiguration</node>
+    <node x="304.0" y="2719.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.PrimaryDefaultValidatorPostProcessor;bean_name=primaryDefaultValidatorPostProcessor</node>
+    <node x="381.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;bean_name=defaultValidator</node>
+    <node x="326.0" y="2595.6677910052913">module=archives-api;bean_class=org.springframework.validation.beanvalidation.MethodValidationPostProcessor;bean_name=methodValidationPostProcessor</node>
+    <node x="4034.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForCalendar;bean_name=futureOrPresentValidatorForCalendar</node>
+    <node x="3175.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfBoolean;bean_name=notEmptyValidatorForArraysOfBoolean</node>
+    <node x="1585.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArray;bean_name=notEmptyValidatorForArray</node>
+    <node x="1788.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForOffsetTime;bean_name=futureOrPresentValidatorForOffsetTime</node>
+    <node x="1693.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfDouble;bean_name=notEmptyValidatorForArraysOfDouble</node>
+    <node x="0.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForMap;bean_name=notEmptyValidatorForMap</node>
+    <node x="3518.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForMonthDay;bean_name=futureOrPresentValidatorForMonthDay</node>
+    <node x="1398.0" y="3446.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForThaiBuddhistDate;bean_name=futureOrPresentValidatorForThaiBuddhistDate</node>
+    <node x="0.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfByte;bean_name=notEmptyValidatorForArraysOfByte</node>
+    <node x="4111.0" y="3446.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForOffsetDateTime;bean_name=futureOrPresentValidatorForOffsetDateTime</node>
+    <node x="4204.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForLocalDate;bean_name=futureOrPresentValidatorForLocalDate</node>
+    <node x="763.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForReadablePartial;bean_name=futureOrPresentValidatorForReadablePartial</node>
+    <node x="719.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForMinguoDate;bean_name=futureOrPresentValidatorForMinguoDate</node>
+    <node x="2137.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForYearMonth;bean_name=futureOrPresentValidatorForYearMonth</node>
+    <node x="918.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForDate;bean_name=futureOrPresentValidatorForDate</node>
+    <node x="1830.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForYear;bean_name=futureOrPresentValidatorForYear</node>
+    <node x="1222.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.MinValidatorForMonetaryAmount;bean_name=minValidatorForMonetaryAmount</node>
+    <node x="3345.0" y="3446.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.PositiveOrZeroValidatorForMonetaryAmount;bean_name=positiveOrZeroValidatorForMonetaryAmount</node>
+    <node x="1076.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.DecimalMinValidatorForMonetaryAmount;bean_name=decimalMinValidatorForMonetaryAmount</node>
+    <node x="1018.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.NegativeValidatorForMonetaryAmount;bean_name=negativeValidatorForMonetaryAmount</node>
+    <node x="2186.0" y="3446.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.NegativeOrZeroValidatorForMonetaryAmount;bean_name=negativeOrZeroValidatorForMonetaryAmount</node>
+    <node x="0.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.DecimalMaxValidatorForMonetaryAmount;bean_name=decimalMaxValidatorForMonetaryAmount</node>
+    <node x="1356.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.CurrencyValidatorForMonetaryAmount;bean_name=currencyValidatorForMonetaryAmount</node>
+    <node x="3368.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.PositiveValidatorForMonetaryAmount;bean_name=positiveValidatorForMonetaryAmount</node>
+    <node x="0.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.money.MaxValidatorForMonetaryAmount;bean_name=maxValidatorForMonetaryAmount</node>
+    <node x="254.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForShort;bean_name=negativeValidatorForShort</node>
+    <node x="1953.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForNumber;bean_name=negativeOrZeroValidatorForNumber</node>
+    <node x="1526.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForShort;bean_name=negativeOrZeroValidatorForShort</node>
+    <node x="2207.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForInteger;bean_name=positiveOrZeroValidatorForInteger</node>
+    <node x="297.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForLong;bean_name=positiveOrZeroValidatorForLong</node>
+    <node x="0.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForDouble;bean_name=negativeValidatorForDouble</node>
+    <node x="634.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForDouble;bean_name=negativeOrZeroValidatorForDouble</node>
+    <node x="340.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForBigInteger;bean_name=negativeOrZeroValidatorForBigInteger</node>
+    <node x="1846.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForDouble;bean_name=positiveValidatorForDouble</node>
+    <node x="2831.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForBigDecimal;bean_name=negativeOrZeroValidatorForBigDecimal</node>
+    <node x="266.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForInteger;bean_name=negativeValidatorForInteger</node>
+    <node x="760.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForFloat;bean_name=negativeValidatorForFloat</node>
+    <node x="679.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForBigDecimal;bean_name=positiveOrZeroValidatorForBigDecimal</node>
+    <node x="2262.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForByte;bean_name=negativeValidatorForByte</node>
+    <node x="3240.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForByte;bean_name=positiveOrZeroValidatorForByte</node>
+    <node x="3003.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForLong;bean_name=positiveValidatorForLong</node>
+    <node x="4348.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForNumber;bean_name=positiveValidatorForNumber</node>
+    <node x="2518.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForDouble;bean_name=positiveOrZeroValidatorForDouble</node>
+    <node x="2434.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForLong;bean_name=negativeOrZeroValidatorForLong</node>
+    <node x="593.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForFloat;bean_name=positiveOrZeroValidatorForFloat</node>
+    <node x="1764.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForShort;bean_name=positiveValidatorForShort</node>
+    <node x="3450.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;bean_name=emailValidator</node>
+    <node x="950.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForInteger;bean_name=negativeOrZeroValidatorForInteger</node>
+    <node x="1011.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForLong;bean_name=negativeValidatorForLong</node>
+    <node x="4126.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.EANValidator;bean_name=EANValidator</node>
+    <node x="2700.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForBigInteger;bean_name=positiveOrZeroValidatorForBigInteger</node>
+    <node x="4015.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.ScriptAssertValidator;bean_name=scriptAssertValidator</node>
+    <node x="4232.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForByte;bean_name=negativeOrZeroValidatorForByte</node>
+    <node x="1027.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.SafeHtmlValidator;bean_name=safeHtmlValidator</node>
+    <node x="1916.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForNumber;bean_name=negativeValidatorForNumber</node>
+    <node x="4451.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.URLValidator;bean_name=URLValidator</node>
+    <node x="1607.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.Mod11CheckValidator;bean_name=mod11CheckValidator</node>
+    <node x="4113.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForBigDecimal;bean_name=positiveValidatorForBigDecimal</node>
+    <node x="4402.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForBigInteger;bean_name=negativeValidatorForBigInteger</node>
+    <node x="3249.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForFloat;bean_name=positiveValidatorForFloat</node>
+    <node x="2107.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForInteger;bean_name=positiveValidatorForInteger</node>
+    <node x="1828.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.Mod10CheckValidator;bean_name=mod10CheckValidator</node>
+    <node x="2735.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeOrZeroValidatorForFloat;bean_name=negativeOrZeroValidatorForFloat</node>
+    <node x="414.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.LuhnCheckValidator;bean_name=luhnCheckValidator</node>
+    <node x="317.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForNumber;bean_name=positiveOrZeroValidatorForNumber</node>
+    <node x="1185.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.NegativeValidatorForBigDecimal;bean_name=negativeValidatorForBigDecimal</node>
+    <node x="1223.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.NotBlankValidator;bean_name=notBlankValidator</node>
+    <node x="3740.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForByte;bean_name=positiveValidatorForByte</node>
+    <node x="0.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.ParameterScriptAssertValidator;bean_name=parameterScriptAssertValidator</node>
+    <node x="1724.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveValidatorForBigInteger;bean_name=positiveValidatorForBigInteger</node>
+    <node x="508.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.CodePointLengthValidator;bean_name=codePointLengthValidator</node>
+    <node x="3337.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForShort;bean_name=positiveOrZeroValidatorForShort</node>
+    <node x="2925.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.LengthValidator;bean_name=lengthValidator</node>
+    <node x="3495.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.UniqueElementsValidator;bean_name=uniqueElementsValidator</node>
+    <node x="619.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.ModCheckValidator;bean_name=modCheckValidator</node>
+    <node x="3960.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.ISBNValidator;bean_name=ISBNValidator</node>
+    <node x="4611.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator;bean_name=CPFValidator</node>
+    <node x="3620.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.br.CNPJValidator;bean_name=CNPJValidator</node>
+    <node x="317.0" y="4384.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.pl.NIPValidator;bean_name=NIPValidator</node>
+    <node x="2559.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.pl.REGONValidator;bean_name=REGONValidator</node>
+    <node x="3103.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.pl.PESELValidator;bean_name=PESELValidator</node>
+    <node x="1385.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.time.DurationMaxValidator;bean_name=durationMaxValidator</node>
+    <node x="2489.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.hv.time.DurationMinValidator;bean_name=durationMinValidator</node>
+    <node x="0.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.constraintvalidators.RegexpURLValidator;bean_name=regexpURLValidator</node>
+    <node x="4223.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForNumber;bean_name=minValidatorForNumber</node>
+    <node x="796.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForBigDecimal;bean_name=maxValidatorForBigDecimal</node>
+    <node x="2049.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForLong;bean_name=maxValidatorForLong</node>
+    <node x="468.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForDouble;bean_name=minValidatorForDouble</node>
+    <node x="3924.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForBigInteger;bean_name=minValidatorForBigInteger</node>
+    <node x="3982.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForNumber;bean_name=maxValidatorForNumber</node>
+    <node x="2890.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForBigDecimal;bean_name=minValidatorForBigDecimal</node>
+    <node x="4461.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForDouble;bean_name=maxValidatorForDouble</node>
+    <node x="2269.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForFloat;bean_name=maxValidatorForFloat</node>
+    <node x="3408.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForBigInteger;bean_name=maxValidatorForBigInteger</node>
+    <node x="3364.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForFloat;bean_name=minValidatorForFloat</node>
+    <node x="3581.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForLong;bean_name=minValidatorForLong</node>
+    <node x="4072.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForBigInteger;bean_name=decimalMinValidatorForBigInteger</node>
+    <node x="3532.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForNumber;bean_name=decimalMinValidatorForNumber</node>
+    <node x="1582.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForBigDecimal;bean_name=decimalMinValidatorForBigDecimal</node>
+    <node x="1439.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForDouble;bean_name=decimalMinValidatorForDouble</node>
+    <node x="2829.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForBigInteger;bean_name=decimalMaxValidatorForBigInteger</node>
+    <node x="289.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForDouble;bean_name=decimalMaxValidatorForDouble</node>
+    <node x="2732.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForFloat;bean_name=decimalMinValidatorForFloat</node>
+    <node x="3002.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMinValidatorForLong;bean_name=decimalMinValidatorForLong</node>
+    <node x="826.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForFloat;bean_name=decimalMaxValidatorForFloat</node>
+    <node x="1266.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForBigDecimal;bean_name=decimalMaxValidatorForBigDecimal</node>
+    <node x="1479.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForNumber;bean_name=decimalMaxValidatorForNumber</node>
+    <node x="1099.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.number.bound.decimal.DecimalMaxValidatorForLong;bean_name=decimalMaxValidatorForLong</node>
+    <node x="3880.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForCalendar;bean_name=pastOrPresentValidatorForCalendar</node>
+    <node x="3034.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForYearMonth;bean_name=pastOrPresentValidatorForYearMonth</node>
+    <node x="329.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForLocalDate;bean_name=pastOrPresentValidatorForLocalDate</node>
+    <node x="2268.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForReadableInstant;bean_name=pastOrPresentValidatorForReadableInstant</node>
+    <node x="0.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForMonthDay;bean_name=pastOrPresentValidatorForMonthDay</node>
+    <node x="4366.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForHijrahDate;bean_name=pastOrPresentValidatorForHijrahDate</node>
+    <node x="3006.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForOffsetDateTime;bean_name=pastOrPresentValidatorForOffsetDateTime</node>
+    <node x="655.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForLocalTime;bean_name=pastOrPresentValidatorForLocalTime</node>
+    <node x="2365.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForOffsetTime;bean_name=pastOrPresentValidatorForOffsetTime</node>
+    <node x="3741.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForZonedDateTime;bean_name=pastOrPresentValidatorForZonedDateTime</node>
+    <node x="0.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForThaiBuddhistDate;bean_name=pastOrPresentValidatorForThaiBuddhistDate</node>
+    <node x="4108.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForReadablePartial;bean_name=pastOrPresentValidatorForReadablePartial</node>
+    <node x="307.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForInstant;bean_name=pastOrPresentValidatorForInstant</node>
+    <node x="1433.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForJapaneseDate;bean_name=pastOrPresentValidatorForJapaneseDate</node>
+    <node x="3823.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForDate;bean_name=pastOrPresentValidatorForDate</node>
+    <node x="360.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForLocalDateTime;bean_name=pastOrPresentValidatorForLocalDateTime</node>
+    <node x="931.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.AbstractEmailValidator;bean_name=abstractEmailValidator</node>
+    <node x="3861.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForMinguoDate;bean_name=pastOrPresentValidatorForMinguoDate</node>
+    <node x="577.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.pastorpresent.PastOrPresentValidatorForYear;bean_name=pastOrPresentValidatorForYear</node>
+    <node x="1419.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.NotBlankValidator;bean_name=notBlankValidator</node>
+    <node x="3790.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;bean_name=emailValidator</node>
+    <node x="3701.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.DecimalMinValidatorForCharSequence;bean_name=decimalMinValidatorForCharSequence</node>
+    <node x="2189.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator;bean_name=notNullValidator</node>
+    <node x="2374.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.PatternValidator;bean_name=patternValidator</node>
+    <node x="2292.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.MaxValidatorForCharSequence;bean_name=maxValidatorForCharSequence</node>
+    <node x="4443.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.AssertFalseValidator;bean_name=assertFalseValidator</node>
+    <node x="2857.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.MinValidatorForCharSequence;bean_name=minValidatorForCharSequence</node>
+    <node x="2029.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.DecimalMaxValidatorForCharSequence;bean_name=decimalMaxValidatorForCharSequence</node>
+    <node x="2654.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.DigitsValidatorForCharSequence;bean_name=digitsValidatorForCharSequence</node>
+    <node x="1262.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.DigitsValidatorForNumber;bean_name=digitsValidatorForNumber</node>
+    <node x="0.0" y="4384.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;bean_name=nullValidator</node>
+    <node x="208.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.AssertTrueValidator;bean_name=assertTrueValidator</node>
+    <node x="276.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfByte;bean_name=sizeValidatorForArraysOfByte</node>
+    <node x="4231.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForMap;bean_name=sizeValidatorForMap</node>
+    <node x="2708.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArray;bean_name=sizeValidatorForArray</node>
+    <node x="3137.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForCharSequence;bean_name=sizeValidatorForCharSequence</node>
+    <node x="3036.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfBoolean;bean_name=sizeValidatorForArraysOfBoolean</node>
+    <node x="2575.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfShort;bean_name=sizeValidatorForArraysOfShort</node>
+    <node x="1513.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForCollection;bean_name=sizeValidatorForCollection</node>
+    <node x="2743.0" y="4317.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.engine.constraintvalidation.LambdaBasedValidatorDescriptor.LambdaExecutor;bean_name=lambdaExecutor</node>
+    <node x="0.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfChar;bean_name=sizeValidatorForArraysOfChar</node>
+    <node x="1773.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfDouble;bean_name=sizeValidatorForArraysOfDouble</node>
+    <node x="3417.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfFloat;bean_name=sizeValidatorForArraysOfFloat</node>
+    <node x="3696.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfLong;bean_name=sizeValidatorForArraysOfLong</node>
+    <node x="1059.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.size.SizeValidatorForArraysOfInt;bean_name=sizeValidatorForArraysOfInt</node>
+    <node x="4179.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForLocalDate;bean_name=pastValidatorForLocalDate</node>
+    <node x="2008.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForJapaneseDate;bean_name=pastValidatorForJapaneseDate</node>
+    <node x="865.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForLocalDateTime;bean_name=pastValidatorForLocalDateTime</node>
+    <node x="3636.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForReadableInstant;bean_name=pastValidatorForReadableInstant</node>
+    <node x="2509.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForCalendar;bean_name=pastValidatorForCalendar</node>
+    <node x="3140.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForThaiBuddhistDate;bean_name=pastValidatorForThaiBuddhistDate</node>
+    <node x="1322.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForYearMonth;bean_name=pastValidatorForYearMonth</node>
+    <node x="2368.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForHijrahDate;bean_name=pastValidatorForHijrahDate</node>
+    <node x="2927.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForDate;bean_name=pastValidatorForDate</node>
+    <node x="3798.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForYear;bean_name=pastValidatorForYear</node>
+    <node x="2067.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForReadablePartial;bean_name=pastValidatorForReadablePartial</node>
+    <node x="532.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForOffsetTime;bean_name=pastValidatorForOffsetTime</node>
+    <node x="3666.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForMonthDay;bean_name=pastValidatorForMonthDay</node>
+    <node x="4434.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForLocalTime;bean_name=pastValidatorForLocalTime</node>
+    <node x="2188.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForMinguoDate;bean_name=pastValidatorForMinguoDate</node>
+    <node x="0.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForInstant;bean_name=pastValidatorForInstant</node>
+    <node x="0.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForOffsetDateTime;bean_name=pastValidatorForOffsetDateTime</node>
+    <node x="889.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.past.PastValidatorForZonedDateTime;bean_name=pastValidatorForZonedDateTime</node>
+    <node x="981.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForThaiBuddhistDate;bean_name=futureValidatorForThaiBuddhistDate</node>
+    <node x="2132.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForLocalDateTime;bean_name=futureValidatorForLocalDateTime</node>
+    <node x="3762.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForZonedDateTime;bean_name=futureValidatorForZonedDateTime</node>
+    <node x="2629.0" y="4116.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForCalendar;bean_name=futureValidatorForCalendar</node>
+    <node x="2460.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForMonthDay;bean_name=futureValidatorForMonthDay</node>
+    <node x="3975.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForOffsetTime;bean_name=futureValidatorForOffsetTime</node>
+    <node x="3451.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForOffsetDateTime;bean_name=futureValidatorForOffsetDateTime</node>
+    <node x="3934.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForJapaneseDate;bean_name=futureValidatorForJapaneseDate</node>
+    <node x="3272.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForLocalTime;bean_name=futureValidatorForLocalTime</node>
+    <node x="1895.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForReadableInstant;bean_name=futureValidatorForReadableInstant</node>
+    <node x="1153.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForMinguoDate;bean_name=futureValidatorForMinguoDate</node>
+    <node x="4253.0" y="3982.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForYearMonth;bean_name=futureValidatorForYearMonth</node>
+    <node x="3541.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForLocalDate;bean_name=futureValidatorForLocalDate</node>
+    <node x="2013.0" y="4183.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForInstant;bean_name=futureValidatorForInstant</node>
+    <node x="4380.0" y="3781.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForReadablePartial;bean_name=futureValidatorForReadablePartial</node>
+    <node x="551.0" y="4049.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForHijrahDate;bean_name=futureValidatorForHijrahDate</node>
+    <node x="235.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForDate;bean_name=futureValidatorForDate</node>
+    <node x="700.0" y="4250.667791005291">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.future.FutureValidatorForYear;bean_name=futureValidatorForYear</node>
+    <node x="3728.0" y="3446.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForReadableInstant;bean_name=futureOrPresentValidatorForReadableInstant</node>
+    <node x="4198.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfChar;bean_name=notEmptyValidatorForArraysOfChar</node>
+    <node x="0.0" y="3647.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForLocalTime;bean_name=futureOrPresentValidatorForLocalTime</node>
+    <node x="3560.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForInstant;bean_name=futureOrPresentValidatorForInstant</node>
+    <node x="2597.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfFloat;bean_name=notEmptyValidatorForArraysOfFloat</node>
+    <node x="2275.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForCharSequence;bean_name=notEmptyValidatorForCharSequence</node>
+    <node x="2637.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForJapaneseDate;bean_name=futureOrPresentValidatorForJapaneseDate</node>
+    <node x="2918.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfLong;bean_name=notEmptyValidatorForArraysOfLong</node>
+    <node x="2485.0" y="3580.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForHijrahDate;bean_name=futureOrPresentValidatorForHijrahDate</node>
+    <node x="382.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForZonedDateTime;bean_name=futureOrPresentValidatorForZonedDateTime</node>
+    <node x="2947.0" y="3915.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForCollection;bean_name=notEmptyValidatorForCollection</node>
+    <node x="1895.0" y="3513.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForLocalDateTime;bean_name=futureOrPresentValidatorForLocalDateTime</node>
+    <node x="1306.0" y="3714.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfShort;bean_name=notEmptyValidatorForArraysOfShort</node>
+    <node x="613.0" y="3848.6677910052913">module=archives-api;bean_class=org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfInt;bean_name=notEmptyValidatorForArraysOfInt</node>
+    <node x="1260.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;bean_name=cacheAutoConfiguration</node>
+    <node x="1534.0" y="2719.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration.CacheConfigurationImportSelector;bean_name=cacheConfigurationImportSelector</node>
+    <node x="1561.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers;bean_name=cacheManagerCustomizers</node>
+    <node x="1536.5" y="2595.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration.CacheManagerValidator;bean_name=cacheAutoConfigurationValidator</node>
+    <node x="1519.0" y="3513.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration.CacheManagerJpaDependencyConfiguration;bean_name=cacheManagerJpaDependencyConfiguration</node>
+    <node x="2448.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheProperties;bean_name=spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties</node>
+    <node x="1630.0" y="3714.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration;bean_name=webSocketServletAutoConfiguration</node>
+    <node x="3819.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration;bean_name=tomcatWebSocketConfiguration</node>
+    <node x="4146.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.websocket.servlet.TomcatWebSocketServletWebServerCustomizer;bean_name=websocketContainerCustomizer</node>
+    <node x="3810.0" y="4049.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;bean_name=thymeleafAutoConfiguration</node>
+    <node x="580.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafWebMvcConfiguration;bean_name=thymeleafWebMvcConfiguration</node>
+    <node x="909.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;bean_name=resourceUrlEncodingFilter</node>
+    <node x="3056.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafWebMvcConfiguration.ThymeleafViewResolverConfiguration;bean_name=thymeleafViewResolverConfiguration</node>
+    <node x="3419.0" y="3312.6677910052913">module=archives-api;bean_class=org.thymeleaf.spring5.view.ThymeleafViewResolver;bean_name=thymeleafViewResolver</node>
+    <node x="0.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.DefaultTemplateResolverConfiguration;bean_name=defaultTemplateResolverConfiguration</node>
+    <node x="374.0" y="3312.6677910052913">module=archives-api;bean_class=org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;bean_name=defaultTemplateResolver</node>
+    <node x="3565.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;bean_name=spring.thymeleaf-org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties</node>
+    <node x="3916.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;bean_name=jacksonAutoConfiguration</node>
+    <node x="4203.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.jackson.JsonComponentModule;bean_name=jsonComponentModule</node>
+    <node x="3688.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration;bean_name=jackson2ObjectMapperBuilderCustomizerConfiguration</node>
+    <node x="4176.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration.StandardJackson2ObjectMapperBuilderCustomizer;bean_name=standardJacksonObjectMapperBuilderCustomizer</node>
+    <node x="0.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonProperties;bean_name=spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties</node>
+    <node x="1228.0" y="3312.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.ParameterNamesModuleConfiguration;bean_name=parameterNamesModuleConfiguration</node>
+    <node x="1600.0" y="3312.6677910052913">module=archives-api;bean_class=com.fasterxml.jackson.module.paramnames.ParameterNamesModule;bean_name=parameterNamesModule</node>
+    <node x="1358.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration;bean_name=jacksonObjectMapperBuilderConfiguration</node>
+    <node x="1760.0" y="3178.6677910052913">module=archives-api;bean_class=org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;bean_name=jacksonObjectMapperBuilder</node>
+    <node x="3200.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration;bean_name=projectInfoAutoConfiguration</node>
+    <node x="3520.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.boot.info.GitProperties;bean_name=gitProperties</node>
+    <node x="3512.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.boot.info.BuildProperties;bean_name=buildProperties</node>
+    <node x="3197.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.info.ProjectInfoProperties;bean_name=spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties</node>
+    <node x="1297.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;bean_name=userDetailsServiceAutoConfiguration</node>
+    <node x="1659.0" y="3245.6677910052913">module=archives-api;bean_class=org.springframework.security.provisioning.InMemoryUserDetailsManager;bean_name=inMemoryUserDetailsManager</node>
+    <node x="0.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration;bean_name=persistenceExceptionTranslationAutoConfiguration</node>
+    <node x="461.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;bean_name=persistenceExceptionTranslationPostProcessor</node>
+    <node x="3688.0" y="93.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;bean_name=errorMvcAutoConfiguration</node>
+    <node x="4105.5" y="186.0">module=archives-api;bean_class=org.springframework.boot.web.servlet.error.DefaultErrorAttributes;bean_name=errorAttributes</node>
+    <node x="4088.0" y="124.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;bean_name=basicErrorController</node>
+    <node x="4085.0" y="62.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.ErrorPageCustomizer;bean_name=errorPageCustomizer</node>
+    <node x="3986.0" y="0.0">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.PreserveErrorControllerTargetClassPostProcessor;bean_name=preserveErrorControllerTargetClassPostProcessor</node>
+    <node x="0.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration;bean_name=whitelabelErrorViewConfiguration</node>
+    <node x="409.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.web.servlet.View;bean_name=error</node>
+    <node x="1132.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;bean_name=webMvcAutoConfiguration</node>
+    <node x="1430.0" y="2977.6677910052913">module=archives-api;bean_class=org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;bean_name=hiddenHttpMethodFilter</node>
+    <node x="1424.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.boot.web.servlet.filter.OrderedHttpPutFormContentFilter;bean_name=httpPutFormContentFilter</node>
+    <node x="1675.0" y="2946.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;bean_name=multipartAutoConfiguration</node>
+    <node x="1975.0" y="2977.6677910052913">module=archives-api;bean_class=javax.servlet.MultipartConfigElement;bean_name=multipartConfigElement</node>
+    <node x="1997.0" y="2915.6677910052913">module=archives-api;bean_class=org.springframework.web.multipart.support.StandardServletMultipartResolver;bean_name=multipartResolver</node>
+    <node x="3293.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;bean_name=spring.servlet.multipart-org.springframework.boot.autoconfigure.web.servlet.MultipartProperties</node>
+    <node x="726.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;bean_name=propertyPlaceholderAutoConfiguration</node>
+    <node x="1102.0" y="3111.6677910052913">module=archives-api;bean_class=org.springframework.context.support.PropertySourcesPlaceholderConfigurer;bean_name=propertySourcesPlaceholderConfigurer</node>
+    <node x="2326.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;bean_name=dataSourceAutoConfiguration</node>
+    <node x="2639.0" y="2688.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration;bean_name=dataSourcePoolMetadataProvidersConfiguration</node>
+    <node x="2677.5" y="2626.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration;bean_name=dataSourceInitializationConfiguration</node>
+    <node x="3081.0" y="2657.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker;bean_name=dataSourceInitializerInvoker</node>
+    <node x="3148.0" y="2595.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration.Registrar;bean_name=registrar</node>
+    <node x="1697.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration;bean_name=hikariPoolDataSourceMetadataProviderConfiguration</node>
+    <node x="2173.0" y="3044.6677910052913">module=archives-api;bean_class=org.springframework.boot.jdbc.metadata.DataSourcePoolMetadataProvider;bean_name=hikariPoolDataSourceMetadataProvider</node>
+    <node x="3479.0" y="2817.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration;bean_name=httpEncodingAutoConfiguration</node>
+    <node x="3845.5" y="2848.6677910052913">module=archives-api;bean_class=org.springframework.web.filter.CharacterEncodingFilter;bean_name=characterEncodingFilter</node>
+    <node x="3809.0" y="2786.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration.LocaleCharsetMappingsCustomizer;bean_name=localeCharsetMappingsCustomizer</node>
+    <node x="2756.0" y="4183.667791005291">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.codec.CodecsAutoConfiguration;bean_name=codecsAutoConfiguration</node>
+    <node x="3380.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.codec.CodecsAutoConfiguration.JacksonCodecConfiguration;bean_name=jacksonCodecConfiguration</node>
+    <node x="3675.0" y="3379.6677910052913">module=archives-api;bean_class=org.springframework.boot.web.codec.CodecCustomizer;bean_name=jacksonCodecCustomizer</node>
+    <node x="3239.0" y="3714.6677910052913">module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;bean_name=dispatcherServletAutoConfiguration</node>
+    <node x="159.0" y="4384.667791005291">module=archives-api;bean_class=org.springframework.core.env.Environment;bean_name=environment</node>
+    <node x="2001.0" y="4317.667791005291">module=archives-api;bean_class=org.springframework.core.env.PropertyResolver;bean_name=propertyResolver</node>
+    <node x="1615.0" y="4317.667791005291">module=archives-api;bean_class=org.springframework.core.convert.ConversionService;bean_name=conversionService</node>
+    <node x="3279.0" y="4317.667791005291">module=archives-api;bean_class=javax.servlet.ServletContext;bean_name=servletContext</node>
+    <node x="4289.0" y="4317.667791005291">module=archives-api;bean_class=javax.servlet.ServletConfig;bean_name=servletConfig</node>
+    <node x="474.0" y="4384.667791005291">module=archives-api;bean_class=javax.servlet.http.HttpSession;bean_name=httpSession</node>
+    <node x="824.0" y="4317.667791005291">module=archives-api;bean_class=javax.servlet.http.HttpServletRequest;bean_name=httpServletRequest</node>
+    <node x="4079.0" y="4049.6677910052913">module=archives-api;bean_class=org.springframework.boot.ApplicationArguments;bean_name=springApplicationArguments</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration.DefaultConfigurerAdapter;bean_name=defaultConfigurerAdapter" target="module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor">
+      <point x="102.5" y="4.400000000000091" />
+      <point x="268.0" y="1435.9" />
+      <point x="348.0" y="1504.5" />
+      <point x="-83.0" y="5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration" target="module=archives-api;bean_class=org.springframework.transaction.PlatformTransactionManager;bean_name=transactionManager">
+      <point x="106.5" y="8.25" />
+      <point x="3417.0" y="197.0" />
+      <point x="-82.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.util.PathMatcher;bean_name=mvcPathMatcher">
+      <point x="113.0" y="4.190476190476147" />
+      <point x="710.0" y="635.1904761904761" />
+      <point x="790.0" y="879.0" />
+      <point x="-70.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.web.context.WebApplicationContext;bean_name=webApplicationContext">
+      <point x="-111.5" y="-7.333333333333371" />
+      <point x="358.0" y="1664.3344576719574" />
+      <point x="358.0" y="1442.5" />
+      <point x="-93.5" y="5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService">
+      <point x="-103.0" y="-7.333333333333371" />
+      <point x="358.0" y="2532.3344576719574" />
+      <point x="358.0" y="2423.0011243386243" />
+      <point x="-52.5" y="7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.data.web.config.SpringDataWebConfiguration;bean_name=springDataWebConfiguration" target="module=archives-api;bean_class=org.springframework.data.web.PageableHandlerMethodArgumentResolver;bean_name=pageableResolver">
+      <point x="114.5" y="5.5" />
+      <point x="-73.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;bean_name=cacheAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration.CacheConfigurationImportSelector;bean_name=cacheConfigurationImportSelector">
+      <point x="97.0" y="7.333333333333485" />
+      <point x="-131.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="89.5" y="-4.399999999999977" />
+      <point x="268.0" y="2083.6" />
+      <point x="348.0" y="1919.6677910052908" />
+      <point x="-45.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig">
+      <point x="89.5" y="-10.266666666666652" />
+      <point x="268.0" y="2077.7333333333336" />
+      <point x="348.0" y="1372.25" />
+      <point x="-77.0" y="-2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;bean_name=authenticationManagerBuilder">
+      <point x="111.5" y="-4.399999999999977" />
+      <point x="710.0" y="1667.2677910052907" />
+      <point x="790.0" y="1592.0" />
+      <point x="-118.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;bean_name=jacksonAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.jackson.JsonComponentModule;bean_name=jsonComponentModule">
+      <point x="103.5" y="-0.0" />
+      <point x="-93.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;bean_name=errorMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.servlet.error.DefaultErrorAttributes;bean_name=errorAttributes">
+      <point x="109.0" y="8.25" />
+      <point x="3986.0" y="197.0" />
+      <point x="-65.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.aboutArchivesController;bean_name=aboutArchivesController">
+      <point x="89.5" y="-0.0" />
+      <point x="268.0" y="2088.0" />
+      <point x="348.0" y="2105.667791005291" />
+      <point x="-97.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration.DefaultConfigurerAdapter;bean_name=defaultConfigurerAdapter" target="module=archives-api;bean_class=org.springframework.web.context.WebApplicationContext;bean_name=webApplicationContext">
+      <point x="102.5" y="-0.0" />
+      <point x="-93.5" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration;bean_name=dataSourceInitializationConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker;bean_name=dataSourceInitializerInvoker">
+      <point x="142.5" y="5.5" />
+      <point x="3001.0" y="2643.1677910052913" />
+      <point x="-109.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.data.web.config.SpringDataWebConfiguration;bean_name=springDataWebConfiguration" target="module=archives-api;bean_class=org.springframework.data.web.SortHandlerMethodArgumentResolver;bean_name=sortResolver">
+      <point x="114.5" y="-5.5" />
+      <point x="2521.0" y="2926.6677910052913" />
+      <point x="-55.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;bean_name=jmxAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.ParentAwareNamingStrategy;bean_name=objectNamingStrategy">
+      <point x="90.0" y="-0.0" />
+      <point x="-89.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.Hikari;bean_name=hikari" target="module=archives-api;bean_class=com.zaxxer.hikari.HikariDataSource;bean_name=dataSource">
+      <point x="31.5" y="-0.0" />
+      <point x="-51.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletConfiguration;bean_name=dispatcherServletConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.DispatcherServlet;bean_name=dispatcherServlet">
+      <point x="121.0" y="5.5" />
+      <point x="-72.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;bean_name=propertyPlaceholderAutoConfiguration" target="module=archives-api;bean_class=org.springframework.context.support.PropertySourcesPlaceholderConfigurer;bean_name=propertySourcesPlaceholderConfigurer">
+      <point x="148.0" y="-0.0" />
+      <point x="-147.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration;bean_name=jacksonObjectMapperBuilderConfiguration" target="module=archives-api;bean_class=org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;bean_name=jacksonObjectMapperBuilder">
+      <point x="161.0" y="-0.0" />
+      <point x="-112.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JndiJtaConfiguration;bean_name=jndiJtaConfiguration" target="module=archives-api;bean_class=org.springframework.transaction.jta.JtaTransactionManager;bean_name=transactionManager">
+      <point x="84.5" y="-0.0" />
+      <point x="-82.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;bean_name=XADataSourceAutoConfiguration" target="module=archives-api;bean_class=javax.sql.DataSource;bean_name=dataSource">
+      <point x="127.0" y="5.5" />
+      <point x="334.0" y="2859.6677910052913" />
+      <point x="-51.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration;bean_name=dataSourceInitializationConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration.Registrar;bean_name=registrar">
+      <point x="142.5" y="-5.5" />
+      <point x="3001.0" y="2632.1677910052913" />
+      <point x="3081.0" y="2606.6677910052913" />
+      <point x="-42.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;bean_name=webMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;bean_name=hiddenHttpMethodFilter">
+      <point x="106.0" y="5.5" />
+      <point x="-97.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration;bean_name=projectInfoAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.info.BuildProperties;bean_name=buildProperties">
+      <point x="116.0" y="-5.5" />
+      <point x="-65.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafWebMvcConfiguration.ThymeleafViewResolverConfiguration;bean_name=thymeleafViewResolverConfiguration" target="module=archives-api;bean_class=org.thymeleaf.spring5.view.ThymeleafViewResolver;bean_name=thymeleafViewResolver">
+      <point x="141.5" y="-0.0" />
+      <point x="-93.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.validation.Validator;bean_name=mvcValidator">
+      <point x="113.0" y="3.1428571428571104" />
+      <point x="710.0" y="634.1428571428571" />
+      <point x="790.0" y="817.0" />
+      <point x="-58.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;bean_name=securityAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration;bean_name=webSecurityEnablerConfiguration">
+      <point x="104.5" y="-0.0" />
+      <point x="-129.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration;bean_name=whitelabelErrorViewConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.view.BeanNameViewResolver;bean_name=beanNameViewResolver">
+      <point x="131.5" y="-5.5" />
+      <point x="-95.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;bean_name=simpleControllerHandlerAdapter">
+      <point x="113.0" y="8.380952380952294" />
+      <point x="710.0" y="639.3809523809523" />
+      <point x="790.0" y="1127.0" />
+      <point x="-125.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.NamedParameterJdbcTemplateConfiguration;bean_name=namedParameterJdbcTemplateConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.JdbcTemplateConfiguration;bean_name=jdbcTemplateConfiguration">
+      <point x="168.5" y="5.5" />
+      <point x="1426.0" y="2859.6677910052913" />
+      <point x="-107.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.format.support.FormattingConversionService;bean_name=mvcConversionService">
+      <point x="113.0" y="10.476190476190368" />
+      <point x="710.0" y="641.4761904761904" />
+      <point x="790.0" y="1251.0" />
+      <point x="-89.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;bean_name=restTemplateAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.client.RestTemplateBuilder;bean_name=restTemplateBuilder">
+      <point x="123.0" y="-0.0" />
+      <point x="-82.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletConfiguration;bean_name=dispatcherServletConfiguration" target="module=archives-api;bean_class=org.springframework.web.multipart.MultipartResolver;bean_name=multipartResolver">
+      <point x="121.0" y="-5.5" />
+      <point x="-74.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=org.springframework.security.access.expression.SecurityExpressionHandler;bean_name=webSecurityExpressionHandler">
+      <point x="102.5" y="-4.400000000000091" />
+      <point x="1206.0" y="1458.1" />
+      <point x="1286.0" y="1400.5" />
+      <point x="-119.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=org.springframework.security.context.DelegatingApplicationListener;bean_name=delegatingApplicationListener">
+      <point x="102.5" y="-8.799999999999955" />
+      <point x="1206.0" y="1453.7" />
+      <point x="1286.0" y="1338.5" />
+      <point x="-116.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping;bean_name=welcomePageHandlerMapping">
+      <point x="134.0" y="3.1428571428573377" />
+      <point x="348.0" y="507.0" />
+      <point x="-117.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="89.5" y="-2.933333333333337" />
+      <point x="268.0" y="2085.0666666666666" />
+      <point x="348.0" y="1981.6677910052908" />
+      <point x="-63.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter;bean_name=httpRequestHandlerAdapter">
+      <point x="113.0" y="-6.285714285714221" />
+      <point x="710.0" y="624.7142857142858" />
+      <point x="790.0" y="259.0" />
+      <point x="-110.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;bean_name=servletWebServerFactoryAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration.EmbeddedTomcat;bean_name=embeddedTomcat">
+      <point x="164.0" y="2.75" />
+      <point x="2100.0" y="135.0" />
+      <point x="-74.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration;bean_name=dispatcherServletRegistrationConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletConfiguration;bean_name=dispatcherServletConfiguration">
+      <point x="163.5" y="5.5" />
+      <point x="-121.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration;bean_name=objectPostProcessorConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor">
+      <point x="-131.5" y="-5.5" />
+      <point x="790.0" y="1524.5" />
+      <point x="710.0" y="1504.5" />
+      <point x="83.0" y="5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor">
+      <point x="-77.0" y="8.25" />
+      <point x="368.0" y="1383.25" />
+      <point x="368.0" y="1493.5" />
+      <point x="-83.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="-78.5" y="2.75" />
+      <point x="428.0" y="1798.4177910052908" />
+      <point x="428.0" y="1974.3344576719576" />
+      <point x="-63.0" y="-7.333333333333314" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration;bean_name=messageSourceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.context.MessageSource;bean_name=messageSource">
+      <point x="131.0" y="-5.5" />
+      <point x="4459.0" y="2797.6677910052913" />
+      <point x="-65.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.web.context.WebApplicationContext;bean_name=webApplicationContext">
+      <point x="0.0" y="11.0" />
+      <point x="0.0" y="-11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.web.servlet.view.InternalResourceViewResolver;bean_name=defaultViewResolver">
+      <point x="134.0" y="-6.285714285714221" />
+      <point x="348.0" y="321.0" />
+      <point x="-83.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;bean_name=jpaRepositoriesAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfigureRegistrar;bean_name=jpaRepositoriesAutoConfigureRegistrar">
+      <point x="131.0" y="-0.0" />
+      <point x="-148.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration.DataSourceTransactionManagerConfiguration;bean_name=dataSourceTransactionManagerConfiguration" target="module=archives-api;bean_class=org.springframework.jdbc.datasource.DataSourceTransactionManager;bean_name=transactionManager">
+      <point x="170.5" y="-0.0" />
+      <point x="-82.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.accept.ContentNegotiationManager;bean_name=mvcContentNegotiationManager">
+      <point x="-113.0" y="5.5" />
+      <point x="358.0" y="636.5" />
+      <point x="358.0" y="988.5677910052908" />
+      <point x="-126.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration.TomcatWebServerFactoryCustomizerConfiguration;bean_name=tomcatWebServerFactoryCustomizerConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.embedded.TomcatWebServerFactoryCustomizer;bean_name=tomcatWebServerFactoryCustomizer">
+      <point x="187.0" y="-0.0" />
+      <point x="-138.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="89.5" y="1.466666666666697" />
+      <point x="268.0" y="2089.4666666666667" />
+      <point x="348.0" y="2164.917791005291" />
+      <point x="-45.5" y="-2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="-52.5" y="-7.333333333333371" />
+      <point x="398.0" y="2408.3344576719574" />
+      <point x="398.0" y="2170.417791005291" />
+      <point x="-45.5" y="2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.ParameterNamesModuleConfiguration;bean_name=parameterNamesModuleConfiguration" target="module=archives-api;bean_class=com.fasterxml.jackson.module.paramnames.ParameterNamesModule;bean_name=parameterNamesModule">
+      <point x="146.0" y="-0.0" />
+      <point x="-97.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration;bean_name=whitelabelErrorViewConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.View;bean_name=error">
+      <point x="131.5" y="5.5" />
+      <point x="343.0" y="2988.6677910052913" />
+      <point x="-29.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer;bean_name=initializeAuthenticationProviderBeanManagerConfigurer">
+      <point x="111.5" y="8.799999999999955" />
+      <point x="710.0" y="1680.4677910052908" />
+      <point x="-208.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.web.filter.RequestContextFilter;bean_name=requestContextFilter">
+      <point x="134.0" y="-9.428571428571558" />
+      <point x="348.0" y="259.0" />
+      <point x="-84.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController">
+      <point x="89.5" y="2.933333333333337" />
+      <point x="268.0" y="2090.9333333333334" />
+      <point x="348.0" y="2229.667791005291" />
+      <point x="-62.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafDefaultConfiguration;bean_name=thymeleafDefaultConfiguration" target="module=archives-api;bean_class=org.thymeleaf.spring5.SpringTemplateEngine;bean_name=templateEngine">
+      <point x="121.0" y="-0.0" />
+      <point x="-67.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.SpringWebMvcImportSelector;bean_name=springWebMvcImportSelector">
+      <point x="77.0" y="-7.3333333333332575" />
+      <point x="710.0" y="1367.6666666666667" />
+      <point x="790.0" y="1313.0" />
+      <point x="-115.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.DefaultTemplateResolverConfiguration;bean_name=defaultTemplateResolverConfiguration" target="module=archives-api;bean_class=org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;bean_name=defaultTemplateResolver">
+      <point x="147.0" y="-0.0" />
+      <point x="-98.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=resourceHandlerMapping">
+      <point x="113.0" y="6.285714285714221" />
+      <point x="710.0" y="637.2857142857142" />
+      <point x="790.0" y="1003.0" />
+      <point x="-100.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration.TransactionTemplateConfiguration;bean_name=transactionTemplateConfiguration" target="module=archives-api;bean_class=org.springframework.transaction.support.TransactionTemplate;bean_name=transactionTemplate">
+      <point x="132.0" y="-0.0" />
+      <point x="-83.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.web.accept.ContentNegotiationManager;bean_name=mvcContentNegotiationManager">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter.FaviconConfiguration;bean_name=faviconConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;bean_name=faviconHandlerMapping">
+      <point x="86.0" y="5.5" />
+      <point x="-95.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.AutowiredWebSecurityConfigurersIgnoreParents;bean_name=autowiredWebSecurityConfigurersIgnoreParents">
+      <point x="102.5" y="-0.0" />
+      <point x="-180.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="-52.0" y="8.800000000000011" />
+      <point x="378.0" y="2300.4677910052906" />
+      <point x="378.0" y="2474.9177910052913" />
+      <point x="-70.0" y="-2.75" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService" target="module=archives-api;bean_class=BristolArchives.repositories.CollectionRepo;bean_name=collectionRepo">
+      <point x="-70.0" y="2.75" />
+      <point x="368.0" y="2480.4177910052913" />
+      <point x="368.0" y="1989.001124338624" />
+      <point x="-63.0" y="7.333333333333314" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp">
+      <point x="-89.5" y="-0.0" />
+      <point x="24.5" y="2088.0" />
+      <point x="24.5" y="2119.0" />
+      <point x="134.0" y="2119.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration;bean_name=projectInfoAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.info.GitProperties;bean_name=gitProperties">
+      <point x="116.0" y="5.5" />
+      <point x="-57.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration" target="module=archives-api;bean_class=org.springframework.orm.jpa.JpaVendorAdapter;bean_name=jpaVendorAdapter">
+      <point x="106.5" y="2.75" />
+      <point x="3417.0" y="135.0" />
+      <point x="-76.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=org.springframework.security.web.access.WebInvocationPrivilegeEvaluator;bean_name=privilegeEvaluator">
+      <point x="102.5" y="8.799999999999955" />
+      <point x="1206.0" y="1471.3" />
+      <point x="1286.0" y="1586.5" />
+      <point x="-75.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration;bean_name=jtaAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.jta.JndiJtaConfiguration;bean_name=jndiJtaConfiguration">
+      <point x="86.5" y="-0.0" />
+      <point x="-84.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.JpaWebConfiguration.JpaWebMvcConfiguration;bean_name=jpaWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;bean_name=openEntityManagerInViewInterceptor">
+      <point x="100.5" y="-0.0" />
+      <point x="-143.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;bean_name=userDetailsServiceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.security.provisioning.InMemoryUserDetailsManager;bean_name=inMemoryUserDetailsManager">
+      <point x="141.0" y="-0.0" />
+      <point x="-116.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.web.servlet.view.BeanNameViewResolver;bean_name=beanNameViewResolver">
+      <point x="134.0" y="6.285714285714221" />
+      <point x="348.0" y="569.0" />
+      <point x="-95.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;bean_name=springDataWebAutoConfiguration" target="module=archives-api;bean_class=org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer;bean_name=pageableCustomizer">
+      <point x="131.5" y="5.5" />
+      <point x="-82.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration;bean_name=objectPostProcessorConfiguration">
+      <point x="111.5" y="-8.799999999999955" />
+      <point x="710.0" y="1662.8677910052909" />
+      <point x="790.0" y="1535.5" />
+      <point x="-131.5" y="5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;bean_name=requestMappingHandlerMapping">
+      <point x="113.0" y="-10.476190476190368" />
+      <point x="710.0" y="620.5238095238096" />
+      <point x="790.0" y="11.0" />
+      <point x="-127.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;bean_name=servletWebServerFactoryAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.TomcatServletWebServerFactoryCustomizer;bean_name=tomcatServletWebServerFactoryCustomizer">
+      <point x="164.0" y="-8.25" />
+      <point x="-162.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration">
+      <point x="77.0" y="7.3333333333332575" />
+      <point x="710.0" y="1382.3333333333333" />
+      <point x="790.0" y="1457.0" />
+      <point x="-102.5" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.FileUploadController;bean_name=fileUploadController">
+      <point x="89.5" y="-5.866666666666674" />
+      <point x="268.0" y="2082.133333333333" />
+      <point x="348.0" y="1857.6677910052908" />
+      <point x="-82.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;bean_name=enableGlobalAuthenticationAutowiredConfigurer">
+      <point x="111.5" y="4.399999999999977" />
+      <point x="710.0" y="1676.067791005291" />
+      <point x="790.0" y="1716.0" />
+      <point x="-183.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.ViewResolver;bean_name=mvcViewResolver">
+      <point x="113.0" y="-1.0476190476190368" />
+      <point x="710.0" y="629.952380952381" />
+      <point x="790.0" y="569.0" />
+      <point x="-72.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="-52.0" y="-4.399999999999977" />
+      <point x="408.0" y="2287.2677910052907" />
+      <point x="408.0" y="1927.0011243386243" />
+      <point x="-45.0" y="7.333333333333343" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration;bean_name=messageSourceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.context.MessageSourceProperties;bean_name=messageSourceProperties">
+      <point x="131.0" y="5.5" />
+      <point x="-101.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.codec.CodecsAutoConfiguration.JacksonCodecConfiguration;bean_name=jacksonCodecConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.codec.CodecCustomizer;bean_name=jacksonCodecCustomizer">
+      <point x="107.5" y="-0.0" />
+      <point x="-98.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController">
+      <point x="89.5" y="5.866666666666674" />
+      <point x="268.0" y="2093.866666666667" />
+      <point x="348.0" y="2348.1677910052913" />
+      <point x="-80.5" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;bean_name=securityFilterAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean;bean_name=securityFilterChainRegistration">
+      <point x="122.5" y="-0.0" />
+      <point x="-119.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;bean_name=servletWebServerFactoryAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar;bean_name=beanPostProcessorsRegistrar">
+      <point x="164.0" y="8.25" />
+      <point x="2100.0" y="197.0" />
+      <point x="-113.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.ItemController;bean_name=itemController" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="0.0" y="11.0" />
+      <point x="0.0" y="-11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;bean_name=errorMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.PreserveErrorControllerTargetClassPostProcessor;bean_name=preserveErrorControllerTargetClassPostProcessor">
+      <point x="109.0" y="-8.25" />
+      <point x="-184.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration;bean_name=servletWebServerFactoryAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryCustomizer;bean_name=servletWebServerFactoryCustomizer">
+      <point x="164.0" y="-2.75" />
+      <point x="2100.0" y="73.0" />
+      <point x="-137.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration.DefaultConfigurerAdapter;bean_name=defaultConfigurerAdapter" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration">
+      <point x="102.5" y="8.799999999999955" />
+      <point x="268.0" y="1440.3" />
+      <point x="348.0" y="1679.0011243386243" />
+      <point x="-111.5" y="7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;bean_name=securityAutoConfiguration" target="module=archives-api;bean_class=org.springframework.security.authentication.DefaultAuthenticationEventPublisher;bean_name=authenticationEventPublisher">
+      <point x="104.5" y="-7.333333333333485" />
+      <point x="930.0" y="2606.6677910052913" />
+      <point x="-115.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController">
+      <point x="89.5" y="-8.800000000000011" />
+      <point x="268.0" y="2079.2" />
+      <point x="348.0" y="1733.6677910052908" />
+      <point x="-112.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration;bean_name=tomcatWebSocketConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.websocket.servlet.TomcatWebSocketServletWebServerCustomizer;bean_name=websocketContainerCustomizer">
+      <point x="123.5" y="-0.0" />
+      <point x="-122.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.util.UrlPathHelper;bean_name=mvcUrlPathHelper">
+      <point x="113.0" y="-5.238095238095184" />
+      <point x="710.0" y="625.7619047619048" />
+      <point x="790.0" y="321.0" />
+      <point x="-75.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.PooledDataSourceConfiguration;bean_name=pooledDataSourceConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration;bean_name=dataSourceJmxConfiguration">
+      <point x="124.5" y="-5.5" />
+      <point x="-114.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;bean_name=dataSourceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceInitializationConfiguration;bean_name=dataSourceInitializationConfiguration">
+      <point x="116.5" y="-5.5" />
+      <point x="2639.0" y="2637.6677910052913" />
+      <point x="-142.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.security.core.userdetails.UserDetailsService;bean_name=userDetailsService">
+      <point x="77.0" y="-0.0" />
+      <point x="-75.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceUrlProvider;bean_name=mvcResourceUrlProvider">
+      <point x="113.0" y="2.0952380952380736" />
+      <point x="710.0" y="633.0952380952381" />
+      <point x="790.0" y="755.0" />
+      <point x="-97.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;bean_name=dataSourceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration;bean_name=dataSourcePoolMetadataProvidersConfiguration">
+      <point x="116.5" y="5.5" />
+      <point x="-181.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=defaultServletHandlerMapping">
+      <point x="113.0" y="-8.380952380952294" />
+      <point x="710.0" y="622.6190476190477" />
+      <point x="790.0" y="135.0" />
+      <point x="-119.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.CollectionController;bean_name=collectionController" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="-80.5" y="5.5" />
+      <point x="388.0" y="2359.1677910052913" />
+      <point x="388.0" y="2469.4177910052913" />
+      <point x="-70.0" y="-8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;bean_name=validationAutoConfiguration" target="module=archives-api;bean_class=org.springframework.validation.beanvalidation.MethodValidationPostProcessor;bean_name=methodValidationPostProcessor">
+      <point x="112.0" y="-7.333333333333485" />
+      <point x="304.0" y="2606.6677910052913" />
+      <point x="-124.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;bean_name=httpMessageConvertersAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConverters;bean_name=messageConverters">
+      <point x="160.5" y="-5.5" />
+      <point x="2309.0" y="2797.6677910052913" />
+      <point x="-80.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;bean_name=springDataWebAutoConfiguration" target="module=archives-api;bean_class=org.springframework.data.web.config.SortHandlerMethodArgumentResolverCustomizer;bean_name=sortCustomizer">
+      <point x="131.5" y="-5.5" />
+      <point x="922.0" y="2926.6677910052913" />
+      <point x="-65.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration">
+      <point x="134.0" y="9.428571428571558" />
+      <point x="348.0" y="625.5" />
+      <point x="-113.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.HandlerExceptionResolver;bean_name=handlerExceptionResolver">
+      <point x="113.0" y="-4.190476190476147" />
+      <point x="710.0" y="626.8095238095239" />
+      <point x="790.0" y="383.0" />
+      <point x="-102.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration;bean_name=transactionAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;bean_name=platformTransactionManagerCustomizers">
+      <point x="117.0" y="-0.0" />
+      <point x="-156.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.NamedParameterJdbcTemplateConfiguration;bean_name=namedParameterJdbcTemplateConfiguration" target="module=archives-api;bean_class=org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;bean_name=namedParameterJdbcTemplate">
+      <point x="168.5" y="-5.5" />
+      <point x="-120.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="89.5" y="-7.333333333333314" />
+      <point x="268.0" y="2080.666666666667" />
+      <point x="348.0" y="1787.4177910052908" />
+      <point x="-78.5" y="-8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter.FaviconConfiguration;bean_name=faviconConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceHttpRequestHandler;bean_name=faviconRequestHandler">
+      <point x="86.0" y="-5.5" />
+      <point x="-93.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.ItemRepo;bean_name=itemRepo">
+      <point x="-78.5" y="8.25" />
+      <point x="438.0" y="1803.9177910052908" />
+      <point x="438.0" y="1912.3344576719574" />
+      <point x="-45.0" y="-7.333333333333343" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;bean_name=requestMappingHandlerAdapter">
+      <point x="113.0" y="7.3333333333332575" />
+      <point x="710.0" y="638.3333333333333" />
+      <point x="790.0" y="1065.0" />
+      <point x="-124.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="-103.0" y="-0.0" />
+      <point x="348.0" y="2539.6677910052913" />
+      <point x="348.0" y="2296.067791005291" />
+      <point x="-52.0" y="4.399999999999977" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.CollectionService;bean_name=collectionService">
+      <point x="89.5" y="8.800000000000011" />
+      <point x="268.0" y="2096.8" />
+      <point x="348.0" y="2485.9177910052913" />
+      <point x="-70.0" y="8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityRequestMatcherProviderAutoConfiguration;bean_name=securityRequestMatcherProviderAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.RequestMatcherProvider;bean_name=requestMatcherProvider">
+      <point x="190.5" y="-0.0" />
+      <point x="-96.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.handler.HandlerMappingIntrospector;bean_name=mvcHandlerMappingIntrospector">
+      <point x="113.0" y="9.428571428571331" />
+      <point x="710.0" y="640.4285714285713" />
+      <point x="790.0" y="1189.0" />
+      <point x="-127.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.DefaultErrorViewResolverConfiguration;bean_name=defaultErrorViewResolverConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.DefaultErrorViewResolver;bean_name=conventionErrorViewResolver">
+      <point x="150.0" y="-0.0" />
+      <point x="-115.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration;bean_name=stringHttpMessageConverterConfiguration" target="module=archives-api;bean_class=org.springframework.http.converter.StringHttpMessageConverter;bean_name=stringHttpMessageConverter">
+      <point x="161.5" y="-0.0" />
+      <point x="-113.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration;bean_name=mappingJackson2HttpMessageConverterConfiguration" target="module=archives-api;bean_class=org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;bean_name=mappingJackson2HttpMessageConverter">
+      <point x="203.5" y="-0.0" />
+      <point x="-155.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration.JdbcTemplateConfiguration;bean_name=jdbcTemplateConfiguration" target="module=archives-api;bean_class=org.springframework.jdbc.core.JdbcTemplate;bean_name=jdbcTemplate">
+      <point x="107.0" y="-0.0" />
+      <point x="-58.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration;bean_name=hikariPoolDataSourceMetadataProviderConfiguration" target="module=archives-api;bean_class=org.springframework.boot.jdbc.metadata.DataSourcePoolMetadataProvider;bean_name=hikariPoolDataSourceMetadataProvider">
+      <point x="198.0" y="-0.0" />
+      <point x="-149.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration" target="module=archives-api;bean_class=org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;bean_name=entityManagerFactory">
+      <point x="106.5" y="-8.25" />
+      <point x="3417.0" y="11.0" />
+      <point x="-88.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService">
+      <point x="89.5" y="4.399999999999977" />
+      <point x="268.0" y="2092.4" />
+      <point x="348.0" y="2291.667791005291" />
+      <point x="-52.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.ThymeleafWebMvcConfiguration;bean_name=thymeleafWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;bean_name=resourceUrlEncodingFilter">
+      <point x="124.5" y="-0.0" />
+      <point x="-102.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;bean_name=hibernateJpaAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration">
+      <point x="123.5" y="-0.0" />
+      <point x="-106.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;bean_name=multipartAutoConfiguration" target="module=archives-api;bean_class=javax.servlet.MultipartConfigElement;bean_name=multipartConfigElement">
+      <point x="110.0" y="5.5" />
+      <point x="-96.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;bean_name=multipartAutoConfiguration" target="module=archives-api;bean_class=org.springframework.web.multipart.support.StandardServletMultipartResolver;bean_name=multipartResolver">
+      <point x="110.0" y="-5.5" />
+      <point x="1975.0" y="2926.6677910052913" />
+      <point x="-74.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration;bean_name=httpEncodingAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration.LocaleCharsetMappingsCustomizer;bean_name=localeCharsetMappingsCustomizer">
+      <point x="125.0" y="-5.5" />
+      <point x="-131.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration.EmbeddedTomcat;bean_name=embeddedTomcat" target="module=archives-api;bean_class=org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;bean_name=tomcatServletWebServerFactory">
+      <point x="74.0" y="-0.0" />
+      <point x="-123.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.method.support.CompositeUriComponentsContributor;bean_name=mvcUriComponentsContributor">
+      <point x="113.0" y="5.238095238095184" />
+      <point x="710.0" y="636.2380952380952" />
+      <point x="790.0" y="941.0" />
+      <point x="-121.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.JacksonObjectMapperConfiguration;bean_name=jacksonObjectMapperConfiguration" target="module=archives-api;bean_class=com.fasterxml.jackson.databind.ObjectMapper;bean_name=jacksonObjectMapper">
+      <point x="136.0" y="-0.0" />
+      <point x="-87.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.AdvancedSearchController;bean_name=advancedSearchController">
+      <point x="89.5" y="10.266666666666652" />
+      <point x="268.0" y="2098.2666666666664" />
+      <point x="348.0" y="2547.0011243386243" />
+      <point x="-103.0" y="7.333333333333371" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.admin.WebSecurityConfig;bean_name=webSecurityConfig" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration">
+      <point x="-77.0" y="2.75" />
+      <point x="348.0" y="1377.75" />
+      <point x="348.0" y="1671.6677910052908" />
+      <point x="-111.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.services.DeptService;bean_name=deptService">
+      <point x="89.5" y="7.333333333333314" />
+      <point x="268.0" y="2095.333333333333" />
+      <point x="348.0" y="2415.6677910052913" />
+      <point x="-52.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor">
+      <point x="-102.5" y="5.5" />
+      <point x="790.0" y="1468.0" />
+      <point x="710.0" y="1493.5" />
+      <point x="83.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.web.servlet.view.ContentNegotiatingViewResolver;bean_name=viewResolver">
+      <point x="134.0" y="-0.0" />
+      <point x="-57.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.ItemService;bean_name=itemService" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="-52.0" y="-8.800000000000011" />
+      <point x="418.0" y="2282.867791005291" />
+      <point x="418.0" y="2175.917791005291" />
+      <point x="-45.5" y="8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.PooledDataSourceConfiguration;bean_name=pooledDataSourceConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.Hikari;bean_name=hikari">
+      <point x="124.5" y="5.5" />
+      <point x="3024.0" y="2859.6677910052913" />
+      <point x="-31.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator" target="module=archives-api;bean_class=BristolArchives.repositories.DeptRepo;bean_name=deptRepo">
+      <point x="-78.5" y="-2.75" />
+      <point x="418.0" y="1792.9177910052908" />
+      <point x="418.0" y="2159.417791005291" />
+      <point x="-45.5" y="-8.25" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;bean_name=webMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.web.servlet.filter.OrderedHttpPutFormContentFilter;bean_name=httpPutFormContentFilter">
+      <point x="106.0" y="-5.5" />
+      <point x="-103.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;bean_name=beanNameHandlerMapping">
+      <point x="113.0" y="-2.0952380952380736" />
+      <point x="710.0" y="628.9047619047619" />
+      <point x="790.0" y="507.0" />
+      <point x="-107.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;bean_name=cacheAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers;bean_name=cacheManagerCustomizers">
+      <point x="97.0" y="-0.0" />
+      <point x="-104.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;bean_name=webMvcAutoConfigurationAdapter" target="module=archives-api;bean_class=org.springframework.web.servlet.LocaleResolver;bean_name=localeResolver">
+      <point x="134.0" y="-3.1428571428573377" />
+      <point x="348.0" y="383.0" />
+      <point x="-61.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;bean_name=webSecurityConfiguration" target="module=archives-api;bean_class=javax.servlet.Filter;bean_name=springSecurityFilterChain">
+      <point x="102.5" y="4.400000000000091" />
+      <point x="1206.0" y="1466.9" />
+      <point x="1286.0" y="1524.5" />
+      <point x="-99.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;bean_name=XADataSourceAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;bean_name=spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties">
+      <point x="127.0" y="-5.5" />
+      <point x="-315.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.controllers.BristolArchivesRunController;bean_name=bristolArchivesRunController" target="module=archives-api;bean_class=BristolArchives.services.DatabaseGenerator;bean_name=databaseGenerator">
+      <point x="0.0" y="11.0" />
+      <point x="0.0" y="-11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;bean_name=jmxAutoConfiguration" target="module=archives-api;bean_class=org.springframework.jmx.export.annotation.AnnotationMBeanExporter;bean_name=mbeanExporter">
+      <point x="90.0" y="7.333333333333485" />
+      <point x="2102.0" y="2730.6677910052913" />
+      <point x="-66.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;bean_name=errorMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration.ErrorPageCustomizer;bean_name=errorPageCustomizer">
+      <point x="109.0" y="-2.75" />
+      <point x="3986.0" y="73.0" />
+      <point x="-85.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;bean_name=httpMessageConvertersAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration;bean_name=jacksonHttpMessageConvertersConfiguration">
+      <point x="160.5" y="5.5" />
+      <point x="-170.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;bean_name=securityAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration;bean_name=springBootWebSecurityConfiguration">
+      <point x="104.5" y="7.333333333333485" />
+      <point x="-142.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.EnableWebMvcConfiguration;bean_name=enableWebMvcConfiguration" target="module=archives-api;bean_class=org.springframework.web.servlet.HandlerMapping;bean_name=viewControllerHandlerMapping">
+      <point x="113.0" y="-0.0" />
+      <point x="-121.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;bean_name=jmxAutoConfiguration" target="module=archives-api;bean_class=javax.management.MBeanServer;bean_name=mbeanServer">
+      <point x="90.0" y="-7.333333333333485" />
+      <point x="2102.0" y="2606.6677910052913" />
+      <point x="-57.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration.DefaultConfigurerAdapter;bean_name=defaultConfigurerAdapter" target="module=archives-api;bean_class=org.springframework.web.accept.ContentNegotiationManager;bean_name=mvcContentNegotiationManager">
+      <point x="102.5" y="-8.799999999999955" />
+      <point x="268.0" y="1422.7" />
+      <point x="348.0" y="926.5677910052907" />
+      <point x="-126.0" y="-5.5" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;bean_name=errorMvcAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;bean_name=basicErrorController">
+      <point x="109.0" y="2.75" />
+      <point x="3986.0" y="135.0" />
+      <point x="-82.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration;bean_name=dispatcherServletRegistrationConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;bean_name=dispatcherServletRegistration">
+      <point x="163.5" y="-5.5" />
+      <point x="-115.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=BristolArchives.BristolArchivesApiApp;bean_name=bristolArchivesApiApp" target="module=archives-api;bean_class=BristolArchives.controllers.HTTPErrorController;bean_name=HTTPErrorController">
+      <point x="89.5" y="-1.4666666666666401" />
+      <point x="268.0" y="2086.5333333333333" />
+      <point x="348.0" y="2043.6677910052908" />
+      <point x="-83.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration;bean_name=hibernateJpaConfiguration" target="module=archives-api;bean_class=org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;bean_name=entityManagerFactoryBuilder">
+      <point x="106.5" y="-2.75" />
+      <point x="-113.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration;bean_name=jackson2ObjectMapperBuilderCustomizerConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration.StandardJackson2ObjectMapperBuilderCustomizer;bean_name=standardJacksonObjectMapperBuilderCustomizer">
+      <point x="204.0" y="-0.0" />
+      <point x="-184.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration;bean_name=persistenceExceptionTranslationAutoConfiguration" target="module=archives-api;bean_class=org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;bean_name=persistenceExceptionTranslationPostProcessor">
+      <point x="190.5" y="-0.0" />
+      <point x="-174.5" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;bean_name=validationAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.PrimaryDefaultValidatorPostProcessor;bean_name=primaryDefaultValidatorPostProcessor">
+      <point x="112.0" y="7.333333333333485" />
+      <point x="-146.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;bean_name=validationAutoConfiguration" target="module=archives-api;bean_class=org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;bean_name=defaultValidator">
+      <point x="112.0" y="-0.0" />
+      <point x="-69.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.ObjectPostProcessor;bean_name=objectPostProcessor">
+      <point x="0.0" y="-11.0" />
+      <point x="0.0" y="11.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;bean_name=cacheAutoConfiguration" target="module=archives-api;bean_class=org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration.CacheManagerValidator;bean_name=cacheAutoConfigurationValidator">
+      <point x="97.0" y="-7.333333333333485" />
+      <point x="-129.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration;bean_name=httpEncodingAutoConfiguration" target="module=archives-api;bean_class=org.springframework.web.filter.CharacterEncodingFilter;bean_name=characterEncodingFilter">
+      <point x="125.0" y="5.5" />
+      <point x="3809.0" y="2859.6677910052913" />
+      <point x="-95.0" y="-0.0" />
+    </edge>
+    <edge source="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;bean_name=authenticationConfiguration" target="module=archives-api;bean_class=org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer;bean_name=initializeUserDetailsBeanManagerConfigurer">
+      <point x="111.5" y="-0.0" />
+      <point x="710.0" y="1671.6677910052908" />
+      <point x="790.0" y="1654.0" />
+      <point x="-166.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.2026202846171222" x="2363.0" y="2203.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Local context</Category>
+  </Categories>
+</Diagram>
+

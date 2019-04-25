@@ -78,7 +78,7 @@ Exceptional flow:
 
 
 ## Search
-Search is a key use case goal and essentially the core of our system here is a list exhaustive list of flow steps:
+Search is a key use case goal and essentially the core of our system here is an exhaustive list of flow steps:
 1. Enter keywords into search bar.
 2. Press search button.
 3. View the search results page.

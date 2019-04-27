@@ -18,7 +18,7 @@
         }
     </script>
 </head>
-<body bgcolor="#e5e0dd" style="height: auto">
+<body bgcolor="#e5e0dd" style="height: auto; padding-bottom: 20px">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
@@ -100,6 +100,7 @@
         <div class="column">
             <th th:if="${itemPage.totalPages > 0}" class="pagination"
                 th:each="pageNumber : ${pageNumbers}">
+                <
                 <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
                    th:text=${pageNumber}
                    th:class="${pageNumber==itemPage.number + 1} ? active"></a>
@@ -150,6 +151,7 @@
                         <div class="column is-two-fifths">
                     <th th:if="${itemPage.totalPages > 0}" class="pagination"
                         th:each="pageNumber : ${pageNumbers}">
+                        <
                         <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
                            th:text=${pageNumber}
                            th:class="${pageNumber==itemPage.number + 1} ? active"></a>

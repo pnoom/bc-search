@@ -82,7 +82,7 @@
     </style>
 </head>
 
-<body bgcolor="#e5e0dd">
+<body bgcolor="#e5e0dd" style="height: auto; width: 100%; padding-bottom: 10px">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
@@ -158,9 +158,9 @@
             }
         }
     </script>
-    <div class="columns">
-        <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-        <div class="column" style="margin-bottom: 100px">
+    <div class="columns is-mobile">
+        <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c); min-height: 510px"></div>
+        <div class="column" style="height: auto; margin-bottom: 100px">
             <div>
             <span class="content is-size-2" th:text=${item.name}> </span>
             </div>
@@ -183,7 +183,7 @@
             </div>
             -->
 
-            <table class="table">
+            <table class="table" style="background-color: #e5e0dd; ">
                 <tbody>
                 <tr>
                     <th>ID:</th>
@@ -207,7 +207,6 @@
         <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
 
     </div>
-
 </div>
 <script>
     // Get the modal
@@ -232,9 +231,5 @@
         document.getElementsByClassName('navbar')[0].style.visibility = 'visible';
     }
 </script>
-<!--<div class="block">-->
-    <!--<canvas height="100" style="border:1px transparent">-->
-    <!--</canvas>-->
-<!--</div>-->
 </body>
 </html>

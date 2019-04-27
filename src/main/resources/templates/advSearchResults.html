@@ -11,7 +11,7 @@
     <title>Bristol Archives Collections</title>
 </head>
 
-<body bgcolor="#e5e0dd" style="height: 100%">
+<body bgcolor="#e5e0dd" style="height: 100%; position:relative;">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
@@ -91,9 +91,8 @@
         }
     </script>
     <div class="block">
-        <canvas height="15" style="border:1px transparent"></canvas>
-    </div>
-    <div class="columns">
+        <canvas height="15" style="border:0px transparent"></canvas>
+    <div class="columns is-mobile">
         <div class="column is-one-fifth"></div>
         <div class="column is-one-fifth"><h2>Page select:</h2></div>
         <div class="column">
@@ -110,8 +109,7 @@
         <div class="column is-one-fifth"></div>
     </div>
 </div>
-<div style="margin-left=100px;" class="block">
-    <table class="table" style="width: 100%; background-color:#e5e0dd ">
+    <table class="table" style="width: 100%; background-color:#e5e0dd;">
         <tbody>
         <tr th:if="!${itemPage.hasContent()}">
             <td colspan="2"> No Items Available </td>
@@ -137,8 +135,7 @@
         </tr>
         </tbody>
     </table>
-</div>
-<div class="columns">
+    <div class="columns is-mobile is-multiline is-gapless" style="background-color:#e5e0dd;">
     <div class="column is-one-fifth"></div>
     <div class="column is-one-fifth">
         <h2>Page select:</h2>
@@ -146,6 +143,7 @@
     <div class="column is-two-fifths">
         <th th:if="${itemPage.totalPages > 0}" class="pagination"
             th:each="pageNumber : ${pageNumbers}">
+            <
             <a style="font-size:160%;" th:href="@{/advSearch(coll=${collection},date=${specificDate},
             date_start=${startDate},date_end=${endDate},name=${precision},lctn=${location},dpt=${dpt},
             size=${itemPage.size},page=${pageNumber})}"
@@ -154,6 +152,7 @@
         </th>
     </div>
     <div class="column is-one-fifth"></div>
+</div>
 </div>
 </body>
 <style>

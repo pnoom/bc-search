@@ -2,7 +2,7 @@
 
 ## Stakeholders
 
-* Researchers: Proffesionals who need to quickly and accurately access key data from the archives that is relevant to their job.
+* Researchers: Profesionals who need to quickly and accurately access key data from the archives that is relevant to their job.
 * Public User: Members of the general public with an interest in the contents of the archive. Their use of the system is more casual than researchers but still has similar requirements.
 * Archives staff: Staff at the archive want to improve the accessibility of their collections,
   and need software infrastructure that eases their job as maintainers and

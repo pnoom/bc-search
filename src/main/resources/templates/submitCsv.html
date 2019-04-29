@@ -10,7 +10,7 @@
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <title>Bristol Archives</title>
 </head>
-<body bgcolor="#e5e0dd" style="height: 100%">
+<body bgcolor="#e5e0dd" style="width: 100%; height: auto;">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
@@ -29,7 +29,7 @@
 
     <!-- This is what creates the navbar -->
 
-    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-burger burger has-background-primary" data-target="navMenu">
             <span class="has-text-white"></span>
             <span class="has-text-white"></span>
@@ -65,14 +65,14 @@
     </script>
 
     <form th:action="@{/submitCsv}" method="post" enctype="multipart/form-data">
-        <div class="columns">
+        <div class="columns is-mobile">
             <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-            <div class="column"><input type="file" name="uploaded_csv" id="txtFileUpload" accept=".csv" /></div>
+            <div class="column" style="margin-top: 50px"><input type="file" name="uploaded_csv" id="txtFileUpload" accept=".csv" /></div>
             <div class="column is-one-fifth"style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
-        <div class="columns">
+        <div class="columns is-mobile">
             <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-            <div class="column"><button id="submitbutton" class="button" type="submit">add entries</button></div>
+            <div class="column" style="min-height: 480px; max-height: 3000px; height: auto; background-color:#e5e0dd"><button id="submitbutton" class="button" type="submit">add entries</button></div>
             <div class="column is-one-fifth"style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
     </form>

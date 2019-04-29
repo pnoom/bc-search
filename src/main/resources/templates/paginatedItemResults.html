@@ -18,7 +18,7 @@
         }
     </script>
 </head>
-<body bgcolor="#e5e0dd" style="height: 100%">
+<body bgcolor="#e5e0dd" style="height: auto; padding-bottom: 20px">
 <!-- This creates the logos at the top of the page -->
 <div class="block" style="margin-bottom: 0px">
     <div class="columns is-mobile">
@@ -37,7 +37,7 @@
 
     <!-- This is what creates the navbar -->
 
-    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-burger burger has-background-primary" data-target="navMenu">
             <span class="has-text-white"></span>
             <span class="has-text-white"></span>
@@ -94,16 +94,13 @@
             }
         }
     </script>
-    <div class="block">
-        <canvas height="15" style="border:1px transparent">
-        </canvas>
-    </div>
     <div class="columns">
         <div class="column is-one-fifth"></div>
-        <div class="column is-one-fifth"><h2>Page select:</h2></div>
+        <div class="column is-one-fifth"style="margin-top: 15px"><h2>Page select:</h2></div>
         <div class="column">
             <th th:if="${itemPage.totalPages > 0}" class="pagination"
                 th:each="pageNumber : ${pageNumbers}">
+                <
                 <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
                    th:text=${pageNumber}
                    th:class="${pageNumber==itemPage.number + 1} ? active"></a>
@@ -146,7 +143,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="columns">
+                    <div class="columns" style="background-color: #e5e0dd;">
                         <div class="column is-one-fifth"></div>
                         <div class="column is-one-fifth">
                     <h2>Page select:</h2>
@@ -154,6 +151,7 @@
                         <div class="column is-two-fifths">
                     <th th:if="${itemPage.totalPages > 0}" class="pagination"
                         th:each="pageNumber : ${pageNumbers}">
+                        <
                         <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
                            th:text=${pageNumber}
                            th:class="${pageNumber==itemPage.number + 1} ? active"></a>

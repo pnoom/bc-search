@@ -4,6 +4,8 @@ import BristolArchives.services.DatabaseGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 public class BristolArchivesRunController {
@@ -16,8 +18,8 @@ public class BristolArchivesRunController {
 //        // Uncomment this to delete all database content. USE WITH CAUTION.
 //        dbGen.deleteEntireDatabase();
 //
-//        // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")
-//
+        // Uncomment this to generate the DB. Need to drop tables first (run "source collections.sql")
+
 //        File dataFile = null;
 //        File mediaFile = null;
 //        try {

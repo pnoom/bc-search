@@ -32,7 +32,7 @@
 
     <!-- This is what creates the navbar -->
 
-    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-burger burger has-background-primary" data-target="navMenu">
             <span class="has-text-white"></span>
             <span class="has-text-white"></span>
@@ -72,7 +72,7 @@
     <form action="#" th:action="@{/advSearch}" method="post">
         <div class="columns is-mobile">
             <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-            <div class="column" style="margin-top: 60px">
+            <div class="column" style=" margin-top: 60px; min-height: 500px; max-height: 3000px; height: auto; background-color:#e5e0dd">
                <!-- <div class="block">
                     <div class="columns">
                         <div class="column is-one-fifth">Search by Date:</div>
@@ -81,7 +81,6 @@
                         </div>
                     </div>
                 </div>-->
-                <div class="block">
                     <div class="columns">
                 <div class="column is-one-fifth">Search by date:</div>
                 <div class="column">
@@ -133,7 +132,7 @@
             <div class="block">
                 <div class="columns">
                     <div class="column is-one-fifth">Search by departments:</div>
-                    <div class="column">
+                    <div class="column" style="background-color:#e5e0dd">
                         <div class="control">
                             <div class="select">
                                 <select name="dpt" id="dpt_search">
@@ -178,25 +177,16 @@
                     </div>
                 </div>
             </div>
-            </div>
+                <div class="columns">
+                    <div class="column is-one-fifth"></div>
+                    <div class="column">
+                        <button class="button" type="submit" style="margin-bottom: 8px">Search</button>
+                    </div>
+                </div>
             </div>
             <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
 
-<div class="block">
-    <div class="columns">
-        <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-        <div class="column">
-            <div class="columns">
-                <div class="column is-one-fifth"></div>
-                <div class="column">
-                    <button class="button" type="submit" style="margin-bottom: 8px">Search</button>
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
-    </div>
-</div>
 
     </form>
 

@@ -5,8 +5,9 @@ A web application for searching the Bristol Archive. It is intended to be a
 replacing the various existing search tools such as
 [this](http://museums.bristol.gov.uk/) and
 [this](http://museums.bristol.gov.uk/). It is currently available
-[here](https://archivesearch.spe.cs.bris.ac.uk). Alternatively it can be run
-locally by following the below instructions.
+[here](https://archivesearch.spe.cs.bris.ac.uk), though this may not be the
+most up-to-date version. Alternatively it can be run locally by following the
+below instructions.
 
 It is being developed by a group of second-year Computer Science students at
 the University of Bristol.
@@ -38,9 +39,10 @@ Do this at MySQL prompt:
 ```
 drop database archivesearch;
 create database archivesearch;
+create user 'archiveuser'@'%' identified by 'YourDatabasePassword';
 grant all on archivesearch.* to 'archiveuser'@'%';
 use archivesearch;
-source master-script.sql;
+source schema.sql;
 quit;
 ```
 
@@ -66,6 +68,39 @@ currently in the database are dated from the 1940s to the 1960s, and relate to
 various places in Africa, so if you search for dates and places outside of
 these then you may be met with no results.) Click "Date Range" to toggle
 between searching by a specific date and searching by a range of dates.
+
+### Modifying the database
+
+To modify the database, upload a CSV file (using commas as delimiters, and
+surrounding all values in double-quotes) with the column headings as shown
+below (in no particular order):
+
+```
+"Object Number"
+"Department Name"
+"Collection Name (General)"
+"Collection Name (Specific)"
+"Item Name"
+"Extent (Archive Items)"
+"Extent (Museum Items)"
+"Description (Archive Items)"
+"Description (Museum Items)"
+"Location of Provenance (Archive Items)"
+"Location of Provenance (Museum Items)"
+"Date of Provenance (Archive Items)"
+"Date of Provenance (Museum Items)"
+```
+
+The data describing Museum and Archive data may differ, so separate columns are
+provided to accommodate the differences. If an item comes from the Archives,
+for each piece of information (such as location or date), use only the columns
+labelled "Archive Items", and vice versa.
+
+If your CSV file contains a line relating to an item that is already present in
+the database, then it will be updated accordingly.
+
+Note that to upload a CSV file, you must first have an admin account. This can
+be provided to you upon deployment.
 
 ## Image credits
 

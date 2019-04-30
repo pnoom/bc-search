@@ -72,7 +72,32 @@
         </div>
         <div class="columns is-mobile">
             <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
-            <div class="column" style="min-height: 480px; max-height: 3000px; height: auto; background-color:#e5e0dd"><button id="submitbutton" class="button" type="submit">add entries</button></div>
+            <div class="column"> Please ensure that the CSV file has the following field headings:<br><br>
+                <ul style="list-style-type: circle; margin-left: 14px;">
+                    <li>Object Number (must not have any records with this field empty)</li>
+                    <li>Department Name</li>
+                    <li>Collection Name (General)</li>
+                    <li>Collection Name (Specific)</li>
+                    <li>Item Name</li>
+                </ul>
+                <br>For the following headlines for every record there should only be content in one of the similarly named fields, whether it is a Museum item or an Archive item:<br><br>
+                <ul style="list-style-type: circle; margin-left: 14px;">
+                    <li>Extent (Museum Items)</li>
+                    <li>Extent (Archive Items)</li>
+                    <li>Description (Museum Items)</li>
+                    <li>Description (Archive Items)</li>
+                    <li>Location of Provenance (Museum Items)</li>
+                    <li>Location of Provenance (Archive Items)</li>
+                    <li>Date of Provenance (Museum Items)</li>
+                    <li>Date of Provenance (Archive Items)</li>
+                </ul>
+            <br>Any other fields with additional information are fine.
+            </div>
+            <div class="column is-one-fifth"style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
+            <div class="column" style="min-height: 100px; max-height: 3000px; height: auto; background-color:#e5e0dd"><button id="submitbutton" class="button" type="submit">add entries</button></div>
             <div class="column is-one-fifth"style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
     </form>

@@ -19,6 +19,8 @@ application.
 
 ### Database Schema
 
+The schema is very simple, for reasons discussed below.
+
 ![](../diagrams/schema.png?raw=true)
 
 ## Design Challenges
@@ -82,16 +84,20 @@ string attribute of items. Also due to time limitations, the user may only view
 the first image associated with an item, even if there are multiple images
 available; so this violation is currently unnecessary.
 
-## Appraisal
+## Design Appraisal
 
-In retrospect, we could have generated numerous intermediate representations of
-the data from the raw CSV files, and processed those separately to allow use of
-a fully normalized relational schema. However we are still unsure how this
-would work given the performance restrictions required of our ORM
-system. (Alternatively we could have explored NoSQL representations, which
-would also have enabled us to preserve data hierarchy where present.)
-Additionally, we thought it wise to allow users to update the database using a
-simple format that they can easily generate using their current system, and the
-CSV format served that purpose. Introducing an alternative format, while useful
-for our purposes, would increase the learning curve for users of our system.
+We consider it a strength of our system that users are able to update the
+database using a simple format that they can easily generate using their
+current system, and the CSV format served that purpose. Introducing an
+alternative format, while useful for our purposes, would increase the learning
+curve for users of our system. Unfortunately we ran out of time to implement a
+GUI for uploading a second CSV file containing the multimedia data, so at
+present only the textual data corresponding to a museum or archive item can be
+updated.
 
+In retrospect, we could have generated intermediate representations of the data
+from the raw CSV files, and processed those separately to allow use of a fully
+normalized relational schema. However we are still unsure how this would work
+given the performance restrictions required of our ORM system. Alternatively
+we could have explored NoSQL representations, which would also have enabled us
+to preserve data hierarchy where present.

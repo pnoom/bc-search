@@ -81,19 +81,26 @@ public class DatabaseGenerator {
     private Integer failedDeptAttempts = 0;
     private Integer failedCollAttempts = 0;
 
-    private String departmentHeading = "Department: ";
-    private String collectionHeading = "Collection";
-    private String locationHeadingArchive = "Geographic Name: (Names)";
-    private String locationHeadingMuseum = "Place Details: (Production Place)";
-    private String nameHeading = "Full Name: (Collection Details)";
+    // In the order they appear in the data CSV file:
     private String itemRefHeading = "Object Number";
-    private String descriptionHeadingArchive = "Scope and Content: (Archival Description)/Scope and Content: (Content and Structure)";
-    private String descriptionHeadingMuseum = "Physical Description: (Collection Details)";
-    private String displayDateHeadingArchive = "Unit Date: (Unit Details)/Date(s): (ISAD(G) Identity Statement)";
-    private String displayDateHeadingMuseum = "Associated Date: (Content Details)/Production Date: (Production Dates)";
-    private String extentHeadingArchive = "Extent: (ISAD(G) Identity Statement)";
-    private String extentHeadingMuseum = "Simple Name: (Collection Details)/Object Name/Object Name: (Classification)";
-    private String collectionDisplayNameHeading = "Named Collection";
+    private String departmentHeading = "Department Name";
+    private String collectionHeading = "Collection Name (General)";
+    private String collectionDisplayNameHeading = "Collection Name (Specific)";
+    private String extentHeadingMuseum = "Extent (Museum Items)";
+    private String nameHeading = "Item Name";
+    private String extentHeadingArchive = "Extent (Archive Items)";
+    private String descriptionHeadingMuseum = "Description (Museum Items)";
+    // Two ignored columns here
+    private String descriptionHeadingArchive = "Description (Archive Items)";
+    private String locationHeadingArchive = "Location of Provenance (Archive Items)";
+    private String displayDateHeadingArchive = "Date of Provenance (Archive Items)";
+    // Ignored column here
+    private String locationHeadingMuseum = "Location of Provenance (Museum Items)";
+    private String displayDateHeadingMuseum = "Date of Provenance (Museum Items)";
+    // 7 more ignored columns here
+
+    // In the order they appear in the multimedia CSV file:
+    // itemRefHeading is the same for both files
     private String multimediaIrnHeading = "Multimedia Irn";
     private String copyrightHeading = "Copyright";
 

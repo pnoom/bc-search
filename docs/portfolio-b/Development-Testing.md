@@ -1,0 +1,9 @@
+##Development Testing
+
+When considering the architecture of our system and how we will test it we must first consider the creation of the database, we can do this by running through our database creation functionality and then run a series of queries to make sure that the database size and format matches our ideal database. Most importantly within the database we must consider each individual item. We must set up a series of tests which proceed to create a new populated item within the database and then try and retrieve the same item, we can then compare these results to make sure that many types of items can be correctly added.
+
+The user facing side of the system should be thoroughly tested and as such we need to make sure that the queries within both simple and advanced search are represented accurately when passed to the back end. As such we use unit testing to compare a series of different inputs and compare their various results. We must also make sure the front end works in a timely manner and as such timing tests can be implemented to make sure search results are completed within a specified time frame.
+
+We will use the SpringBoot testing framework to create our series of tests as it is inherently tied with the Spring framework we use within our system. This should allow testing to be more intuitive and less likely to clash with the functionality of our functions.
+
+There are a series of challenges faced when we consider testing and the most glaringly obvious is that the data provided by the Bristol Archives and Museum is wildly inconsistent and is filled with various edge cases and situations where no data is provided. As such we can try our best to test the accuracy of our data storage but it would impossible to accurately represent all data given to us and as such we must try and broadly test these values without too much worry about finite detail.

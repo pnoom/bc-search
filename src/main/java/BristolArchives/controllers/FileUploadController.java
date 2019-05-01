@@ -21,12 +21,12 @@ public class FileUploadController {
     DatabaseGenerator dbGen;
 
     @GetMapping("/submitCsv")
-    public String submitCsv(){
+    public String submitCsv() {
         return "submitCsv";
     }
 
     @GetMapping("/uploadResult")
-    public String uploadResult(ModelMap m){
+    public String uploadResult(ModelMap m) {
         //m.addAttribute("message", "helooowjsoq");
         return "uploadResult";
     }
@@ -41,27 +41,22 @@ public class FileUploadController {
         }
 
         try {
-            dbGen.generateDatabase(convert(file), null);
-        }
-        catch (Exception exception) {
+            File convFile = new File(file.getOriginalFilename());
+            convFile.createNewFile();
+            FileOutputStream fos = new FileOutputStream(convFile);
+            fos.write(file.getBytes());
+            fos.close();
+            dbGen.generateDatabase(convFile, null);
+            convFile.delete();
+        } catch (Exception exception) {
             redirectAttributes.addFlashAttribute("message",
                     "An error occured, see below for details. Please ensure that your CSV file is laid out correctly.\n" +
-                    exception.getMessage());
+                            exception.getMessage());
             return "redirect:/uploadResult";
         }
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
         return "redirect:/uploadResult";
-    }
-
-    public File convert(MultipartFile file) throws IOException
-    {
-        File convFile = new File(file.getOriginalFilename());
-        convFile.createNewFile();
-        FileOutputStream fos = new FileOutputStream(convFile);
-        fos.write(file.getBytes());
-        fos.close();
-        return convFile;
     }
 }

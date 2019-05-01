@@ -2,8 +2,11 @@ package BristolArchives.controllers;
 
 import BristolArchives.entities.Item;
 import BristolArchives.services.CollectionService;
+import BristolArchives.services.DeptService;
 import BristolArchives.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,27 +18,29 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class AdvancedSearchController {
     @Autowired
     private ItemService itemService;
+
+    @Autowired
     private CollectionService collectionService;
+
+    @Autowired
+    private DeptService deptService;
 
     private boolean hasSth(String s) {
         return (s != null) && (!s.isEmpty());
     }
 
-    private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
-        if(result.isEmpty() && !someConstraintsExist)
-            result.addAll(newItems);
-        else
-            result.retainAll(newItems);
-    }
-
     @GetMapping("/advancedSearch")
     public String advanceSearch(Model model) {
-        //model.addAttribute("collectionList",collectionService.getAllCollections());
+        model.addAttribute("collectionList",collectionService.getAllCollections());
+        model.addAttribute("deptList",deptService.getAllDepts());
         return "advancedSearch";
     }
 
@@ -52,38 +57,41 @@ public class AdvancedSearchController {
 
     @PostMapping("/advSearch")
     public String sendResult(
-            @RequestParam(value = "collection_search", required = false) String adv_coll,
-            @RequestParam(value = "date_search", required = false) String adv_date,
-            @RequestParam(value = "date_start", required = false) String adv_date_start,
-            @RequestParam(value = "date_end", required = false) String adv_date_end,
-            @RequestParam(value = "precision_search", required = false) String adv_name,
-            @RequestParam(value = "location_search", required = false) String adv_lctn
+            @RequestParam(value = "coll", required = false) String coll,
+            @RequestParam(value = "date_search", required = false) String date,
+            @RequestParam(value = "date_start", required = false) String date_start,
+            @RequestParam(value = "date_end", required = false) String date_end,
+            @RequestParam(value = "precision_search", required = false) String name,
+            @RequestParam(value = "location_search", required = false) String lctn,
+            @RequestParam(value = "dpt", required = false) String dpt,
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size
         ){
-
-        //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
-        //        adv_coll, checkForNull(adv_date), checkForNull(adv_date_start), checkForNull(adv_date_end), adv_name, adv_lctn);
-
         String search = "?";
 
-        if(hasSth(adv_coll))
-            search += "&coll=" + adv_coll;
-        if(hasSth(adv_date_start))
-            search += "&dateStart=" + adv_date_start;
-        if(hasSth(adv_date_end))
-            search += "&dateEnd=" + adv_date_end;
-        if(hasSth(adv_date))
-            search += "&date=" + adv_date;
-        if(hasSth(adv_name))
-            search += "&name=" + adv_name;
-        if(hasSth(adv_lctn))
-            search += "&lctn=" + adv_lctn;
+        if(hasSth(coll) && !coll.equals("All"))
+            search += "&coll=" + coll;
+        if(hasSth(date_start))
+            search += "&dateStart=" + date_start;
+        if(hasSth(date_end))
+            search += "&dateEnd=" + date_end;
+        if(hasSth(date))
+            search += "&date=" + date;
+        if(hasSth(name))
+            search += "&name=" + name;
+        if(hasSth(lctn))
+            search += "&lctn=" + lctn;
+        if(hasSth(dpt) && !dpt.equals("All"))
+            search += "&dpt=" + dpt;
 
         search = search.replaceAll("/","%2F");
-
-        return "redirect:/advSearch" + search;
+        return "redirect:/advSearch" + search + "&page=" + page.orElse(1) + "&size=" + size.orElse(5);
     }
 
     private Date parseDate(String str) {
+        if(str == "")
+            return null;
+
         DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
         try {
             return df.parse(str);
@@ -93,71 +101,167 @@ public class AdvancedSearchController {
         }
     }
 
+    private void displayPageNumber(Model model, Page<Item> itemPage, int currentPage) {
+        int totalPages = itemPage.getTotalPages();
+        List<Integer> pageNumbers;
+        currentPage = Math.min(totalPages, currentPage);
+
+        if (totalPages > 0) {
+            int startPage, endPage;
+
+            if(totalPages <= 5) {
+                startPage = 1;
+                endPage = totalPages;
+            } else {
+                startPage = Math.max(currentPage - 2, 1);
+                endPage = Math.max(5, Math.min(currentPage + 2, totalPages));
+            }
+            pageNumbers = IntStream.rangeClosed(startPage, endPage)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+    }
+
     @GetMapping("/advSearch")
     public String displayResult(
-            @RequestParam(value = "coll", required = false) String adv_coll,
-            @RequestParam(value = "date", required = false) String adv_date,
-            @RequestParam(value = "dateStart", required = false) String adv_date_start,
-            @RequestParam(value = "dateEnd", required = false) String adv_date_end,
-            @RequestParam(value = "name", required = false) String adv_name,
-            @RequestParam(value = "lctn", required = false) String adv_lctn,
+            @RequestParam(value = "coll", required = false) String coll,
+            @RequestParam(value = "date", required = false) String date,
+            @RequestParam(value = "dateStart", required = false) String date_start,
+            @RequestParam(value = "dateEnd", required = false) String date_end,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "lctn", required = false) String lctn,
+            @RequestParam(value = "dpt", required = false) String dpt,
+            @RequestParam("page") Optional<Integer> page,
+            @RequestParam("size") Optional<Integer> size,
             Model model
             ){
 
-        if(!hasSth(adv_coll) && !hasSth(adv_date) && !hasSth(adv_name) && !hasSth(adv_lctn) && !hasSth(adv_date_start) && !hasSth(adv_date_end))
+        if(!hasSth(coll) && !hasSth(date) && !hasSth(name) && !hasSth(lctn) && !hasSth(date_start) && !hasSth(date_end) && !hasSth(dpt))
             return "redirect:/advancedSearch";
 
-        if (hasSth(adv_date)) {
-            model.addAttribute("itemList",
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+
+        date = hasSth(date) ? date : "";
+        date_start = hasSth(date_start) ? date_start : "";
+        date_end = hasSth(date_end) ? date_end : "";
+
+//        System.out.println(date);
+//        System.out.println(date_start);
+//        System.out.println(date_end);
+//        System.out.println();
+
+        Page<Item> itemPage = itemService.findPaginatedAdvSearch(
+                parseDate(date),
+                parseDate(date_start),
+                parseDate(date_end),
+                coll,
+                lctn,
+                dpt,
+                name,
+                PageRequest.of(Math.max(currentPage - 1, 0), Math.max(pageSize, 1))
+        );
+
+        model.addAttribute("itemPage", itemPage);
+        model.addAttribute("specificDate", date);
+        model.addAttribute("startDate", date_start);
+        model.addAttribute("endDate", date_end);
+        model.addAttribute("collection", coll);
+        model.addAttribute("location", lctn);
+        model.addAttribute("dpt", dpt);
+        model.addAttribute("precision", name);
+
+        displayPageNumber(model, itemPage, currentPage);
+
+
+        if (hasSth(date)) {
+            System.out.println("advanced date");
+            /*model.addAttribute("itemList",
                     itemService.getAdvancedSearch(
                             parseDate(adv_date),
                             null,
                             null,
                             adv_coll,
                             adv_lctn,
-                            adv_name));
+                            adv_name));*/
+
+            itemPage = itemService.findPaginatedAdvSearch(parseDate(date),
+                    null,
+                    null,
+                    coll,
+                    lctn,
+                    dpt,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", date);
+            model.addAttribute("startDate", "");
+            model.addAttribute("endDate", "");
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
         }
-        if(hasSth(adv_date_start) && hasSth(adv_date_end)) {
-            model.addAttribute("itemList",
+        if(hasSth(date_start) && hasSth(date_end)) {
+           /* model.addAttribute("itemList",
                     itemService.getAdvancedSearch(
                             null,
                             parseDate(adv_date_start),
                             parseDate(adv_date_end),
                             adv_coll,
                             adv_lctn,
-                            adv_name));
-            /*
-            boolean someConstraintsExist = false;
-            List<Item> resultList = new ArrayList();
-            if(adv_name != null) {
-                getIntersection(resultList, itemService.getItemByName(adv_name), false);
-                someConstraintsExist = true;
-            }
-            if(adv_date != null) {
-                getIntersection(resultList,itemService.getItemByDate(adv_date), someConstraintsExist);
-                someConstraintsExist = true;
-            }
-            if(adv_coll != null) {
-                getIntersection(resultList, itemService.getItemByCollectionName(adv_coll), someConstraintsExist);
-                someConstraintsExist = true;
-            }
-            if(adv_lctn != null)
-                getIntersection(resultList, itemService.getItemByLocation(adv_lctn), someConstraintsExist);
-            model.addAttribute("itemList", resultList);
-            */
+                            adv_name));*/
+
+            itemPage = itemService.findPaginatedAdvSearch(null, parseDate(date_start),
+                    parseDate(date_end),
+                    coll,
+                    lctn,
+                    dpt,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", "");
+            model.addAttribute("startDate", date_start);
+            model.addAttribute("endDate", date_end);
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
         }
-        if(!hasSth(adv_date) && (!hasSth(adv_date_start) || !hasSth(adv_date_end))){
-            model.addAttribute("itemList",
+        if(!hasSth(date) && (!hasSth(date_start) || !hasSth(date_end))){
+            /*model.addAttribute("itemList",
                     itemService.getAdvancedSearch(
                             null,
                             null,
                             null,
                             adv_coll,
                             adv_lctn,
-                            adv_name));
+                            adv_name));*/
 
+            itemPage = itemService.findPaginatedAdvSearch(null,
+                    null,
+                    null,
+                    coll,
+                    lctn,
+                    dpt,
+                    name, PageRequest.of(currentPage - 1, pageSize));
+
+            model.addAttribute("itemPage", itemPage);
+            model.addAttribute("specificDate", "");
+            model.addAttribute("startDate", "");
+            model.addAttribute("endDate", "");
+            model.addAttribute("collection", coll);
+            model.addAttribute("location", lctn);
+            model.addAttribute("dpt", dpt);
+            model.addAttribute("precision", name);
+
+            displayPageNumber(model, itemPage, currentPage);
         }
 
-        return "itemResults";
+        return "advSearchResults";
     }
 }

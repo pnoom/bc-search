@@ -1,65 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" style="height: 100%">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <title>Bristol Archives Collections</title>
+    <script th:inline="javascript">
+        function getFirstMultimediaIrnLink(irnsString) {
+            console.log(irnsString);
+            if (irnsString != null) {
+                return "http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=" + irnsString.split(",")[0] + "&format=jpeg";
+            }
+        }
+    </script>
 </head>
-
-<body>
+<body bgcolor="#e5e0dd" style="height: auto; padding-bottom: 20px">
 <!-- This creates the logos at the top of the page -->
-<div class="block">
-    <div class="columns">
-        <div class="column is-half">
-            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title"> Search results:</h1>
+<div class="block" style="margin-bottom: 0px">
+    <div class="columns is-mobile">
+        <div class="column is-one-third has-text-centered">
+            <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-quarter">
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#343c5c;font-family:Futura; ">Search<br>Results</h1>
         </div>
+        <div class="column is-one-third has-text-centered">
 
-        <div class="column is-quarter">
-            <img th:src="@{/Bristol-City-Council-Logo.png}" alt="Bristol City Council Logo" style="width: 300px; height: 115px" >
-
+            <img class="image" th:src="@{/full-council-logo-black.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 68%; max-height: 65%; height: auto; margin-top: 12px; margin-left: 38px">
         </div>
-
     </div>
 </div>
-
-<!-- This is what creates the navbar -->
 <div class="block">
-    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation" id="navbar">
-        <div class="navbar-burger burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
+
+    <!-- This is what creates the navbar -->
+
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" id="navbar">
+        <div class="navbar-burger burger has-background-primary" data-target="navMenu">
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
         </div>
-        <div class="navbar-menu" id="navMenu">
-
+        <div class="navbar-menu has-background-primary" id="navMenu">
             <div class="navbar-start">
-                <a href="/" class="navbar-item">Home</a>
-                <!--<a class="navbar-item">Image Gallery</a>
-                <a class="navbar-item">Showcase</a>
+                <a href="/" class="navbar-item has-text-primary">Home</a>
+                <a href="/aboutArchives" class="navbar-item has-text-primary">About the Archives</a>
+                <a href="/loginPage" class="navbar-item has-text-primary">Admin login</a>
+                <!--<a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
+            </div>
+            <div class="navbar-end">
+                <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item has-text-primary">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
 
-                <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
+                <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item has-text-primary" >Visit our Facebook</a>
 
-                <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item" >Visit our Facebook</a>
-
-                <a href="https://www.instagram.com/explore/locations/40687510/bristol-archives/?hl=en" target="_blank" class="navbar-item">Visit our Instagram&nbsp <i class="fa fa-instagram"></i></a>
+                <a href="https://www.instagram.com/explore/locations/40687510/bristol-archives/?hl=en" target="_blank" class="navbar-item has-text-primary">Visit our Instagram&nbsp <i class="fa fa-instagram"></i></a>
 
             </div>
         </div>
@@ -97,55 +94,87 @@
             }
         }
     </script>
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column is-one-fifth"style="margin-top: 15px"><h2>Page select:</h2></div>
+        <div class="column">
+            <th th:if="${itemPage.totalPages > 0}" class="pagination"
+                th:each="pageNumber : ${pageNumbers}">
+                <
+                <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
+                   th:text=${pageNumber}
+                   th:class="${pageNumber==itemPage.number + 1} ? active"></a>
+            </th>
+        </div>
+        <div class="column is-one-fifth"></div>
+    </div>
 </div>
 <div style="margin-left=100px;" class="block">
-    <table class="table">
+    <table class="table" style="width:100%; background-color:#e5e0dd">
         <tbody>
         <tr th:if="!${itemPage.hasContent()}">
             <td colspan="2"> No Items Available </td>
         </tr>
         <tr th:each="item : ${itemPage.content}">
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var firstMediaIrn = getFirstMultimediaIrn(item.mediaIrns);
+                /*]]>*/
+            </script>
             <td>
                 <figure class="image is-128x128">
-                    <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + {item.multimediaIrn} + '&format=jpeg'}" style="width: 128px;height: 128px" />
+                    <!--
+                                            <img class="thumbnail" th:alt="${item.name}" th:src="${'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=147310&format=jpeg'}" style="width: 128px;height: 128px" />
+                    -->
 
-                </figure>
+                    <img class="thumbnail" th:src="'http://museums.bristol.gov.uk/multimedia/entry.php?request=resource&irn=' + ${item.thumbnailIrn} + '&format=jpeg'" th:alt="${item.name}" style="width: 128px;height: 128px" />
 
-            </td>
-            <td>
-                <span class="itemName"><font size="4" color="#0000cd" th:text=${item.name} th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'"></font></span>
-                <br>
-                <span th:text=${item.itemRef}> </span>
-                <br><span th:text=${item.shortDesc}></span>
-            </td>
+                                    </figure>
 
-        </tr>
-        </tbody>
-    </table>
-</div>
-<h2>Page select:</h2>
-<th th:if="${itemPage.totalPages > 0}" class="pagination"
-    th:each="pageNumber : ${pageNumbers}">
-    <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
-       th:text=${pageNumber}
-       th:class="${pageNumber==itemPage.number + 1} ? active"></a>
-</th>
-</body>
-<style>
-    .pagination:hover{
-        text-decoration: underline;
-    }
-    .itemName {
-        cursor: pointer;
-    }
-    .itemName:hover{
-        text-decoration: underline;
-    }
-</style>
-<script>
-    function rowClicked(itemRef) {
-        location.href = '/items/' + itemRef.split('/').join('-');
-    }
-</script>
+                                </td>
+                                <td>
+                                    <span class="itemName"><font size="4" color="#0000cd" th:text=${item.name} th:onclick="'javascript:rowClicked(\'' + ${item.itemRef} + '\');'"></font></span>
+                                    <br>
+                                    <span th:text=${item.itemRef}> </span>
+                                    <br><span th:text=${item.shortDesc}></span>
+                                </td>
 
-</html>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="columns" style="background-color: #e5e0dd;">
+                        <div class="column is-one-fifth"></div>
+                        <div class="column is-one-fifth">
+                    <h2>Page select:</h2>
+                        </div>
+                        <div class="column is-two-fifths">
+                    <th th:if="${itemPage.totalPages > 0}" class="pagination"
+                        th:each="pageNumber : ${pageNumbers}">
+                        <
+                        <a style="font-size:160%;" th:href="@{/search(q=${searchTerm},size=${itemPage.size}, page=${pageNumber})}"
+                           th:text=${pageNumber}
+                           th:class="${pageNumber==itemPage.number + 1} ? active"></a>
+                    </th>
+                    </div>
+                        <div class="column is-one-fifth"></div>
+                    </div>
+                    </body>
+                    <style>
+                        .pagination:hover{
+                            text-decoration: underline;
+                        }
+                        .itemName {
+                            cursor: pointer;
+                        }
+                        .itemName:hover{
+                            text-decoration: underline;
+                        }
+                    </style>
+                    <script>
+                        function rowClicked(itemRef) {
+                            location.href = '/items/' + itemRef.split('/').join('-');
+                        }
+                    </script>
+
+                    </html>

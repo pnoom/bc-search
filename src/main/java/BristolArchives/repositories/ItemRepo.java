@@ -1,41 +1,43 @@
 package BristolArchives.repositories;
 
+import BristolArchives.entities.Collection;
 import BristolArchives.entities.Item;
-import BristolArchives.entities.SubCollection;
-import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.lang.annotation.Native;
 import java.util.Date;
 import java.util.List;
 
 public interface ItemRepo extends JpaRepository<Item,Integer>{
 
     List<Item> findByName(String name);
+    List<Item> findByNameLike(String name);
     List<Item> findByNameContaining(String name);
-    List<Item> findBySubCollection(SubCollection subColl);
+    List<Item> findByItemRef(String ref);
+    List<Item> findByItemRefIn(List<String> refs);
+    List<Item> findByDisplayDateLike(String date);
+    List<Item> findByLocationLike(String location);
+    List<Item> findByDescriptionContaining(String search);
+    List<Item> findByCollection(Collection coll);
+    List<Item> findByCollectionDisplayNameLike(String string);
 
-    @Query("select i from item i where i.name like CONCAT('%',:search,'%')")
-    List<Item> findName(@Param("search")String search);
+    @Query(value = "select * from item join collection where item.collection_id = collection.id and (collection.name like concat('%', :collection, '%') or item.collection_display_name like concat('%', :collection, '%'))", nativeQuery = true)
+    List<Item> findWithCollection(@Param("collection") String collection);
 
-    @Query("select i from item i where i.location like CONCAT('%',:search,'%')")
-    List<Item> findLocation(@Param("search")String search);
+    @Query(value = "select * from item where name like concat('%', :phrase, '%') or description like concat('%', :phrase, '%')", nativeQuery = true)
+    List<Item> findWholePhrase(@Param("phrase") String phrase);
 
-    @Query("select i from item i where i.displayDate like CONCAT('%',:search,'%')")
-    List<Item> findDate(@Param("search")String search);
+    @Query(value = "select *, datediff(start_date, end_date) as closest from item where start_date = :specificdate or (:specificdate between start_date and end_date) order by closest desc", nativeQuery = true)
+    List<Item> findWithSpecificDate(@Param("specificdate")Date specificdate);
 
-    @Query("select i from item i where i.description like CONCAT('%',:search,'%')")
-    List<Item> findDescription(@Param("search")String search);
+    @Query(value = "select *, datediff(start_date, end_date) as closest from item where not (start_date > :start or end_date < :end) order by closest desc", nativeQuery = true)
+    List<Item> findWithDateRange(@Param("start") Date start, @Param("end")Date end);
 
-    @Query("select i from item i where i.itemRef = CONCAT(:search,'')")
-    List<Item> findWithRef(@Param("search")String search);
+    @Query(value = "select * from item join collection on collection.id = item.collection_id join dept on collection.dept_id = dept.id where dept.name like concat('%', :dpt, '%')", nativeQuery = true)
+    List<Item> findByDptPlease(@Param("dpt") String dpt);
 
-    @Query("select i from item i where i.startDate = :specificdate or (:specificdate between i.startDate and i.endDate)")
-    List<Item> findBySpecificDate(@Param("specificdate")Date specificdate);
-
-    @Query("select i from item i where not (i.startDate > :start or i.endDate < :end)")
-    List<Item> findByDateRange(@Param("start") Date start, @Param("end")Date end);
+    @Query(value = "select * from item join collection on collection.id = item.collection_id where collection.name like concat('%', :collection_name, '%')", nativeQuery = true)
+    List<Item> findByCollectionLikeYes(@Param("collection_name") String collection_name);
 
 }

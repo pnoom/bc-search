@@ -1,0 +1,3 @@
+Start of log file:
+/home/andy/studies/spe/bc-search/target/classes/public/haslam.csv
+2009/008

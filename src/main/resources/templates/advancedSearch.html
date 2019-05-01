@@ -1,56 +1,57 @@
 
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" style="height: 100%">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <title>Bristol Archives</title>
 </head>
-<body>
+<body bgcolor="#e5e0dd" style="height: 100%">
 <!-- This creates the logos at the top of the page -->
-<div class="block">
-    <div class="columns">
-        <div class="column is-half">
-            <img th:src="@{/Bristol-Archives-logo-web.jpg}" alt="Bristol Archives Logo" style="width: 230px; height: 115px">
-            <h1 class="title">Advanced search: </h1>
+<div class="block" style="margin-bottom: 0px;">
+    <div class="columns is-mobile">
+        <div class="column is-one-third has-text-centered">
+            <img th:src="@{/resized.png}" alt="Bristol Archives Logo" style="max-width: 85%; height: auto;">
         </div>
-        <div class="column is-quarter">
-        </div>
-
-        <div class="column is-quarter">
-            <img th:src="@{/Bristol-City-Council-Logo.png}" alt="Bristol City Council Logo" style="width: 300px; height: 115px" >
+        <div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 20px; color:#343c5c;font-family:Futura; "> Advanced <br>Search </h1>
+        <!--<div class="column is-one-third"><h1 class="title" style="font-size:3vw; text-align: center; margin-top: 60px; color:#5d4037;font-family:Futura; ">Advanced Search</h1>-->
 
         </div>
+        <div class="column is-one-third has-text-centered">
 
+            <img class="image" th:src="@{/full-council-logo-black.png}" id ="logo" alt="Bristol City Council Logo" style="max-width: 68%; max-height: 65%; height: auto; margin-top: 12px; margin-left: 38px">
+        </div>
     </div>
 </div>
-
-<!-- This is what creates the navbar -->
 <div class="block">
-    <nav class="navbar has-background-grey-lighter" role="navigation" aria-label="main navigation">
-        <div class="navbar-burger burger" data-target="navMenu">
-            <span></span>
-            <span></span>
-            <span></span>
+
+    <!-- This is what creates the navbar -->
+
+    <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" id="navbar">
+        <div class="navbar-burger burger has-background-primary" data-target="navMenu">
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
+            <span class="has-text-white"></span>
         </div>
-        <div class="navbar-menu" id="navMenu">
-
+        <div class="navbar-menu has-background-primary" id="navMenu">
             <div class="navbar-start">
-                <a href="/" class="navbar-item">Home</a>
-                <!--<a class="navbar-item">Image Gallery</a>
-                <a class="navbar-item">Showcase</a>
+                <a href="/" class="navbar-item has-text-primary">Home</a>
+                <a href="/aboutArchives" class="navbar-item has-text-primary">About the Archives</a>
+                <a href="/loginPage" class="navbar-item has-text-primary">Admin login</a>
+                <!--<a class="navbar-item">Showcase</a>
                 <a class="navbar-item">Donate</a>-->
+            </div>
+            <div class="navbar-end">
+                <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item has-text-primary">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
 
-                <a href="https://twitter.com/bristolarchives?lang=en" target="_blank" class="navbar-item">Follow us on Twitter&nbsp<i class="fa fa-twitter"></i></a>
+                <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item has-text-primary" >Visit our Facebook</a>
 
-                <a href="https://en-gb.facebook.com/bristolarchives/" target="_blank" class="navbar-item" >Visit our Facebook</a>
-
-                <a href="https://www.instagram.com/explore/locations/40687510/bristol-archives/?hl=en" target="_blank" class="navbar-item">Visit our Instagram&nbsp <i class="fa fa-instagram"></i></a>
+                <a href="https://www.instagram.com/explore/locations/40687510/bristol-archives/?hl=en" target="_blank" class="navbar-item has-text-primary">Visit our Instagram&nbsp <i class="fa fa-instagram"></i></a>
 
             </div>
         </div>
@@ -65,18 +66,13 @@
             });
         })();
     </script>
-</div>
-<div class="block">
-    <canvas height="25" style="border:1px transparent">
-    </canvas>
-</div>
+<!--</div>-->
 
-<div class="block">
+<!--<div class="block">-->
     <form action="#" th:action="@{/advSearch}" method="post">
-
-        <div class="columns">
-            <div class="column is-one-fifth"></div>
-            <div class="column">
+        <div class="columns is-mobile">
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to left,#ffffff,#343c5c);"></div>
+            <div class="column" style=" margin-top: 60px; min-height: 500px; max-height: 3000px; height: auto; background-color:#e5e0dd">
                <!-- <div class="block">
                     <div class="columns">
                         <div class="column is-one-fifth">Search by Date:</div>
@@ -85,19 +81,21 @@
                         </div>
                     </div>
                 </div>-->
-                <div class="block">
                     <div class="columns">
                 <div class="column is-one-fifth">Search by date:</div>
                 <div class="column">
-                    <div id="noRange" style="display: block"><input type="date" id="date_search" name="date_search" value=""></div>
-                    <div id="startRange" style="display: none"> <input type="date" id="date_start" name="date_start" value=""></div>
+                    <div id="noRange" style="display: inline"><input type="date" id="date_search" name="date_search" value="" style="font-size: 1.1rem"></div>
+                    <div id="startRange" style="display: none"> <input type="date" id="date_start" name="date_start" value="" style="font-size: 1.1rem"></div>
+                    <div class="block is-centre" id="simpleText" style="margin-left: 30px; display: none; " >To</div>
+                    <div id="endRange" style="display: none; margin-left: 36px"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>
+                    <a onclick="range()" class="button is-pulled-right" style="margin-right: 5px; display: inline;">Date range</a>
                 </div>
-               <div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 63px; display: none; " >To</div>
-                </div>
+               <!--<div class="column is-one-fifth"><div class="block is-centre" id="simpleText" style="margin-left: 63px; display: none; " >To</div>-->
+                <!--</div>-->
 
-                <div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value=""></div>
-                </div>
-                <div class="column"><a onclick="range()" class="button" style="margin-left: 27px">Date range</a>
+                <!--<div class="column is-one-fifth"><div id="endRange" style="display: none"><input type="date" id="date_end" name="date_end" value="" style="font-size: 1.1rem"></div>-->
+                <!--</div>-->
+                <!--<div class="column"><a onclick="range()" class="button" style="margin-left: 27px">Date range</a>-->
 
                 <script>
                 function range() {
@@ -106,34 +104,61 @@
                     var z = document.getElementById("startRange");
                     var p = document.getElementById("noRange");
                     if (x.style.display === "none") {
-                        x.style.display = "block";
-                        y.style.display = "block";
-                        z.style.display = "block";
+                        x.style.display = "inline";
+                        y.style.display = "inline";
+                        z.style.display = "inline";
                         p.style.display = "none";
                         document.getElementById('date_search').value = "";
+                        document.getElementById('date_search').className = "hidden";
+                        document.getElementById('date_start').className = "unhidden";
+                        document.getElementById('date_end').className = "unhidden";
                     }
                     else {
                         x.style.display = "none";
                         y.style.display = "none";
                         z.style.display = "none";
-                        p.style.display = "block";
+                        p.style.display = "inline";
                         document.getElementById('date_start').value = '';
                         document.getElementById('date_end').value = '';
+                        document.getElementById('date_start').className = "hidden";
+                        document.getElementById('date_end').className = "hidden";
+                        document.getElementById('date_search').className = "unhidden";
                     }
                 }
 
                     </script>
-                </div>
             </div>
 
             <div class="block">
                 <div class="columns">
-                    <div class="column is-one-fifth">Search by collections:</div>
-                    <div class="column">
-                        <input type="text" name="collection_search" class="input" placeholder="Example: Trotter...">
+                    <div class="column is-one-fifth">Search by departments:</div>
+                    <div class="column" style="background-color:#e5e0dd">
+                        <div class="control">
+                            <div class="select">
+                                <select name="dpt" id="dpt_search">
+                                    <option>All</option>
+                                    <option name="department" th:each="dept : ${deptList}" th:text="${dept.name}"></option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+                    <div class="block">
+                        <div class="columns">
+                            <div class="column is-one-fifth">Search by collections:</div>
+                            <div class="column">
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="coll" id="coll_search">
+                                            <option>All</option>
+                                            <option name="collection" th:each="collection : ${collectionList}" th:text="${collection.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
             <div class="block">
                 <div class="columns">
@@ -152,18 +177,16 @@
                     </div>
                 </div>
             </div>
+                <div class="columns">
+                    <div class="column is-one-fifth"></div>
+                    <div class="column">
+                        <button class="button" type="submit" style="margin-bottom: 8px">Search</button>
+                    </div>
+                </div>
             </div>
-            </div>
-            <div class="column is-one-fifth"></div>
+            <div class="column is-one-fifth" style="background-image:linear-gradient(to right,#ffffff,#343c5c);"></div>
         </div>
 
-<div class="block">
-    <div class="columns">
-        <div class="column is-one-quarter"></div>
-        <div class="column"><button class="button" style="margin-left: 96px" type="submit">Search</button></div>
-        <div class="column is-one-third"></div>
-    </div>
-</div>
 
     </form>
 

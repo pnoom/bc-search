@@ -1,14 +1,15 @@
 package BristolArchives.services;
 
+import BristolArchives.entities.Collection;
 import BristolArchives.entities.Item;
-import BristolArchives.entities.SubCollection;
+import BristolArchives.repositories.DeptRepo;
 import BristolArchives.repositories.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,40 +21,57 @@ public class ItemService {
     private ItemRepo itemRepo;
 
     @Autowired
-    private SubCollectionService subCollectionService;
+    private DeptRepo deptRepo;
 
-    public List<Item> getAllItems(){
-        return itemRepo.findAll();
+    @Autowired
+    private CollectionService collectionService;
+
+    public List<String> getMultimediaIrns(Item item) {
+        if (item.getMediaIrns() != null)
+            return new ArrayList<>(Arrays.asList(item.getMediaIrns().split(",")));
+        else
+            return null;
+    }
+
+    public String getFirstMultimediaIrn(Item item) {
+        List<String> all = getMultimediaIrns(item);
+        //System.out.println(all);
+        if (all != null) {
+            if (all.isEmpty()) {
+                return "";
+            } else {
+                return all.get(0);
+            }
+        } else
+            return "";
     }
 
     public List<Item> getItemByNameContaining(String name) {
         return itemRepo.findByNameContaining(name);
     }
 
+    // Matches on collName exactly
     public List<Item> getItemByCollectionName(String collName) {
-        List<SubCollection> subCollList = subCollectionService.getByCollectionName(collName);
         List<Item> result = new ArrayList<>();
-        for (SubCollection subColl : subCollList)
-            result.addAll(itemRepo.findBySubCollection(subColl));
+        List<Collection> collList = collectionService.getByName(collName);
+        for (Collection coll : collList)
+            result.addAll(itemRepo.findByCollection(coll));
         return result;
     }
-
-//    public List<Item> getItemBySubCollectionName(String subCollName) {
-//        return itemRepo.findBySubCollection(subCollectionService.getByName(subCollName).getId());
-//    }
 
     public List<Item> getItemByName(String name) {
         return itemRepo.findByName(name);
     }
 
     public List<Item> getItemByLocation(String location) {
-        return itemRepo.findLocation(location);
+        return itemRepo.findByLocationLike(location);
     }
 
     public List<Item> getItemByDate(String date) {
-        return itemRepo.findDate(date);
+        return itemRepo.findByDisplayDateLike(date);
     }
 
+    // TODO: redefine
     private void getIntersection(List<Item> result, List<Item> newItems, boolean someConstraintsExist) {
         if(result.isEmpty() && !someConstraintsExist)
             result.addAll(newItems);
@@ -61,6 +79,7 @@ public class ItemService {
             result.retainAll(newItems);
     }
 
+    // Simple search
     public List<Item> getItem(String searchterm){
         String[] terms = searchterm.split(" ");
         List<Item> results = new ArrayList<>();
@@ -70,27 +89,22 @@ public class ItemService {
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findWithRef(s);
+            currResults = itemRepo.findByItemRef(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findName(s);
+            currResults = itemRepo.findByLocationLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findLocation(s);
+            currResults = itemRepo.findByDisplayDateLike(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
             }
-            currResults = itemRepo.findDate(s);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }
-            currResults = itemRepo.findDescription(s);
+            currResults = itemRepo.findByDescriptionContaining(s);
             for(Item i: currResults){
                 if (!results.contains(i))
                     results.add(i);
@@ -101,9 +115,9 @@ public class ItemService {
     }
 
     public Item getExactItem(String ref){
-        if(itemRepo.findWithRef(ref).size() <= 0)
+        if(itemRepo.findByItemRef(ref).size() <= 0)
             return null;
-        return itemRepo.findWithRef(ref).get(0);
+        return itemRepo.findByItemRef(ref).get(0);
     }
 
     private boolean hasSth(String s) {
@@ -121,62 +135,39 @@ public class ItemService {
         }
     }
 
-    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String precision) {
+    // precision means "search for whole phrase"
+    public List<Item> getAdvancedSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String dpt, String precision) {
         List<Item> results = new ArrayList<>();
         boolean someConstraintsExist = false;
         //System.out.printf("collection: %s, single_date: %s, start: %s, end: %s, whole_phrase: %s, location: %s",
         //        collection, checkForNull(specific_date), checkForNull(start_date), checkForNull(end_date), precision, location);
 
+        // Only one of these should be used.
         if (specific_date != null) {
-
-            //List<Item> currResults = itemRepo.findBySpecificDate(specific_date);
-            //for(Item i: currResults){
-            //    if (!results.contains(i))
-            //        results.add(i);
-            // }
-            getIntersection(results,itemRepo.findBySpecificDate(specific_date),false);
+            getIntersection(results, itemRepo.findWithSpecificDate(specific_date),false);
             someConstraintsExist = true;
-        }
-        if (start_date != null && end_date != null) {
-            //System.out.println("The if worked");
-            getIntersection(results,itemRepo.findByDateRange(start_date,end_date),someConstraintsExist);
+        } else if (start_date != null && end_date != null) {
+            getIntersection(results, itemRepo.findWithDateRange(start_date, end_date), someConstraintsExist);
             someConstraintsExist = true;
-            /*List<Item> currResults = itemRepo.findByDateRange(start_date, end_date);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }*/
         }
 
         if (hasSth(collection)) {
-            getIntersection(results,getItemByCollectionName(collection),someConstraintsExist);
+            List<Item> currResults = itemRepo.findByCollectionLikeYes(collection);
+            getIntersection(results, currResults, someConstraintsExist);
             someConstraintsExist = true;
-            /*List<Item> currResults = getItemByCollectionName(collection);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }*/
         }
-
         if (hasSth(location)) {
-            getIntersection(results,itemRepo.findLocation(location),someConstraintsExist);
+            getIntersection(results,itemRepo.findByLocationLike(location), someConstraintsExist);
             someConstraintsExist = true;
-            /*List<Item> currResults = itemRepo.findLocation(location);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }*/
         }
         if (hasSth(precision)) {
-            getIntersection(results,getItemByName(precision),someConstraintsExist);
+            getIntersection(results, itemRepo.findWholePhrase(precision), someConstraintsExist);
             someConstraintsExist = true;
-            /*List<Item> currResults = getItemByName(precision);
-            for(Item i: currResults){
-                if (!results.contains(i))
-                    results.add(i);
-            }*/
         }
-        // this.getItem(precision, results); // TODO: getItem should take results param and mutate it
+        if(hasSth(dpt)){
+            getIntersection(results, itemRepo.findByDptPlease(dpt), someConstraintsExist);
+            someConstraintsExist = true;
+        }
         return results;
     }
 
@@ -200,4 +191,25 @@ public class ItemService {
         return itemPage;
     }
 
+    public Page<Item> findPaginatedAdvSearch(Date specific_date, Date start_date, Date end_date, String collection, String location, String dpt, String precision, Pageable pageable) {
+        final List<Item> items = getAdvancedSearch(specific_date,start_date,end_date,collection,location,dpt,precision);
+        int pageSize = pageable.getPageSize();
+        int maxPageNum = (int)Math.max(0, Math.ceil(1.0*items.size()/pageSize)-1);
+        int currentPage = Math.min(maxPageNum,pageable.getPageNumber());
+        int startItem = currentPage * pageSize;
+
+        List<Item> list;
+
+        if (items.size() < startItem) {
+            list = items.subList(Math.max(0, items.size()-pageSize), items.size());
+        } else {
+            int toIndex = Math.min(startItem + pageSize, items.size());
+            list = items.subList(startItem, toIndex);
+        }
+
+        Page<Item> itemPage
+                = new PageImpl<Item>(list, PageRequest.of(currentPage, pageSize), items.size());
+
+        return itemPage;
+    }
 }

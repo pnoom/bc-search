@@ -2,8 +2,8 @@
 
 ## Overview of Implementation
 
-Our application is written in Java, and its architecture was primarily
-determined by our use of the Spring Web MVC framework, and our choice of MySQL
+Our application is written in Java with object orientation in mind. It's architecture was primarily
+determined by our use of the Spring Web MVC framework and further by our choice of MySQL
 as the backend. Below are two diagrams that reflect the structure of the code
 and our database schema respectively. The latter is discussed in depth in the
 "Design Challenges" section.

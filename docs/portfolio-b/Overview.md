@@ -24,8 +24,8 @@ interface for searching viewing all media available, and hopefully good enough t
 
 Our vision for the product that will provide a suitable solution:
 * The web-app should be able to access to all media collections. To do this we would first need a normalization of the data since different collections have different metadata and hierarchy structures.
-* The web-app should provide three interfaces: for normal user it should support "simple search" which performs a string-matching search with key words; for archive researchers it should have "advance search" which can perform search according to various criteria (dates, locations etc.) with filters; and for the archive administrators there should be a management system to upload new entries. 
-* To speed up the access, we can let the web-app perform search algorithm, and then reach the thumbnails and images through Bristol Museum image API while displaying the results.
+* The web-app should provide three interfaces: for normal users it should support "simple search" which performs a string-matching search with key words; for archive researchers it should have "advanced search" which can perform search according to various criteria (dates, locations etc.) with filters; and for the archive administrators there should be a management system to upload new entries. 
+* To speed up the access, we can let the web-app perform database queries, and then fetch the thumbnails and images through the Bristol Museum image RESTful API for displaying the results.
 
 In the project we have used spring boot framework, along with mySQL in the back-end and thymeleaf in the front-end. The implementation will be described in detail in the OO Design section.
 
